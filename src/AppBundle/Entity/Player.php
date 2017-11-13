@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Player
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="player")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\PlayerRepository")
  */
-class Player
+class Player implements UserInterface
 {
     /**
      * @var int
@@ -45,9 +46,9 @@ class Player
     /**
      * @var string
      *
-     * @ORM\Column(name="nickname", type="string", length=255)
+     * @ORM\Column(name="username", type="string", length=255)
      */
-    private $nickname;
+    private $username;
 
     /**
      * @var string
@@ -161,27 +162,27 @@ class Player
     }
 
     /**
-     * Set nickname
+     * Set username
      *
-     * @param string $nickname
+     * @param string $username
      *
      * @return Player
      */
-    public function setNickname($nickname)
+    public function setUsername($username)
     {
-        $this->nickname = $nickname;
+        $this->username = $username;
 
         return $this;
     }
 
     /**
-     * Get nickname
+     * Get username
      *
      * @return string
      */
-    public function getNickname()
+    public function getUsername()
     {
-        return $this->nickname;
+        return $this->username;
     }
 
     /**
@@ -279,4 +280,21 @@ class Player
     {
         return $this->password;
     }
+
+    public function getRoles()
+    {
+        return ['ROLE_USER'];
+    }
+
+    public function getSalt()
+    {
+        return null;
+    }
+
+    public function eraseCredentials()
+    {
+
+    }
+
+
 }
