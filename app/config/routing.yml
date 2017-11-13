@@ -4,8 +4,12 @@ user:
 
 admin:
     resource: "@AdminBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /admin
 
 app:
     resource: '@AppBundle/Controller/'
     type: annotation
+
+app_dashboard:
+    path:     /dashboard
+    defaults: { _controller: AppBundle:Default:dashboard }
