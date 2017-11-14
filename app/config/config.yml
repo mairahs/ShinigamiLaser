@@ -2,6 +2,7 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
+    - { resource: workflow.yml }
     - { resource: "@AdminBundle/Resources/config/services.yml" }
     - { resource: "@UserBundle/Resources/config/services.yml" }
 
@@ -40,7 +41,7 @@ twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
     form_themes:
-        - 'materialize_form_theme.html.twig'
+        - 'materialize_layout.html.twig'
 
 # Doctrine Configuration
 doctrine:

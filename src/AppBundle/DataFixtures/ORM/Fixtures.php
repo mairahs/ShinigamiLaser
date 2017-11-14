@@ -30,7 +30,7 @@ class Fixtures extends Fixture
 
         for ($i = 0; $i < 2; $i++) {
             $card = new Card();
-            $card->setStatus('status');
+            $card->setStatus('in_store');
             $card->setNumber($i);
             $manager->persist($card);
         }

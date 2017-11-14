@@ -1,0 +1,25 @@
+framework:
+    workflows:
+        blog_publishing:
+            type: 'state_machine'
+            marking_store:
+                type: 'single_state'
+                arguments:
+                    - 'status'
+            supports:
+                - AppBundle\Entity\Card
+            places:
+                - order
+                - in_store
+                - active
+                - disable
+            transitions:
+                delivery:
+                    from: order
+                    to:   in_store
+                activation:
+                    from: in_store
+                    to:   active
+                deactivation:
+                    from: active
+                    to:   disable
