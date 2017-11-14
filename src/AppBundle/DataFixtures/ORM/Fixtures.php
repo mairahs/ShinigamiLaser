@@ -4,6 +4,7 @@
 namespace AppBundle\DataFixtures\ORM;
 
 
+use AppBundle\Entity\Admin;
 use AppBundle\Entity\Card;
 use AppBundle\Entity\Etablishment;
 use AppBundle\Entity\Player;
@@ -53,6 +54,14 @@ class Fixtures extends Fixture
             $player->setUsername($faker->firstName);
             $player->setPhoneNumber($faker->phoneNumber);
             $manager->persist($player);
+        }
+
+        for ($i = 0; $i < 5; $i++) {
+            $admin = new Admin();
+            $admin->setUsername($faker->userName);
+            $admin->setEmail($faker->email);
+            $admin->setPassword($encoder->encodePassword($admin, 'test+'));
+            $manager->persist($admin);
         }
 
         for ($i = 0; $i < 5; $i++) {

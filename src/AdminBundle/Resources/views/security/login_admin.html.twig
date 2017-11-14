@@ -6,7 +6,7 @@
         <div data-error="wrong">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
     <div class="row">
-        <form class="row" action="{{ path('login') }}" method="post">
+        <form class="row" action="{{ path('login_admin') }}" method="post">
             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
             <div class="input-field col s3">
                 <label for="username">
@@ -20,11 +20,11 @@
                     Mot de passe
                 </label>
                 <input type="password" id="password" name="_password">
-                <input type="hidden" name="_target_path" value="{{ path('app_dashboard') }}" />
+                <input type="hidden" name="_target_path" value="{{ path('admin_dashboard') }}" />
             </div>
 
             <div class="input-field col s12">
-             <button type="submit" class="waves-effect waves-light btn"><i class="material-icons right"></i>Connexion</button>
+                <button type="submit" class="waves-effect waves-light btn"><i class="material-icons right"></i>Connexion</button>
             </div>
 
         </form>
