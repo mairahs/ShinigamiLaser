@@ -40,4 +40,20 @@ class CardManager
             throw new \Exception('La transition "activation" ne peut pas être effectuée');
         }
     }
+
+    /**
+     * CODE_CENTRE : 3 chiffres décrivant un établissement
+     * CODE_CARTE : 6 chiffres décrivant un client
+     * CHECKSUM : somme des chiffres précédents modulo 9
+     */
+    public static function generateNumber(){
+        $CODE_CENTRE = 123;
+        $CODE_CARTE = rand(100000, 999999);
+        $CHECKSUM = $CODE_CENTRE+$CODE_CARTE % 9;
+
+        dump($CODE_CENTRE.$CODE_CARTE.$CHECKSUM);
+
+
+        return $CODE_CENTRE.$CODE_CARTE.$CHECKSUM;
+    }
 }

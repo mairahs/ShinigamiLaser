@@ -35,3 +35,7 @@ services:
     #         $someArgument: 'some_value'
     AppBundle\Service\CardManager:
         public: true
+
+    AppBundle\EventListener\NumberGenerator:
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }

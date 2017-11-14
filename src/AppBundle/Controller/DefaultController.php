@@ -21,6 +21,7 @@ class DefaultController extends Controller
 
     public function dashboardAction()
     {
-        return $this->render('default/dashboard.html.twig');
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        return $this->render('default/dashboard.html.twig', ['user' => $user]);
     }
 }

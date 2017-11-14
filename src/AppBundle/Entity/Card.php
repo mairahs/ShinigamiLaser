@@ -2,7 +2,9 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Service\CardManager;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bundle\FrameworkBundle\Tests\Controller\ContainerAwareController;
 
 /**
  * Card
@@ -25,7 +27,7 @@ class Card
     /**
      * @var int
      *
-     * @ORM\Column(name="number", type="integer", unique=true)
+     * @ORM\Column(name="number", type="bigint", unique=true)
      */
     private $number;
 

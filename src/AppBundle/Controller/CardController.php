@@ -28,7 +28,8 @@ class CardController extends Controller
         $form = $this->createForm(CardType::class, $card);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
-            $this->get(CardManager::class)->addCard(8, $request->get('appbundle_card')['number']);
+            $user = $this->get('security.token_storage')->getToken()->getUser();
+            $this->get(CardManager::class)->addCard($user->getId(), $request->get('appbundle_card')['number']);
             return $this->redirectToRoute('app_dashboard');
         }
         return $this->render('card/add.card.html.twig', ['form' => $form->createView()]);

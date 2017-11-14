@@ -28,10 +28,9 @@ class Fixtures extends Fixture
 
         $encoder = $this->container->get('security.password_encoder');
 
-        for ($i = 0; $i < 2; $i++) {
+        for ($i = 0; $i < 10; $i++) {
             $card = new Card();
             $card->setStatus('in_store');
-            $card->setNumber($i);
             $manager->persist($card);
         }
 
