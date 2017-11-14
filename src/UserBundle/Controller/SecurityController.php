@@ -9,11 +9,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 class SecurityController extends Controller
 {
-
-    public function indexAction()
-    {
-        return new Response('<body><h2>Hello player</h2></body>');
-    }
     /**
      *@return Response
      */
@@ -29,6 +24,4 @@ class SecurityController extends Controller
             'error'=>$error,
             'lastUsername'=>$lastUsername]);
     }
-
-
 }

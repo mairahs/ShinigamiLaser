@@ -29,8 +29,7 @@ security:
             provider: default
             logout:
                 path: /logout
-                target: /
-
+                target: /login
             # activate different ways to authenticate
 
             # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
