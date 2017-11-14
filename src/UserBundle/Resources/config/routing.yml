@@ -4,3 +4,7 @@ login:
 logout:
     path: /logout
 
+login_admin:
+    path: /admin/login
+    defaults: { _controller: AdminBundle:Security:login_admin}
+
