@@ -25,7 +25,7 @@ class Fixtures extends Fixture
 
         for ($i = 0; $i < 2; $i++) {
             $card = new Card();
-            $card->setStatus('status');
+            $card->setStatus('in_store');
             $card->setNumber($i);
             $manager->persist($card);
         }
@@ -45,7 +45,7 @@ class Fixtures extends Fixture
             $player->setEmail($faker->email);
             $player->setAddress($faker->address);
             $player->setDateOfBirth($faker->dateTime());
-            $player->setNickname($faker->firstName);
+            $player->setUsername($faker->firstName);
             $player->setPhoneNumber($faker->phoneNumber);
             $manager->persist($player);
         }

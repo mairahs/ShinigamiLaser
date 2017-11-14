@@ -13,7 +13,7 @@ class CardType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('number')->add('status');
+        $builder->add('number');
     }
     
     /**
