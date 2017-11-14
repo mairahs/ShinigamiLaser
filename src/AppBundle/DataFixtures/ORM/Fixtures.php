@@ -9,8 +9,11 @@ use AppBundle\Entity\Etablishment;
 use AppBundle\Entity\Player;
 use AppBundle\Entity\Provider;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Faker\Factory as Factory;
+use Symfony\Component\DependencyInjection\ContainerAwareInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Class Fixtures
@@ -22,6 +25,8 @@ class Fixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         $faker = Factory::create('fr_FR');
+
+        $encoder = $this->container->get('security.password_encoder');
 
         for ($i = 0; $i < 2; $i++) {
             $card = new Card();
@@ -41,11 +46,11 @@ class Fixtures extends Fixture
             $player = new Player();
             $player->setFirstname($faker->firstName);
             $player->setLastname($faker->lastName);
-            $player->setPassword($faker->password);
+            $player->setPassword($encoder->encodePassword($player, 'test'));
             $player->setEmail($faker->email);
             $player->setAddress($faker->address);
             $player->setDateOfBirth($faker->dateTime());
-            $player->setNickname($faker->firstName);
+            $player->setUsername($faker->firstName);
             $player->setPhoneNumber($faker->phoneNumber);
             $manager->persist($player);
         }

@@ -27,6 +27,9 @@ security:
                 check_path: login
                 csrf_token_generator: security.csrf.token_manager
             provider: default
+            logout:
+                path: /logout
+                target: /
 
             # activate different ways to authenticate
 
@@ -35,3 +38,7 @@ security:
 
             # https://symfony.com/doc/current/security/form_login_setup.html
             #form_login: ~
+
+    access_control:
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY}
+        - { path: ^/, roles: ROLE_USER}
