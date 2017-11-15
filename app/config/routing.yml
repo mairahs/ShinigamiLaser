@@ -13,3 +13,15 @@ app:
 app_dashboard:
     path:     /dashboard
     defaults: { _controller: AppBundle:Default:dashboard }
+
+app_card_add:
+    path: /add
+    defaults: { _controller: AppBundle:Card:add }
+
+app_card_disable_page:
+    path: /disable/{id}
+    defaults: { _controller: AppBundle:Card:disablePage }
+
+app_card_disable_action:
+    path: /disable/action/{id}
+    defaults: { _controller: AppBundle:Card:disable }

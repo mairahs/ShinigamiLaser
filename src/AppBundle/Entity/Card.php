@@ -25,9 +25,9 @@ class Card
     private $id;
 
     /**
-     * @var int
+     * @var string
      *
-     * @ORM\Column(name="number", type="bigint", unique=true)
+     * @ORM\Column(name="number", type="string", unique=true)
      */
     private $number;
 
@@ -51,30 +51,6 @@ class Card
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set number
-     *
-     * @param integer $number
-     *
-     * @return Card
-     */
-    public function setNumber($number)
-    {
-        $this->number = $number;
-
-        return $this;
-    }
-
-    /**
-     * Get number
-     *
-     * @return int
-     */
-    public function getNumber()
-    {
-        return $this->number;
     }
 
     /**
@@ -123,5 +99,29 @@ class Card
     public function getPlayer()
     {
         return $this->player;
+    }
+
+    /**
+     * Set number
+     *
+     * @param string $number
+     *
+     * @return Card
+     */
+    public function setNumber($number)
+    {
+        $this->number = $number;
+
+        return $this;
+    }
+
+    /**
+     * Get number
+     *
+     * @return string
+     */
+    public function getNumber()
+    {
+        return $this->number;
     }
 }
