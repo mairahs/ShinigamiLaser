@@ -2,7 +2,9 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Service\CardManager;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bundle\FrameworkBundle\Tests\Controller\ContainerAwareController;
 
 /**
  * Card
@@ -23,9 +25,9 @@ class Card
     private $id;
 
     /**
-     * @var int
+     * @var string
      *
-     * @ORM\Column(name="number", type="integer", unique=true)
+     * @ORM\Column(name="number", type="string", unique=true)
      */
     private $number;
 
@@ -49,30 +51,6 @@ class Card
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set number
-     *
-     * @param integer $number
-     *
-     * @return Card
-     */
-    public function setNumber($number)
-    {
-        $this->number = $number;
-
-        return $this;
-    }
-
-    /**
-     * Get number
-     *
-     * @return int
-     */
-    public function getNumber()
-    {
-        return $this->number;
     }
 
     /**

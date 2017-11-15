@@ -19,7 +19,6 @@ use Symfony\Component\HttpFoundation\Request;
 class CardController extends Controller
 {
     /**
-     * @Route("/add", name="app_card_add")
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
@@ -29,23 +28,61 @@ class CardController extends Controller
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
             $user = $this->get('security.token_storage')->getToken()->getUser();
-            $this->get(CardManager::class)->addCard($user->getId(), $request->get('appbundle_card')['number']);
-            return $this->redirectToRoute('app_dashboard');
+            try {
+                $this->get(CardManager::class)->addCard($user->getId(), $request->get('appbundle_card')['number']);
+                return $this->redirectToRoute('app_dashboard');
+            }catch (\Exception $exception) {
+                $this->addFlash('notice',$exception->getMessage());
+            }
         }
+
         return $this->render('card/add.card.html.twig', ['form' => $form->createView()]);
     }
 
-    /**
-     * @Route("/remove/{id}", name="app_card_remove")
-     */
-    public function removeAction(){
-
+    public function disablePageAction($id)
+    {
+        //TODO Check si la carte n'appartient pas au bonhomme
+        $card = $this->getDoctrine()->getRepository('AppBundle:Card')->find($id);
+        $disableForm = $this->createDisableForm($card);
+        return $this->render('card/disable.card.html.twig', array(
+            'disable_form' => $disableForm->createView(),
+        ));
     }
 
     /**
-     * @Route("/disable/{id}", name="app_card_disable")
+     * @param Request $request
+     * @param Card $card
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @internal param $id
      */
-    public function disableAction(){
+    public function disableAction(Request $request, Card $card)
+    {
+        $form = $this->createDisableForm($card);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            try {
+                $this->get(CardManager::class)->disableCard($card);
 
+                return $this->redirectToRoute('app_dashboard');
+            }catch (\Exception $exception) {
+                $this->addFlash('notice',$exception->getMessage());
+            }
+        }
+
+        return $this->redirectToRoute('app_card_disable_page', ['id' => $card->getId()]);
+    }
+
+    /**
+     * Creates a form to disable a card entity.
+     *
+     * @param Card $card
+     * @return \Symfony\Component\Form\FormInterface
+     */
+    private function createDisableForm(Card $card)
+    {
+        return $this->createFormBuilder()
+            ->setAction($this->generateUrl('app_card_disable_action', array('id' => $card->getId())))
+            ->getForm()
+            ;
     }
 }

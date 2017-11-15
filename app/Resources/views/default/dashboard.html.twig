@@ -2,18 +2,18 @@
 
 {% block body %}
     <h3>Dashboard</h3>
-    {% if user.cards|length > 0 %}
     <ul class="collection with-header">
     <li class="collection-header"><h5>Vos cartes</h5></li>
     {% for item in user.cards %}
-        <li class="collection-item"><div>{{ item.number }}<a href="#!" class="secondary-content"><i class="material-icons">remove_red_eye</i></a></div></li>
+        <li class="collection-item">
+            <div>{{ item.number }}
+                <a href="{{ path('app_card_disable_page', {'id':item.id}) }}" class="secondary-content" title="carte perdue ou volée"><i class="material-icons">no_sim</i></a>
+                <a href="#!" class="secondary-content" title="voir details"><i class="material-icons">remove_red_eye</i></a>
+            </div>
+        </li>
     {% endfor %}
         <li class="collection-item"><div>ajout carte<a href="{{ path('app_card_add') }}" class="secondary-content"><i class="material-icons">add</i></a></div></li>
-
     </ul>
-    {% else %}
-    <a href="{{ path('app_card_add') }}">Ajout carte</a>
-    {% endif %}
 {% endblock %}
 
 {% block stylesheets %}{% endblock %}

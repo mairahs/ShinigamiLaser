@@ -15,9 +15,7 @@ class NumberGenerator
         if (!$object instanceof Card) {
             return;
         }
-
         $number = CardManager::generateNumber();
-
         $object->setNumber($number);
     }
 }
