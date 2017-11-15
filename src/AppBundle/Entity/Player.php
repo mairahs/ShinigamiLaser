@@ -84,6 +84,11 @@ class Player implements UserInterface
     private $cards;
 
     /**
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Avatar", cascade={"persist"})
+     */
+    private $avatar;
+
+    /**
      * Get id
      *
      * @return int
@@ -339,5 +344,29 @@ class Player implements UserInterface
     public function getCards()
     {
         return $this->cards;
+    }
+
+    /**
+     * Set avatar
+     *
+     * @param \AppBundle\Entity\Avatar $avatar
+     *
+     * @return Player
+     */
+    public function setAvatar(Avatar $avatar = null)
+    {
+        $this->avatar = $avatar;
+
+        return $this;
+    }
+
+    /**
+     * Get avatar
+     *
+     * @return \AppBundle\Entity\Avatar
+     */
+    public function getAvatar()
+    {
+        return $this->avatar;
     }
 }
