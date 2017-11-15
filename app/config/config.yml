@@ -43,6 +43,7 @@ twig:
     form_themes:
         - 'materialize_layout.html.twig'
 
+
 # Doctrine Configuration
 doctrine:
     dbal:

@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  *
  * @ORM\Table(name="avatar")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\AvatarRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Avatar
 {

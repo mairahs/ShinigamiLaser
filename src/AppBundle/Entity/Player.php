@@ -89,6 +89,20 @@ class Player implements UserInterface
     private $avatar;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="token", type="integer")
+     */
+    private $token;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column (name="is_activate", type="boolean")
+     */
+    private $isActivate;
+
+    /**
      * Get id
      *
      * @return int
@@ -368,5 +382,53 @@ class Player implements UserInterface
     public function getAvatar()
     {
         return $this->avatar;
+    }
+
+    /**
+     * Set token
+     *
+     * @param integer $token
+     *
+     * @return Player
+     */
+    public function setToken($token)
+    {
+        $this->token = $token;
+
+        return $this;
+    }
+
+    /**
+     * Get token
+     *
+     * @return integer
+     */
+    public function getToken()
+    {
+        return $this->token;
+    }
+
+    /**
+     * Set isActivate
+     *
+     * @param boolean $isActivate
+     *
+     * @return Player
+     */
+    public function setIsActivate($isActivate)
+    {
+        $this->isActivate = $isActivate;
+
+        return $this;
+    }
+
+    /**
+     * Get isActivate
+     *
+     * @return boolean
+     */
+    public function getIsActivate()
+    {
+        return $this->isActivate;
     }
 }

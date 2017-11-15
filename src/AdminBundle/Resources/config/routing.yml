@@ -2,5 +2,9 @@ admin_dashboard:
     path:     /dashboard
     defaults: { _controller: AdminBundle:Security:dashboard }
 
-logout:
+admin_login:
+    path: /login
+    defaults: { _controller: AdminBundle:Security:login_admin}
+
+admin_logout:
     path: /logout
