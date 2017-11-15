@@ -4,11 +4,16 @@
     <h3>Dashboard</h3>
     <ul class="collection with-header">
     <li class="collection-header"><h5>Vos cartes</h5></li>
-    {% for item in user.cards %}
+    {% for card in user.cards %}
         <li class="collection-item">
-            <div>{{ item.number }}
-                <a href="{{ path('app_card_disable_page', {'id':item.id}) }}" class="secondary-content" title="carte perdue ou volée"><i class="material-icons">no_sim</i></a>
-                <a href="#!" class="secondary-content" title="voir details"><i class="material-icons">remove_red_eye</i></a>
+            <div>
+                {{ card.number }}
+                {% if workflow_has_marked_place(card, 'disable') %}
+                    <a href="#!" class="secondary-content" title="carte desactivée"><i class="material-icons">not_interested</i></a>
+                {% else %}
+                    <a href="{{ path('app_card_disable_page', {'id':card.id}) }}" class="secondary-content" title="carte perdue ou volée"><i class="material-icons">no_sim</i></a>
+                    <a href="#!" class="secondary-content" title="voir details"><i class="material-icons">remove_red_eye</i></a>
+                {% endif %}
             </div>
         </li>
     {% endfor %}

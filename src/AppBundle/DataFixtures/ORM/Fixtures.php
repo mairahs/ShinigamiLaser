@@ -69,8 +69,7 @@ class Fixtures extends Fixture
             $provider->setName($faker->lastName);
             $manager->persist($provider);
         }
-
-
+        
         $manager->flush();
     }
 }
