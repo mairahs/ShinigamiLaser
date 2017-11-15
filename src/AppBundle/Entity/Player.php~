@@ -84,6 +84,25 @@ class Player implements UserInterface
     private $cards;
 
     /**
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Avatar", cascade={"persist"})
+     */
+    private $avatar;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="token", type="integer")
+     */
+    private $token;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column (name="is_activate", type="boolean")
+     */
+    private $isActivate;
+
+    /**
      * Get id
      *
      * @return int
@@ -300,5 +319,68 @@ class Player implements UserInterface
 
     }
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->cards = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add card
+     *
+     * @param \AppBundle\Entity\Card $card
+     *
+     * @return Player
+     */
+    public function addCard(\AppBundle\Entity\Card $card)
+    {
+        $this->cards[] = $card;
+        return $this;
+    }
+
+    /**
+     * Remove card
+     *
+     * @param \AppBundle\Entity\Card $card
+     */
+    public function removeCard(\AppBundle\Entity\Card $card)
+    {
+        $this->cards->removeElement($card);
+    }
+
+    /**
+     * Get cards
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCards()
+    {
+        return $this->cards;
+    }
+
+    /**
+     * Set avatar
+     *
+     * @param \AppBundle\Entity\Avatar $avatar
+     *
+     * @return Player
+     */
+    public function setAvatar(Avatar $avatar = null)
+    {
+        $this->avatar = $avatar;
+
+        return $this;
+    }
+
+    /**
+     * Get avatar
+     *
+     * @return \AppBundle\Entity\Avatar
+     */
+    public function getAvatar()
+    {
+        return $this->avatar;
+    }
 }

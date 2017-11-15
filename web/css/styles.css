@@ -1,0 +1,10 @@
+#appbundle_player_dateOfBirth .select-wrapper{
+    float: left;
+    width: 50px;
+    margin-right: 15px;
+}
+
+form .label-dob{
+    float: left;
+    position: relative;
+}
