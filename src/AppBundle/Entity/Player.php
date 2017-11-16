@@ -91,14 +91,14 @@ class Player implements UserInterface
     /**
      * @var int
      *
-     * @ORM\Column(name="token", type="integer")
+     * @ORM\Column(name="token", type="string", length=255)
      */
     private $token;
 
     /**
      * @var bool
      *
-     * @ORM\Column (name="is_activate", type="boolean")
+     * @ORM\Column (name="is_activate", type="boolean", nullable=true)
      */
     private $isActivate;
 

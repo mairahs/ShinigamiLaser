@@ -8,6 +8,12 @@ user_register:
     path: /register
     defaults: { _controller: UserBundle:User:register}
 
-user_update:
-    path: /user/update/{id}
-    defaults: { _controller: UserBundle:User:update}
+pre_activate:
+    path: /user/preactivate
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template:    UserBundle:security:preactivate.html.twig
+
+activate:
+    path: /user/activate/{token}
+    defaults: { _controller: UserBundle:User:activateAccount}

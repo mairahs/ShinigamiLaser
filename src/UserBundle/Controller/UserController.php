@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Tonio
- * Date: 16/11/2017
- * Time: 09:51
- */
+
 
 namespace UserBundle\Controller;
 
@@ -28,8 +23,8 @@ class UserController extends Controller
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $this->get(PlayerManager::class)->save($player);
-            return $this->redirectToRoute('app_dashboard');
-            //TODO: ENVOI DE MAIL POUR ACTIVATION DU COMPTE
+            return $this->redirectToRoute('pre_activate');
+
         }
 
         return $this->render('UserBundle:default:register.html.twig', ['form'=> $form->createView()]);
@@ -54,4 +49,17 @@ class UserController extends Controller
 
         return $this->render('UserBundle:default:edit.html.twig', ['form' => $form->createView(), 'player' => $player]);
     }
+
+    public function activateAccountAction($token)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $player = $entityManager->getRepository('AppBundle:Player')->findOneBy(['token' => $token]);
+        $player->setIsActivate(1);
+        $entityManager->persist($player);
+        $entityManager->flush();
+
+        return $this->render('UserBundle:security:activate.html.twig');
+    }
+
+
 }

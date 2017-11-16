@@ -13,3 +13,17 @@ services:
         arguments: ['%kernel.project_dir%']
         tags:
             - { name: doctrine.event_listener, event: postPersist }
+
+    UserBundle\DoctrineListener\TokenGenerator:
+        public: true
+        tags:
+            - { name: doctrine.event_listener, event: prePersist}
+
+    UserBundle\Manager\MailManager:
+        public: true
+        arguments: ['@mailer', '%mail_admin%','@templating.engine.twig']
+
+    UserBundle\DoctrineListener\SendMailActivation:
+        public: true
+        tags:
+            - { name: doctrine.event_listener, event: postPersist}
