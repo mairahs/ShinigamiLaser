@@ -6,7 +6,7 @@
         <div data-error="wrong">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
     <div class="row">
-        <form class="row" action="{{ path('login') }}" method="post">
+        <form class="row" action="{{ path('user_login') }}" method="post" autocomplete="off">
             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
             <div class="input-field col s3">
                 <label for="username">
