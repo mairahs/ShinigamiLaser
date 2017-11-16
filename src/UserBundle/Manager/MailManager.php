@@ -1,0 +1,41 @@
+<?php
+
+
+namespace UserBundle\Manager;
+
+use AppBundle\Entity\Admin;
+use AppBundle\Entity\Player;
+use Symfony\Bundle\TwigBundle\TwigEngine;
+
+
+class MailManager
+{
+    private $mailer;
+    private $mail_admin;
+    private $template;
+
+    public function __construct(\Swift_Mailer $mailer, $mail_admin, TwigEngine $template)
+    {
+        $this->mailer = $mailer;
+        $this->mail_admin = $mail_admin;
+        $this->template = $template;
+
+    }
+
+    public function sendMailToPlayer(Player $player)
+    {
+        $mail = (new \Swift_Message('Activation de votre compte ShinigamiLaser'))
+            ->setFrom($this->mail_admin)
+            ->setTo($player->getEmail())
+            ->setBody($this->template
+                ->render('UserBundle:security:email/mail.activate.html.twig',
+                    ['player' => $player]),
+                'text/html'
+            );
+
+        $this->mailer->send($mail);
+
+    }
+
+}
+

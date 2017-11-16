@@ -8,3 +8,12 @@ register:
     path: /register
     defaults: { _controller: UserBundle:User:register}
 
+pre_activate:
+    path: /user/preactivate
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template:    UserBundle:security:preactivate.html.twig
+
+activate:
+    path: /user/activate/{token}
+    defaults: { _controller: UserBundle:User:activateAccount}
