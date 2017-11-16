@@ -4,7 +4,9 @@
     <div class="row{% if (not compound or force_error|default(false)) and not valid %} has-error{% endif %}">
         <div class="input-field col s12">
             {{- form_widget(form) -}}
+            {% if type is not defined or type is defined and 'file' != type %}
             {{- form_label(form) -}}
+            {% endif %}
             {{- form_errors(form) -}}
         </div>
     </div>
@@ -14,7 +16,19 @@
     {% if type is not defined or type not in ['file', 'hidden'] %}
         {%- set attr = attr|merge({class: (attr.class|default(''))|trim}) -%}
     {% endif %}
-    {{- parent() -}}
+    {% if type is defined and 'file' == type %}
+        <div class="file-field input-field">
+            <div class="btn">
+                <span>File</span>
+                {{- parent() -}}
+            </div>
+            <div class="file-path-wrapper">
+                <input class="file-path validate" type="text">
+            </div>
+        </div>
+    {% else %}
+        {{- parent() -}}
+    {% endif %}
     {% if tooltip is defined %}
         <span class="material-icons dp48 tooltipped"
               data-position="bottom" data-delay="50" data-tooltip="{{ tooltip }}">error

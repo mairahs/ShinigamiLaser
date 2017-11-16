@@ -10,6 +10,7 @@ use AppBundle\Service\CardManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class CardController
@@ -39,6 +40,22 @@ class CardController extends Controller
         return $this->render('card/add.card.html.twig', ['form' => $form->createView()]);
     }
 
+
+    /**
+     * @param Request $request
+     * @param Card $card
+     * @internal param $id
+     * @return Response
+     */
+    public function showAction(Card $card, Request $request)
+    {
+        dump($this->get('security.token_storage')->getToken()->getUser()->getId());
+
+        dump($card->getPlayer()->getId());
+
+        return new Response('coucou');
+    }
+
     public function disablePageAction($id)
     {
         //TODO Check si la carte n'appartient pas au bonhomme
@@ -57,6 +74,7 @@ class CardController extends Controller
      */
     public function disableAction(Request $request, Card $card)
     {
+        //TODO Check si la carte n'appartient pas au bonhomme
         $form = $this->createDisableForm($card);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {

@@ -4,6 +4,7 @@ namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
@@ -25,9 +26,18 @@ class PlayerType extends AbstractType
                 ->add('username', TextType::class)
                 ->add('address', TextareaType::class)
                 ->add('phoneNumber', TextType::class)
-                ->add('dateOfBirth',  BirthdayType::class, ['placeholder'=>['day'=>'Day', 'month'=>'Month', 'year'=>'Year'], 'label_attr' => ['class' => 'label-dob']])
+                ->add('dateOfBirth', DateType::class, array(
+                        'widget' => 'single_text',
+                        'html5' => false,
+                        'attr' => [
+                            'class' => 'datepicker',
+                            'placeholder' => '31/12/2017',
+                        ],
+                        'format' => 'dd/MM/yyyy',
+                    )
+                )
                 ->add('email', EmailType::class)
-                ->add('password', RepeatedType::class, ['type'=>PasswordType::class, 'first_options'=>['label'=>'Password'], 'second_options'=>['label'=>'Repeat Password']])
+                ->add('password', RepeatedType::class, ['type'=>PasswordType::class, 'first_options'=>['label'=>'Password'], 'second_options'=>['label'=>'Confirm password']])
                 ->add('avatar', AvatarType::class)
                 ->add('Enregistrez-vous',SubmitType::class);
     }
