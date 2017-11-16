@@ -1,10 +1,10 @@
 {% extends 'form_div_layout.html.twig' %}
 
 {% block form_row -%}
-    <div class="row{% if (not compound or force_error|default(false)) and not valid %} has-error{% endif %}">
+    <div class="row{% if (not compound or force_error|default(false)) and not valid %} has-error{% endif %}{% if type is defined and 'file' == type %} file-wrapper{% endif %}">
         <div class="input-field col s12">
             {{- form_widget(form) -}}
-            {% if type is not defined or type is defined and 'file' != type %}
+            {% if name != "avatar" %}
             {{- form_label(form) -}}
             {% endif %}
             {{- form_errors(form) -}}
