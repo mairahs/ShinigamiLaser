@@ -6,3 +6,9 @@
     position: absolute;
     top: -29px;
 }
+
+.img_rounded{
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+}

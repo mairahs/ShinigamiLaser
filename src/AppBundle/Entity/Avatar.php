@@ -104,7 +104,7 @@ class Avatar
     /**
      * @return UploadedFile
      */
-    public function getFile()
+    private function getFile()
     {
         return $this->file;
     }
@@ -113,7 +113,7 @@ class Avatar
      * @param UploadedFile $file
      * @return $this
      */
-    public function setFile(UploadedFile $file)
+    private function setFile(UploadedFile $file)
     {
         $this->file = $file;
 
