@@ -32,7 +32,7 @@ class UserController extends Controller
             //TODO: ENVOI DE MAIL POUR ACTIVATION DU COMPTE
         }
 
-        return $this->render('UserBundle:security:register.html.twig', ['form'=> $form->createView()]);
+        return $this->render('UserBundle:default:register.html.twig', ['form'=> $form->createView()]);
     }
 
     /**
@@ -52,6 +52,6 @@ class UserController extends Controller
             return $this->redirectToRoute('app_dashboard');
         }
 
-        return $this->render('@User/edit.html.twig', ['form' => $form->createView(), 'player' => $player]);
+        return $this->render('UserBundle:default:edit.html.twig', ['form' => $form->createView(), 'player' => $player]);
     }
 }
