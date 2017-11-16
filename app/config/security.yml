@@ -37,8 +37,8 @@ security:
         main:
             anonymous: ~
             form_login:
-                login_path: login
-                check_path: login
+                login_path: user_login
+                check_path: user_login
                 csrf_token_generator: security.csrf.token_manager
             provider: default
             logout:
@@ -48,6 +48,7 @@ security:
     access_control:
         - { path: ^/admin/login, roles: IS_AUTHENTICATED_ANONYMOUSLY}
         - { path: ^/dashboard, roles: ROLE_USER}
+        - { path: ^/user, roles: ROLE_USER}
         - { path: ^/card, roles: ROLE_USER}
         - { path: ^/admin, roles: ROLE_ADMIN}
     role_hierarchy:
