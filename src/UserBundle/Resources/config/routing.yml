@@ -6,5 +6,5 @@ logout:
 
 register:
     path: /register
-    defaults: { _controller: UserBundle:Security:register}
+    defaults: { _controller: UserBundle:User:register}
 

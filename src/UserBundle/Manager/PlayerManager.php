@@ -19,12 +19,7 @@ class PlayerManager
     private $tokenStorage;
     private $router;
 
-    public function __construct(
-        ObjectManager $entityManager,
-        EncoderFactoryInterface $encoder,
-        TokenStorageInterface $tokenStorage,
-        RouterInterface $router
-    )
+    public function __construct(ObjectManager $entityManager, EncoderFactoryInterface $encoder, TokenStorageInterface $tokenStorage, RouterInterface $router)
     {
         $this->entityManager = $entityManager;
         $this->encoder = $encoder;
@@ -44,8 +39,6 @@ class PlayerManager
         $player->setPassword($hashedPassword);
         $this->entityManager->persist($player);
         $this->entityManager->flush();
-
-
     }
 
     public function test(Player $player)
