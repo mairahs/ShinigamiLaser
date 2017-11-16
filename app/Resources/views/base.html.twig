@@ -11,6 +11,23 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+        {% set is_admin = is_granted('ROLE_ADMIN') %}
+        {% set is_user = is_granted('ROLE_USER') %}
+        <nav>
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo">Logo</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    {% if is_user %}
+                        <li><a href="{{ path('app_dashboard') }}">Dashboard</a></li>
+                        <li><a href="{{ path('user_logout') }}">Logout</a></li>
+                        <li><a href="{{ path('user_update', {'id' : app.user.id}) }}"><i class="material-icons">build</i></a></li>
+                    {% else %}
+                        <li><a href="{{ path('user_login') }}">Login</a></li>
+                        <li><a href="{{ path('user_register') }}">Register</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
         <div class="container">
         {% block body %}{% endblock %}
         </div>
@@ -20,10 +37,14 @@
             $(document).ready(function() {
                 $('select').material_select();
             });
-            /* TODO date de naissance pas supérieur à aujourd'hui, supprimer le bouton "today" et age maximum 100ans */
+            var date_max = new Date();
+            var date_min = new Date();
+            date_min = new Date(date_min.setFullYear(date_min.getFullYear() - 100));
             $('.datepicker').pickadate({
                 selectMonths: true, // Creates a dropdown to control month
-                selectYears: 15, // Creates a dropdown of 15 years to control year,
+                selectYears: 100, // Creates a dropdown to control month
+                min: date_min,
+                max: date_max,
                 today: false,
                 clear: 'Clear',
                 close: 'Ok',

@@ -48,7 +48,6 @@ class PlayerManager
         $player->setEmail('test@test.com');
         $player->setAddress('20 rue saint lazare');
         $player->setPhoneNumber('060000000');
-        $player->setUsername('pseudo');
         $player->setDateOfBirth(new \DateTime());
         $player->setToken(45666);
         $player->setIsActivate(0);
