@@ -18,6 +18,10 @@ app_card_add:
     path: /add
     defaults: { _controller: AppBundle:Card:add }
 
+app_card_show:
+    path: /show/{id}
+    defaults: { _controller: AppBundle:Card:show }
+
 app_card_disable_page:
     path: /disable/{id}
     defaults: { _controller: AppBundle:Card:disablePage }

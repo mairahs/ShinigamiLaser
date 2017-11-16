@@ -51,7 +51,9 @@ class Fixtures extends Fixture
             $player->setAddress($faker->address);
             $player->setDateOfBirth($faker->dateTime());
             $player->setUsername($faker->firstName);
+            $player->setToken(987987987);
             $player->setPhoneNumber($faker->phoneNumber);
+            $player->setIsActivate(0);
             $manager->persist($player);
         }
 

@@ -9,10 +9,10 @@
             <div>
                 {{ card.number }}
                 {% if workflow_has_marked_place(card, 'disable') %}
-                    <a href="#!" class="secondary-content" title="carte desactivée"><i class="material-icons">not_interested</i></a>
+                    <div class="secondary-content" title="carte desactivée"><i class="material-icons">not_interested</i></div>
                 {% else %}
                     <a href="{{ path('app_card_disable_page', {'id':card.id}) }}" class="secondary-content" title="carte perdue ou volée"><i class="material-icons">no_sim</i></a>
-                    <a href="#!" class="secondary-content" title="voir details"><i class="material-icons">remove_red_eye</i></a>
+                    <a href="{{ path('app_card_show', {'id':card.id}) }}" class="secondary-content" title="voir details"><i class="material-icons">remove_red_eye</i></a>
                 {% endif %}
             </div>
         </li>

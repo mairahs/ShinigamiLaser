@@ -36,14 +36,17 @@ class SecurityController extends Controller
     {
         $player = new Player();
 
+
+        if($this->get('kernel')->getEnvironment() === "dev" && $request->get('test') === "1"){
+            $player = $this->get('player_manager')->test($player);
+        }
+
         $form = $this->createForm(PlayerType::class, $player);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $playerManager = $this->get('player_manager');
-
-            $playerManager->save($player);
+            $this->get('player_manager')->save($player);
 
             return $this->redirectToRoute('app_dashboard');
 

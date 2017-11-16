@@ -6,7 +6,7 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="{{ asset('css/lib/materialize.min.css') }}" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-        <link href="{{ asset('css/styles.css') }}" rel="stylesheet" type="text/css"/>
+        {#<link href="{{ asset('css/styles.css') }}" rel="stylesheet" type="text/css"/>#}
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
@@ -20,8 +20,17 @@
             $(document).ready(function() {
                 $('select').material_select();
             });
+            /* TODO date de naissance pas supérieur à aujourd'hui, supprimer le bouton "today" et age maximum 100ans */
+            $('.datepicker').pickadate({
+                selectMonths: true, // Creates a dropdown to control month
+                selectYears: 15, // Creates a dropdown of 15 years to control year,
+                today: false,
+                clear: 'Clear',
+                close: 'Ok',
+                closeOnSelect: false, // Close upon selecting a date,
+                format: 'dd/mm/yyyy'
+            });
         </script>
-
         {% block javascripts %}{% endblock %}
     </body>
 </html>
