@@ -3,7 +3,7 @@
 
 namespace UserBundle\Manager;
 
-use AppBundle\Entity\Admin;
+
 use AppBundle\Entity\Player;
 use Symfony\Bundle\TwigBundle\TwigEngine;
 
@@ -28,7 +28,22 @@ class MailManager
             ->setFrom($this->mail_admin)
             ->setTo($player->getEmail())
             ->setBody($this->template
-                ->render('UserBundle:security:email/mail.activate.html.twig',
+                ->render('UserBundle:email:mail.activate.html.twig',
+                    ['player' => $player]),
+                'text/html'
+            );
+
+        $this->mailer->send($mail);
+
+    }
+
+    public function sendMailLostPassword(Player $player)
+    {
+        $mail = (new \Swift_Message('Réinitialisation de votre mot de passe ShinigamiLaser'))
+            ->setFrom($this->mail_admin)
+            ->setTo($player->getEmail())
+            ->setBody($this->template
+                ->render('UserBundle:email:mail.lost_password.html.twig',
                     ['player' => $player]),
                 'text/html'
             );

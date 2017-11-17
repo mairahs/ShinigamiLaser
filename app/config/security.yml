@@ -48,6 +48,8 @@ security:
     access_control:
         - { path: ^/admin/login, roles: IS_AUTHENTICATED_ANONYMOUSLY}
         - { path: ^/dashboard, roles: ROLE_USER}
+        - { path: ^/user/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/user/lost_password, roles: IS_AUTHENTICATED_ANONYMOUSLY}
         - { path: ^/user, roles: ROLE_USER}
         - { path: ^/card, roles: ROLE_USER}
         - { path: ^/admin, roles: ROLE_ADMIN}
