@@ -37,6 +37,8 @@ class Avatar
      */
     private $extension;
 
+    private $oldFileName;
+
     /**
      * @var UploadedFile
      */
@@ -102,6 +104,22 @@ class Avatar
     }
 
     /**
+     * @return mixed
+     */
+    public function getOldFileName()
+    {
+        return $this->oldFileName;
+    }
+
+    /**
+     * @param mixed $oldFileName
+     */
+    public function setOldFileName($oldFileName)
+    {
+        $this->oldFileName = $oldFileName;
+    }
+
+    /**
      * @return UploadedFile
      */
     public function getFile()
@@ -116,19 +134,22 @@ class Avatar
     public function setFile(UploadedFile $file)
     {
         $this->file = $file;
-
+        if(!is_null($this->getId())){
+            $this->setOldFileName($this->getName().'.'.$this->getExtension());
+            $this->extension = null;
+        }
         return $this;
     }
 
     /**
-     * @ORM\PrePersist
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
      */
     public function hydrate()
     {
         $file = $this->getFile();
         $extension = $file->guessExtension();
         $name = $file->getFilename().'-'.md5(uniqid());
-
         $this->setName($name);
         $this->setExtension($extension);
     }

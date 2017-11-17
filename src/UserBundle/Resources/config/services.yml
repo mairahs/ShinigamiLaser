@@ -8,13 +8,13 @@ services:
     UserBundle\Manager\PlayerManager:
         public: true
 
-    UserBundle\DoctrineListener\AvatarUploadListener:
+    UserBundle\EventSubscriber\AvatarUploadSubscriber:
         public: true
         arguments: ['%kernel.project_dir%']
         tags:
-            - { name: doctrine.event_listener, event: postPersist }
+            - { name: doctrine.event_subscriber, event: prePersist}
 
-    UserBundle\DoctrineListener\TokenGenerator:
+    UserBundle\EventListener\PrePersistPlayerListener:
         public: true
         tags:
             - { name: doctrine.event_listener, event: prePersist}
@@ -23,7 +23,5 @@ services:
         public: true
         arguments: ['@mailer', '%mail_admin%','@templating.engine.twig']
 
-    UserBundle\DoctrineListener\SendMailActivation:
+    UserBundle\Manager\AuthenticateService:
         public: true
-        tags:
-            - { name: doctrine.event_listener, event: postPersist}

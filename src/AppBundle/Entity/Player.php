@@ -11,7 +11,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ORM\Table(name="player")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\PlayerRepository")
  */
-class Player implements UserInterface
+class Player implements UserInterface, \Serializable
 {
     /**
      * @var int
@@ -430,5 +430,34 @@ class Player implements UserInterface
     public function getIsActivate()
     {
         return $this->isActivate;
+    }
+
+    /**
+     * String representation of object
+     * @link http://php.net/manual/en/serializable.serialize.php
+     * @return string the string representation of the object or null
+     * @since 5.1.0
+     */
+    public function serialize()
+    {
+        return serialize([
+            $this->id
+        ]);
+    }
+
+    /**
+     * Constructs the object
+     * @link http://php.net/manual/en/serializable.unserialize.php
+     * @param string $serialized <p>
+     * The string representation of the object.
+     * </p>
+     * @return void
+     * @since 5.1.0
+     */
+    public function unserialize($serialized)
+    {
+        list (
+            $this->id
+            ) = unserialize($serialized);
     }
 }

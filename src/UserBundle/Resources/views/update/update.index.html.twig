@@ -1,0 +1,9 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <div class="collection">
+        <a href="{{ path('user_update_profil', {'id' : player.id}) }}" class="collection-item">Profil</a>
+        <a href="{{ path('user_update_avatar', {'id' : player.id}) }}" class="collection-item">Avatar</a>
+        <a href="{{ path('user_update_password', {'id' : player.id}) }}" class="collection-item">Mot de passe</a>
+    </div>
+{% endblock %}
