@@ -17,6 +17,5 @@ parameters:
 
     # A secret key that's used to generate certain security-related tokens
     secret: ThisTokenIsNotSoSecretChangeIt
-
-    mail_no_reply: no_reply@toto.fr
-    mail_admin: admin@toto.fr
+    mail_no_reply: noreply@shinigamilaser.com
+    mail_admin: admin@shinigamilaser.com'
