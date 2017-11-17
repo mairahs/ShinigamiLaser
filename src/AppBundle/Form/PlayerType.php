@@ -3,7 +3,6 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -49,7 +48,6 @@ class PlayerType extends AbstractType
             )
             ->add('email', EmailType::class)
         ;
-
         $user = $this->tokenStorage->getToken()->getUser();
         $builder->addEventListener(
             FormEvents::PRE_SET_DATA,

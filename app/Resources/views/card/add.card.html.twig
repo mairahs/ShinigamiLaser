@@ -6,6 +6,7 @@
     {{ form_widget(form) }}
     <button class="waves-effect waves-light btn">button</button>
     {{ form_end(form) }}
+    {# TODO creation d'un composant message #}
     {% for message in app.flashes('notice') %}
         <div class="flash-notice">
             {{ message }}

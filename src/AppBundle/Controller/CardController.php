@@ -11,6 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use UserBundle\Manager\AuthenticateService;
 
 /**
  * Class CardController
@@ -42,25 +43,25 @@ class CardController extends Controller
 
 
     /**
-     * @param Request $request
      * @param Card $card
-     * @internal param $id
      * @return Response
+     * @internal param Request $request
+     * @internal param $id
      */
-    public function showAction(Card $card, Request $request)
+    public function showAction(Card $card)
     {
-        dump($this->get('security.token_storage')->getToken()->getUser()->getId());
-
-        dump($card->getPlayer()->getId());
-
-        return new Response('coucou');
+        $this->get(AuthenticateService::class)->checkPlayer($card->getPlayer());
+        return $this->render('card/show.card.html.twig', [
+            'card' => $card
+        ]);
     }
 
     public function disablePageAction($id)
     {
-        //TODO Check si la carte n'appartient pas au bonhomme
-        $card = $this->getDoctrine()->getRepository('AppBundle:Card')->find($id);
+        $card = $this->getDoctrine()->getRepository('AppBundle:Card')->findOneBy(['id' => $id]);
+        $this->get(AuthenticateService::class)->checkPlayer($card->getPlayer());
         $disableForm = $this->createDisableForm($card);
+
         return $this->render('card/disable.card.html.twig', array(
             'disable_form' => $disableForm->createView(),
         ));
@@ -74,19 +75,17 @@ class CardController extends Controller
      */
     public function disableAction(Request $request, Card $card)
     {
-        //TODO Check si la carte n'appartient pas au bonhomme
+        $this->get(AuthenticateService::class)->checkPlayer($card->getPlayer());
         $form = $this->createDisableForm($card);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             try {
                 $this->get(CardManager::class)->disableCard($card);
-
                 return $this->redirectToRoute('app_dashboard');
             }catch (\Exception $exception) {
                 $this->addFlash('notice',$exception->getMessage());
             }
         }
-
         return $this->redirectToRoute('app_card_disable_page', ['id' => $card->getId()]);
     }
 

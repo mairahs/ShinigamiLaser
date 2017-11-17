@@ -1,14 +1,14 @@
 <?php
 
 
-namespace UserBundle\DoctrineListener;
+namespace UserBundle\EventListener;
 
 
 use AppBundle\Entity\Player;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use UserBundle\Manager\PlayerManager;
 
-class TokenGenerator
+class PrePersistPlayerListener
 {
     public function prePersist(LifecycleEventArgs $args)
     {
@@ -16,7 +16,6 @@ class TokenGenerator
         if (!$object instanceof Player) {
             return;
         }
-
         $token = PlayerManager::generateToken($object);
         $object->setToken($token);
         $object->setIsActivate(0);

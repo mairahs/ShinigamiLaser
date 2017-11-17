@@ -47,9 +47,7 @@ class MailManager
                     ['player' => $player]),
                 'text/html'
             );
-
         $this->mailer->send($mail);
-
     }
 
 }
