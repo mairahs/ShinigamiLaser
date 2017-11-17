@@ -9,4 +9,9 @@
     {{ form_start(disable_form) }}
     <button class="waves-effect waves-light btn">Desactiver la carte</button>
     {{ form_end(disable_form) }}
+    {% for message in app.flashes('notice') %}
+        <div class="flash-notice">
+            {{ message }}
+        </div>
+    {% endfor %}
 {% endblock %}

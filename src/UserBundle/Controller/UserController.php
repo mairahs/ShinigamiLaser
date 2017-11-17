@@ -23,37 +23,18 @@ class UserController extends Controller
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $this->get(PlayerManager::class)->save($player);
-            return $this->redirectToRoute('pre_activate');
 
+            return $this->redirectToRoute('pre_activate');
         }
 
         return $this->render('UserBundle:default:register.html.twig', ['form'=> $form->createView()]);
-    }
-
-    /**
-     * @param Request $request
-     * @param Player $player
-     * @return Response
-     * @internal param Request $request
-     * @internal param Card $card
-     * @internal param $id
-     */
-    public function updateAction(Request $request, Player $player){
-        $form = $this->createForm(PlayerType::class, $player);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->get(PlayerManager::class)->save($player);
-
-            return $this->redirectToRoute('app_dashboard');
-        }
-
-        return $this->render('UserBundle:default:edit.html.twig', ['form' => $form->createView(), 'player' => $player]);
     }
 
     public function activateAccountAction($token)
     {
         $entityManager = $this->getDoctrine()->getManager();
         $player = $entityManager->getRepository('AppBundle:Player')->findOneBy(['token' => $token]);
+        //todo bouger ça dans le usermanager
         $player->setIsActivate(1);
         $entityManager->persist($player);
         $entityManager->flush();

@@ -19,16 +19,19 @@ class PlayerManager
     private $encoder;
     private $tokenStorage;
     private $router;
+    /**
+     * @var MailManager
+     */
+    private $mailManager;
 
 
-
-    public function __construct(ObjectManager $entityManager, EncoderFactoryInterface $encoder, TokenStorageInterface $tokenStorage, RouterInterface $router)
+    public function __construct(ObjectManager $entityManager, EncoderFactoryInterface $encoder, TokenStorageInterface $tokenStorage, RouterInterface $router, MailManager $mailManager)
     {
         $this->entityManager = $entityManager;
         $this->encoder = $encoder;
         $this->tokenStorage = $tokenStorage;
         $this->router = $router;
-
+        $this->mailManager = $mailManager;
     }
 
     protected function getRepository()
@@ -43,6 +46,13 @@ class PlayerManager
         $player->setPassword($hashedPassword);
         $this->entityManager->persist($player);
         $this->entityManager->flush();
+        $this->mailManager->sendMailToPlayer($player);
+    }
+
+    public function update(Player $player)
+    {
+        $this->entityManager->persist($player);
+        $this->entityManager->flush();
     }
 
     public function test(Player $player)
@@ -53,8 +63,6 @@ class PlayerManager
         $player->setAddress('20 rue saint lazare');
         $player->setPhoneNumber('060000000');
         $player->setDateOfBirth(new \DateTime());
-        $player->setToken(45666);
-        $player->setIsActivate(0);
         return $player;
     }
 
