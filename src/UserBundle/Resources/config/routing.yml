@@ -19,17 +19,29 @@ user_activate:
     defaults: { _controller: UserBundle:User:activateAccount}
 
 user_update:
-    path: /update/{id}
-    defaults: { _controller: UserBundle:User:update}
+    path: /user/update/{id}
+    defaults: { _controller: UserBundle:Update:index}
 
-user_pre_lostpassword:
-    path: /user/lost_password/confirmation
-    defaults: { _controller: UserBundle:User:lost_password}
+user_update_profil:
+    path: /user/update/profil/{id}
+    defaults: { _controller: UserBundle:Update:profil}
 
-user_lost_password:
-    path: /user/lost_password/{token}
-    defaults: { _controller: UserBundle:User:lost_password}
+user_update_avatar:
+    path: /user/update/avatar/{id}
+    defaults: { _controller: UserBundle:Update:avatar }
 
 user_update_password:
-    path: /user/update/password
-    defaults: { _controller:UserBundle:User:updatePassword}
+    path: /user/update/password/{id}
+    defaults: { _controller: UserBundle:Update:password }
+
+user_lostpassword:
+    path: /user/lostpassword/
+    defaults: { _controller: UserBundle:User:lost_password}
+
+#user_lostpassword_form:
+#    path: /user/lostpassword/{token}
+#    defaults: { _controller: UserBundle:User:updatePassword}
+
+#user_lostpassword_confirmation:
+#    path: /user/lostpassword/confirmation
+#    defaults: { _controller: UserBundle:User:confirmation}

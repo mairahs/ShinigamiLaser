@@ -53,6 +53,11 @@ class UpdateController extends Controller
         return $this->render('UserBundle:update:update.profil.html.twig', ['form' => $form->createView(), 'player' => $player]);
     }
 
+    /**
+     * @param Request $request
+     * @param Player $player
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     */
     public function avatarAction(Request $request, Player $player){
         $this->get(AuthenticateService::class)->checkPlayer($player);
         $form = $this->createForm(UpdateAvatarType::class, $player);
@@ -66,6 +71,11 @@ class UpdateController extends Controller
         return $this->render('UserBundle:update:update.avatar.html.twig', ['form' => $form->createView(), 'player' => $player]);
     }
 
+    /**
+     * @param Request $request
+     * @param Player $player
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     */
     public function passwordAction(Request $request, Player $player){
         $this->get(AuthenticateService::class)->checkPlayer($player);
         $form = $this->createForm(UpdatePasswordType::class, $player);
