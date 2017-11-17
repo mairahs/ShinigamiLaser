@@ -25,9 +25,8 @@ class UserController extends Controller
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $this->get(PlayerManager::class)->save($player);
-            return $this->redirectToRoute('user_preactivate');
 
-            return $this->redirectToRoute('pre_activate');
+            return $this->redirectToRoute('user_preactivate');
         }
 
         return $this->render('UserBundle:default:register.html.twig', ['form'=> $form->createView()]);
@@ -62,10 +61,13 @@ class UserController extends Controller
         return $this->render('UserBundle:default:prelostpassword.html.twig');
     }
 
-    public function updatePasswordAction()
-    {
-        return new Response('Coucou');
-    }
+//    public function updatePasswordAction()
+//    {
+//
+//          TODO Controller reservation
+//
+//        return new Response('Coucou');
+//    }
 
 
 }
