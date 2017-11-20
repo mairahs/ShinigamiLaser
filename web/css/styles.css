@@ -125,3 +125,8 @@ footer.page-footer {
     text-align: center;
     color: #fca906!important;
 }
+
+.menu-cust{
+    height: 80px;
+    line-height: 80px;
+}
