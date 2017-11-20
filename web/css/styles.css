@@ -24,6 +24,11 @@ a:hover{
     text-decoration: none;
     color: #e24800;
 }
+
+h2,h3{
+    text-align: center;
+    font-weight: bold;
+}
 .nav-wrapper{
     background-color: #222222;
 
@@ -129,4 +134,11 @@ footer.page-footer {
 .menu-cust{
     height: 80px;
     line-height: 80px;
+    margin-bottom: 50px;
 }
+
+.fa{
+    font-size:35px!important;
+    padding-left: 37px;
+}
+

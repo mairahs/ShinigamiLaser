@@ -19,7 +19,7 @@
 
 <nav class="menu-cust">
     <div class="nav-wrapper">
-        <a id="logo-container" href="#" class="brand-logo" style="height: 100%;"><img src="{{ asset('logo.png') }}" style="height: 90%;"></a>
+        <a id="logo-container" href="#" class="brand-logo" style="height: 100%;"><img src="{{ asset('images/logo.PNG') }}" style="height: 90%;"></a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
             {% include('inc/inc.block.nav.html.twig') %}
@@ -44,19 +44,19 @@
 
             </div>
             <div class="col l3 s12">
-                <h5 class="white-text">Suis nous sur les Réseaux Sociaux</h5>
+                <h5 class="white-text">Réseaux Sociaux</h5>
                 <ul>
-                    <li><a class="white-text" href="#"><img src="{{ asset('facebook.png') }}"></a></li>
-                    <li><a class="white-text" href="#"><img src="{{ asset('instagram.png') }}"></a></li>
-                    <li><a class="white-text" href="#"><img src="{{ asset('tweeter.png') }}"></a></li>
+                    <li><a class="white-text" href="#"><i class="fa fa-facebook center" aria-hidden="true"></i></a></li>
+                    <li><a class="white-text" href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                    <li><a class="white-text" href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
                 </ul>
             </div>
             <div class="col l3 s12">
                 <h5 class="white-text">Infos pratiques</h5>
                 <ul>
-                    <li><a class="white-text" href="#!">Horaires</a></li>
-                    <li><a class="white-text" href="#!">ShinigamiLaser en France</a></li>
-                    <li><a class="white-text" href="#!">Nous recrutons des développeurs Symfony</a></li>
+                    <li><a class="white-text" href="#">Horaires</a></li>
+                    <li><a class="white-text" href="#">ShinigamiLaser en France</a></li>
+                    <li><a class="white-text" href="#">Nous recrutons des développeurs Symfony</a></li>
                 </ul>
             </div>
         </div>
@@ -72,6 +72,7 @@
 <!--  Scripts-->
 <script type="text/javascript" src="{{ asset('js/lib/jquery-3.2.1.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/lib/materialize.min.js') }}"></script>
+<script src="https://use.fontawesome.com/6d051c768f.js"></script>
 <script>
     $(document).ready(function() {
         $('select').material_select();
