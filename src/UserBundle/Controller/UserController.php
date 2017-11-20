@@ -7,10 +7,8 @@ namespace UserBundle\Controller;
 use AppBundle\Entity\Player;
 use AppBundle\Form\PlayerType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\File\Exception\AccessDeniedException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use UserBundle\Manager\MailManager;
 use UserBundle\Manager\PlayerManager;
 
 class UserController extends Controller
@@ -47,32 +45,5 @@ class UserController extends Controller
 
         return $this->render('UserBundle:default:activate.html.twig', ['player'=> $player]);
     }
-
-    public function lostPasswordAction(Request $request)
-    {
-        $email = $request->request->get('_email');
-        if ($request->getMethod() === "POST" && !is_null($email) && $email !== "") {
-            $player = $this->getDoctrine()->getRepository('AppBundle:Player')->findOneBy(['email' => $email]);
-            if(!$player)
-            {
-                throw new AccessDeniedException('Email non trouvé');
-            }
-            $token = PlayerManager::generateToken($player);
-            $mailer = $this->get(MailManager::class);
-            $mailer->sendMailLostPassword($player);
-
-            return $this->render('UserBundle:email:mail.lost_password.html.twig', ['player'=>$player, 'token'=>$token]);
-        }
-
-        return $this->render('UserBundle:default:prelostpassword.html.twig');
-    }
-
-    public function updatePasswordAction()
-    {
-
-
-        return new Response('Coucou');
-    }
-
 
 }
