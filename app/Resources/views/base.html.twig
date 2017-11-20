@@ -16,48 +16,17 @@
 <body>
 {% set is_admin = is_granted('ROLE_ADMIN') %}
 {% set is_user = is_granted('ROLE_USER') %}
-<nav class="white" role="navigation">
-    <div class="nav-wrapper container">
-        <a id="logo-container" href="#" class="brand-logo"><img src="{{ asset('images/logo.PNG') }}" width="150" height="100"></a>
-        <ul class="right hide-on-med-and-down">
-            {% if is_user %}
-                <li><a href="#" style="color:#ffffff; font-size:18px;">Bienvenue {{ app.user.username }}</a></li>
-                <li><a href="{{ path('homepage') }}">Accueil</a></li>
-                <li><a href="#">Réserver une partie</a></li>
-                <li><a href="#">Tarifs</a></li>
-                <li><a href="#">Horaires</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="{{ path('user_logout') }}">Deconnexion</a></li>
-            {% else %}
-                <li><a href="{{ path('homepage') }}">Accueil</a></li>
-                 <li><a href="#">Réserve  ta partie</a></li>
-                 <li><a href="#">Tarifs</a></li>
-                 <li><a href="#">Horaires</a></li>
-                 <li><a href="#">Contact</a></li>
-                <li><a href="{{ path('user_login') }}">Se connecter</a></li>
-                <li><a href="{{ path('user_register') }}">Rejoins nous</a></li>
-            {% endif %}
-        </ul>
 
-        <ul id="nav-mobile" class="side-nav">
-            {% if is_user %}
-                <li><a href="{{ path('homepage') }}">Accueil</a></li>
-                <li><a href="#">Réserve ta partie</a></li>
-                <li><a href="#">Tarifs</a></li>
-                <li><a href="#">Horaire</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="{{ path('user_logout') }}">Deconnexion</a></li>
-            {% else %}
-                <li><a href="{{ path('homepage') }}">Accueil</a></li>
-                <li><a href="#">Réserve ta partie</a></li>
-                <li><a href="#">Tarifs</a></li>
-                <li><a href="#">Horaires</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="{{ path('user_login') }}">Connecte toi</a></li>
-                <li><a href="{{ path('user_register') }}">Rejoins nous</a></li>
-            {% endif %}
+<nav class="menu-cust">
+    <div class="nav-wrapper">
+        <a id="logo-container" href="#" class="brand-logo" style="height: 100%;"><img src="{{ asset('logo.png') }}" style="height: 90%;"></a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+            {% include('inc/inc.block.nav.html.twig') %}
         </ul>
-        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="side-nav" id="mobile-demo">
+            {% include('inc/inc.block.nav.html.twig') %}
+        </ul>
     </div>
 </nav>
 
@@ -106,20 +75,21 @@
 <script>
     $(document).ready(function() {
         $('select').material_select();
-    });
-    var date_max = new Date();
-    var date_min = new Date();
-    date_min = new Date(date_min.setFullYear(date_min.getFullYear() - 100));
-    $('.datepicker').pickadate({
-        selectMonths: true, // Creates a dropdown to control month
-        selectYears: 100, // Creates a dropdown to control month
-        min: date_min,
-        max: date_max,
-        today: false,
-        clear: 'Clear',
-        close: 'Ok',
-        closeOnSelect: false, // Close upon selecting a date,
-        format: 'dd/mm/yyyy'
+        $(".button-collapse").sideNav();
+        var date_max = new Date();
+        var date_min = new Date();
+        date_min = new Date(date_min.setFullYear(date_min.getFullYear() - 100));
+        $('.datepicker').pickadate({
+            selectMonths: true, // Creates a dropdown to control month
+            selectYears: 100, // Creates a dropdown to control month
+            min: date_min,
+            max: date_max,
+            today: false,
+            clear: 'Clear',
+            close: 'Ok',
+            closeOnSelect: false, // Close upon selecting a date,
+            format: 'dd/mm/yyyy'
+        });
     });
 </script>
 {% block javascripts %}{% endblock %}

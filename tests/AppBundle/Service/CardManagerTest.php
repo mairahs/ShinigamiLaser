@@ -32,6 +32,10 @@ class CardManagerTest extends TestCase
             ->willReturn($employeeRepository);
 
         $workflow = $this->createMock(Workflow::class);
+        $workflow->expects($this->any())
+            ->method('can')
+            ->willReturn(true);
+
 
         $cardManager = new CardManager($objectManager, $workflow);
 
@@ -39,7 +43,7 @@ class CardManagerTest extends TestCase
     }
     public function testAddCardFalse()
     {
-
+        $this->expectException(\Exception::class);
         // Mock repository
         // Mock entitymanager
 
