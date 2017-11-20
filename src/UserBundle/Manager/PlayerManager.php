@@ -55,6 +55,22 @@ class PlayerManager
         $this->entityManager->flush();
     }
 
+    public function findPassword(Player $player, $oldPassword){
+        $hashedPassword = $this->encoder->getEncoder(Player::class)->encodePassword($oldPassword, $player);
+        $find = $this->entityManager->getRepository('AppBundle:Player')->findOneBy(['password' => $hashedPassword, 'id' => $player->getId()]);
+
+
+
+
+        dump($hashedPassword);
+
+
+        die;
+        if(is_null($find)){
+            throw new \Exception("Le mot de passe n'est pas correct");
+        }
+    }
+
     public function test(Player $player)
     {
         $player->setLastname('nomtest');

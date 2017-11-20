@@ -36,12 +36,12 @@ user_update_password:
 
 user_lostpassword:
     path: /user/lostpassword/
-    defaults: { _controller: UserBundle:User:lost_password}
+    defaults: { _controller: UserBundle:User:lostPassword}
 
-#user_lostpassword_form:
-#    path: /user/lostpassword/{token}
-#    defaults: { _controller: UserBundle:User:updatePassword}
+user_lostpassword_form:
+    path: /user/lostpassword/{token}
+    defaults: { _controller: UserBundle:User:updatePassword}
 
-#user_lostpassword_confirmation:
-#    path: /user/lostpassword/confirmation
-#    defaults: { _controller: UserBundle:User:confirmation}
+user_lostpassword_confirmation:
+    path: /user/lostpassword/confirmation
+    defaults: { _controller: UserBundle:User:confirmation}
