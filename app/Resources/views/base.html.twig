@@ -1,57 +1,129 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link href="{{ asset('css/lib/materialize.min.css') }}" rel="stylesheet" type="text/css"/>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-        <link href="{{ asset('css/styles.css') }}" rel="stylesheet" type="text/css"/>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% set is_admin = is_granted('ROLE_ADMIN') %}
-        {% set is_user = is_granted('ROLE_USER') %}
-        <nav>
-            <div class="nav-wrapper">
-                <a href="#" class="brand-logo">Logo</a>
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    {% if is_user %}
-                        <li><a href="{{ path('app_dashboard') }}">Dashboard</a></li>
-                        <li><a href="{{ path('user_logout') }}">Logout</a></li>
-                        <li><a href="{{ path('user_update', {'id' : app.user.id}) }}"><i class="material-icons">build</i></a></li>
-                    {% else %}
-                        <li><a href="{{ path('user_login') }}">Login</a></li>
-                        <li><a href="{{ path('user_register') }}">Register</a></li>
-                    {% endif %}
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>{% block title %}ShinigamiLaser-Home{% endblock %}</title>
+
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="{{ asset('css/lib/materialize.min.css') }}" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet" type="text/css"/>
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('logo.PNG') }}" />
+</head>
+<body>
+{% set is_admin = is_granted('ROLE_ADMIN') %}
+{% set is_user = is_granted('ROLE_USER') %}
+<nav class="white" role="navigation">
+    <div class="nav-wrapper container">
+        <a id="logo-container" href="#" class="brand-logo"><img src="{{ asset('logo.PNG') }}" width="150" height="100"></a>
+        <ul class="right hide-on-med-and-down">
+            {% if is_user %}
+                <li><a href="#" style="color:#ffffff; font-size:18px;">Bienvenue {{ app.user.username }}</a></li>
+                <li><a href="{{ path('homepage') }}">Accueil</a></li>
+                <li><a href="#">Réserver une partie</a></li>
+                <li><a href="#">Tarifs</a></li>
+                <li><a href="#">Horaires</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="{{ path('user_logout') }}">Deconnexion</a></li>
+            {% else %}
+                <li><a href="{{ path('homepage') }}">Accueil</a></li>
+                 <li><a href="#">Réserve  ta partie</a></li>
+                 <li><a href="#">Tarifs</a></li>
+                 <li><a href="#">Horaires</a></li>
+                 <li><a href="#">Contact</a></li>
+                <li><a href="{{ path('user_login') }}">Se connecter</a></li>
+                <li><a href="{{ path('user_register') }}">Rejoins nous</a></li>
+            {% endif %}
+        </ul>
+
+        <ul id="nav-mobile" class="side-nav">
+            {% if is_user %}
+                <li><a href="{{ path('homepage') }}">Accueil</a></li>
+                <li><a href="#">Réserve ta partie</a></li>
+                <li><a href="#">Tarifs</a></li>
+                <li><a href="#">Horaire</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="{{ path('user_logout') }}">Deconnexion</a></li>
+            {% else %}
+                <li><a href="{{ path('homepage') }}">Accueil</a></li>
+                <li><a href="#">Réserve ta partie</a></li>
+                <li><a href="#">Tarifs</a></li>
+                <li><a href="#">Horaires</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="{{ path('user_login') }}">Connecte toi</a></li>
+                <li><a href="{{ path('user_register') }}">Rejoins nous</a></li>
+            {% endif %}
+        </ul>
+        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+</nav>
+
+<div class="container">
+    {% block body %}{% endblock %}
+</div>
+
+<footer class="page-footer teal">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">A propos de nous</h5>
+                <p class="grey-text text-lighten-4">Le plus grand laser game de Paris intra-muros vous propose une expérience de jeu fabuleuse. Venez vous affronter dans un labyrinthe aux décors fantastiques. Immersion totale garantie !.</p>
+
+
+            </div>
+            <div class="col l3 s12">
+                <h5 class="white-text">Suis nous sur les Réseaux Sociaux</h5>
+                <ul>
+                    <li><a class="white-text" href="#"><img src="{{ asset('facebook.png') }}"></a></li>
+                    <li><a class="white-text" href="#"><img src="{{ asset('instagram.png') }}"></a></li>
+                    <li><a class="white-text" href="#"><img src="{{ asset('tweeter.png') }}"></a></li>
                 </ul>
             </div>
-        </nav>
-        <div class="container">
-        {% block body %}{% endblock %}
+            <div class="col l3 s12">
+                <h5 class="white-text">Infos pratiques</h5>
+                <ul>
+                    <li><a class="white-text" href="#!">Horaires</a></li>
+                    <li><a class="white-text" href="#!">ShinigamiLaser en France</a></li>
+                    <li><a class="white-text" href="#!">Nous recrutons des développeurs Symfony</a></li>
+                </ul>
+            </div>
         </div>
-        <script type="text/javascript" src="{{ asset('js/lib/jquery-3.2.1.min.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('js/lib/materialize.min.js') }}"></script>
-        <script>
-            $(document).ready(function() {
-                $('select').material_select();
-            });
-            var date_max = new Date();
-            var date_min = new Date();
-            date_min = new Date(date_min.setFullYear(date_min.getFullYear() - 100));
-            $('.datepicker').pickadate({
-                selectMonths: true, // Creates a dropdown to control month
-                selectYears: 100, // Creates a dropdown to control month
-                min: date_min,
-                max: date_max,
-                today: false,
-                clear: 'Clear',
-                close: 'Ok',
-                closeOnSelect: false, // Close upon selecting a date,
-                format: 'dd/mm/yyyy'
-            });
-        </script>
-        {% block javascripts %}{% endblock %}
-    </body>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            <p>Made by Antoine et Maïrah- Tous Droits Réservés- Novembre 2017</p>
+        </div>
+    </div>
+</footer>
+
+
+<!--  Scripts-->
+<script type="text/javascript" src="{{ asset('js/lib/jquery-3.2.1.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/lib/materialize.min.js') }}"></script>
+<script>
+    $(document).ready(function() {
+        $('select').material_select();
+    });
+    var date_max = new Date();
+    var date_min = new Date();
+    date_min = new Date(date_min.setFullYear(date_min.getFullYear() - 100));
+    $('.datepicker').pickadate({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 100, // Creates a dropdown to control month
+        min: date_min,
+        max: date_max,
+        today: false,
+        clear: 'Clear',
+        close: 'Ok',
+        closeOnSelect: false, // Close upon selecting a date,
+        format: 'dd/mm/yyyy'
+    });
+</script>
+{% block javascripts %}{% endblock %}
+
+</body>
 </html>
+

@@ -12,3 +12,116 @@
     height: 150px;
     width: 150px;
 }
+
+nav ul a,
+nav .brand-logo {
+    color: #fca906;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+a:hover{
+    text-decoration: none;
+    color: #e24800;
+}
+.nav-wrapper{
+    background-color: #222222;
+
+}
+.white{
+    background-color: #fca906!important;
+    height: 100px;
+}
+
+p {
+    line-height: 2rem;
+}
+
+.button-collapse {
+    color: #26a69a;
+}
+#logo-container{
+    left: 0;
+}
+
+.container{
+    max-width: 1400px;
+    max-height: 1000px;
+}
+.parallax-container {
+    min-height: 380px;
+    max-width: 1400px;
+    line-height: 0;
+    height: auto;
+    color: rgba(255,255,255,.9);
+    margin-top: 10px;
+
+}
+.parallax-container .section {
+    width: 100%;
+}
+
+.teal-text.text-lighten-2{
+    color: #fca906!important;
+    font-size: 50px;
+    margin-top: 50px;
+    font-weight: bold;
+}
+
+.teal.lighten-1 {
+    background-color: #fca906 !important;
+    margin-left: 500px;
+    margin-top: 20px;
+    color:#222222;
+    font-weight: bold;
+    font-size: 17px;
+}
+.header.col.s12.light{
+    color: #fca906!important;
+    font-size: 20px;
+    font-weight: bold;
+}
+.material-icons{
+    color: #fca906!important;
+    font-size: 40px;
+}
+@media only screen and (max-width : 992px) {
+    .parallax-container .section {
+        position: absolute;
+        top: 40%;
+    }
+    #index-banner .section {
+        top: 10%;
+    }
+}
+
+@media only screen and (max-width : 600px) {
+    #index-banner .section {
+        top: 0;
+    }
+}
+
+.icon-block {
+    padding: 0 15px;
+}
+.icon-block .material-icons {
+    font-size: inherit;
+}
+
+.white-text, .grey-text.text-lighten-4{
+    color: #fca906!important;
+}
+
+footer.page-footer {
+    margin: 0;
+    margin-top: 185px;
+}
+
+.teal{
+    background-color: #222222!important;
+}
+
+.footer-copyright .container p{
+    text-align: center;
+    color: #fca906!important;
+}
