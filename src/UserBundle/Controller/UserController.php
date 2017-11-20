@@ -32,6 +32,10 @@ class UserController extends Controller
         return $this->render('UserBundle:default:register.html.twig', ['form'=> $form->createView()]);
     }
 
+    /**
+     * @param $token
+     * @return Response
+     */
     public function activateAccountAction($token)
     {
         $entityManager = $this->getDoctrine()->getManager();
@@ -44,7 +48,7 @@ class UserController extends Controller
         return $this->render('UserBundle:default:activate.html.twig', ['player'=> $player]);
     }
 
-    public function lost_passwordAction(Request $request)
+    public function lostPasswordAction(Request $request)
     {
         $email = $request->request->get('_email');
         if ($request->getMethod() === "POST" && !is_null($email) && $email !== "") {
@@ -56,18 +60,19 @@ class UserController extends Controller
             $token = PlayerManager::generateToken($player);
             $mailer = $this->get(MailManager::class);
             $mailer->sendMailLostPassword($player);
+
             return $this->render('UserBundle:email:mail.lost_password.html.twig', ['player'=>$player, 'token'=>$token]);
         }
+
         return $this->render('UserBundle:default:prelostpassword.html.twig');
     }
 
-//    public function updatePasswordAction()
-//    {
-//
-//          TODO Controller reservation
-//
-//        return new Response('Coucou');
-//    }
+    public function updatePasswordAction()
+    {
+
+
+        return new Response('Coucou');
+    }
 
 
 }

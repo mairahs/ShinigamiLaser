@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class UpdatePasswordType extends AbstractType
 {
@@ -21,8 +22,32 @@ class UpdatePasswordType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('password', RepeatedType::class, ['type'=>PasswordType::class, 'first_options'=>['label'=>'Password'], 'second_options'=>['label'=>'Confirm password']])
-            ->add('Modifier',SubmitType::class)
+            ->add('oldPassword',
+                TextType::class,
+                [
+                    'mapped' => false,
+                    'label' => 'Ancien mot de passe',
+                    'constraints' => array(
+                        new NotBlank()
+                    )
+                ]
+            )
+            ->add('password',
+                RepeatedType::class,
+                [
+                    'type'=>PasswordType::class,
+                    'first_options' =>
+                        [
+                            'label' => 'Password'
+                        ],
+                    'second_options' =>
+                        [
+                            'label' => 'Confirm password'
+                        ]
+                ])
+            ->add('Modifier',
+                SubmitType::class
+            )
         ;
     }
 
