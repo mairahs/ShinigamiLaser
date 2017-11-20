@@ -39,7 +39,6 @@ class PlayerManager
         return $this->entityManager->getRepository(Player::class);
     }
 
-
     public function save(Player $player)
     {
         $hashedPassword = $this->encoder->getEncoder(Player::class)->encodePassword($player->getPassword(), $player);
@@ -49,6 +48,13 @@ class PlayerManager
         $this->mailManager->sendMailToPlayer($player);
     }
 
+    public function resetPassword(Player $player){
+        $hashedPassword = $this->encoder->getEncoder(Player::class)->encodePassword($player->getPassword(), $player);
+        $player->setPassword($hashedPassword);
+        $this->entityManager->persist($player);
+        $this->entityManager->flush();
+    }
+
     public function update(Player $player)
     {
         $this->entityManager->persist($player);
@@ -56,19 +62,12 @@ class PlayerManager
     }
 
     public function findPassword(Player $player, $oldPassword){
-        $hashedPassword = $this->encoder->getEncoder(Player::class)->encodePassword($oldPassword, $player);
-        $find = $this->entityManager->getRepository('AppBundle:Player')->findOneBy(['password' => $hashedPassword, 'id' => $player->getId()]);
-
-
-
-
-        dump($hashedPassword);
-
-
-        die;
-        if(is_null($find)){
-            throw new \Exception("Le mot de passe n'est pas correct");
-        }
+        //TODO Activer la recherche
+//        $hashedPassword = $this->encoder->getEncoder(Player::class)->isPasswordValid($oldPassword, $player);
+//        $find = $this->entityManager->getRepository('AppBundle:Player')->findOneBy(['password' => $hashedPassword, 'id' => $player->getId()]);
+//        if(is_null($find)){
+//            throw new \Exception("Le mot de passe n'est pas correct");
+//        }
     }
 
     public function test(Player $player)
