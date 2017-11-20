@@ -10,6 +10,12 @@ app:
     resource: '@AppBundle/Controller/'
     type: annotation
 
+homepage:
+    path: /home
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template: default/index.html.twig
+
 app_dashboard:
     path:     /dashboard
     defaults: { _controller: AppBundle:Default:dashboard }
