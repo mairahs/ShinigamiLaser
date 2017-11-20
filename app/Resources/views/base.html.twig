@@ -11,14 +11,14 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet" type="text/css"/>
     {% block stylesheets %}{% endblock %}
-    <link rel="icon" type="image/x-icon" href="{{ asset('logo.PNG') }}" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/logo.PNG') }}" />
 </head>
 <body>
 {% set is_admin = is_granted('ROLE_ADMIN') %}
 {% set is_user = is_granted('ROLE_USER') %}
 <nav class="white" role="navigation">
     <div class="nav-wrapper container">
-        <a id="logo-container" href="#" class="brand-logo"><img src="{{ asset('logo.PNG') }}" width="150" height="100"></a>
+        <a id="logo-container" href="#" class="brand-logo"><img src="{{ asset('images/logo.PNG') }}" width="150" height="100"></a>
         <ul class="right hide-on-med-and-down">
             {% if is_user %}
                 <li><a href="#" style="color:#ffffff; font-size:18px;">Bienvenue {{ app.user.username }}</a></li>
@@ -77,9 +77,9 @@
             <div class="col l3 s12">
                 <h5 class="white-text">Suis nous sur les Réseaux Sociaux</h5>
                 <ul>
-                    <li><a class="white-text" href="#"><img src="{{ asset('facebook.png') }}"></a></li>
-                    <li><a class="white-text" href="#"><img src="{{ asset('instagram.png') }}"></a></li>
-                    <li><a class="white-text" href="#"><img src="{{ asset('tweeter.png') }}"></a></li>
+                    <li><a class="white-text" href="#"><img src="{{ asset('images/facebook.png') }}"></a></li>
+                    <li><a class="white-text" href="#"><img src="{{ asset('images/instagram.png') }}"></a></li>
+                    <li><a class="white-text" href="#"><img src="{{ asset('images/tweeter.png') }}"></a></li>
                 </ul>
             </div>
             <div class="col l3 s12">
