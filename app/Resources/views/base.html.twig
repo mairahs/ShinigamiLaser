@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet" type="text/css"/>
     {% block stylesheets %}{% endblock %}
-    <link rel="icon" type="image/x-icon" href="{{ asset('images/logo.PNG') }}" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 </head>
 <body>
 {% set is_admin = is_granted('ROLE_ADMIN') %}
@@ -46,9 +46,9 @@
             <div class="col l3 s12">
                 <h5 class="white-text">Suis nous sur les Réseaux Sociaux</h5>
                 <ul>
-                    <li><a class="white-text" href="#"><img src="{{ asset('images/facebook.png') }}"></a></li>
-                    <li><a class="white-text" href="#"><img src="{{ asset('images/instagram.png') }}"></a></li>
-                    <li><a class="white-text" href="#"><img src="{{ asset('images/tweeter.png') }}"></a></li>
+                    <li><a class="white-text" href="#"><img src="{{ asset('facebook.png') }}"></a></li>
+                    <li><a class="white-text" href="#"><img src="{{ asset('instagram.png') }}"></a></li>
+                    <li><a class="white-text" href="#"><img src="{{ asset('tweeter.png') }}"></a></li>
                 </ul>
             </div>
             <div class="col l3 s12">

@@ -36,12 +36,20 @@ user_update_password:
 
 user_lostpassword:
     path: /user/lostpassword/
-    defaults: { _controller: UserBundle:User:lostPassword}
+    defaults: { _controller: UserBundle:LostPassword:index}
 
-user_lostpassword_form:
-    path: /user/lostpassword/{token}
-    defaults: { _controller: UserBundle:User:updatePassword}
+user_lostpassword_mailsend:
+    path: /user/lostpassword/sendmail
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template:    '@User/lostpassword/lostpassword.sendmail.html.twig'
+
+user_lostpassword_update:
+    path: /user/lostpassword/update/{token}
+    defaults: { _controller: UserBundle:LostPassword:update}
 
 user_lostpassword_confirmation:
     path: /user/lostpassword/confirmation
-    defaults: { _controller: UserBundle:User:confirmation}
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template:    '@User/lostpassword/lostpassword.confirmation.html.twig'

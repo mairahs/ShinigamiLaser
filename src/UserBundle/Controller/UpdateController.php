@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Tonio
- * Date: 17/11/2017
- * Time: 08:14
- */
 
 namespace UserBundle\Controller;
 
@@ -77,7 +71,6 @@ class UpdateController extends Controller
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
     public function passwordAction(Request $request, Player $player){
-
         $this->get(AuthenticateService::class)->checkPlayer($player);
         $form = $this->createForm(UpdatePasswordType::class, $player);
         $form->handleRequest($request);
@@ -85,6 +78,7 @@ class UpdateController extends Controller
             $oldPassword = $request->get('userbundle_password')['oldPassword'];
             $this->get(PlayerManager::class)->findPassword($player, $oldPassword);
             $this->get(PlayerManager::class)->save($player);
+
             return $this->redirectToRoute('app_dashboard');
         }
 
