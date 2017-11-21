@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -85,6 +86,7 @@ class Player implements UserInterface, \Serializable
 
     /**
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Avatar", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true)
      */
     private $avatar;
 
@@ -324,17 +326,17 @@ class Player implements UserInterface, \Serializable
      */
     public function __construct()
     {
-        $this->cards = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->cards = new ArrayCollection();
     }
 
     /**
      * Add card
      *
-     * @param \AppBundle\Entity\Card $card
+     * @param Card $card
      *
      * @return Player
      */
-    public function addCard(\AppBundle\Entity\Card $card)
+    public function addCard(Card $card)
     {
         $this->cards[] = $card;
         return $this;
@@ -343,9 +345,9 @@ class Player implements UserInterface, \Serializable
     /**
      * Remove card
      *
-     * @param \AppBundle\Entity\Card $card
+     * @param Card $card
      */
-    public function removeCard(\AppBundle\Entity\Card $card)
+    public function removeCard(Card $card)
     {
         $this->cards->removeElement($card);
     }

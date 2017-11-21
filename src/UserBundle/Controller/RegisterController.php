@@ -1,5 +1,10 @@
 <?php
-
+/**
+ * Created by PhpStorm.
+ * User: Tonio
+ * Date: 21/11/2017
+ * Time: 15:21
+ */
 
 namespace UserBundle\Controller;
 
@@ -11,9 +16,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use UserBundle\Manager\PlayerManager;
 
-class UserController extends Controller
+class RegisterController extends Controller
 {
-    public function registerAction(Request $request)
+    public function formAction(Request $request)
     {
         $player = new Player();
         if($this->get('kernel')->getEnvironment() === "dev" && $request->get('t') === "1"){
@@ -24,17 +29,17 @@ class UserController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $this->get(PlayerManager::class)->save($player);
 
-            return $this->redirectToRoute('user_preactivate');
+            return $this->redirectToRoute('user_register_confirmation');
         }
 
-        return $this->render('UserBundle:default:register.html.twig', ['form'=> $form->createView()]);
+        return $this->render('UserBundle:register:register.form.html.twig', ['form'=> $form->createView()]);
     }
 
     /**
      * @param $token
      * @return Response
      */
-    public function activateAccountAction($token)
+    public function activateAction($token)
     {
         $entityManager = $this->getDoctrine()->getManager();
         $player = $entityManager->getRepository('AppBundle:Player')->findOneBy(['token' => $token]);
@@ -43,7 +48,6 @@ class UserController extends Controller
         $entityManager->persist($player);
         $entityManager->flush();
 
-        return $this->render('UserBundle:default:activate.html.twig', ['player'=> $player]);
+        return $this->render('UserBundle:register:register.activate.html.twig', ['player'=> $player]);
     }
-
 }

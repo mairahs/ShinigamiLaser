@@ -1,6 +1,6 @@
 user:
     resource: "@UserBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /user
 
 admin:
     resource: "@AdminBundle/Resources/config/routing.yml"
@@ -15,6 +15,12 @@ homepage:
     defaults:
         _controller: FrameworkBundle:Template:template
         template: default/index.html.twig
+
+user_login:
+    path: /login
+    defaults: { _controller: UserBundle:Security:login}
+user_logout:
+    path: /logout
 
 app_dashboard:
     path:     /dashboard

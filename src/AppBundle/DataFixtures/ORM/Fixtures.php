@@ -7,8 +7,10 @@ namespace AppBundle\DataFixtures\ORM;
 use AppBundle\Entity\Admin;
 use AppBundle\Entity\Card;
 use AppBundle\Entity\Etablishment;
+use AppBundle\Entity\Game;
 use AppBundle\Entity\Player;
 use AppBundle\Entity\Provider;
+use AppBundle\Entity\Score;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -29,12 +31,6 @@ class Fixtures extends Fixture
 
         $encoder = $this->container->get('security.password_encoder');
 
-        for ($i = 0; $i < 10; $i++) {
-            $card = new Card();
-            $card->setStatus('in_store');
-            $manager->persist($card);
-        }
-
         for ($i = 0; $i < 5; $i++) {
             $etablishment = new Etablishment();
             $etablishment->setName($faker->lastName);
@@ -42,7 +38,8 @@ class Fixtures extends Fixture
             $manager->persist($etablishment);
         }
 
-        for ($i = 0; $i < 5; $i++) {
+        $player_arr = [];
+        for ($i = 0; $i < 10; $i++) {
             $player = new Player();
             $player->setFirstname($faker->firstName);
             $player->setLastname($faker->lastName);
@@ -55,6 +52,37 @@ class Fixtures extends Fixture
             $player->setPhoneNumber($faker->phoneNumber);
             $player->setIsActivate(0);
             $manager->persist($player);
+            $player_arr[] = $player;
+        }
+
+        $card_arr = [];
+        for ($i = 0; $i < 20; $i++) {
+            $card = new Card();
+            $rand = rand(1,3);
+            if(3 > $rand){
+                $key = array_rand($player_arr, 1);
+                $card->setPlayer($player_arr[$key]);
+                $card->setStatus('active');
+                $card_arr[] = $card;
+            }else{
+                $card->setStatus('in_store');
+            }
+            $manager->persist($card);
+        }
+
+        for ($i = 0; $i < 2; $i++) {
+            $game = new Game();
+            $game->setType('deathmatch');
+            $game->setPlayedAt(new \DateTime());
+            foreach($card_arr as $card){
+                $score = new Score();
+                $score->setResult(rand(100, 1000));
+                $score->setRank('super tireur');
+                $score->setTeam(0);
+                $score->setCards($card);
+                $score->setGames($game);
+                $manager->persist($score);
+            }
         }
 
         for ($i = 0; $i < 5; $i++) {
@@ -71,7 +99,7 @@ class Fixtures extends Fixture
             $provider->setName($faker->lastName);
             $manager->persist($provider);
         }
-        
+
         $manager->flush();
     }
 }
