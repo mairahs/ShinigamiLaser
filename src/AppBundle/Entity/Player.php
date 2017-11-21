@@ -86,6 +86,7 @@ class Player implements UserInterface, \Serializable
 
     /**
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Avatar", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true)
      */
     private $avatar;
 
@@ -102,11 +103,6 @@ class Player implements UserInterface, \Serializable
      * @ORM\Column (name="is_activate", type="boolean", nullable=true)
      */
     private $isActivate;
-
-    /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Score", mappedBy="players")
-     */
-    private $score;
 
     /**
      * Get id
@@ -331,7 +327,6 @@ class Player implements UserInterface, \Serializable
     public function __construct()
     {
         $this->cards = new ArrayCollection();
-        $this->score = new ArrayCollection();
     }
 
     /**
@@ -466,39 +461,5 @@ class Player implements UserInterface, \Serializable
         list (
             $this->id
             ) = unserialize($serialized);
-    }
-
-    /**
-     * Add score
-     *
-     * @param \AppBundle\Entity\Score $score
-     *
-     * @return Player
-     */
-    public function addScore(Score $score)
-    {
-        $this->score[] = $score;
-
-        return $this;
-    }
-
-    /**
-     * Remove score
-     *
-     * @param \AppBundle\Entity\Score $score
-     */
-    public function removeScore(Score $score)
-    {
-        $this->score->removeElement($score);
-    }
-
-    /**
-     * Get score
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getScore()
-    {
-        return $this->score;
     }
 }

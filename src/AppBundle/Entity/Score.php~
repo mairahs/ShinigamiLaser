@@ -44,9 +44,9 @@ class Score
     private $team;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Player", inversedBy="score", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Card", inversedBy="score", cascade={"persist"})
      */
-    private $players;
+    private $cards;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Game", inversedBy="score", cascade={"persist"})
@@ -133,30 +133,6 @@ class Score
     public function getTeam()
     {
         return $this->team;
-    }
-
-    /**
-     * Set players
-     *
-     * @param \AppBundle\Entity\Player $players
-     *
-     * @return Score
-     */
-    public function setPlayers(Player $players = null)
-    {
-        $this->players = $players;
-
-        return $this;
-    }
-
-    /**
-     * Get players
-     *
-     * @return \AppBundle\Entity\Player
-     */
-    public function getPlayers()
-    {
-        return $this->players;
     }
 
     /**

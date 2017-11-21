@@ -44,6 +44,11 @@ class Card
     private $player;
 
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Score", mappedBy="cards")
+     */
+    private $score;
+
+    /**
      * Get id
      *
      * @return int
@@ -123,5 +128,46 @@ class Card
     public function getNumber()
     {
         return $this->number;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->score = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add score
+     *
+     * @param \AppBundle\Entity\Score $score
+     *
+     * @return Card
+     */
+    public function addScore(\AppBundle\Entity\Score $score)
+    {
+        $this->score[] = $score;
+
+        return $this;
+    }
+
+    /**
+     * Remove score
+     *
+     * @param \AppBundle\Entity\Score $score
+     */
+    public function removeScore(\AppBundle\Entity\Score $score)
+    {
+        $this->score->removeElement($score);
+    }
+
+    /**
+     * Get score
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getScore()
+    {
+        return $this->score;
     }
 }

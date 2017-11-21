@@ -92,4 +92,52 @@ class Game
     {
         return $this->score;
     }
+
+    /**
+     * Set type
+     *
+     * @param string $type
+     *
+     * @return Game
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Set playedAt
+     *
+     * @param \DateTime $playedAt
+     *
+     * @return Game
+     */
+    public function setPlayedAt($playedAt)
+    {
+        $this->playedAt = $playedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get playedAt
+     *
+     * @return \DateTime
+     */
+    public function getPlayedAt()
+    {
+        return $this->playedAt;
+    }
 }

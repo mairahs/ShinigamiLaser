@@ -1,55 +1,49 @@
-user_login:
-    path: /login
-    defaults: { _controller: UserBundle:Security:login}
-user_logout:
-    path: /logout
-
 user_register:
     path: /register
-    defaults: { _controller: UserBundle:User:register}
+    defaults: { _controller: UserBundle:Register:form}
 
-user_preactivate:
-    path: /user/register/confirmation
+user_register_confirmation:
+    path: /register/confirmation
     defaults:
         _controller: FrameworkBundle:Template:template
-        template:    UserBundle:default:preactivate.html.twig
+        template:    '@User/register/register.confirmation.html.twig'
 
-user_activate:
-    path: /user/register/activate/{token}
-    defaults: { _controller: UserBundle:User:activateAccount}
+user_register_activate:
+    path: /register/activate/{token}
+    defaults: { _controller: UserBundle:Register:activate}
 
 user_update:
-    path: /user/update/{id}
+    path: /update/{id}
     defaults: { _controller: UserBundle:Update:index}
 
 user_update_profil:
-    path: /user/update/profil/{id}
+    path: /update/profil/{id}
     defaults: { _controller: UserBundle:Update:profil}
 
 user_update_avatar:
-    path: /user/update/avatar/{id}
+    path: /update/avatar/{id}
     defaults: { _controller: UserBundle:Update:avatar }
 
 user_update_password:
-    path: /user/update/password/{id}
+    path: /update/password/{id}
     defaults: { _controller: UserBundle:Update:password }
 
 user_lostpassword:
-    path: /user/lostpassword/
+    path: /lostpassword/
     defaults: { _controller: UserBundle:LostPassword:index}
 
 user_lostpassword_mailsend:
-    path: /user/lostpassword/sendmail
+    path: /lostpassword/sendmail
     defaults:
         _controller: FrameworkBundle:Template:template
         template:    '@User/lostpassword/lostpassword.sendmail.html.twig'
 
 user_lostpassword_update:
-    path: /user/lostpassword/update/{token}
+    path: /lostpassword/update/{token}
     defaults: { _controller: UserBundle:LostPassword:update}
 
 user_lostpassword_confirmation:
-    path: /user/lostpassword/confirmation
+    path: /lostpassword/confirmation
     defaults:
         _controller: FrameworkBundle:Template:template
         template:    '@User/lostpassword/lostpassword.confirmation.html.twig'

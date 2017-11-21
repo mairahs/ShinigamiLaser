@@ -44,6 +44,11 @@ class Card
     private $player;
 
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Score", mappedBy="cards")
+     */
+    private $score;
+
+    /**
      * Get id
      *
      * @return int

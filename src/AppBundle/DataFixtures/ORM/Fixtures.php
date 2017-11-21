@@ -31,12 +31,6 @@ class Fixtures extends Fixture
 
         $encoder = $this->container->get('security.password_encoder');
 
-        for ($i = 0; $i < 10; $i++) {
-            $card = new Card();
-            $card->setStatus('in_store');
-            $manager->persist($card);
-        }
-
         for ($i = 0; $i < 5; $i++) {
             $etablishment = new Etablishment();
             $etablishment->setName($faker->lastName);
@@ -45,7 +39,7 @@ class Fixtures extends Fixture
         }
 
         $player_arr = [];
-        for ($i = 0; $i < 5; $i++) {
+        for ($i = 0; $i < 10; $i++) {
             $player = new Player();
             $player->setFirstname($faker->firstName);
             $player->setLastname($faker->lastName);
@@ -61,16 +55,31 @@ class Fixtures extends Fixture
             $player_arr[] = $player;
         }
 
+        $card_arr = [];
+        for ($i = 0; $i < 20; $i++) {
+            $card = new Card();
+            $rand = rand(1,3);
+            if(3 > $rand){
+                $key = array_rand($player_arr, 1);
+                $card->setPlayer($player_arr[$key]);
+                $card->setStatus('active');
+                $card_arr[] = $card;
+            }else{
+                $card->setStatus('in_store');
+            }
+            $manager->persist($card);
+        }
+
         for ($i = 0; $i < 2; $i++) {
             $game = new Game();
             $game->setType('deathmatch');
             $game->setPlayedAt(new \DateTime());
-            foreach($player_arr as $player){
+            foreach($card_arr as $card){
                 $score = new Score();
                 $score->setResult(rand(100, 1000));
                 $score->setRank('super tireur');
                 $score->setTeam(0);
-                $score->setPlayers($player);
+                $score->setCards($card);
                 $score->setGames($game);
                 $manager->persist($score);
             }

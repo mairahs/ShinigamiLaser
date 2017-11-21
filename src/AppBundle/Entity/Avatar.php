@@ -26,14 +26,14 @@ class Avatar
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255, nullable=true)
      */
     private $name;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="extension", type="string", length=255)
+     * @ORM\Column(name="extension", type="string", length=15, nullable=true)
      */
     private $extension;
 
@@ -135,8 +135,12 @@ class Avatar
     {
         $this->file = $file;
         if(!is_null($this->getId())){
-            $this->setOldFileName($this->getName().'.'.$this->getExtension());
-            $this->extension = null;
+            if(!is_null($this->getName())){
+                $this->setOldFileName($this->getName().'.'.$this->getExtension());
+                $this->name = null;
+            }else{
+                $this->name = 'troll';
+            }
         }
         return $this;
     }
@@ -148,9 +152,11 @@ class Avatar
     public function hydrate()
     {
         $file = $this->getFile();
-        $extension = $file->guessExtension();
-        $name = $file->getFilename().'-'.md5(uniqid());
-        $this->setName($name);
-        $this->setExtension($extension);
+        if(!is_null($file)){
+            $extension = $file->guessExtension();
+            $name = $file->getFilename().'-'.md5(uniqid());
+            $this->setName($name);
+            $this->setExtension($extension);
+        }
     }
 }
