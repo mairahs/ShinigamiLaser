@@ -8,6 +8,11 @@ body {
     background: #fca906;
 }
 
+.yellow-text{
+    color: #e24800!important;
+    font-weight: bold;
+}
+
 @media only screen and (max-width: 992px) {
     header,
     main,
@@ -53,10 +58,6 @@ body {
     color: #222222!important;
 }
 
-.yellow-text{
-    color: #fca906!important;
-    font-weight: bold;
-}
 
 h5{
     font-size: 18px;
@@ -69,5 +70,9 @@ h5{
 
 a{
     color:#222222;
+}
+
+.justify{
+    text-align: justify;
 }
 
