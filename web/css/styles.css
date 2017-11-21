@@ -1,3 +1,12 @@
+body{
+    margin:0;
+    padding:0;
+    background: url('../images/lasers.jpeg') no-repeat center fixed;
+    -webkit-background-size: cover; /* pour anciens Chrome et Safari */
+    background-size: cover; /* version standardisée */
+    font-family: 'Roboto', sans-serif;
+}
+
 .file-wrapper .btn {
     padding: 0 2rem;
 }
@@ -107,7 +116,7 @@ p {
 }
 
 .icon-block {
-    padding: 0 15px;
+    padding:15px;
 }
 .icon-block .material-icons {
     font-size: inherit;
@@ -140,5 +149,12 @@ footer.page-footer {
 .fa{
     font-size:35px!important;
     padding-left: 37px;
+}
+
+.bordered{
+
+    background-color: rgba(255,255,255,0.8);
+    margin-left:10px!important;
+
 }
 
