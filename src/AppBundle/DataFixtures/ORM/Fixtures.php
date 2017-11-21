@@ -7,8 +7,10 @@ namespace AppBundle\DataFixtures\ORM;
 use AppBundle\Entity\Admin;
 use AppBundle\Entity\Card;
 use AppBundle\Entity\Etablishment;
+use AppBundle\Entity\Game;
 use AppBundle\Entity\Player;
 use AppBundle\Entity\Provider;
+use AppBundle\Entity\Score;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -42,6 +44,7 @@ class Fixtures extends Fixture
             $manager->persist($etablishment);
         }
 
+        $player_arr = [];
         for ($i = 0; $i < 5; $i++) {
             $player = new Player();
             $player->setFirstname($faker->firstName);
@@ -55,6 +58,22 @@ class Fixtures extends Fixture
             $player->setPhoneNumber($faker->phoneNumber);
             $player->setIsActivate(0);
             $manager->persist($player);
+            $player_arr[] = $player;
+        }
+
+        for ($i = 0; $i < 2; $i++) {
+            $game = new Game();
+            $game->setType('deathmatch');
+            $game->setPlayedAt(new \DateTime());
+            foreach($player_arr as $player){
+                $score = new Score();
+                $score->setResult(rand(100, 1000));
+                $score->setRank('super tireur');
+                $score->setTeam(0);
+                $score->setPlayers($player);
+                $score->setGames($game);
+                $manager->persist($score);
+            }
         }
 
         for ($i = 0; $i < 5; $i++) {
@@ -71,7 +90,7 @@ class Fixtures extends Fixture
             $provider->setName($faker->lastName);
             $manager->persist($provider);
         }
-        
+
         $manager->flush();
     }
 }
