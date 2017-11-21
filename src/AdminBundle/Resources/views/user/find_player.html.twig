@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h2>Tu recherches un joueur ?</h2>
+    <p>Renseigne le numéro de sa carte de fidélité pour le retrouver</p>
+
+    <div class="row">
+        <form class="row" action="{{ path('admin_findplayer') }}" method="post" autocomplete="off">
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+            <div class="input-field col s3">
+                <label for="number_card">
+                    Numéro de la carte
+                </label>
+                <input type="number" id="number_card" name="number_card">
+            </div>
+            <div class="input-field col s12">
+                <button type="submit" class="waves-effect waves-light btn"><i class="material-icons right"></i>Go</button>
+            </div>
+
+        </form>
+
+        <div id="result"></div>
+    </div>
+{% endblock %}
