@@ -12,3 +12,7 @@ admin_logout:
 admin_findplayer:
     path: /findplayer
     defaults: {_controller: AdminBundle:User:find}
+
+admin_displayplayer:
+    path: /displayplayer/{id}
+    defaults: {_controller: AdminBundle:User:display}
