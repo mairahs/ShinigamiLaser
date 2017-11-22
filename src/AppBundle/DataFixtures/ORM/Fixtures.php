@@ -58,8 +58,8 @@ class Fixtures extends Fixture
         $card_arr = [];
         for ($i = 0; $i < 20; $i++) {
             $card = new Card();
-            $rand = rand(1,3);
-            if(3 > $rand){
+            $rand = rand(1,5);
+            if(4 > $rand){
                 $key = array_rand($player_arr, 1);
                 $card->setPlayer($player_arr[$key]);
                 $card->setStatus('active');
@@ -70,18 +70,25 @@ class Fixtures extends Fixture
             $manager->persist($card);
         }
 
-        for ($i = 0; $i < 2; $i++) {
+        for ($i = 0; $i < 15; $i++) {
             $game = new Game();
             $game->setType('deathmatch');
-            $game->setPlayedAt(new \DateTime());
+
+            $date = new \DateTime();
+            $date->modify("+$i day");
+            $game->setPlayedAt($date);
+
             foreach($card_arr as $card){
-                $score = new Score();
-                $score->setResult(rand(100, 1000));
-                $score->setRank('super tireur');
-                $score->setTeam(0);
-                $score->setCards($card);
-                $score->setGames($game);
-                $manager->persist($score);
+                $rand = rand(1,3);
+                if(3 > $rand){
+                    $score = new Score();
+                    $score->setResult(rand(100, 1000));
+                    $score->setRank('super tireur');
+                    $score->setTeam(0);
+                    $score->setCards($card);
+                    $score->setGames($game);
+                    $manager->persist($score);
+                }
             }
         }
 

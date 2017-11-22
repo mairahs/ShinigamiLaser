@@ -41,3 +41,7 @@ app_card_disable_page:
 app_card_disable_action:
     path: card/disable/action/{id}
     defaults: { _controller: AppBundle:Card:disable }
+
+app_card_get_stat:
+    path: /card/get/stat/{id}
+    defaults: { _controller: AppBundle:Card:getStat }
