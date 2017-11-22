@@ -7,7 +7,6 @@ use AppBundle\Entity\Avatar;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 
-
 class AvatarUploadSubscriber implements EventSubscriber
 {
 
@@ -37,7 +36,7 @@ class AvatarUploadSubscriber implements EventSubscriber
         $entity = $event->getEntity();
         if ($entity instanceof Avatar) {
             $file = $entity->getFile();
-            if(!is_null($file)){
+            if (!is_null($file)) {
                 $fileName = $entity->getName().'.'.$entity->getExtension();
                 $file->move(
                     $this->projectDir.'/web/upload',
@@ -64,10 +63,9 @@ class AvatarUploadSubscriber implements EventSubscriber
     {
         $entity = $event->getEntity();
         if ($entity instanceof Avatar) {
-            if(!is_null($entity->getOldFileName()) && file_exists($this->projectDir.'/web/upload/'.$entity->getOldFileName())){
-                unlink ( $this->projectDir.'/web/upload/'.$entity->getOldFileName());
+            if (!is_null($entity->getOldFileName()) && file_exists($this->projectDir.'/web/upload/'.$entity->getOldFileName())) {
+                unlink($this->projectDir.'/web/upload/'.$entity->getOldFileName());
             }
         }
     }
 }
-

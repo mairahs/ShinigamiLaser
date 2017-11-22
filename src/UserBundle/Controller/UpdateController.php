@@ -2,7 +2,6 @@
 
 namespace UserBundle\Controller;
 
-
 use AppBundle\Entity\Player;
 use AppBundle\Form\PlayerType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -19,7 +18,8 @@ class UpdateController extends Controller
      * @param Player $player
      * @return Response
      */
-    public function indexAction(Player $player){
+    public function indexAction(Player $player)
+    {
         $this->get(AuthenticateService::class)->checkPlayer($player);
         return $this->render('@User/update/update.index.html.twig', [
             'player' => $player
@@ -34,7 +34,8 @@ class UpdateController extends Controller
      * @internal param Player $player
      * @internal param $id
      */
-    public function profilAction(Request $request, Player $player){
+    public function profilAction(Request $request, Player $player)
+    {
         $this->get(AuthenticateService::class)->checkPlayer($player);
         $form = $this->createForm(PlayerType::class, $player);
         $form->handleRequest($request);
@@ -52,7 +53,8 @@ class UpdateController extends Controller
      * @param Player $player
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
-    public function avatarAction(Request $request, Player $player){
+    public function avatarAction(Request $request, Player $player)
+    {
         $this->get(AuthenticateService::class)->checkPlayer($player);
         $form = $this->createForm(UpdateAvatarType::class, $player);
         $form->handleRequest($request);
@@ -70,7 +72,8 @@ class UpdateController extends Controller
      * @param Player $player
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
-    public function passwordAction(Request $request, Player $player){
+    public function passwordAction(Request $request, Player $player)
+    {
         $this->get(AuthenticateService::class)->checkPlayer($player);
         $form = $this->createForm(UpdatePasswordType::class, $player);
         $form->handleRequest($request);

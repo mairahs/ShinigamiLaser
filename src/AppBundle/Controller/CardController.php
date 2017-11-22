@@ -3,7 +3,6 @@
 
 namespace AppBundle\Controller;
 
-
 use AppBundle\Entity\Card;
 use AppBundle\Form\CardType;
 use AppBundle\Service\CardManager;
@@ -26,17 +25,18 @@ class CardController extends Controller
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function addAction(Request $request){
+    public function addAction(Request $request)
+    {
         $card = new Card();
         $form = $this->createForm(CardType::class, $card);
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
             $user = $this->get('security.token_storage')->getToken()->getUser();
             try {
                 $this->get(CardManager::class)->addCard($user->getId(), $request->get('appbundle_card')['number']);
                 return $this->redirectToRoute('app_dashboard');
-            }catch (\Exception $exception) {
-                $this->addFlash('notice',$exception->getMessage());
+            } catch (\Exception $exception) {
+                $this->addFlash('notice', $exception->getMessage());
             }
         }
 
@@ -84,8 +84,8 @@ class CardController extends Controller
             try {
                 $this->get(CardManager::class)->disableCard($card);
                 return $this->redirectToRoute('app_dashboard');
-            }catch (\Exception $exception) {
-                $this->addFlash('notice',$exception->getMessage());
+            } catch (\Exception $exception) {
+                $this->addFlash('notice', $exception->getMessage());
             }
         }
         return $this->redirectToRoute('app_card_disable_page', ['id' => $card->getId()]);
@@ -97,7 +97,8 @@ class CardController extends Controller
      * @internal param $id
      * @return JsonResponse
      */
-    public function getStatAction(Card $card){
+    public function getStatAction(Card $card)
+    {
         $stats = $this->getDoctrine()->getRepository('AppBundle:Score')->getStatsGame($card);
 //        dump($stats);
         return new JsonResponse($stats);

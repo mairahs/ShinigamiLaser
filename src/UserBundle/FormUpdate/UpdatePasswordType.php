@@ -2,7 +2,6 @@
 
 namespace UserBundle\FormUpdate;
 
-
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
@@ -35,7 +34,8 @@ class UpdatePasswordType extends AbstractType
                 $form = $event->getForm();
                 if ("anon." !== $user) {
                     $form
-                        ->add('oldPassword',
+                        ->add(
+                            'oldPassword',
                             PasswordType::class,
                             [
                                 'mapped' => false,
@@ -47,13 +47,15 @@ class UpdatePasswordType extends AbstractType
                         )
                     ;
                 }
-                $form->add('Modifier',
+                $form->add(
+                    'Modifier',
                     SubmitType::class
                 );
             }
         );
         $builder
-            ->add('password',
+            ->add(
+                'password',
                 RepeatedType::class,
                 [
                     'type'=>PasswordType::class,
@@ -65,7 +67,8 @@ class UpdatePasswordType extends AbstractType
                         [
                             'label' => 'Confirm password'
                         ]
-                ])
+                ]
+            )
         ;
     }
 
@@ -86,5 +89,4 @@ class UpdatePasswordType extends AbstractType
     {
         return 'userbundle_password';
     }
-
 }

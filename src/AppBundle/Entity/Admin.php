@@ -139,7 +139,5 @@ class Admin implements UserInterface
 
     public function eraseCredentials()
     {
-
     }
-
 }

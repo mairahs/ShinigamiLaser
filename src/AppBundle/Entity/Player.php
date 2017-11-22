@@ -318,7 +318,6 @@ class Player implements UserInterface, \Serializable
 
     public function eraseCredentials()
     {
-
     }
 
     /**
@@ -458,7 +457,7 @@ class Player implements UserInterface, \Serializable
      */
     public function unserialize($serialized)
     {
-        list (
+        list(
             $this->id
             ) = unserialize($serialized);
     }

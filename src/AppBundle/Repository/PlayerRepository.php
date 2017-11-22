@@ -22,6 +22,5 @@ class PlayerRepository extends EntityRepository
                                          ->setParameters(['numberCard'=>$numberCard]);
         return $queryBuilder->getQuery()
                                         ->getSingleResult();
-
     }
 }

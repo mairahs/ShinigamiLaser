@@ -2,7 +2,6 @@
 
 namespace UserBundle\FormUpdate;
 
-
 use AppBundle\Form\AvatarType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
@@ -20,7 +19,7 @@ class UpdateAvatarType extends AbstractType
     {
         $builder
             ->add('avatar', AvatarType::class)
-            ->add('Modifier',SubmitType::class)
+            ->add('Modifier', SubmitType::class)
         ;
     }
 
@@ -41,5 +40,4 @@ class UpdateAvatarType extends AbstractType
     {
         return 'userbundle_avatar';
     }
-
 }

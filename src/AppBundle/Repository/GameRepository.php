@@ -10,5 +10,4 @@ namespace AppBundle\Repository;
  */
 class GameRepository extends \Doctrine\ORM\EntityRepository
 {
-
 }
