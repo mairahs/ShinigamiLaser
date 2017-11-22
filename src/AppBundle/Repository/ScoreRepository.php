@@ -30,17 +30,29 @@ class ScoreRepository extends \Doctrine\ORM\EntityRepository
         return $queryBuilder->getQuery()->getResult();
     }
 
-    public function getStatsGame(Card $card)
+    public function getScoreByGame(Card $card)
     {
         $queryBuilder = $this  ->createQueryBuilder('score')
             ->leftJoin('score.games', 'games')
-            ->select('score.result, score.rank, score.team')
+            ->select('score.result')
             ->addSelect('games.playedAt')
-            ->addSelect('games.type')
             ->andWhere('score.cards = :card')
             ->setParameters([
                 'card' => $card
             ]);
         return $queryBuilder->getQuery()->getResult();
+    }
+
+    public function getAllStat(Card $card)
+    {
+        $queryBuilder = $this  ->createQueryBuilder('score')
+            ->leftJoin('score.games', 'games')
+            ->select('SUM(score.result) AS sumscore')
+            ->addSelect('COUNT(score.result) AS nbgames')
+            ->andWhere('score.cards = :card')
+            ->setParameters([
+                'card' => $card
+            ]);
+        return $queryBuilder->getQuery()->getScalarResult();
     }
 }

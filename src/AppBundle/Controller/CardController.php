@@ -97,10 +97,20 @@ class CardController extends Controller
      * @internal param $id
      * @return JsonResponse
      */
-    public function getStatAction(Card $card)
+    public function scoreByGameAction(Card $card)
     {
-        $stats = $this->getDoctrine()->getRepository('AppBundle:Score')->getStatsGame($card);
-//        dump($stats);
+        $stats = $this->getDoctrine()->getRepository('AppBundle:Score')->getScoreByGame($card);
+        return new JsonResponse($stats);
+    }
+
+    /**
+     * @param Card $card
+     * @internal param $id
+     * @return JsonResponse
+     */
+    public function allStatAction(Card $card)
+    {
+        $stats = $this->getDoctrine()->getRepository('AppBundle:Score')->getAllStat($card);
         return new JsonResponse($stats);
     }
 

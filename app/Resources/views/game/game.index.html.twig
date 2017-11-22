@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <table class="bordered">
+        <thead>
+        <tr>
+            <th>Type</th>
+            <th>Date</th>
+            <th>Item Price</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for game in games %}
+        <tr>
+            <td>{{ game.type }}</td>
+            <td>{{ game.playedAt }}</td>
+            <td>$0.87</td>
+            <td><a href="{{ path('app_card_show', {'id':game.id}) }}" class="secondary-content" title="voir details"><i class="material-icons">remove_red_eye</i></a></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
