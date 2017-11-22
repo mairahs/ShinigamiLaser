@@ -7,8 +7,10 @@
 {% block body %}
     <h3>Carte : {{ card.number }}</h3>
     <a href="{{ path('app_dashboard') }}">Retour au dashboard</a>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, animi dolorem ducimus eius libero placeat totam veniam voluptate. Adipisci assumenda consequuntur delectus dolor dolorem laboriosam laudantium, nemo quibusdam quod soluta.</p>
-    <div id="containerHighcharts"></div>
+    <p><b>Score total :</b> <span id="score_total"></span></p>
+    <p><b>Parties jouées :</b> <span id="parties_jouees"></span></p>
+    <p><b>Moyenne par partie :</b> <span id="moyenne_partie"></span></p>
+    <div id="containerHighcharts" class="col-md-6"></div>
     <input type="hidden" id="id_carte" value="{{ card.id }}">
 {% endblock %}
 

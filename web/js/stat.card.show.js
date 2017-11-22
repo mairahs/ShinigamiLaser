@@ -1,6 +1,6 @@
 $(document).ready(function(){
     $.ajax({
-        url: '/card/get/stat/'+$('#id_carte').val(),
+        url: '/card/get/scorebygame/'+$('#id_carte').val(),
         method: 'POST',
         dataType: 'json',
         success : function(data){
@@ -19,9 +19,6 @@ $(document).ready(function(){
                     type: 'spline'
                 },
                 title: {
-                    text: 'Score'
-                },
-                subtitle: {
                     text: 'Score par partie'
                 },
                 xAxis: {
@@ -41,8 +38,7 @@ $(document).ready(function(){
                     min: 0
                 },
                 tooltip: {
-                    headerFormat: '<b>{series.name}</b><br>',
-                    pointFormat: '{point.x:%e. %b}: {point.y:.2f} pts'
+                    pointFormat: '{point.y:.2f} pts'
                 },
 
                 plotOptions: {
@@ -53,9 +49,21 @@ $(document).ready(function(){
                     }
                 },
                 series: [{
+                    name: 'Nombre de point',
                     data: data_stat
                 }]
             });
+        }
+    });
+    $.ajax({
+        url: '/card/get/allstat/'+$('#id_carte').val(),
+        method: 'POST',
+        dataType: 'json',
+        success : function(data){
+            console.log();
+            $('#score_total').html(data[0].nbgames);
+            $('#parties_jouees').html(data[0].sumscore);
+            $('#moyenne_partie').html(data[0].sumscore/data[0].nbgames);
         }
     });
 });

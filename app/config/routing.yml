@@ -42,6 +42,18 @@ app_card_disable_action:
     path: card/disable/action/{id}
     defaults: { _controller: AppBundle:Card:disable }
 
-app_card_get_stat:
-    path: /card/get/stat/{id}
-    defaults: { _controller: AppBundle:Card:getStat }
+app_card_get_scorebygame:
+    path: /card/get/scorebygame/{id}
+    defaults: { _controller: AppBundle:Card:scoreByGame }
+
+app_card_get_allstat:
+    path: /card/get/allstat/{id}
+    defaults: { _controller: AppBundle:Card:allStat }
+
+app_game_index:
+    path: /game
+    defaults: { _controller: AppBundle:Game:index }
+
+app_game_show:
+    path: /game/{id}
+    defaults: { _controller: AppBundle:Game:show }
