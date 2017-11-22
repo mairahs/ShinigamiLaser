@@ -134,11 +134,11 @@ class Avatar
     public function setFile(UploadedFile $file)
     {
         $this->file = $file;
-        if(!is_null($this->getId())){
-            if(!is_null($this->getName())){
+        if (!is_null($this->getId())) {
+            if (!is_null($this->getName())) {
                 $this->setOldFileName($this->getName().'.'.$this->getExtension());
                 $this->name = null;
-            }else{
+            } else {
                 $this->name = 'troll';
             }
         }
@@ -152,7 +152,7 @@ class Avatar
     public function hydrate()
     {
         $file = $this->getFile();
-        if(!is_null($file)){
+        if (!is_null($file)) {
             $extension = $file->guessExtension();
             $name = $file->getFilename().'-'.md5(uniqid());
             $this->setName($name);

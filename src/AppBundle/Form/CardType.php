@@ -16,9 +16,12 @@ class CardType extends AbstractType
     {
         $builder
             ->add(
-                'number', TextType::class, [
+                'number',
+                TextType::class,
+                [
                     'mapped' => false
-                ]);
+                ]
+            );
     }
     
     /**
@@ -38,6 +41,4 @@ class CardType extends AbstractType
     {
         return 'appbundle_card';
     }
-
-
 }

@@ -1,6 +1,7 @@
 <?php
 
 namespace AppBundle\Repository;
+
 use AppBundle\Entity\Card;
 use AppBundle\Entity\Player;
 
@@ -29,7 +30,8 @@ class ScoreRepository extends \Doctrine\ORM\EntityRepository
         return $queryBuilder->getQuery()->getResult();
     }
 
-    public function getStatsGame(Card $card){
+    public function getStatsGame(Card $card)
+    {
         $queryBuilder = $this  ->createQueryBuilder('score')
             ->leftJoin('score.games', 'games')
             ->select('score.result, score.rank, score.team')

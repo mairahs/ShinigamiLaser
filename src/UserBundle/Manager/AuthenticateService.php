@@ -8,7 +8,6 @@
 
 namespace UserBundle\Manager;
 
-
 use AppBundle\Entity\Player;
 use Symfony\Component\HttpFoundation\File\Exception\AccessDeniedException;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
@@ -22,12 +21,12 @@ class AuthenticateService
 
     public function __construct(TokenStorage $tokenStorage)
     {
-
         $this->tokenStorage = $tokenStorage;
     }
 
-    public function checkPlayer(Player $player){
-        if($this->tokenStorage->getToken()->getUser()->getId() !== $player->getId()){
+    public function checkPlayer(Player $player)
+    {
+        if ($this->tokenStorage->getToken()->getUser()->getId() !== $player->getId()) {
             throw new AccessDeniedException('Accès non authorisé');
         }
     }

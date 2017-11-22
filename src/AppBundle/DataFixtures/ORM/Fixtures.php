@@ -3,7 +3,6 @@
 
 namespace AppBundle\DataFixtures\ORM;
 
-
 use AppBundle\Entity\Admin;
 use AppBundle\Entity\Card;
 use AppBundle\Entity\Etablishment;
@@ -61,8 +60,8 @@ class Fixtures extends Fixture
         $card_arr = [];
         for ($i = 0; $i < 20; $i++) {
             $card = new Card();
-            $rand = rand(1,5);
-            if(4 > $rand){
+            $rand = rand(1, 5);
+            if (4 > $rand) {
                 $key = array_rand($player_arr, 1);
                 $card->setPlayer($player_arr[$key]);
 
@@ -71,7 +70,7 @@ class Fixtures extends Fixture
 
                 $card->setStatus('active');
                 $card_arr[] = $card;
-            }else{
+            } else {
                 $card->setStatus('in_store');
             }
             $manager->persist($card);
