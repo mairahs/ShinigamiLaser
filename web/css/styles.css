@@ -92,7 +92,7 @@ p {
 }
 .header.col.s12.light{
     color: #fca906!important;
-    font-size: 20px;
+    font-size: 30px;
     font-weight: bold;
 }
 .material-icons{
@@ -155,6 +155,10 @@ footer.page-footer {
 
     background-color: rgba(255,255,255,0.8);
     margin-left:10px!important;
+}
 
+.connect{
+    border: 2px solid #fca906;
+    background-color: #fca906;
 }
 
