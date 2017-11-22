@@ -49,6 +49,11 @@ class Card
     private $score;
 
     /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Etablishment", inversedBy="cards")
+     */
+    private $etablishment;
+
+    /**
      * Get id
      *
      * @return int
@@ -169,5 +174,29 @@ class Card
     public function getScore()
     {
         return $this->score;
+    }
+
+    /**
+     * Set etablishment
+     *
+     * @param \AppBundle\Entity\Etablishment $etablishment
+     *
+     * @return Card
+     */
+    public function setEtablishment(\AppBundle\Entity\Etablishment $etablishment)
+    {
+        $this->etablishment = $etablishment;
+
+        return $this;
+    }
+
+    /**
+     * Get etablishment
+     *
+     * @return \AppBundle\Entity\Etablishment
+     */
+    public function getEtablishment()
+    {
+        return $this->etablishment;
     }
 }

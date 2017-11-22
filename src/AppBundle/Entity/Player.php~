@@ -86,6 +86,7 @@ class Player implements UserInterface, \Serializable
 
     /**
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Avatar", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true)
      */
     private $avatar;
 

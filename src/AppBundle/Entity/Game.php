@@ -42,6 +42,12 @@ class Game
     private $score;
 
     /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Etablishment", inversedBy="games")
+     */
+    private $etablishment;
+
+
+    /**
      * Get id
      *
      * @return int
@@ -139,5 +145,29 @@ class Game
     public function getPlayedAt()
     {
         return $this->playedAt;
+    }
+
+    /**
+     * Get etablishment
+     *
+     * @return string
+     */
+    public function getEtablishment()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Set etablishment
+     *
+     * @param string $etablishment
+     *
+     * @return Game
+     */
+    public function setEtablishment($etablishment)
+    {
+        $this->etablishment = $etablishment;
+
+        return $this;
     }
 }

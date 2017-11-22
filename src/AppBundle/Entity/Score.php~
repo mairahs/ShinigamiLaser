@@ -158,4 +158,28 @@ class Score
     {
         return $this->games;
     }
+
+    /**
+     * Set cards
+     *
+     * @param \AppBundle\Entity\Card $cards
+     *
+     * @return Score
+     */
+    public function setCards(\AppBundle\Entity\Card $cards = null)
+    {
+        $this->cards = $cards;
+
+        return $this;
+    }
+
+    /**
+     * Get cards
+     *
+     * @return \AppBundle\Entity\Card
+     */
+    public function getCards()
+    {
+        return $this->cards;
+    }
 }

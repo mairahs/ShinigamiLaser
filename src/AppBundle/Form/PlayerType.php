@@ -57,7 +57,7 @@ class PlayerType extends AbstractType
                     $form
                         ->add('password', RepeatedType::class, ['type'=>PasswordType::class, 'first_options'=>['label'=>'Password'], 'second_options'=>['label'=>'Confirm password']])
                         ->add('avatar', AvatarType::class)
-                        ->add('Enregistrez-vous',SubmitType::class)
+                        ->add('Enregistre-toi',SubmitType::class)
                     ;
                 }else{
                     $form

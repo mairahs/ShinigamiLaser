@@ -44,4 +44,6 @@ class UserController extends Controller
 
         return $this->render('@Admin/user/display_player.html.twig',['player'=>$player]);
     }
+
+
 }
