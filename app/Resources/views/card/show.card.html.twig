@@ -1,6 +1,18 @@
 {% extends '::base.html.twig' %}
 
+{% block stylesheets %}
+    <link href="{{ asset('css/lib/highcharts.css') }}" rel="stylesheet" type="text/css"/>
+{% endblock %}
+
 {% block body %}
     <h3>Carte : {{ card.number }}</h3>
+    <a href="{{ path('app_dashboard') }}">Retour au dashboard</a>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, animi dolorem ducimus eius libero placeat totam veniam voluptate. Adipisci assumenda consequuntur delectus dolor dolorem laboriosam laudantium, nemo quibusdam quod soluta.</p>
+    <div id="containerHighcharts"></div>
+    <input type="hidden" id="id_carte" value="{{ card.id }}">
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/lib/highcharts/highcharts.js') }}"></script>
+    <script src="{{ asset('js/stat.card.show.js') }}"></script>
 {% endblock %}

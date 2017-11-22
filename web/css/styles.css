@@ -1,7 +1,6 @@
 body{
     margin:0;
     padding:0;
-    background: url('../images/lasers.jpeg') no-repeat center fixed;
     -webkit-background-size: cover; /* pour anciens Chrome et Safari */
     background-size: cover; /* version standardisée */
     font-family: 'Roboto', sans-serif;

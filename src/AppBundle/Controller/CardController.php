@@ -9,6 +9,8 @@ use AppBundle\Form\CardType;
 use AppBundle\Service\CardManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\SecurityBundle\Tests\Functional\Bundle\AclBundle\Entity\Car;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use UserBundle\Manager\AuthenticateService;
@@ -87,6 +89,18 @@ class CardController extends Controller
             }
         }
         return $this->redirectToRoute('app_card_disable_page', ['id' => $card->getId()]);
+    }
+
+
+    /**
+     * @param Card $card
+     * @internal param $id
+     * @return JsonResponse
+     */
+    public function getStatAction(Card $card){
+        $stats = $this->getDoctrine()->getRepository('AppBundle:Score')->getStatsGame($card);
+//        dump($stats);
+        return new JsonResponse($stats);
     }
 
     /**

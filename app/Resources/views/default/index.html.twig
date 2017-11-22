@@ -1,56 +1,71 @@
 {% extends 'base.html.twig' %}
-   {% block body %}
-        <div id="index-banner" class="parallax-container">
-            <div class="section no-pad-bot">
-                <div class="container">
 
-                    <br><br>
-                    <h1 class="header center teal-text text-lighten-2">ShinigamiLaser</h1>
-                    <div class="row center">
-                        <h5 class="header col s12 light">Bienvenue dans un monde parallèle de lutte pour sa propre survie...</h5>
-                    </div>
-                    <div class="row center">
-                        <a href="#" id="download-button" class="btn-large waves-effect waves-light teal lighten-1 ">Enregistre ta carte de fidélité</a>
-                    </div>
-                    <br><br>
+{% block stylesheets %}
+    <style>
+        body{
+            background: url('../../images/lasers.jpeg') no-repeat center fixed;
+        }
+    </style>
+{% endblock %}
 
-                </div>
-            </div>
+{% block body %}
+   <div id="index-banner" class="parallax-container">
+       <div class="section no-pad-bot">
+           <div class="container">
+
+               <br><br>
+               <h1 class="header center teal-text text-lighten-2">ShinigamiLaser</h1>
+               <div class="row center">
+                   <h5 class="header col s12 light">Bienvenue dans un monde parallèle de lutte pour sa propre
+                       survie...</h5>
+               </div>
+               <div class="row center">
+                   <a href="#" id="download-button" class="btn-large waves-effect waves-light teal lighten-1 ">Enregistre
+                       ta carte de fidélité</a>
+               </div>
+               <br><br>
+
+           </div>
+       </div>
 
 
-        </div>
+   </div>
 
-        <div class="section">
+   <div class="section">
 
-            <!--   Icon Section   -->
-            <div class="row">
-                <div class="col s12 m4 bordered">
-                    <div class="icon-block">
-                        <h2 class="center brown-text"><i class="material-icons" style="font-size: 50px;">euro_symbol</i></h2>
-                        <h5 class="center">Nos tarifs</h5>
+       <!--   Icon Section   -->
+       <div class="row">
+           <div class="col s12 m4 bordered">
+               <div class="icon-block">
+                   <h2 class="center brown-text"><i class="material-icons" style="font-size: 50px;">euro_symbol</i>
+                   </h2>
+                   <h5 class="center">Nos tarifs</h5>
 
-                        <p>Nous proposons différentes formules d'abonnement à des tarifs défiant toute concurrence.</p>
-                    </div>
-                </div>
+                   <p>Nous proposons différentes formules d'abonnement à des tarifs défiant toute concurrence.</p>
+               </div>
+           </div>
 
-                <div class="col s12 m4 bordered">
-                    <div class="icon-block">
-                        <h2 class="center brown-text"><i class="material-icons" style="font-size: 50px;">group</i></h2>
-                        <h5 class="center">Réserve une partie</h5>
+           <div class="col s12 m4 bordered">
+               <div class="icon-block">
+                   <h2 class="center brown-text"><i class="material-icons" style="font-size: 50px;">group</i></h2>
+                   <h5 class="center">Réserve une partie</h5>
 
-                        <p>Seul(e), en famille ou entre ami(e)s, viens t'amuser chez ShinigamiLaser. Réserve ta partie et deviens le héros du game.</p>
-                    </div>
-                </div>
+                   <p>Seul(e), en famille ou entre ami(e)s, viens t'amuser chez ShinigamiLaser. Réserve ta partie et
+                       deviens le héros du game.</p>
+               </div>
+           </div>
 
-                <div class="col s12 m4 bordered">
-                    <div class="icon-block">
-                        <h2 class="center brown-text"><i class="material-icons" style="font-size: 50px;">settings</i></h2>
-                        <h5 class="center">Enregistre ta carte de fidélité</h5>
+           <div class="col s12 m4 bordered">
+               <div class="icon-block">
+                   <h2 class="center brown-text"><i class="material-icons" style="font-size: 50px;">settings</i>
+                   </h2>
+                   <h5 class="center">Enregistre ta carte de fidélité</h5>
 
-                        <p>Bénéficie d'un suivi de tes performances, d' offres promotionnelles etc... Retire ta carte de fidélité à l'accueil  de l'établissement et enregistre la sur le site.</p>
-                    </div>
-                </div>
-            </div>
+                   <p>Bénéficie d'un suivi de tes performances, d' offres promotionnelles etc... Retire ta carte de
+                       fidélité à l'acceuil de l'établissement et enregistre la sur le site.</p>
+               </div>
+           </div>
+       </div>
 
-        </div>
-   {% endblock %}
+   </div>
+{% endblock %}
