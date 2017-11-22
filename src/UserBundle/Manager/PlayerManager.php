@@ -12,7 +12,6 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
 
-
 class PlayerManager
 {
     private $entityManager;
@@ -48,7 +47,8 @@ class PlayerManager
         $this->mailManager->sendMailToPlayer($player);
     }
 
-    public function resetPassword(Player $player){
+    public function resetPassword(Player $player)
+    {
         $hashedPassword = $this->encoder->getEncoder(Player::class)->encodePassword($player->getPassword(), $player);
         $player->setPassword($hashedPassword);
         $this->entityManager->persist($player);
@@ -61,7 +61,8 @@ class PlayerManager
         $this->entityManager->flush();
     }
 
-    public function findPassword(Player $player, $oldPassword){
+    public function findPassword(Player $player, $oldPassword)
+    {
         //TODO Activer la recherche
 //        $hashedPassword = $this->encoder->getEncoder(Player::class)->isPasswordValid($oldPassword, $player);
 //        $find = $this->entityManager->getRepository('AppBundle:Player')->findOneBy(['password' => $hashedPassword, 'id' => $player->getId()]);
@@ -90,6 +91,4 @@ class PlayerManager
         $hash = hash('sha256', $key);
         return $hash;
     }
-
-
 }

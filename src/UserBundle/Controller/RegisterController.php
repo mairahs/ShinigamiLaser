@@ -8,7 +8,6 @@
 
 namespace UserBundle\Controller;
 
-
 use AppBundle\Entity\Player;
 use AppBundle\Form\PlayerType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -21,7 +20,7 @@ class RegisterController extends Controller
     public function formAction(Request $request)
     {
         $player = new Player();
-        if($this->get('kernel')->getEnvironment() === "dev" && $request->get('t') === "1"){
+        if ($this->get('kernel')->getEnvironment() === "dev" && $request->get('t') === "1") {
             $player = $this->get(PlayerManager::class)->test($player);
         }
         $form = $this->createForm(PlayerType::class, $player);

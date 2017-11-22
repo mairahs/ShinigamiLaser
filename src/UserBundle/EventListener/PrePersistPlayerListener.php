@@ -3,7 +3,6 @@
 
 namespace UserBundle\EventListener;
 
-
 use AppBundle\Entity\Player;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use UserBundle\Manager\PlayerManager;

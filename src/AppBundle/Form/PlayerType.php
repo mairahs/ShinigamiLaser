@@ -36,7 +36,10 @@ class PlayerType extends AbstractType
             ->add('username', TextType::class)
             ->add('address', TextareaType::class)
             ->add('phoneNumber', TextType::class)
-            ->add('dateOfBirth', DateType::class, array(
+            ->add(
+                'dateOfBirth',
+                DateType::class,
+                array(
                     'widget' => 'single_text',
                     'html5' => false,
                     'attr' => [
@@ -57,11 +60,11 @@ class PlayerType extends AbstractType
                     $form
                         ->add('password', RepeatedType::class, ['type'=>PasswordType::class, 'first_options'=>['label'=>'Password'], 'second_options'=>['label'=>'Confirm password']])
                         ->add('avatar', AvatarType::class)
-                        ->add('Enregistrez-vous',SubmitType::class)
+                        ->add('Enregistrez-vous', SubmitType::class)
                     ;
-                }else{
+                } else {
                     $form
-                        ->add('Modifier',SubmitType::class)
+                        ->add('Modifier', SubmitType::class)
                     ;
                 }
             }
@@ -85,6 +88,4 @@ class PlayerType extends AbstractType
     {
         return 'appbundle_player';
     }
-
-
 }

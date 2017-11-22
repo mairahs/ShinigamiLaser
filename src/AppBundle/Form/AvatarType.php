@@ -35,6 +35,4 @@ class AvatarType extends AbstractType
     {
         return 'appbundle_avatar';
     }
-
-
 }

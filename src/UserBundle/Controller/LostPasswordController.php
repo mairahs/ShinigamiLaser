@@ -2,7 +2,6 @@
 
 namespace UserBundle\Controller;
 
-
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\File\Exception\AccessDeniedException;
@@ -17,8 +16,7 @@ class LostPasswordController extends Controller
         $email = $request->request->get('_email');
         if ($request->getMethod() === "POST" && !is_null($email) && $email !== "") {
             $player = $this->getDoctrine()->getRepository('AppBundle:Player')->findOneBy(['email' => $email]);
-            if(!$player)
-            {
+            if (!$player) {
                 //todo afficher l'erreur dans la vue
                 throw new AccessDeniedException('Email non trouvé');
             }
