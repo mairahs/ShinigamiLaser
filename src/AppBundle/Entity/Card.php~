@@ -49,6 +49,12 @@ class Card
     private $score;
 
     /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Etablishment")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $etablishment;
+
+    /**
      * Get id
      *
      * @return int
@@ -128,5 +134,70 @@ class Card
     public function getNumber()
     {
         return $this->number;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->score = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add score
+     *
+     * @param \AppBundle\Entity\Score $score
+     *
+     * @return Card
+     */
+    public function addScore(\AppBundle\Entity\Score $score)
+    {
+        $this->score[] = $score;
+
+        return $this;
+    }
+
+    /**
+     * Remove score
+     *
+     * @param \AppBundle\Entity\Score $score
+     */
+    public function removeScore(\AppBundle\Entity\Score $score)
+    {
+        $this->score->removeElement($score);
+    }
+
+    /**
+     * Get score
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getScore()
+    {
+        return $this->score;
+    }
+
+    /**
+     * Set etablishment
+     *
+     * @param \AppBundle\Entity\Etablishment $etablishment
+     *
+     * @return Card
+     */
+    public function setEtablishment(\AppBundle\Entity\Etablishment $etablishment)
+    {
+        $this->etablishment = $etablishment;
+
+        return $this;
+    }
+
+    /**
+     * Get etablishment
+     *
+     * @return \AppBundle\Entity\Etablishment
+     */
+    public function getEtablishment()
+    {
+        return $this->etablishment;
     }
 }

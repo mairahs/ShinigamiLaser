@@ -30,11 +30,14 @@ class Fixtures extends Fixture
 
         $encoder = $this->container->get('security.password_encoder');
 
+        $etablishment_arr = [];
         for ($i = 0; $i < 5; $i++) {
             $etablishment = new Etablishment();
             $etablishment->setName($faker->lastName);
             $etablishment->setCity($faker->city);
+            $etablishment->setCode(rand(111,999));
             $manager->persist($etablishment);
+            $etablishment_arr[] = $etablishment;
         }
 
         $player_arr = [];
@@ -61,6 +64,10 @@ class Fixtures extends Fixture
             if (4 > $rand) {
                 $key = array_rand($player_arr, 1);
                 $card->setPlayer($player_arr[$key]);
+
+                $key_ = array_rand($etablishment_arr, 1);
+                $card->setEtablishment($etablishment_arr[$key_]);
+
                 $card->setStatus('active');
                 $card_arr[] = $card;
             } else {
@@ -77,9 +84,13 @@ class Fixtures extends Fixture
             $date->modify("+$i day");
             $game->setPlayedAt($date);
 
-            foreach ($card_arr as $card) {
-                $rand = rand(1, 3);
-                if (3 > $rand) {
+            $key_ = array_rand($etablishment_arr, 1);
+            $game->setEtablishment($etablishment_arr[$key_]);
+
+
+            foreach($card_arr as $card){
+                $rand = rand(1,3);
+                if(3 > $rand){
                     $score = new Score();
                     $score->setResult(rand(100, 1000));
                     $score->setRank('super tireur');

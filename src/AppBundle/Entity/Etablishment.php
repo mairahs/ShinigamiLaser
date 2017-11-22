@@ -35,6 +35,23 @@ class Etablishment
      */
     private $name;
 
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="code", type="integer")
+     */
+    private $code;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Card", mappedBy="etablishment")
+     */
+    private $cards;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Game", mappedBy="etablishment")
+     */
+    private $games;
+
 
     /**
      * Get id
@@ -92,5 +109,105 @@ class Etablishment
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set code
+     *
+     * @param integer $code
+     *
+     * @return Etablishment
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+
+        return $this;
+    }
+
+    /**
+     * Get code
+     *
+     * @return integer
+     */
+    public function getCode()
+    {
+        return $this->code;
+    }
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->cards = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add card
+     *
+     * @param \AppBundle\Entity\Card $card
+     *
+     * @return Etablishment
+     */
+    public function addCard(\AppBundle\Entity\Card $card)
+    {
+        $this->cards[] = $card;
+
+        return $this;
+    }
+
+    /**
+     * Remove card
+     *
+     * @param \AppBundle\Entity\Card $card
+     */
+    public function removeCard(\AppBundle\Entity\Card $card)
+    {
+        $this->cards->removeElement($card);
+    }
+
+    /**
+     * Get cards
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCards()
+    {
+        return $this->cards;
+    }
+
+    /**
+     * Add game
+     *
+     * @param \AppBundle\Entity\Game $game
+     *
+     * @return Etablishment
+     */
+    public function addGame(\AppBundle\Entity\Game $game)
+    {
+        $this->games[] = $game;
+
+        return $this;
+    }
+
+    /**
+     * Remove game
+     *
+     * @param \AppBundle\Entity\Game $game
+     */
+    public function removeGame(\AppBundle\Entity\Game $game)
+    {
+        $this->games->removeElement($game);
+    }
+
+    /**
+     * Get games
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGames()
+    {
+        return $this->games;
     }
 }

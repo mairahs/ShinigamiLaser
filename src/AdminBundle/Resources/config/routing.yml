@@ -16,3 +16,13 @@ admin_findplayer:
 admin_displayplayer:
     path: /displayplayer/{id}
     defaults: {_controller: AdminBundle:User:display}
+
+admin_etablishment_index:
+    path: /etablishments
+    defaults: {_controller: AdminBundle:Etablishment:index}
+
+admin_etablishment_show:
+    path: /etablishment/{id}
+    defaults: {_controller: AdminBundle:Etablishment:show}
+    requirements:
+        id: \d+
