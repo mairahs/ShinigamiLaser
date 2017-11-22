@@ -2,23 +2,30 @@
 
 {% block body %}
     <h3>Dashboard</h3>
+
+
+
+
     <ul class="collection with-header">
     <li class="collection-header"><h5>Vos cartes</h5></li>
-    {% for card in user.cards %}
+    {% for card in cards %}
         <li class="collection-item">
             <div>
-                {{ card.number }}
-                {% if workflow_has_marked_place(card, 'disable') %}
+                Numéro : {{ card.number }} -
+                Score total : {{ card.sumscore }} -
+                Nombre de parties : {{ card.nbgames }}
+                {% if card.status == "disable" %}
                     <div class="secondary-content" title="carte desactivée"><i class="material-icons">not_interested</i></div>
                     <a href="{{ path('app_card_show', {'id':card.id}) }}" class="secondary-content" title="voir details"><i class="material-icons">remove_red_eye</i></a>
                 {% else %}
                     <a href="{{ path('app_card_disable_page', {'id':card.id}) }}" class="secondary-content" title="carte perdue ou volée"><i class="material-icons">no_sim</i></a>
                     <a href="{{ path('app_card_show', {'id':card.id}) }}" class="secondary-content" title="voir details"><i class="material-icons">remove_red_eye</i></a>
                 {% endif %}
+                <div class="clearfix"></div>
             </div>
         </li>
     {% endfor %}
-        <li class="collection-item"><div>ajout carte<a href="{{ path('app_card_add') }}" class="secondary-content"><i class="material-icons">add</i></a></div></li>
+        <li class="collection-item"><div>ajout carte<a href="{{ path('app_card_add') }}" class="secondary-content"><i class="material-icons">add</i></a></div><div class="clearfix"></div></li>
     </ul>
 {% endblock %}
 
