@@ -46,79 +46,21 @@ class Game
 
 
     /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
      * Constructor
      */
     public function __construct()
     {
-        $this->score = new ArrayCollection();
+        $this->score = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
-     * Add score
+     * Get id
      *
-     * @param \AppBundle\Entity\Score $score
-     *
-     * @return Game
+     * @return integer
      */
-    public function addScore(Score $score)
+    public function getId()
     {
-        $this->score[] = $score;
-
-        return $this;
-    }
-
-    /**
-     * Remove score
-     *
-     * @param \AppBundle\Entity\Score $score
-     */
-    public function removeScore(Score $score)
-    {
-        $this->score->removeElement($score);
-    }
-
-    /**
-     * Get score
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getScore()
-    {
-        return $this->score;
-    }
-
-    /**
-     * Set type
-     *
-     * @param string $type
-     *
-     * @return Game
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    /**
-     * Get type
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->type;
+        return $this->id;
     }
 
     /**
@@ -146,26 +88,84 @@ class Game
     }
 
     /**
-     * Get etablishment
+     * Set gameType
      *
-     * @return string
+     * @param \AppBundle\Entity\GameType $gameType
+     *
+     * @return Game
      */
-    public function getEtablishment()
+    public function setGameType(\AppBundle\Entity\GameType $gameType = null)
     {
-        return $this->type;
+        $this->gameType = $gameType;
+
+        return $this;
+    }
+
+    /**
+     * Get gameType
+     *
+     * @return \AppBundle\Entity\GameType
+     */
+    public function getGameType()
+    {
+        return $this->gameType;
+    }
+
+    /**
+     * Add score
+     *
+     * @param \AppBundle\Entity\Score $score
+     *
+     * @return Game
+     */
+    public function addScore(\AppBundle\Entity\Score $score)
+    {
+        $this->score[] = $score;
+
+        return $this;
+    }
+
+    /**
+     * Remove score
+     *
+     * @param \AppBundle\Entity\Score $score
+     */
+    public function removeScore(\AppBundle\Entity\Score $score)
+    {
+        $this->score->removeElement($score);
+    }
+
+    /**
+     * Get score
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getScore()
+    {
+        return $this->score;
     }
 
     /**
      * Set etablishment
      *
-     * @param string $etablishment
+     * @param \AppBundle\Entity\Etablishment $etablishment
      *
      * @return Game
      */
-    public function setEtablishment($etablishment)
+    public function setEtablishment(\AppBundle\Entity\Etablishment $etablishment = null)
     {
         $this->etablishment = $etablishment;
 
         return $this;
+    }
+
+    /**
+     * Get etablishment
+     *
+     * @return \AppBundle\Entity\Etablishment
+     */
+    public function getEtablishment()
+    {
+        return $this->etablishment;
     }
 }
