@@ -1,41 +1,83 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-
-
     <div class="row">
-
         <div class="col s12 m12">
             <p class="justify"><i class="material-icons" style="font-size:15px; color:#e24800!important;">arrow_back</i><a style="color:#e24800;" href="{{ path('admin_etablishment_index') }}"> Retour vers la liste des établissements</a></p>
-            <div class="icon-block">
-
-                <h4 class="center" style="color:#e24800; font-weight: bold;">ShinigamiLaser - {{ etablishment.name }}</h4>
-
-            </div>
         </div>
-
-        <table class="responsive-table centered">
-            <thead>
-            <tr>
-                <th>Code</th>
-                <th>Ville</th>
-                <th>Dernières parties jouées </th>
-                <th>Scores</th>
-            </tr>
-            </thead>
-
-            <tbody>
-            <tr>
-                <td>{{ etablishment.code }}</td>
-                <td>{{ etablishment.city }}</td>
-
-
-            </tr>
-
-            </tbody>
-        </table>
-
     </div>
+    <div class="container">
+        <!--start container-->
+        <div class="container">
+
+            <div id="profile-page" class="section">
+                <!-- profile-page-header -->
+                <div id="profile-page-header" class="card">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img class="activator" src="{{ asset('images/lasers.jpeg') }}" alt="user background" style="max-height: 300px;">
+                    </div>
+                    <div class="card-content">
+                        <div class="row">
+                            <div class="col s3 offset-s2">
+                                <h4 class="card-title grey-text text-darken-4">SL - {{ etablishment.name }}</h4>
+                                <p class="medium-small grey-text">Nom</p>
+                            </div>
+                            <div class="col s2 center-align">
+                                <h4 class="card-title grey-text text-darken-4">{{ etablishment.city }}</h4>
+                                <p class="medium-small grey-text">Ville</p>
+                            </div>
+                            <div class="col s2 center-align">
+                                <h4 class="card-title grey-text text-darken-4">{{ etablishment.code }}</h4>
+                                <p class="medium-small grey-text">Code Etablissement</p>
+                            </div>
+                            <div class="col s1 right-align">
+                                <a class="btn-floating activator waves-effect waves-light darken-2 right">
+                                    <i class="mdi-action-perm-identity"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-reveal">
+                        <p>
+                            <span class="card-title grey-text text-darken-4">{{ etablishment.name }} <i class="mdi-navigation-close right"></i></span>
+                            <span><i class="mdi-action-perm-identity cyan-text text-darken-2"></i> Nom</span>
+                        </p>
+                    </div>
+                </div>
+                <!--/ profile-page-header -->
+            </div>
+            <!-- Profile About  -->
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card amber darken-2">
+                        <div class="card-content dark-text center-align">
+                            <p class="card-title "><i class="mdi-social-group-add"></i> {{ etablishment.games|length }}</p>
+                            <p >Nombre de parties  jouées</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th data-field="id">Nom de la partie</th>
+                            <th data-field="name">Date</th>
+                            <th data-field="price">Détails de la partie</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for game  in etablishment.games%}
+                        <tr>
+                            <td>{{ game.type }}</td>
+                            <td>{{ game.playedAt|date('d/m/Y')}}</td>
+                            <td><a><i class="material-icons">visibility</i></a></td>
+                        </tr>
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 
 {% endblock %}
 
