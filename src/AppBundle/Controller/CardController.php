@@ -99,7 +99,11 @@ class CardController extends Controller
      */
     public function scoreByGameAction(Card $card)
     {
-        $stats = $this->getDoctrine()->getRepository('AppBundle:Score')->getScoreByGame($card);
+        $game_type = $this->getDoctrine()->getRepository('AppBundle:GameType')->findAll();
+        $stats = [];
+        foreach ($game_type as $type){
+            $stats[$type->getType()] = $this->getDoctrine()->getRepository('AppBundle:Score')->getScoreByGame($card, $type);
+        }
         return new JsonResponse($stats);
     }
 
@@ -111,6 +115,17 @@ class CardController extends Controller
     public function allStatAction(Card $card)
     {
         $stats = $this->getDoctrine()->getRepository('AppBundle:Score')->getAllStat($card);
+        return new JsonResponse($stats);
+    }
+
+    /**
+     * @param Card $card
+     * @internal param $id
+     * @return JsonResponse
+     */
+    public function winloseAction(Card $card)
+    {
+        $stats = $this->getDoctrine()->getRepository('AppBundle:Score')->getWinlose($card);
         return new JsonResponse($stats);
     }
 

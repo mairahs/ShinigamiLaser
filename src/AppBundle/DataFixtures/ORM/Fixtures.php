@@ -7,15 +7,13 @@ use AppBundle\Entity\Admin;
 use AppBundle\Entity\Card;
 use AppBundle\Entity\Etablishment;
 use AppBundle\Entity\Game;
+use AppBundle\Entity\GameType;
 use AppBundle\Entity\Player;
 use AppBundle\Entity\Provider;
 use AppBundle\Entity\Score;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Faker\Factory as Factory;
-use Symfony\Component\DependencyInjection\ContainerAwareInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Class Fixtures
@@ -30,7 +28,29 @@ class Fixtures extends Fixture
 
         $encoder = $this->container->get('security.password_encoder');
 
-        $etablishment_arr = [];
+
+        $gametype_arr = [
+        "Team" => [
+            'min' => 300,
+            'max' => 1100
+        ],
+        "FFA" => [
+            'min' => 800,
+            'max' => 2000
+        ],
+        "Dracula" => [
+            'min' => 20,
+            'max' => 100
+        ]];
+
+        $game_typeO = [];
+        foreach ($gametype_arr as $type => $value){
+            $game_type = new GameType();
+            $game_type->setType($type);
+            $manager->persist($game_type);
+            $game_typeO[] = $game_type;
+        }
+
         for ($i = 0; $i < 5; $i++) {
             $etablishment = new Etablishment();
             $etablishment->setName($faker->lastName);
@@ -78,23 +98,30 @@ class Fixtures extends Fixture
 
         for ($i = 0; $i < 15; $i++) {
             $game = new Game();
-            $game->setType('deathmatch');
 
             $date = new \DateTime();
             $date->modify("+$i day");
             $game->setPlayedAt($date);
 
-            $key_ = array_rand($etablishment_arr, 1);
-            $game->setEtablishment($etablishment_arr[$key_]);
+            $rand = rand(0, 2);
+            $game->setGameType($game_typeO[$rand]);
+            $get_type = $game_typeO[$rand]->getType();
 
+            $rand_min_max = $gametype_arr[$get_type];
 
-            foreach($card_arr as $card){
-                $rand = rand(1,3);
-                if(3 > $rand){
+            foreach ($card_arr as $card) {
+                $rand = rand(1, 3);
+                if (3 > $rand) {
                     $score = new Score();
-                    $score->setResult(rand(100, 1000));
+                    $score->setResult(rand($rand_min_max['min'], $rand_min_max['max']));
+                    //TODO mettre le rank en BDD
                     $score->setRank('super tireur');
-                    $score->setTeam(0);
+                    if ($get_type == 'Team') {
+                        $score->setTeam(rand(1, 2));
+                    } else {
+                        $score->setTeam(0);
+                    }
+
                     $score->setCards($card);
                     $score->setGames($game);
                     $manager->persist($score);

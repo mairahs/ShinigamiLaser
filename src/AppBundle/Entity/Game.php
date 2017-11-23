@@ -23,11 +23,9 @@ class Game
     private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="type", type="string", length=55)
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\GameType", cascade={"persist"})
      */
-    private $type;
+    private $gameType;
 
     /**
      * @var \DateTime

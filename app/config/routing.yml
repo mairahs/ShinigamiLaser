@@ -50,6 +50,10 @@ app_card_get_allstat:
     path: /card/get/allstat/{id}
     defaults: { _controller: AppBundle:Card:allStat }
 
+app_card_get_winlose:
+    path: /card/get/winlose/{id}
+    defaults: { _controller: AppBundle:Card:winlose }
+
 app_game_index:
     path: /game
     defaults: { _controller: AppBundle:Game:index }
@@ -57,3 +61,4 @@ app_game_index:
 app_game_show:
     path: /game/{id}
     defaults: { _controller: AppBundle:Game:show }
+
