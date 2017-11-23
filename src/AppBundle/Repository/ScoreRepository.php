@@ -3,6 +3,7 @@
 namespace AppBundle\Repository;
 
 use AppBundle\Entity\Card;
+use AppBundle\Entity\GameType;
 use AppBundle\Entity\Player;
 
 /**
@@ -13,9 +14,13 @@ use AppBundle\Entity\Player;
  */
 class ScoreRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * @param Player $player
+     * @return array
+     */
     public function getListCardDashboard(Player $player)
     {
-        $queryBuilder = $this  ->createQueryBuilder('score')
+        $queryBuilder = $this->createQueryBuilder('score')
             ->leftJoin('score.cards', 'cards')
             ->select('SUM(score.result) AS sumscore')
             ->addSelect('cards.number')
@@ -30,22 +35,34 @@ class ScoreRepository extends \Doctrine\ORM\EntityRepository
         return $queryBuilder->getQuery()->getResult();
     }
 
-    public function getScoreByGame(Card $card)
+    /**
+     * @param Card $card
+     * @param GameType $gameType
+     * @return array
+     * @internal param $type
+     */
+    public function getScoreByGame(Card $card, GameType $gameType)
     {
-        $queryBuilder = $this  ->createQueryBuilder('score')
+        $queryBuilder = $this->createQueryBuilder('score')
             ->leftJoin('score.games', 'games')
             ->select('score.result')
             ->addSelect('games.playedAt')
+            ->where('games.gameType = :gameType')
             ->andWhere('score.cards = :card')
             ->setParameters([
-                'card' => $card
+                'card' => $card,
+                'gameType' => $gameType
             ]);
         return $queryBuilder->getQuery()->getResult();
     }
 
+    /**
+     * @param Card $card
+     * @return mixed
+     */
     public function getAllStat(Card $card)
     {
-        $queryBuilder = $this  ->createQueryBuilder('score')
+        $queryBuilder = $this->createQueryBuilder('score')
             ->leftJoin('score.games', 'games')
             ->select('SUM(score.result) AS sumscore')
             ->addSelect('COUNT(score.result) AS nbgames')
@@ -54,5 +71,19 @@ class ScoreRepository extends \Doctrine\ORM\EntityRepository
                 'card' => $card
             ]);
         return $queryBuilder->getQuery()->getScalarResult();
+    }
+
+    public function getWinlose(Card $card)
+    {
+        $queryBuilder = $this->createQueryBuilder('score')
+            ->leftJoin('score.games', 'games')
+            ->andWhere('score.cards = :card')
+            ->andWhere("games.type = 'equipe'")
+            ->setParameters([
+                'card' => $card
+            ]);
+        ;
+        dump($queryBuilder->getQuery()->getResult());
+        die;
     }
 }

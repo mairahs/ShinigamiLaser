@@ -23,11 +23,9 @@ class Game
     private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="type", type="string", length=55)
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\GameType", cascade={"persist"})
      */
-    private $type;
+    private $gameType;
 
     /**
      * @var \DateTime
@@ -139,5 +137,29 @@ class Game
     public function getPlayedAt()
     {
         return $this->playedAt;
+    }
+
+    /**
+     * Set gameType
+     *
+     * @param \AppBundle\Entity\GameType $gameType
+     *
+     * @return Game
+     */
+    public function setGameType(\AppBundle\Entity\GameType $gameType = null)
+    {
+        $this->gameType = $gameType;
+
+        return $this;
+    }
+
+    /**
+     * Get gameType
+     *
+     * @return \AppBundle\Entity\GameType
+     */
+    public function getGameType()
+    {
+        return $this->gameType;
     }
 }

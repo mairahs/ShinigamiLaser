@@ -10,11 +10,18 @@
     <p><b>Score total :</b> <span id="score_total"></span></p>
     <p><b>Parties jouées :</b> <span id="parties_jouees"></span></p>
     <p><b>Moyenne par partie :</b> <span id="moyenne_partie"></span></p>
-    <div id="containerHighcharts" class="col-md-6"></div>
+    <div class="row">
+        <div id="scorebygame" class="col-md-6"></div>
+        <div id="typepartie" class="col-md-6"></div>
+    </div>
+    <div class="row">
+        <div id="winlose" class="col-md-6"></div>
+    </div>
     <input type="hidden" id="id_carte" value="{{ card.id }}">
 {% endblock %}
 
 {% block javascripts %}
     <script src="{{ asset('js/lib/highcharts/highcharts.js') }}"></script>
     <script src="{{ asset('js/stat.card.show.js') }}"></script>
+    <script src="{{ asset('js/scorebygame.js') }}"></script>
 {% endblock %}

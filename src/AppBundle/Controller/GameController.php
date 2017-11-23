@@ -8,19 +8,20 @@
 
 namespace AppBundle\Controller;
 
-
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class GameController extends Controller
 {
-    public function indexAction(){
+    public function indexAction()
+    {
         $games = $this->getDoctrine()->getRepository('AppBundle:Score')->findAll();
         return $this->render('game/game.index.html.twig', [
             'games' => $games
         ]);
     }
 
-    public function showAction(){
+    public function showAction()
+    {
         $games = $this->getDoctrine()->getRepository('AppBundle:Score')->findAll();
         return $this->render('game/game.index.html.twig', [
             'games' => $games
