@@ -3,7 +3,6 @@ body{
     padding:0;
     -webkit-background-size: cover; /* pour anciens Chrome et Safari */
     background-size: cover; /* version standardisée */
-    font-family: 'Roboto', sans-serif;
 }
 
 .file-wrapper .btn {
@@ -150,10 +149,8 @@ footer.page-footer {
     padding-left: 37px;
 }
 
-.bordered{
-
+.bordered .icon-block{
     background-color: rgba(255,255,255,0.8);
-    margin-left:10px!important;
 }
 
 .connect{

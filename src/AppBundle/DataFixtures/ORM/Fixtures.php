@@ -51,6 +51,7 @@ class Fixtures extends Fixture
             $game_typeO[] = $game_type;
         }
 
+        $etablishment_arr = [];
         for ($i = 0; $i < 5; $i++) {
             $etablishment = new Etablishment();
             $etablishment->setName($faker->lastName);
@@ -102,6 +103,9 @@ class Fixtures extends Fixture
             $date = new \DateTime();
             $date->modify("+$i day");
             $game->setPlayedAt($date);
+
+            $key_ = array_rand($etablishment_arr, 1);
+            $game->setEtablishment($etablishment_arr[$key_]);
 
             $rand = rand(0, 2);
             $game->setGameType($game_typeO[$rand]);
