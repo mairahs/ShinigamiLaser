@@ -68,9 +68,9 @@
                         <tbody>
                         {% for game  in etablishment.games%}
                         <tr>
-                            <td>{{ game.type }}</td>
+                            <td>{{ game.gameType.type }}</td>
                             <td>{{ game.playedAt|date('d/m/Y')}}</td>
-                            <td><a><i class="material-icons">visibility</i></a></td>
+                            <td><a href="{{ path('admin_game_show', {'id': game.id}) }}"><i class="material-icons">visibility</i></a></td>
                         </tr>
                         {% endfor %}
 
