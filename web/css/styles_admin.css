@@ -13,6 +13,11 @@ body {
     font-weight: bold;
 }
 
+.dark-text{
+    color:#222222!important;
+    font-weight: bold;
+}
+
 @media only screen and (max-width: 992px) {
     header,
     main,
