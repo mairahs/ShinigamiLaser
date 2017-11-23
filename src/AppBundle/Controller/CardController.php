@@ -101,7 +101,7 @@ class CardController extends Controller
     {
         $game_type = $this->getDoctrine()->getRepository('AppBundle:GameType')->findAll();
         $stats = [];
-        foreach ($game_type as $type){
+        foreach ($game_type as $type) {
             $stats[$type->getType()] = $this->getDoctrine()->getRepository('AppBundle:Score')->getScoreByGame($card, $type);
         }
         return new JsonResponse($stats);

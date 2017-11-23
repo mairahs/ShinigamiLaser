@@ -12,10 +12,6 @@ user_register_activate:
     path: /register/activate/{token}
     defaults: { _controller: UserBundle:Register:activate}
 
-user_update:
-    path: /update/{id}
-    defaults: { _controller: UserBundle:Update:index}
-
 user_update_profil:
     path: /update/profil/{id}
     defaults: { _controller: UserBundle:Update:profil}

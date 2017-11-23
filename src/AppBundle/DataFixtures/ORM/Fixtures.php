@@ -44,7 +44,7 @@ class Fixtures extends Fixture
         ]];
 
         $game_typeO = [];
-        foreach ($gametype_arr as $type => $value){
+        foreach ($gametype_arr as $type => $value) {
             $game_type = new GameType();
             $game_type->setType($type);
             $manager->persist($game_type);
@@ -56,7 +56,7 @@ class Fixtures extends Fixture
             $etablishment = new Etablishment();
             $etablishment->setName($faker->lastName);
             $etablishment->setCity($faker->city);
-            $etablishment->setCode(rand(111,999));
+            $etablishment->setCode(rand(111, 999));
             $manager->persist($etablishment);
             $etablishment_arr[] = $etablishment;
         }
