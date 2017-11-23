@@ -23,11 +23,9 @@ class Game
     private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="type", type="string", length=55)
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\GameType", cascade={"persist"})
      */
-    private $type;
+    private $gameType;
 
     /**
      * @var \DateTime
@@ -42,102 +40,9 @@ class Game
     private $score;
 
     /**
-     * Get id
-     *
-     * @return int
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Etablishment", inversedBy="games")
      */
-    public function getId()
-    {
-        return $this->id;
-    }
+    private $etablishment;
 
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->score = new ArrayCollection();
-    }
 
-    /**
-     * Add score
-     *
-     * @param \AppBundle\Entity\Score $score
-     *
-     * @return Game
-     */
-    public function addScore(Score $score)
-    {
-        $this->score[] = $score;
-
-        return $this;
-    }
-
-    /**
-     * Remove score
-     *
-     * @param \AppBundle\Entity\Score $score
-     */
-    public function removeScore(Score $score)
-    {
-        $this->score->removeElement($score);
-    }
-
-    /**
-     * Get score
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getScore()
-    {
-        return $this->score;
-    }
-
-    /**
-     * Set type
-     *
-     * @param string $type
-     *
-     * @return Game
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    /**
-     * Get type
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
-
-    /**
-     * Set playedAt
-     *
-     * @param \DateTime $playedAt
-     *
-     * @return Game
-     */
-    public function setPlayedAt($playedAt)
-    {
-        $this->playedAt = $playedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get playedAt
-     *
-     * @return \DateTime
-     */
-    public function getPlayedAt()
-    {
-        return $this->playedAt;
-    }
 }

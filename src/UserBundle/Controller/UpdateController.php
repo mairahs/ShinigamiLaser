@@ -15,18 +15,6 @@ use UserBundle\Manager\PlayerManager;
 class UpdateController extends Controller
 {
     /**
-     * @param Player $player
-     * @return Response
-     */
-    public function indexAction(Player $player)
-    {
-        $this->get(AuthenticateService::class)->checkPlayer($player);
-        return $this->render('@User/update/update.index.html.twig', [
-            'player' => $player
-        ]);
-    }
-
-    /**
      * @param Request $request
      * @param Player $player
      * @return Response

@@ -2,7 +2,6 @@
 
 namespace AppBundle\Repository;
 
-
 use Doctrine\ORM\EntityRepository;
 
 class EtablishmentRepository extends EntityRepository
@@ -10,7 +9,7 @@ class EtablishmentRepository extends EntityRepository
     public function getAllEtablishmentsWithGames()
     {
         $queryBuilder = $this->createQueryBuilder('e')
-                             ->leftJoin('e.games','g')
+                             ->leftJoin('e.games', 'g')
                              ->addSelect('g');
 
         return $queryBuilder->getQuery()
@@ -20,9 +19,9 @@ class EtablishmentRepository extends EntityRepository
     public function getOneEtablishmentWithGamesAndScores($id)
     {
         $queryBuilder = $this->createQueryBuilder('e')
-                                        ->leftJoin('e.games','g')
+                                        ->leftJoin('e.games', 'g')
                                         ->addSelect('g')
-                                        ->leftJoin('g.score','s')
+                                        ->leftJoin('g.score', 's')
                                         ->addSelect('s')
                                         ->where('e.id = :id')
                                         ->setParameters(['id'=>$id]);

@@ -2,7 +2,7 @@
 
 {% block body %}
     <h3>Editer son profil</h3>
-    <img src="{{ asset('upload/' ~ player.avatar.name ~ '.' ~ player.avatar.extension) }}" class="img_rounded">
+    {% include('inc/inc.avatar.img.html.twig') %}
     {{ form_start(form) }}
     {{ form_widget(form) }}
     {{ form_end(form) }}
