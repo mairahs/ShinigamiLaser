@@ -93,10 +93,7 @@ p {
     font-size: 30px;
     font-weight: bold;
 }
-.material-icons{
-    color: #fca906!important;
-    font-size: 40px;
-}
+
 @media only screen and (max-width : 992px) {
     .parallax-container .section {
         position: absolute;
@@ -158,3 +155,75 @@ footer.page-footer {
     background-color: #fca906;
 }
 
+.listcard{
+    padding: 30px;
+}
+
+/* --- ---- ---- Style demo geeklabs --- --- ---- --- */
+
+.cardHeader .card-profile-image {
+    width: 110px;
+    position: absolute;
+    top: 190px;
+    z-index: 1;
+    left: 40px;
+    cursor: pointer;
+    margin: 0;
+}
+
+.cardHeader .card-image {
+    height: 250px;
+}
+
+.cardHeader .card-content {
+    margin-top: -40px;
+}
+
+.cardHeader .fixed-action-btn{
+    position: absolute;
+    bottom: 89px;
+}
+
+#task-card .collection-header {
+    padding: 20px;
+}
+
+#task-card .task-card-title {
+    margin: 0;
+    color: #fff;
+    font-weight: 300;
+}
+
+.card h3.card-title{
+    font-weight: 300;
+}
+
+#task-card .task-card-date {
+    font-size: 1.0rem;
+    margin: 0;
+    color: #fff;
+}
+
+#task-card p{
+    line-height: 1.5;
+}
+
+#task-card .row{
+    margin-bottom: 0;
+}
+
+#task-card p.collections-title {
+    font-size: 1.0rem;
+    padding: 0;
+    margin: 0;
+    font-weight: 500;
+}
+
+#task-card p.collections-content {
+    font-size: 0.9rem;
+    padding: 0;
+    margin: 0;
+    font-weight: 400;
+}
+
+/* --- ---- ---- Style demo geeklabs END --- --- ---- --- */

@@ -11,11 +11,17 @@
     <p><b>Parties jouées :</b> <span id="parties_jouees"></span></p>
     <p><b>Moyenne par partie :</b> <span id="moyenne_partie"></span></p>
     <div class="row">
-        <div id="scorebygame" class="col-md-6"></div>
-        <div id="typepartie" class="col-md-6"></div>
-    </div>
-    <div class="row">
-        <div id="winlose" class="col-md-6"></div>
+        <!--------------------------------- COL S4 ----------------------------------------->
+        <!---------------------------------------------------------------------------------->
+        <div class="col s6">
+            <div id="scorebygame" class="card"></div>
+        </div>
+        <!--------------------------------- COL S4 ----------------------------------------->
+        <!---------------------------------------------------------------------------------->
+        <div class="col s6">
+            <div id="typepartie" class="card"></div>
+            <div id="winlose" class="card"></div>
+        </div>
     </div>
     <input type="hidden" id="id_carte" value="{{ card.id }}">
 {% endblock %}

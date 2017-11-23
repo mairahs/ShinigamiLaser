@@ -1,32 +1,131 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h3>Dashboard</h3>
-
-
-
-
-    <ul class="collection with-header">
-    <li class="collection-header"><h5>Vos cartes</h5></li>
-    {% for card in cards %}
-        <li class="collection-item">
-            <div>
-                Numéro : {{ card.number }} -
-                Score total : {{ card.sumscore }} -
-                Nombre de parties : {{ card.nbgames }}
-                {% if card.status == "disable" %}
-                    <div class="secondary-content" title="carte desactivée"><i class="material-icons">not_interested</i></div>
-                    <a href="{{ path('app_card_show', {'id':card.id}) }}" class="secondary-content" title="voir details"><i class="material-icons">remove_red_eye</i></a>
-                {% else %}
-                    <a href="{{ path('app_card_disable_page', {'id':card.id}) }}" class="secondary-content" title="carte perdue ou volée"><i class="material-icons">no_sim</i></a>
-                    <a href="{{ path('app_card_show', {'id':card.id}) }}" class="secondary-content" title="voir details"><i class="material-icons">remove_red_eye</i></a>
-                {% endif %}
-                <div class="clearfix"></div>
+    <div class="card cardHeader">
+        <div class="card-image waves-effect waves-block waves-light">
+            <img class="activator" src="{{ asset('images/office.jpg') }}">
+        </div>
+        <figure class="card-profile-image">
+            <img src="{{ asset('images/default_avatar/avatar.png') }}" alt="profile image" class="circle z-depth-2 responsive-img activator">
+        </figure>
+        <div class="card-content">
+            <div class="row">
+                <div class="col s3 offset-s2">
+                    <h4 class="card-title grey-text text-darken-4">Roger Waters</h4>
+                    <p class="medium-small grey-text">Space Marine</p>
+                </div>
+                <div class="col s2 center-align">
+                    <h4 class="card-title grey-text text-darken-4">208478</h4>
+                    <p class="medium-small grey-text">Score total</p>
+                </div>
+                <div class="col s2 center-align">
+                    <h4 class="card-title grey-text text-darken-4">59</h4>
+                    <p class="medium-small grey-text">Nombre de partie</p>
+                </div>
+                <div class="col s1 right-align">
+                    <div class="fixed-action-btn horizontal">
+                        <a class="btn-floating btn-large red">
+                            <i class="large material-icons">settings</i>
+                        </a>
+                        <ul>
+                            <li><a href="{{ path('user_update_profil', {'id' : app.user.id}) }}" class="btn-floating yellow darken-1"><i class="material-icons">mode_edit</i></a></li>
+                            <li><a href="{{ path('user_update_avatar', {'id' : app.user.id}) }}" class="btn-floating red"><i class="material-icons">account_circle</i></a></li>
+                            <li><a href="{{ path('user_update_password', {'id' : app.user.id}) }}" class="btn-floating green"><i class="material-icons">lock_open</i></a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-        </li>
-    {% endfor %}
-        <li class="collection-item"><div>ajout carte<a href="{{ path('app_card_add') }}" class="secondary-content"><i class="material-icons">add</i></a></div><div class="clearfix"></div></li>
-    </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <!--------------------------------- COL S4 ----------------------------------------->
+        <!---------------------------------------------------------------------------------->
+        <div class="col s4">
+            <div class="card center-align">
+                <div class="card-content purple white-text">
+                    <p class="card-stats-title"><i class="mdi-editor-attach-money"></i>Dernière partie</p>
+                    <h4 class="card-stats-number">23/11/2017</h4>
+                    <p class="card-stats-compare"><i class="mdi-hardware-keyboard-arrow-up"></i>4 <span class="purple-text text-lighten-5">ce mois-ci</span>
+                    </p>
+                </div>
+            </div>
+            <ul id="task-card" class="collection with-header">
+                <li class="collection-header cyan">
+                    <h4 class="task-card-title">Accomplissement</h4>
+                    <p class="task-card-date">Au 23/11/2017</p>
+                </li>
+                <li class="collection-item dismissable" style="touch-action: pan-y;">
+                    <div class="row">
+                        <div class="col s7">
+                            <p class="collections-title">Amiral de l'espace</p>
+                            <p class="collections-content">Eliminer 10000 adversaires toutes parties confondues</p>
+                        </div>
+                        <div class="col s5">
+                            <div class="progress">
+                                <div class="determinate" style="width: 70%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="collection-item dismissable" style="touch-action: pan-y;">
+                    <div class="row">
+                        <div class="col s7">
+                            <p class="collections-title">Tueur de vampire</p>
+                            <p class="collections-content">Eliminer des vapires en mode Dracula</p>
+                        </div>
+                        <div class="col s5">
+                            <div class="progress">
+                                <div class="determinate" style="width: 30%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!--------------------------------- COL S8 ----------------------------------------->
+        <!---------------------------------------------------------------------------------->
+        <div class="col s8">
+            <div class="card listcard">
+                <h3 class="card-title">Tes cartes</h3>
+                <table class="bordered">
+                    <thead>
+                    <tr>
+                        <th>Carte</th>
+                        <th>Score</th>
+                        <th>Parties</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for card in cards %}
+                    <tr>
+                        <td>{{ card.number }}</td>
+                        <td>{{ card.sumscore }}</td>
+                        <td>{{ card.nbgames }}</td>
+                        {% if card.status == "disable" %}
+                        <td>
+                            <div class="secondary-content" title="carte desactivée"><i class="material-icons">not_interested</i></div>
+                            <a href="{{ path('app_card_show', {'id':card.id}) }}" class="secondary-content" title="voir details"><i class="material-icons">remove_red_eye</i></a>
+                        </td>
+                        {% else %}
+                        <td>
+                            <a href="{{ path('app_card_disable_page', {'id':card.id}) }}" class="secondary-content" title="carte perdue ou volée"><i class="material-icons">no_sim</i></a>
+                            <a href="{{ path('app_card_show', {'id':card.id}) }}" class="secondary-content" title="voir details"><i class="material-icons">remove_red_eye</i></a>
+                        </td>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                    <tr>
+                        <td colspan="4">
+                            <a href="{{ path('app_card_add') }}" class="secondary-content"><i class="material-icons">add</i>Ajout d'une nouvelle carte</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
 {% block stylesheets %}{% endblock %}
