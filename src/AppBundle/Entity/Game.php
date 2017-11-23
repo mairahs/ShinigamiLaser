@@ -40,6 +40,12 @@ class Game
     private $score;
 
     /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Etablishment", inversedBy="games")
+     */
+    private $etablishment;
+
+
+    /**
      * Get id
      *
      * @return int
@@ -140,26 +146,26 @@ class Game
     }
 
     /**
-     * Set gameType
+     * Get etablishment
      *
-     * @param \AppBundle\Entity\GameType $gameType
-     *
-     * @return Game
+     * @return string
      */
-    public function setGameType(\AppBundle\Entity\GameType $gameType = null)
+    public function getEtablishment()
     {
-        $this->gameType = $gameType;
-
-        return $this;
+        return $this->type;
     }
 
     /**
-     * Get gameType
+     * Set etablishment
      *
-     * @return \AppBundle\Entity\GameType
+     * @param string $etablishment
+     *
+     * @return Game
      */
-    public function getGameType()
+    public function setEtablishment($etablishment)
     {
-        return $this->gameType;
+        $this->etablishment = $etablishment;
+
+        return $this;
     }
 }

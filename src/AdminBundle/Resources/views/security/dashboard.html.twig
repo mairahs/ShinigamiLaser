@@ -74,30 +74,14 @@
                 <li id="dash_brands">
                     <div id="dash_brands_header" class="collapsible-header waves-effect"><b>Etablissements</b></div>
                     <div id="dash_brands_body" class="collapsible-body">
-                        <!--<ul>
-                            <li id="brands_brand">
-                                <a class="waves-effect" style="text-decoration: none;" href="#!">Brand</a>
-                            </li>
 
-                            <li id="brands_sub_brand">
-                                <a class="waves-effect" style="text-decoration: none;" href="#!">Sub Brand</a>
-                            </li>
-                        </ul>-->
                     </div>
                 </li>
 
                 <li id="dash_brands">
                     <div id="dash_brands_header" class="collapsible-header waves-effect"><b><a href="{{ path('admin_logout') }}">Se déconnecter</a></b></div>
                     <div id="dash_brands_body" class="collapsible-body">
-                        <!--<ul>
-                            <li id="brands_brand">
-                                <a class="waves-effect" style="text-decoration: none;" href="#!">Brand</a>
-                            </li>
 
-                            <li id="brands_sub_brand">
-                                <a class="waves-effect" style="text-decoration: none;" href="#!">Sub Brand</a>
-                            </li>
-                        </ul>-->
                     </div>
                 </li>
             </ul>
@@ -216,7 +200,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <a href="#!">
+                            <a href="{{ path('admin_etablishment_index') }}">
                                 <div style="padding: 30px;" class="grey lighten-3 col s5 waves-effect">
                                     <i class="dark-text text-lighten-1 large material-icons">view_list</i>
                                     <span class="dark-text text-lighten-1"><h5>Gérer les établissements</h5></span>

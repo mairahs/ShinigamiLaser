@@ -55,7 +55,9 @@ class Fixtures extends Fixture
             $etablishment = new Etablishment();
             $etablishment->setName($faker->lastName);
             $etablishment->setCity($faker->city);
+            $etablishment->setCode(rand(111,999));
             $manager->persist($etablishment);
+            $etablishment_arr[] = $etablishment;
         }
 
         $player_arr = [];
@@ -82,6 +84,10 @@ class Fixtures extends Fixture
             if (4 > $rand) {
                 $key = array_rand($player_arr, 1);
                 $card->setPlayer($player_arr[$key]);
+
+                $key_ = array_rand($etablishment_arr, 1);
+                $card->setEtablishment($etablishment_arr[$key_]);
+
                 $card->setStatus('active');
                 $card_arr[] = $card;
             } else {
