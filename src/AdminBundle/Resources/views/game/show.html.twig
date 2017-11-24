@@ -18,7 +18,7 @@
             <tbody>
             {% for key, score in game.score %}
             <tr>
-                <td><a>{{ score.cards.player.username }}</a></td>
+                <td><a href="{{ path('admin_user_dashboard',{'id':score.cards.player.id}) }}">{{ score.cards.player.username }}</a></td>
                 <td>{{ score.result}} </td>
                 <td>{{ key + 1 }}</td>
             </tr>
