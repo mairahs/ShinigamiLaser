@@ -1,3 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>{% block title %}ShinigamiLaser-Home{% endblock %}</title>
+
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="{{ asset('css/lib/materialize.min.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('css/lib/font-awesome.min.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet" type="text/css"/>
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    {% block layout_stylesheets %}{% endblock %}
+</head>
+<body>
+
+{% block layout_container %}{% endblock %}
+
 <!--  Scripts-->
 <script type="text/javascript" src="{{ asset('js/lib/jquery-3.2.1.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/lib/materialize.min.js') }}"></script>
@@ -21,7 +40,7 @@
         });
     });
 </script>
-{% block javascripts %}{% endblock %}
+{% block layout_javascripts %}{% endblock %}
 
 </body>
 </html>

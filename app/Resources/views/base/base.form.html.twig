@@ -1,9 +1,7 @@
-{% include(':inc:inc.header.html.twig') %}
-
+{% extends '::layout.html.twig' %}
+{% block layout_container %}
 {% include(':inc:inc.navigation.html.twig') %}
-
 <div class="container-form z-depth-4">
     {% block body %}{% endblock %}
 </div>
-
-{% include(':inc:inc.footer.html.twig') %}
+{% endblock %}
