@@ -5,14 +5,15 @@
             <li class="center no-padding">
                 <div class="row">
                     <img width="100" height="100" src="{{ asset('images/logo.PNG') }}" class="circle responsive-img" />
-                    <p class="center">Bienvenue {{ app.user.username }}</p>
+                    <p class="center textPar">Bienvenue {{ app.user.username }}</p>
                 </div>
             </li>
             <li id="dash_dashboard"><a href="#!"><b>Tableau de Bord</b></a></li>
-            <li id="dash_dashboard"><a href="#!"><b>Tableau de Bord</b></a></li>
-            <li id="dash_dashboard"><a href="#!"><b>Tableau de Bord</b></a></li>
-            <li id="dash_dashboard"><a href="#!"><b>Tableau de Bord</b></a></li>
-            <li id="dash_dashboard"><a href="#!"><b>Tableau de Bord</b></a></li>
+            <li id="dash_dashboard"><a href="#!"><b>Joueurs</b></a></li>
+            <li id="dash_dashboard"><a href="#!"><b>Cartes de fidélité</b></a></li>
+            <li id="dash_dashboard"><a href="#!"><b>Etablissements</b></a></li>
+            <li id="dash_dashboard"><a href="#!"><b>Promotions</b></a></li>
+
         </ul>
 
 
@@ -20,340 +21,139 @@
         <!-- --- --- ----------- COL S4 ----------------->
         <div class="col s4">
 
+            <div class="row">
+
+                    <div class="card">
+                        <div class="card-content  green white-text center">
+                            <p class="card-stats-title"><i class="mdi-social-group-add"></i> Derniers joueurs inscrits</p>
+                            <h4 class="card-stats-number">566</h4>
+                            <p class="card-stats-compare"><i class="mdi-hardware-keyboard-arrow-up"></i> 15% <span class="green-text text-lighten-5">depuis le début de la semaine</span>
+                            </p>
+                        </div>
+                        <div class="card-action  green darken-2">
+                            <div id="clients-bar"></div>
+                        </div>
+                    </div>
+
+            </div>
+
+                <div class="card">
+                    <div class="card-content purple white-text center">
+                        <p class="card-stats-title"><i class="mdi-editor-attach-money"></i>Total des cartes de fidélité activées en ligne</p>
+                        <h4 class="card-stats-number">8990</h4>
+                        <p class="card-stats-compare"><i class="mdi-hardware-keyboard-arrow-up"></i> 70% <span class="purple-text text-lighten-5">sur le mois dernier</span>
+                        </p>
+                    </div>
+                    <div class="card-action purple darken-2">
+                        <div id="sales-compositebar"></div>
+
+                    </div>
+                </div>
+
+
+                <div class="card">
+                    <div class="card-content blue-grey white-text center">
+                        <p class="card-stats-title"><i class="mdi-action-trending-up"></i> Nombre total d'établissements</p>
+                        <h4 class="card-stats-number">806.52</h4>
+                        <p class="card-stats-compare"><i class="mdi-hardware-keyboard-arrow-up"></i> 80% <span class="blue-grey-text text-lighten-5">d'établissements créés depuis 2 mois</span>
+                        </p>
+                    </div>
+                    <div class="card-action blue-grey darken-2">
+                        <div id="profit-tristate"></div>
+                    </div>
+                </div>
+
+            <div class="card">
+                <div class="card-content blue-grey white-text center">
+                    <p class="card-stats-title"><i class="mdi-action-trending-up"></i> Nombre total de cadeaux offerts</p>
+                    <h4 class="card-stats-number">806.52</h4>
+                    <p class="card-stats-compare"><i class="mdi-hardware-keyboard-arrow-up"></i> 50 <span class="blue-grey-text text-lighten-5">fêtes d' anniversaire avec ShinigamiLaser</span>
+                    </p>
+                </div>
+                <div class="card-action blue-grey darken-2">
+                    <div id="profit-tristate"></div>
+                </div>
+            </div>
+
+
 
         </div>
         <!-- --- --- ----------- COL S8 ----------------->
         <div class="col s8">
 
-            <ul id="projects-collection" class="collection">
+            <ul class="collection collection-dash card">
                 <li class="collection-item avatar">
-                    <i class="mdi-file-folder circle light-blue"></i>
-                    <span class="collection-header">Projects</span>
-                    <p>Your Favorites</p>
-                    <a href="#" class="secondary-content"><i class="mdi-action-grade"></i></a>
+                    <i class="mdi-file-folder circle material-icons">people</i>
+                    <span class="collection-header">Joueurs</span>
+                    <p>Rechercher et afficher les différents joueurs</p>
                 </li>
                 <li class="collection-item">
-                    <div class="row">
-                        <div class="col s6">
-                            <p class="collections-title">Web App</p>
-                            <p class="collections-content">AEC Company</p>
-                        </div>
-                        <div class="col s3">
-                            <span class="task-cat cyan">Development</span>
-                        </div>
-                        <div class="col s3">
-                            <div id="project-line-1"></div>
-                        </div>
-                    </div>
+                    <p class="collections-title"><a href="{{ path('admin_findplayer') }}">Rechercher un joueur<i class="material-icons float">search</i></a></p>
+                    <p class="collections-content">Renseigner simplement le numéro de sa carte de fidélité</p>
                 </li>
                 <li class="collection-item">
-                    <div class="row">
-                        <div class="col s6">
-                            <p class="collections-title">Mobile App for Social</p>
-                            <p class="collections-content">iSocial App</p>
-                        </div>
-                        <div class="col s3">
-                            <span class="task-cat grey darken-3">UI/UX</span>
-                        </div>
-                        <div class="col s3">
-                            <div id="project-line-2"></div>
-                        </div>
-                    </div>
+                    <p class="collections-title"><a href="#">Afficher la liste des joueurs<i class="material-icons float">people</i></a></p>
+                    <p class="collections-content">Voir tous les joueurs enregistrés dans l'établissement</p>
                 </li>
-                <li class="collection-item">
-                    <div class="row">
-                        <div class="col s6">
-                            <p class="collections-title">Website</p>
-                            <p class="collections-content">MediTab</p>
-                        </div>
-                        <div class="col s3">
-                            <span class="task-cat teal">Marketing</span>
-                        </div>
-                        <div class="col s3">
-                            <div id="project-line-3"></div>
-                        </div>
-                    </div>
-                </li>
-                <li class="collection-item">
-                    <div class="row">
-                        <div class="col s6">
-                            <p class="collections-title">AdWord campaign</p>
-                            <p class="collections-content">True Line</p>
-                        </div>
-                        <div class="col s3">
-                            <span class="task-cat green">SEO</span>
-                        </div>
-                        <div class="col s3">
-                            <div id="project-line-4"></div>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <div class="col s12 m12 l6">
-            <h4 class="header">Issues List</h4>
-            <ul id="issues-collection" class="collection">
-                <li class="collection-item avatar">
-                    <i class="mdi-action-bug-report red circle"></i>
-                    <span class="collection-header">Issues</span>
-                    <p>Assigned to you</p>
-                    <a href="#" class="secondary-content"><i class="mdi-action-grade"></i></a>
-                </li>
-                <li class="collection-item">
-                    <div class="row">
-                        <div class="col s7">
-                            <p class="collections-title"><strong>#102</strong> Home Page</p>
-                            <p class="collections-content">Web Project</p>
-                        </div>
-                        <div class="col s2">
-                            <span class="task-cat pink accent-2">P1</span>
-                        </div>
-                        <div class="col s3">
-                            <div class="progress">
-                                <div class="determinate" style="width: 70%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="collection-item">
-                    <div class="row">
-                        <div class="col s7">
-                            <p class="collections-title"><strong>#108</strong> API Fix</p>
-                            <p class="collections-content">API Project </p>
-                        </div>
-                        <div class="col s2">
-                            <span class="task-cat yellow darken-4">P2</span>
-                        </div>
-                        <div class="col s3">
-                            <div class="progress">
-                                <div class="determinate" style="width: 40%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="collection-item">
-                    <div class="row">
-                        <div class="col s7">
-                            <p class="collections-title"><strong>#205</strong> Profile page css</p>
-                            <p class="collections-content">New Project </p>
-                        </div>
-                        <div class="col s2">
-                            <span class="task-cat light-green darken-3">P3</span>
-                        </div>
-                        <div class="col s3">
-                            <div class="progress">
-                                <div class="determinate" style="width: 95%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="collection-item">
-                    <div class="row">
-                        <div class="col s7">
-                            <p class="collections-title"><strong>#188</strong> SAP Changes</p>
-                            <p class="collections-content">SAP Project</p>
-                        </div>
-                        <div class="col s2">
-                            <span class="task-cat pink accent-2">P1</span>
-                        </div>
-                        <div class="col s3">
-                            <div class="progress">
-                                <div class="determinate" style="width: 10%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
+
             </ul>
 
+            <ul class="collection collection-dash card">
+            <li class="collection-item avatar">
+                <i class="mdi-file-folder circle material-icons">card_membership</i>
+                <span class="collection-header">Cartes de fidélité</span>
+                <p>Commander et gérer les cartes de fidélité</p>
+            </li>
+            <li class="collection-item">
+                <p class="collections-title"><a href="#">Commander des cartes de fidélités<i class="material-icons float">card_membership</i></a></p>
+                <p class="collections-content">Commander auprès des fournisseurs agréés ShinigamiLaser</p>
+            </li>
+            <li class="collection-item">
+                <p class="collections-title"><a href="#">Gérer les cartes de fidélités<i class="material-icons float">card_travel</i></a></p>
+                <p class="collections-content">Voir leur détail: parties, scores, etc...</p>
+            </li>
+
+            </ul>
+
+            <ul class="collection collection-dash card">
+                <li class="collection-item avatar">
+                    <i class="mdi-file-folder circle material-icons">view_list</i>
+                    <span class="collection-header">Etablissements</span>
+                    <p>Voir le détail et les administrateurs de chaque établissement</p>
+                </li>
+                <li class="collection-item">
+                    <p class="collections-title"><a href="{{ path('admin_etablishment_index') }}">Gérer les établissements<i class="material-icons float">view_list</i></a></p>
+                    <p class="collections-content">Voir leur détail</p>
+                </li>
+                <li class="collection-item">
+                    <p class="collections-title"><a href="#">Gérer le recrutement<i class="material-icons float">people</i></a></p>
+                    <p class="collections-content">Recrutement de développeurs Symfony 3 actuellement en cours</p>
+                </li>
+
+            </ul>
+
+            <ul class="collection collection-dash card">
+                <li class="collection-item avatar">
+                    <i class="mdi-file-folder circle material-icons">local_offer</i>
+                    <span class="collection-header">Promotions</span>
+                    <p>Créer et administrer les promotions que vous offrez à vos joueurs</p>
+                </li>
+                <li class="collection-item">
+                    <p class="collections-title"><a href="#">Gérer les promotions<i class="material-icons float">local_offer</i></a></p>
+                    <p class="collections-content">Voir leur détail</p>
+                </li>
+                <li class="collection-item">
+                    <p class="collections-title"><a href="#">Cadeaux pour joueurs<i class="material-icons float">card_giftcard</i></a></p>
+                    <p class="collections-content">Fidéliser vos clients en leur offrant des cadeaux qui déchirent pour leur anniversaire par exemple</p>
+                </li>
+
+            </ul>
+
+
         </div>
+
+
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <div class="row">
-
-                <div class="col s4">
-                    <div class="card">
-                        <div class="row">
-                            <div class="center card-title">
-                                <b>Joueurs</b>
-                            </div>
-                        </div>
-
-                            <a href="{{ path('admin_findplayer') }}">
-                                <div style="padding: 30px; max-height: 300px;" class=" grey lighten-3 col s5 waves-effect">
-                                    <i class="dark-text text-lighten-1 large material-icons">person</i>
-                                    <span class="dark-text text-lighten-1"><h5>Rechercher un joueur </h5></span>
-                                </div>
-                            </a>
-                            <div class="col s1">&nbsp;</div>
-                            <div class="col s1">&nbsp;</div>
-
-                            <a href="#!">
-                                <div style="padding: 30px;" class="grey lighten-3 col s5 waves-effect">
-                                    <i class="dark-text text-lighten-1 large material-icons">people</i>
-                                    <span class="dark-text text-lighten-1"><h5>Gérer les joueurs</h5></span>
-                                </div>
-                            </a>
-                    </div>
-                </div>
-
-                <div class="col s8">
-
-                    <div class="row">
-                        <div class="card">
-                            <div class="row">
-                                <div class="center card-title">
-                                    <b>Cartes de fidélité</b>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col s6">
-                                    <a href="#!">
-                                        <div class="center">
-                                            <i class=" material-icons center">card_membership</i>
-                                            <h5 class="center">Commander des cartes </h5>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col s6">
-                                    <a href="#!">
-                                        <div class="center">
-                                            <i class="dark-text text-lighten-1 large material-icons">card_travel</i>
-                                            <h5 class="dark-text text-lighten-1">Gérer des cartes </h5>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col s4">
-                                <div class="card list-card">
-                                    <div class="row">
-                                        <div class="center card-title">
-                                            <b>Promotions</b>
-                                        </div>
-                                    </div>
-
-                                    <a href="#!">
-                                        <div style="padding: 30px;" class="grey lighten-3 col s5 waves-effect">
-                                            <i class="dark-text text-lighten-1 large material-icons">local_offer</i>
-                                            <h5 class="dark-text text-lighten-1">Gérer les promotions</h5>
-                                        </div>
-                                    </a>
-
-                                    <div class="col s1">&nbsp;</div>
-                                    <div class="col s1">&nbsp;</div>
-
-                                    <a href="#!">
-                                        <div style="padding: 30px;" class="grey lighten-3 col s5 waves-effect">
-                                            <i class="dark-text text-lighten-1 large material-icons">card_giftcard</i>
-                                            <h5 class="dark-text text-lighten-1">Cadeaux pour joueurs</h5>
-                                        </div>
-                                    </a>
-
-                                </div>
-                            </div>
-
-                            <div class="col s8">
-                                <div class="card">
-
-                                    <div class="center card-title">
-                                        <b>Etablissements</b>
-                                    </div>
-                                    <a href="{{ path('admin_etablishment_index') }}">
-                                        <div style="padding: 30px;" class="grey lighten-3 col s5 waves-effect">
-                                            <i class="dark-text text-lighten-1 large material-icons">view_list</i>
-                                            <span class="dark-text text-lighten-1"><h5>Gérer les établissements</h5></span>
-                                        </div>
-                                    </a>
-                                    <div class="col s1">&nbsp;</div>
-                                    <div class="col s1">&nbsp;</div>
-
-                                    <a href="#!">
-                                        <div style="padding: 30px;" class="grey lighten-3 col s5 waves-effect">
-                                            <i class="dark-text text-lighten-1 large material-icons">people_outline</i>
-                                            <span class="dark-text text-lighten-1"><h5>Gérer le recrutement</h5></span>
-                                        </div>
-                                    </a>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                </div>
-
-
-
-
-            <!--<div class="fixed-action-btn click-to-toggle" style="bottom: 45px; right: 24px;">
-                <a class="btn-floating btn-large pink waves-effect waves-light">
-                    <i class="large material-icons">add</i>
-                </a>
-
-                <ul>
-                    <li>
-                        <a class="btn-floating red"><i class="material-icons">note_add</i></a>
-                        <a href="" class="btn-floating fab-tip">Add a note</a>
-                    </li>
-
-                    <li>
-                        <a class="btn-floating yellow darken-1"><i class="material-icons">add_a_photo</i></a>
-                        <a href="" class="btn-floating fab-tip">Add a photo</a>
-                    </li>
-
-                    <li>
-                        <a class="btn-floating green"><i class="material-icons">alarm_add</i></a>
-                        <a href="" class="btn-floating fab-tip">Add an alarm</a>
-                    </li>
-
-                    <li>
-                        <a class="btn-floating blue"><i class="material-icons">vpn_key</i></a>
-                        <a href="" class="btn-floating fab-tip">Add a master password</a>
-                    </li>
-                </ul>
-            </div>-->
-
-            <footer class="indigo page-footer dark">
-                <div class="footer-copyright dark center">
-                    <div class="container dark">
-                        <span>Made By <a style='font-weight: bold;' href="https://github.com/piedcipher" target="_blank">Antoine et Maïrah</a></span>
-                    </div>
-                </div>
-            </footer>
-
-
 
 
 {% endblock %}

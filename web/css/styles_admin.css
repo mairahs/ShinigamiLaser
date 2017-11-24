@@ -4,10 +4,6 @@ footer {
     padding-left: 240px;
 }
 
-body {
-    background: #fca906;
-}
-
 .yellow-text{
     color:#fca906!important;
     font-weight: bold;
@@ -79,5 +75,44 @@ a{
 
 .justify{
     text-align: justify;
+}
+
+.container .collection .collection-item.avatar i.circle{
+    background-color: #e24800;
+}
+
+.collection-dash p{
+    line-height: 1.5;
+}
+
+.collection-dash .collection-header {
+    font-size: 1.64rem;
+    font-weight: 500;
+}
+
+.collection-dash p.collections-title {
+    font-size: 1.0rem;
+    padding: 0;
+    margin: 0;
+    font-weight: 500;
+}
+
+.collection-dash p.collections-content {
+    font-size: 0.9rem;
+    padding: 0;
+    margin: 0;
+    font-weight: 400;
+}
+
+.float{
+    float: right;
+    font-size: 40px;
+    color: #e24800;
+}
+.textPar{
+    font-size: 20px;
+    color: #e24800;
+    font-weight: bold;
+
 }
 
