@@ -118,14 +118,11 @@ class Fixtures extends Fixture
                 if (3 > $rand) {
                     $score = new Score();
                     $score->setResult(rand($rand_min_max['min'], $rand_min_max['max']));
-                    //TODO mettre le rank en BDD
-                    $score->setRank('super tireur');
                     if ($get_type == 'Team') {
                         $score->setTeam(rand(1, 2));
                     } else {
                         $score->setTeam(0);
                     }
-
                     $score->setCards($card);
                     $score->setGames($game);
                     $manager->persist($score);

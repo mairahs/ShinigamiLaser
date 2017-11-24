@@ -30,13 +30,6 @@ class Score
     private $result;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="rank", type="string", length=255)
-     */
-    private $rank;
-
-    /**
      * @var int
      *
      * @ORM\Column(name="team", type="integer")
@@ -85,30 +78,6 @@ class Score
     public function getResult()
     {
         return $this->result;
-    }
-
-    /**
-     * Set rank
-     *
-     * @param string $rank
-     *
-     * @return Score
-     */
-    public function setRank($rank)
-    {
-        $this->rank = $rank;
-
-        return $this;
-    }
-
-    /**
-     * Get rank
-     *
-     * @return string
-     */
-    public function getRank()
-    {
-        return $this->rank;
     }
 
     /**
