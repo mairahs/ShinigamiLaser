@@ -3,6 +3,7 @@
 
 namespace AdminBundle\Controller;
 
+use AppBundle\Service\CardManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -34,11 +35,12 @@ class UserController extends Controller
     public function displayAction($id)
     {
         $player = $this->getDoctrine()->getRepository('AppBundle:Player')->find($id);
-
-        if (null === $player) {
-            throw new NotFoundHttpException("Aucun joueur ne possède ce numéro de carte");
-        }
-
-        return $this->render('@Admin/user/display_player.html.twig', ['player'=>$player]);
+        $cards = $this->getDoctrine()->getRepository('AppBundle:Score')->getListCardDashboard($player);
+        $stats = $this->get(CardManager::class)->getStatsDashboard($cards);
+        return $this->render('default/dashboard.html.twig', [
+            'player' => $player,
+            'cards' => $cards,
+            'stats' => $stats
+        ]);
     }
 }
