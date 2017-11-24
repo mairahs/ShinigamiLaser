@@ -1,4 +1,7 @@
 {% extends '::layout.html.twig' %}
+
+{% block layout_stylesheets %}<link href="{{ asset('css/styles_admin.css') }}" rel="stylesheet" />{% endblock %}
+
 {% block layout_container %}
 <div class="container">
     {% block body %}{% endblock %}
