@@ -1,0 +1,27 @@
+<!--  Scripts-->
+<script type="text/javascript" src="{{ asset('js/lib/jquery-3.2.1.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/lib/materialize.min.js') }}"></script>
+<script>
+    $(document).ready(function() {
+        $('select').material_select();
+        $(".button-collapse").sideNav();
+        var date_max = new Date();
+        var date_min = new Date();
+        date_min = new Date(date_min.setFullYear(date_min.getFullYear() - 100));
+        $('.datepicker').pickadate({
+            selectMonths: true, // Creates a dropdown to control month
+            selectYears: 100, // Creates a dropdown to control month
+            min: date_min,
+            max: date_max,
+            today: false,
+            clear: 'Clear',
+            close: 'Ok',
+            closeOnSelect: false, // Close upon selecting a date,
+            format: 'dd/mm/yyyy'
+        });
+    });
+</script>
+{% block javascripts %}{% endblock %}
+
+</body>
+</html>

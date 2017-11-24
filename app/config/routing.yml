@@ -54,6 +54,10 @@ app_card_get_winlose:
     path: /card/get/winlose/{id}
     defaults: { _controller: AppBundle:Card:winlose }
 
+app_card_get_typepartie:
+    path: /card/get/typepartie/{id}
+    defaults: { _controller: AppBundle:Card:typepartie}
+
 app_game_index:
     path: /game
     defaults: { _controller: AppBundle:Game:index }
