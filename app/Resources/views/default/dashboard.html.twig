@@ -11,15 +11,15 @@
         <div class="card-content">
             <div class="row">
                 <div class="col s3 offset-s2">
-                    <h4 class="card-title grey-text text-darken-4">Roger Waters</h4>
+                    <h4 class="card-title grey-text text-darken-4">{{ player.username }}</h4>
                     <p class="medium-small grey-text">Space Marine</p>
                 </div>
                 <div class="col s2 center-align">
-                    <h4 class="card-title grey-text text-darken-4">208478</h4>
+                    <h4 class="card-title grey-text text-darken-4">{{ stats.scoreTotal }}</h4>
                     <p class="medium-small grey-text">Score total</p>
                 </div>
                 <div class="col s2 center-align">
-                    <h4 class="card-title grey-text text-darken-4">59</h4>
+                    <h4 class="card-title grey-text text-darken-4">{{ stats.gameTotal }}</h4>
                     <p class="medium-small grey-text">Nombre de partie</p>
                 </div>
                 <div class="col s1 right-align">
@@ -28,9 +28,9 @@
                             <i class="large material-icons">settings</i>
                         </a>
                         <ul>
-                            <li><a href="{{ path('user_update_profil', {'id' : app.user.id}) }}" class="btn-floating yellow darken-1"><i class="material-icons">mode_edit</i></a></li>
-                            <li><a href="{{ path('user_update_avatar', {'id' : app.user.id}) }}" class="btn-floating red"><i class="material-icons">account_circle</i></a></li>
-                            <li><a href="{{ path('user_update_password', {'id' : app.user.id}) }}" class="btn-floating green"><i class="material-icons">lock_open</i></a></li>
+                            <li><a href="{{ path('user_update_profil', {'id' : player.id}) }}" class="btn-floating yellow darken-1"><i class="material-icons">mode_edit</i></a></li>
+                            <li><a href="{{ path('user_update_avatar', {'id' : player.id}) }}" class="btn-floating red"><i class="material-icons">account_circle</i></a></li>
+                            <li><a href="{{ path('user_update_password', {'id' : player.id}) }}" class="btn-floating green"><i class="material-icons">lock_open</i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -86,6 +86,35 @@
         <!--------------------------------- COL S8 ----------------------------------------->
         <!---------------------------------------------------------------------------------->
         <div class="col s8">
+            <div class="card listcard">
+                <h3 class="card-title">Tes informations</h3>
+                <table>
+                    <tr>
+                        <th>Nom</th>
+                        <td>{{ player.lastName }}</td>
+                    </tr>
+                    <tr>
+                        <th>Prenom</th>
+                        <td>{{ player.firstName }}</td>
+                    </tr>
+                    <tr>
+                        <th>Adresse</th>
+                        <td>{{ player.address }}</td>
+                    </tr>
+                    <tr>
+                        <th>Téléphone</th>
+                        <td>{{ player.phoneNumber }}</td>
+                    </tr>
+                    <tr>
+                        <th>Date de naissance</th>
+                        <td>{{ player.dateOfBirth|date('d/m/Y') }}</td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td>{{ player.email }}</td>
+                    </tr>
+                </table>
+            </div>
             <div class="card listcard">
                 <h3 class="card-title">Tes cartes</h3>
                 <table class="bordered">

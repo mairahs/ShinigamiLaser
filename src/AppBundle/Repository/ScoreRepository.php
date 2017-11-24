@@ -73,6 +73,19 @@ class ScoreRepository extends \Doctrine\ORM\EntityRepository
         return $queryBuilder->getQuery()->getScalarResult();
     }
 
+    public function getTypePartie(Card $card){
+        $queryBuilder = $this->createQueryBuilder('score')
+            ->leftJoin('score.games', 'games')
+            ->select('score.result')
+            ->addSelect('games.playedAt')
+            ->where('games.gameType = :gameType')
+            ->andWhere('score.cards = :card')
+            ->setParameters([
+                'card' => $card,
+                'gameType' => $gameType
+            ]);
+    }
+
     public function getWinlose(Card $card)
     {
         $queryBuilder = $this->createQueryBuilder('score')

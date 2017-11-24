@@ -1,4 +1,11 @@
 $(document).ready(function(){
+    Highcharts.setOptions({
+        chart: {
+            style: {
+                fontFamily: 'Roboto'
+            }
+        }
+    });
     $.ajax({
         url: '/card/get/allstat/'+$('#id_carte').val(),
         method: 'POST',

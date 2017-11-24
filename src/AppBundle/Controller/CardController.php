@@ -107,6 +107,16 @@ class CardController extends Controller
         return new JsonResponse($stats);
     }
 
+    public function typepartieAction(Card $card)
+    {
+        $game_type = $this->getDoctrine()->getRepository('AppBundle:GameType')->findAll();
+        $stats = [];
+        foreach ($game_type as $type) {
+            $stats[$type->getType()] = $this->getDoctrine()->getRepository('AppBundle:Score')->getTypePartie($card, $type);
+        }
+        return new JsonResponse($stats);
+    }
+
     /**
      * @param Card $card
      * @internal param $id

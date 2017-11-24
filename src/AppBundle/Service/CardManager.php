@@ -69,4 +69,18 @@ class CardManager
         $checksum = array_sum($array) % 9;
         return $code_centre.$code_carte.$checksum;
     }
+
+    public function getStatsDashboard($cards){
+        /** @var Card $card */
+        $scoreTotal = 0;
+        $gameTotal = 0;
+        foreach ($cards as $card){
+            $scoreTotal += $card['sumscore'];
+            $gameTotal += $card['nbgames'];
+        }
+        return[
+            'gameTotal' => $gameTotal,
+            'scoreTotal' => $scoreTotal
+        ];
+    }
 }
