@@ -4,6 +4,7 @@
 namespace AdminBundle\Controller;
 
 
+use AppBundle\Service\CardManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -26,8 +27,11 @@ class GameController extends Controller
    {
        $player = $this->getDoctrine()->getManager()->getRepository('AppBundle:Player')->find($id);
        $cards = $this->getDoctrine()->getRepository('AppBundle:Score')->getListCardDashboard($player);
+       $stats = $this->get(CardManager::class)->getStatsDashboard($cards);
        return $this->render('default/dashboard.html.twig', [
-           'cards' => $cards
+           'player' => $player,
+           'cards' =>  $cards,
+           'stats' =>  $stats
        ]);
    }
 }
