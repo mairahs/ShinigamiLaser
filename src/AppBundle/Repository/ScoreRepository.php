@@ -73,17 +73,17 @@ class ScoreRepository extends \Doctrine\ORM\EntityRepository
         return $queryBuilder->getQuery()->getScalarResult();
     }
 
-    public function getTypePartie(Card $card){
+    public function getTypePartie(Card $card, $gameType){
         $queryBuilder = $this->createQueryBuilder('score')
             ->leftJoin('score.games', 'games')
-            ->select('score.result')
-            ->addSelect('games.playedAt')
+            ->select('COUNT(score)')
             ->where('games.gameType = :gameType')
             ->andWhere('score.cards = :card')
             ->setParameters([
                 'card' => $card,
                 'gameType' => $gameType
             ]);
+        return $queryBuilder->getQuery()->getSingleScalarResult();
     }
 
     public function getWinlose(Card $card)
@@ -96,7 +96,6 @@ class ScoreRepository extends \Doctrine\ORM\EntityRepository
                 'card' => $card
             ]);
         ;
-        dump($queryBuilder->getQuery()->getResult());
-        die;
+        return $queryBuilder->getQuery()->getResult();
     }
 }

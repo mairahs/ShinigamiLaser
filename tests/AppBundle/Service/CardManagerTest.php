@@ -3,7 +3,7 @@
 namespace Tests\AppBundle\Controller;
 
 use AppBundle\Entity\Card;
-use AppBundle\Service\CardManager;
+use AppBundle\Manager\CardManager;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\Persistence\ObjectRepository;
 use PHPUnit\Framework\TestCase;

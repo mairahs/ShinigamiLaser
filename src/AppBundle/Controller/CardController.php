@@ -5,10 +5,9 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Card;
 use AppBundle\Form\CardType;
-use AppBundle\Service\CardManager;
+use AppBundle\Manager\CardManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Bundle\SecurityBundle\Tests\Functional\Bundle\AclBundle\Entity\Car;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

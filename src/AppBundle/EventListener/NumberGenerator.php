@@ -4,7 +4,7 @@
 namespace AppBundle\EventListener;
 
 use AppBundle\Entity\Card;
-use AppBundle\Service\CardManager;
+use AppBundle\Manager\CardManager;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 
 class NumberGenerator

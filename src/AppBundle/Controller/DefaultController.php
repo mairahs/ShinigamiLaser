@@ -3,7 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Player;
-use AppBundle\Service\CardManager;
+use AppBundle\Manager\CardManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class DefaultController extends Controller
@@ -12,12 +12,7 @@ class DefaultController extends Controller
     {
         /** @var Player $player */
         $player = $this->get('security.token_storage')->getToken()->getUser();
-        $cards = $this->getDoctrine()->getRepository('AppBundle:Score')->getListCardDashboard($player);
-        $stats = $this->get(CardManager::class)->getStatsDashboard($cards);
-        return $this->render('default/dashboard.html.twig', [
-            'player' => $player,
-            'cards' => $cards,
-            'stats' => $stats
-        ]);
+        $ret = $this->get(CardManager::class)->returnDashboard($player);
+        return $this->render('default/dashboard.html.twig', $ret);
     }
 }

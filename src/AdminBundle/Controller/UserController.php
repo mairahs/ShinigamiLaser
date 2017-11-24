@@ -3,7 +3,7 @@
 
 namespace AdminBundle\Controller;
 
-use AppBundle\Service\CardManager;
+use AppBundle\Manager\CardManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -35,12 +35,7 @@ class UserController extends Controller
     public function displayAction($id)
     {
         $player = $this->getDoctrine()->getRepository('AppBundle:Player')->find($id);
-        $cards = $this->getDoctrine()->getRepository('AppBundle:Score')->getListCardDashboard($player);
-        $stats = $this->get(CardManager::class)->getStatsDashboard($cards);
-        return $this->render('default/dashboard.html.twig', [
-            'player' => $player,
-            'cards' => $cards,
-            'stats' => $stats
-        ]);
+        $ret = $this->get(CardManager::class)->returnDashboard($player);
+        return $this->render('default/dashboard.html.twig', $ret);
     }
 }
