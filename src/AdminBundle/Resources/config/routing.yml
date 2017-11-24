@@ -30,3 +30,7 @@ admin_etablishment_show:
 admin_game_show:
     path: /game/{id}
     defaults: {_controller: AdminBundle:Game:show}
+
+admin_user_dashboard:
+    path: /user/{id}
+    defaults: {_controller: AdminBundle:Game:user_show}
