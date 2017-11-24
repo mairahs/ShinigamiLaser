@@ -1,9 +1,12 @@
 <?php
 
-namespace AppBundle\Service;
+namespace AppBundle\Manager;
 
 use AppBundle\Entity\Card;
+use AppBundle\Entity\Player;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Workflow\Workflow;
 
 class CardManager
@@ -16,11 +19,16 @@ class CardManager
      * @var Workflow
      */
     private $workflow;
+    /**
+     * @var RouterInterface
+     */
+    private $router;
 
-    public function __construct(EntityManagerInterface $entityManager, Workflow $workflow)
+    public function __construct(EntityManagerInterface $entityManager, Workflow $workflow, RouterInterface $router)
     {
         $this->entityManager = $entityManager;
         $this->workflow = $workflow;
+        $this->router = $router;
     }
 
     /**
@@ -81,6 +89,16 @@ class CardManager
         return[
             'gameTotal' => $gameTotal,
             'scoreTotal' => $scoreTotal
+        ];
+    }
+
+    public function returnDashboard(Player $player){
+        $cards = $this->entityManager->getRepository('AppBundle:Score')->getListCardDashboard($player);
+        $stats = $this->getStatsDashboard($cards);
+        return[
+            'player' => $player,
+            'cards' => $cards,
+            'stats' => $stats
         ];
     }
 }

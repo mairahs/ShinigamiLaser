@@ -24,7 +24,7 @@ $(document).ready(function(){
             var data_scorebygame = [];
             for(var item in obj){
                 if(obj.hasOwnProperty(item)){
-                    var key = [];
+                    var key = {};
                     var data = [];
                     for(var item_ in obj[item]){
                         if(obj[item].hasOwnProperty(item_)){
@@ -40,13 +40,40 @@ $(document).ready(function(){
                     data_scorebygame.push(key);
                 }
             }
-
-
-            console.log(data_scorebygame);
-
             graphScoreByGame(data_scorebygame);
         }
     });
+    $.ajax({
+        url: '/card/get/typepartie/'+$('#id_carte').val(),
+        method: 'POST',
+        dataType: 'json',
+        success : function(obj){
+            var data_typepartie = [];
+            // [{
+            //     name: 'Team',
+            //     y: 10
+            // }, {
+            //     name: 'FFA',
+            //     y: 5
+            // }, {
+            //     name: 'Dracula',
+            //     y: 2
+            // }]
+            for(var item in obj){
+                if(obj.hasOwnProperty(item)) {
+                    var key = {
+                        'name' : item,
+                        'y' : parseFloat(obj[item])
+                    };
+                    data_typepartie.push(key)
+                }
+            }
+            graphTypePartie(data_typepartie);
+        }
+    });
+
+
+
 
     Highcharts.chart('winlose', {
         chart: {
@@ -83,47 +110,6 @@ $(document).ready(function(){
             color: '#f44336',
             name: 'Défaites',
             data: [2, 2, 3]
-        }]
-    });
-    Highcharts.chart('typepartie', {
-        chart: {
-            plotBackgroundColor: null,
-            plotBorderWidth: null,
-            plotShadow: false,
-            type: 'pie'
-        },
-        title: {
-            text: 'Type de parties'
-        },
-        credits: {
-            enabled: false
-        },
-        tooltip: {
-            pointFormat: '{series.name}: <b>{point.y}</b> ({point.percentage:.1f}%)'
-        },
-        plotOptions: {
-            pie: {
-                allowPointSelect: true,
-                cursor: 'pointer',
-                dataLabels: {
-                    enabled: false
-                },
-                showInLegend: true
-            }
-        },
-        series: [{
-            name: 'Jouées',
-            colorByPoint: true,
-            data: [{
-                name: 'Team',
-                y: 10
-            },{
-                name: 'FFA',
-                y: 5
-            },{
-                name: 'Dracula',
-                y: 2
-            }]
         }]
     });
 });

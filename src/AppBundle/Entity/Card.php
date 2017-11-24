@@ -2,9 +2,7 @@
 
 namespace AppBundle\Entity;
 
-use AppBundle\Service\CardManager;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Bundle\FrameworkBundle\Tests\Controller\ContainerAwareController;
 
 /**
  * Card

@@ -1,6 +1,6 @@
 {% extends 'base/base.html.twig' %}
 
-{% block stylesheets %}
+{% block layout_stylesheets %}
     <link href="{{ asset('css/lib/highcharts.css') }}" rel="stylesheet" type="text/css"/>
 {% endblock %}
 
@@ -30,8 +30,9 @@
     <input type="hidden" id="id_carte" value="{{ card.id }}">
 {% endblock %}
 
-{% block javascripts %}
+{% block layout_javascripts %}
     <script src="{{ asset('js/lib/highcharts/highcharts.js') }}"></script>
     <script src="{{ asset('js/stat.card.show.js') }}"></script>
     <script src="{{ asset('js/scorebygame.js') }}"></script>
+    <script src="{{ asset('js/typepartie.js') }}"></script>
 {% endblock %}
