@@ -1,0 +1,14 @@
+{% set is_admin = is_granted('ROLE_ADMIN') %}
+{% set is_user = is_granted('ROLE_USER') %}
+<nav class="menu-cust">
+    <div class="nav-wrapper">
+        <a id="logo-container" href="#" class="brand-logo" style="height: 100%;"><img src="{{ asset('images/logo.PNG') }}" style="height: 90%;"></a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+            {% include('inc/inc.block.nav.html.twig') %}
+        </ul>
+        <ul class="side-nav" id="mobile-demo">
+            {% include('inc/inc.block.nav.html.twig') %}
+        </ul>
+    </div>
+</nav>
