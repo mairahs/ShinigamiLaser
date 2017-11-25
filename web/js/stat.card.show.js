@@ -2,7 +2,8 @@ $(document).ready(function(){
     Highcharts.setOptions({
         chart: {
             style: {
-                fontFamily: 'Roboto'
+                fontFamily: 'Roboto',
+                backgroundColor: '#FCFFC5'
             }
         }
     });
@@ -21,7 +22,6 @@ $(document).ready(function(){
                             var date = new Date(obj[item][item_]['playedAt'].date);
                             data.push([date.getTime(), obj[item][item_]['result']]);
                         }
-
                     }
                     key = {
                         'name' : item,

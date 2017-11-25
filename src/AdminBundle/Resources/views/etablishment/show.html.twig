@@ -1,61 +1,80 @@
 {% extends 'base/base.admin.html.twig' %}
 
 {% block body %}
-    <!-- profile-page-header -->
-    <div id="profile-page-header" class="card">
+
+    <div class="card cardHeader">
         <div class="card-image waves-effect waves-block waves-light">
-            <img class="activator" src="{{ asset('images/lasers.jpeg') }}" alt="user background"
-                 style="max-height: 300px;">
+            <img class="activator" src="{{ asset('images/lasers.jpeg') }}">
         </div>
         <div class="card-content">
             <div class="row">
-                <div class="col s3 offset-s2">
+                <div class="col s2 offset-s1">
                     <h4 class="card-title grey-text text-darken-4">SL - {{ etablishment.name }}</h4>
                     <p class="medium-small grey-text">Nom</p>
                 </div>
-                <div class="col s2 center-align">
+                <div class="col s2">
                     <h4 class="card-title grey-text text-darken-4">{{ etablishment.city }}</h4>
                     <p class="medium-small grey-text">Ville</p>
                 </div>
-                <div class="col s2 center-align">
+                <div class="col s2">
                     <h4 class="card-title grey-text text-darken-4">{{ etablishment.code }}</h4>
                     <p class="medium-small grey-text">Code Etablissement</p>
                 </div>
-                <div class="col s1 right-align">
-                    <a class="btn-floating activator waves-effect waves-light darken-2 right">
-                        <i class="mdi-action-perm-identity"></i>
-                    </a>
+                <div class="col s2">
+                    <h4 class="card-title grey-text text-darken-4">{ 15 }</h4>
+                    <p class="medium-small grey-text">Abonnés</p>
                 </div>
+                <div class="col s2">
+                    <h4 class="card-title grey-text text-darken-4">{{ etablishment.games|length }}</h4>
+                    <p class="medium-small grey-text">Parties jouées</p>
+                </div>
+                {#<div class="col s1 right-align">#}
+                    {#<a class="btn-floating activator waves-effect waves-light darken-2 right">#}
+                        {#<i class="mdi-action-perm-identity"></i>#}
+                    {#</a>#}
+                {#</div>#}
             </div>
-        </div>
-        <div class="card-reveal">
-            <p>
-                    <span class="card-title grey-text text-darken-4">{{ etablishment.name }} <i
-                                class="mdi-navigation-close right"></i></span>
-                <span><i class="mdi-action-perm-identity cyan-text text-darken-2"></i> Nom</span>
-            </p>
         </div>
     </div>
-    <!--/ profile-page-header -->
-
-    <!-- Profile About  -->
     <div class="row">
+        <!------------ --------------- -------S4 ------ ---------------- ----------------->
+        <!-------------------------------------------------------------------------------->
         <div class="col s4">
             <p class="justify"><i class="material-icons" style="font-size:15px; color:#e24800!important;">arrow_back</i><a style="color:#e24800;" href="{{ path('admin_etablishment_index') }}"> Retour vers la liste des établissements</a></p>
-            <div class="card amber darken-2">
-                <div class="card-content dark-text center-align">
-                    <p class="card-title "><i class="mdi-social-group-add"></i> {{ etablishment.games|length }}</p>
-                    <p>Nombre de parties jouées</p>
+            <div class="card center-align">
+                <div class="card-content card-stats purple white-text">
+                    <p class="card-stats-title"><i class="mdi-editor-attach-money"></i>Joueurs</p>
+                    <p class="card-stats-number">110</p>
+                    <p class="card-stats-compare"><span></span><i class="material-icons">keyboard_arrow_up</i> 10% <span class="purple-text text-lighten-5">mois dernier</span>
+                    </p>
+                </div>
+                <div class="card-action purple darken-2">
+                    <div id="sales-compositebar"><img src="{{ asset('images/fake-stats/telechargement(1).png') }}" width="286" height="25" style="display: inline-block; width: 286px; height: 25px; vertical-align: top;"/></div>
+                </div>
+            </div>
+            <div class="card center-align">
+                <div class="card-content card-stats green white-text">
+                    <p class="card-stats-title"><i class="mdi-editor-attach-money"></i>Abonnés</p>
+                    <p class="card-stats-number">3</p>
+                    <p class="card-stats-compare"><span></span><i class="material-icons">keyboard_arrow_down</i> 5% <span class="purple-text text-lighten-5">mois dernier</span>
+                    </p>
+                </div>
+                <div class="card-action green darken-2">
+                    <div id="sales-compositebar"><img src="{{ asset('images/fake-stats/telechargement.png') }}" width="286" height="25" style="display: inline-block; width: 286px; height: 25px; vertical-align: top;"/></div>
                 </div>
             </div>
         </div>
+        <!------------ --------------- -------S8 ------ ---------------- ----------------->
+        <!-------------------------------------------------------------------------------->
         <div class="col s8">
-            <table>
+            <table class="card centered bordered">
                 <thead>
                 <tr>
+                    {# TODO pourquoi data-field ? #}
                     <th data-field="id">Nom de la partie</th>
                     <th data-field="name">Date</th>
-                    <th data-field="price">Détails de la partie</th>
+                    <th data-field="name">Participants</th>
+                    <th data-field="price">Détails</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -63,6 +82,7 @@
                     <tr>
                         <td>{{ game.gameType.type }}</td>
                         <td>{{ game.playedAt|date('d/m/Y') }}</td>
+                        <td>{{ game.score|length }}</td>
                         <td><a href="{{ path('admin_game_show', {'id': game.id}) }}"><i class="material-icons">visibility</i></a>
                         </td>
                     </tr>

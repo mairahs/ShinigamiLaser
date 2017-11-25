@@ -113,10 +113,6 @@ p {
     font-size: inherit;
 }
 
-.white-text, .grey-text.text-lighten-4{
-    color: #fca906!important;
-}
-
 .teal{
     background-color: #222222!important;
 }
@@ -148,6 +144,17 @@ p {
 
 .listcard{
     padding: 30px;
+}
+
+.avatar-game-list{
+    width: 40px;
+    height: 40px;
+}
+
+.card-description {
+    font-size: 1.0rem;
+    margin: 0;
+    color: #fff;
 }
 
 /* --- ---- ---- Style demo geeklabs --- --- ---- --- */
@@ -190,10 +197,10 @@ p {
     padding: 20px;
 }
 
-.task-card .task-card-title {
+.task-card-title {
     margin: 0;
-    color: #fff;
     font-weight: 300;
+    font-size: 24px;
 }
 
 .task-card .task-cat {
@@ -239,6 +246,29 @@ p {
     padding: 0;
     margin: 0;
     font-weight: 400;
+}
+
+.card .card-content.card-stats{
+    padding: 10px 14px;
+}
+
+.card-stats .card-stats-title, #card-stats .card-stats-title i {
+    font-size: 1.2rem;
+}
+
+.card-stats .card-stats-number {
+    font-size: 1.8rem;
+    line-height: 2.0rem;
+    margin: 0.2rem 0 0.2rem 0;
+    font-weight: 500;
+}
+
+.card-stats .card-stats-compare {
+    font-size: 1.0rem;
+}
+
+.card-stats .card .card-action {
+    padding: 10px 14px;
 }
 
 /* --- ---- ---- Style demo geeklabs END --- --- ---- --- */
