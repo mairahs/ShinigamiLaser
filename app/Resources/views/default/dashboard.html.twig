@@ -43,16 +43,19 @@
         <!---------------------------------------------------------------------------------->
         <div class="col s4">
             <div class="card center-align">
-                <div class="card-content purple white-text">
-                    <p class="card-stats-title"><i class="mdi-editor-attach-money"></i>Dernière partie</p>
-                    <h4 class="card-stats-number">23/11/2017</h4>
-                    <p class="card-stats-compare"><i class="mdi-hardware-keyboard-arrow-up"></i>4 <span class="purple-text text-lighten-5">ce mois-ci</span>
+                <div class="card-content card-stats green white-text">
+                    <p class="card-stats-title"><i class="mdi-editor-attach-money"></i>Points</p>
+                    <p class="card-stats-number">1134</p>
+                    <p class="card-stats-compare"><span></span><i class="material-icons">keyboard_arrow_up</i> 10% <span class="purple-text text-lighten-5">mois dernier</span>
                     </p>
+                </div>
+                <div class="card-action green darken-2">
+                    <div id="sales-compositebar"><img src="{{ asset('images/fake-stats/telechargement.png') }}" width="286" height="25" style="display: inline-block; width: 286px; height: 25px; vertical-align: top;"/></div>
                 </div>
             </div>
             <ul class="card collection with-header task-card">
                 <li class="collection-header purple">
-                    <h4 class="task-card-title">Dernières parties</h4>
+                    <h4 class="task-card-title white-text">Dernières parties</h4>
                 </li>
                 {% for score in stats.scores %}
                 <li class="collection-item dismissable">
@@ -67,7 +70,7 @@
             </ul>
             <ul class="collection with-header task-card">
                 <li class="collection-header cyan">
-                    <h4 class="task-card-title">Accomplissement</h4>
+                    <h4 class="task-card-title white-text">Accomplissements</h4>
                     <p class="task-card-date">Au 23/11/2017</p>
                 </li>
                 <li class="collection-item dismissable">

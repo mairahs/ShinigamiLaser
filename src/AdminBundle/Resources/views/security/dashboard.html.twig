@@ -1,22 +1,6 @@
 {% extends 'base/base.admin.html.twig' %}
 
 {% block body %}
-        <ul id="slide-out" class="side-nav fixed z-depth-2">
-            <li class="center no-padding">
-                <div class="row">
-                    <img width="100" height="100" src="{{ asset('images/logo.PNG') }}" class="circle responsive-img" />
-                    <p class="center textPar">Bienvenue {{ app.user.username }}</p>
-                </div>
-            </li>
-            <li id="dash_dashboard"><a href="#!"><b>Tableau de Bord</b></a></li>
-            <li id="dash_dashboard"><a href="#!"><b>Joueurs</b></a></li>
-            <li id="dash_dashboard"><a href="#!"><b>Cartes de fidélité</b></a></li>
-            <li id="dash_dashboard"><a href="#!"><b>Etablissements</b></a></li>
-            <li id="dash_dashboard"><a href="#!"><b>Promotions</b></a></li>
-
-        </ul>
-
-
     <div class="row">
         <!-- --- --- ----------- COL S4 ----------------->
         <div class="col s4">
@@ -109,7 +93,7 @@
 
             <ul class="collection collection-dash card">
                 <li class="collection-item avatar">
-                    <i class="mdi-file-folder circle material-icons">view_list</i>
+                    <i class="mdi-file-folder circle material-icons">store</i>
                     <span class="collection-header">Etablissements</span>
                     <p>Voir le détail et les administrateurs de chaque établissement</p>
                 </li>
