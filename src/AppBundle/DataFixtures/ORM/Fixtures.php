@@ -62,7 +62,7 @@ class Fixtures extends Fixture
         }
 
         $player_arr = [];
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 30; $i++) {
             $player = new Player();
             $player->setFirstname($faker->firstName);
             $player->setLastname($faker->lastName);
@@ -70,19 +70,17 @@ class Fixtures extends Fixture
             $player->setEmail($faker->email);
             $player->setAddress($faker->address);
             $player->setDateOfBirth($faker->dateTime());
-            $player->setUsername($faker->firstName);
-            $player->setToken(987987987);
+            $player->setUsername($faker->userName.$i);
             $player->setPhoneNumber($faker->phoneNumber);
-            $player->setIsActivate(0);
             $manager->persist($player);
             $player_arr[] = $player;
         }
 
         $card_arr = [];
-        for ($i = 0; $i < 20; $i++) {
+        for ($i = 0; $i < 30; $i++) {
             $card = new Card();
-            $rand = rand(1, 5);
-            if (4 > $rand) {
+            $rand = rand(1, 10);
+            if (10 !== $rand) {
                 $key = array_rand($player_arr, 1);
                 $card->setPlayer($player_arr[$key]);
 

@@ -1,5 +1,5 @@
 {% if player.avatar is null %}
-    <img src="{{ asset('images/default_avatar/avatar.png') }}" class="img_rounded">
+    <img src="{{ asset('images/default_avatar/avatar.png') }}" class="{{ class }}">
 {% else %}
     <img src="{{ asset('upload/' ~ player.avatar.name ~ '.' ~ player.avatar.extension) }}" class="{{ class }}">
 {% endif %}

@@ -13,14 +13,11 @@ class GameController extends Controller
    public function showAction($id)
    {
        $game = $this->getDoctrine()->getManager()->getRepository('AppBundle:Game')->getOneGameWithScoreAndPlayer($id);
-
        if(null == $game)
        {
            new notFoundHttpException('La partie demandée n\'existe pas');
        }
-
        return $this->render('AdminBundle:game:show.html.twig', ['game'=>$game]);
-
    }
 
    public function user_showAction($id)

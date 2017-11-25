@@ -1,10 +1,8 @@
 function graphTypePartie(data) {
-
-    console.log(data);
-
     Highcharts.chart('typepartie', {
         chart: {
-            plotBackgroundColor: null,
+            backgroundColor: '#FCFFC5',
+            // plotBackgroundColor: null,
             plotBorderWidth: null,
             plotShadow: false,
             type: 'pie'
