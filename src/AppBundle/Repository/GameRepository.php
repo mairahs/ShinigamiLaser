@@ -21,6 +21,4 @@ class GameRepository extends EntityRepository
         return $queryBuilder->getQuery()
             ->getSingleResult();
     }
-
-
 }

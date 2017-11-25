@@ -158,6 +158,11 @@ p {
     padding: 20px;
 }
 
+.cardHeader .img-avatar{
+    height: 110px;
+    width: 110px;
+}
+
 .cardHeader .card-profile-image {
     width: 110px;
     position: absolute;
@@ -181,14 +186,26 @@ p {
     bottom: 89px;
 }
 
-#task-card .collection-header {
+.task-card .collection-header {
     padding: 20px;
 }
 
-#task-card .task-card-title {
+.task-card .task-card-title {
     margin: 0;
     color: #fff;
     font-weight: 300;
+}
+
+.task-card .task-cat {
+    padding: 2px 4px;
+    color: #fff;
+    margin-left: 37px;
+    font-weight: 300;
+    font-size: 0.8rem;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    background-clip: padding-box;
 }
 
 .card h3.card-title{
@@ -196,28 +213,28 @@ p {
     margin-top: 0;
 }
 
-#task-card .task-card-date {
+.task-card .task-card-date {
     font-size: 1.0rem;
     margin: 0;
     color: #fff;
 }
 
-#task-card p{
+.task-card p{
     line-height: 1.5;
 }
 
-#task-card .row{
+.task-card .row{
     margin-bottom: 0;
 }
 
-#task-card p.collections-title {
+.task-card p.collections-title {
     font-size: 1.0rem;
     padding: 0;
     margin: 0;
     font-weight: 500;
 }
 
-#task-card p.collections-content {
+.task-card p.collections-content {
     font-size: 0.9rem;
     padding: 0;
     margin: 0;

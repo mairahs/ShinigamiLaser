@@ -5,10 +5,29 @@
 {% endblock %}
 
 {% block body %}
-    <h3>Carte : {{ card.number }}</h3>
-    <p><b>Score total :</b> <span id="score_total"></span></p>
-    <p><b>Parties jouées :</b> <span id="parties_jouees"></span></p>
-    <p><b>Moyenne par partie :</b> <span id="moyenne_partie"></span></p>
+    <div class="card cardHeader">
+        <div class="card-image waves-effect waves-block waves-light">
+            <img class="activator" src="{{ asset('images/office.jpg') }}">
+        </div>
+        <div class="card-content">
+            <div class="row">
+                <div class="col s3 offset-s2">
+                    <h4 class="card-title grey-text text-darken-4">{{ card.number }}</h4>
+                    <p class="medium-small grey-text">Numéro carte</p>
+                </div>
+                <div class="col s2 center-align">
+                    <h4 class="card-title grey-text text-darken-4">{{ stats.sumscore }}</h4>
+                    <p class="medium-small grey-text">Score total</p>
+                </div>
+                <div class="col s2 center-align">
+                    <h4 class="card-title grey-text text-darken-4">{{ stats.nbgames }}</h4>
+                    <p class="medium-small grey-text">Nombre de partie</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <div class="row">
         <div class="col s12">
             <a href="{{ path('app_dashboard') }}">Retour au dashboard</a>
@@ -19,6 +38,21 @@
         <!---------------------------------------------------------------------------------->
         <div class="col s6">
             <div id="scorebygame" class="card"></div>
+            <ul class="card collection with-header task-card">
+                <li class="collection-header purple">
+                    <h4 class="task-card-title">Dernières parties</h4>
+                </li>
+                {% for score in stats.scores %}
+                    <li class="collection-item dismissable">
+                        <p class="collections-title">{{ score.games.playedAt|date('d/m/y H:i') }} <span class="right purple task-cat">{{ score.result }}</span><span class="right">Points :</span></p>
+                        <p class="collections-content">{{ score.games.gameType.type }}</p>
+                    </li>
+                {% else %}
+                    <li class="collection-item dismissable">
+                        <p class="collections-title">Tu n'as pas encore de partie :(</p>
+                    </li>
+                {% endfor %}
+            </ul>
         </div>
         <!--------------------------------- COL S4 ----------------------------------------->
         <!---------------------------------------------------------------------------------->

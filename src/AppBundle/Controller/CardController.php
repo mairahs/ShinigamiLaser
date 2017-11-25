@@ -52,8 +52,11 @@ class CardController extends Controller
     public function showAction(Card $card)
     {
         $this->get(AuthenticateService::class)->checkPlayer($card->getPlayer());
+        $stats = $this->getDoctrine()->getRepository('AppBundle:Score')->getAllStat($card);
+        $stats['scores'] = $this->getDoctrine()->getRepository('AppBundle:Score')->getLastGamePlayedCard($card);
         return $this->render('card/show.card.html.twig', [
-            'card' => $card
+            'card' => $card,
+            'stats' => $stats
         ]);
     }
 
@@ -113,17 +116,6 @@ class CardController extends Controller
         foreach ($game_type as $type) {
             $stats[$type->getType()] = $this->getDoctrine()->getRepository('AppBundle:Score')->getTypePartie($card, $type);
         }
-        return new JsonResponse($stats);
-    }
-
-    /**
-     * @param Card $card
-     * @internal param $id
-     * @return JsonResponse
-     */
-    public function allStatAction(Card $card)
-    {
-        $stats = $this->getDoctrine()->getRepository('AppBundle:Score')->getAllStat($card);
         return new JsonResponse($stats);
     }
 

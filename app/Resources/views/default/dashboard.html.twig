@@ -6,7 +6,7 @@
             <img class="activator" src="{{ asset('images/office.jpg') }}">
         </div>
         <figure class="card-profile-image">
-            <img src="{{ asset('images/default_avatar/avatar.png') }}" alt="profile image" class="circle z-depth-2 responsive-img activator">
+            {%  include 'inc/inc.avatar.img.html.twig' with {'class' : 'circle z-depth-2 responsive-img activator img-avatar'} %}
         </figure>
         <div class="card-content">
             <div class="row">
@@ -50,12 +50,27 @@
                     </p>
                 </div>
             </div>
-            <ul id="task-card" class="collection with-header">
+            <ul class="card collection with-header task-card">
+                <li class="collection-header purple">
+                    <h4 class="task-card-title">Dernières parties</h4>
+                </li>
+                {% for score in stats.scores %}
+                <li class="collection-item dismissable">
+                    <p class="collections-title">{{ score.games.playedAt|date('d/m/y H:i') }} <span class="right purple task-cat">{{ score.result }}</span><span class="right">Points :</span></p>
+                    <p class="collections-content">{{ score.games.gameType.type }}</p>
+                </li>
+                {% else %}
+                    <li class="collection-item dismissable">
+                        <p class="collections-title">Tu n'as pas encore de partie :(</p>
+                    </li>
+                {% endfor %}
+            </ul>
+            <ul class="collection with-header task-card">
                 <li class="collection-header cyan">
                     <h4 class="task-card-title">Accomplissement</h4>
                     <p class="task-card-date">Au 23/11/2017</p>
                 </li>
-                <li class="collection-item dismissable" style="touch-action: pan-y;">
+                <li class="collection-item dismissable">
                     <div class="row">
                         <div class="col s7">
                             <p class="collections-title">Amiral de l'espace</p>
@@ -63,7 +78,7 @@
                         </div>
                         <div class="col s5">
                             <div class="progress">
-                                <div class="determinate" style="width: 70%"></div>
+                                <div class="determinate"></div>
                             </div>
                         </div>
                     </div>
