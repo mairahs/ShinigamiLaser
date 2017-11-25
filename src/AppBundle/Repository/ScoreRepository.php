@@ -70,7 +70,7 @@ class ScoreRepository extends \Doctrine\ORM\EntityRepository
             ->setParameters([
                 'card' => $card
             ]);
-        return $queryBuilder->getQuery()->getScalarResult();
+        return $queryBuilder->getQuery()->getSingleResult();
     }
 
     public function getTypePartie(Card $card, $gameType){
@@ -92,6 +92,38 @@ class ScoreRepository extends \Doctrine\ORM\EntityRepository
             ->leftJoin('score.games', 'games')
             ->andWhere('score.cards = :card')
             ->andWhere("games.type = 'equipe'")
+            ->setParameters([
+                'card' => $card
+            ]);
+        ;
+        return $queryBuilder->getQuery()->getResult();
+    }
+
+    public function getLastGamePlayedPlayer(Player $player){
+        $queryBuilder = $this->createQueryBuilder('score')
+            ->leftJoin('score.games', 'games')
+            ->leftJoin('score.cards', 'cards')
+            ->select('score')
+            ->addSelect('games')
+            ->where('cards.player = :player')
+            ->orderBy('games.playedAt', 'DESC')
+            ->setMaxResults(5)
+            ->setParameters([
+                'player' => $player
+            ]);
+        ;
+        return $queryBuilder->getQuery()->getResult();
+    }
+
+    public function getLastGamePlayedCard(Card $card){
+        $queryBuilder = $this->createQueryBuilder('score')
+            ->leftJoin('score.games', 'games')
+            ->leftJoin('score.cards', 'cards')
+            ->select('score')
+            ->addSelect('games')
+            ->where('cards = :card')
+            ->orderBy('games.playedAt', 'DESC')
+            ->setMaxResults(5)
             ->setParameters([
                 'card' => $card
             ]);

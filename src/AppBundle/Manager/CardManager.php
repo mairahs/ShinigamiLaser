@@ -95,6 +95,7 @@ class CardManager
     public function returnDashboard(Player $player){
         $cards = $this->entityManager->getRepository('AppBundle:Score')->getListCardDashboard($player);
         $stats = $this->getStatsDashboard($cards);
+        $stats['scores'] = $this->entityManager->getRepository('AppBundle:Score')->getLastGamePlayedPlayer($player);
         return[
             'player' => $player,
             'cards' => $cards,

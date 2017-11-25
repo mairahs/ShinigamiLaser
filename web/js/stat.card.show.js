@@ -7,16 +7,6 @@ $(document).ready(function(){
         }
     });
     $.ajax({
-        url: '/card/get/allstat/'+$('#id_carte').val(),
-        method: 'POST',
-        dataType: 'json',
-        success : function(data){
-            $('#score_total').html(data[0].sumscore);
-            $('#parties_jouees').html(data[0].nbgames);
-            $('#moyenne_partie').html(Math.round(data[0].sumscore/data[0].nbgames));
-        }
-    });
-    $.ajax({
         url: '/card/get/scorebygame/'+$('#id_carte').val(),
         method: 'POST',
         dataType: 'json',
@@ -49,16 +39,6 @@ $(document).ready(function(){
         dataType: 'json',
         success : function(obj){
             var data_typepartie = [];
-            // [{
-            //     name: 'Team',
-            //     y: 10
-            // }, {
-            //     name: 'FFA',
-            //     y: 5
-            // }, {
-            //     name: 'Dracula',
-            //     y: 2
-            // }]
             for(var item in obj){
                 if(obj.hasOwnProperty(item)) {
                     var key = {
@@ -71,9 +51,6 @@ $(document).ready(function(){
             graphTypePartie(data_typepartie);
         }
     });
-
-
-
 
     Highcharts.chart('winlose', {
         chart: {
