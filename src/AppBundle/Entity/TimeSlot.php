@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * GameType
+ * TimeSlot
  *
- * @ORM\Table(name="game_type")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\GameTypeRepository")
+ * @ORM\Table(name="time_slot")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\TimeSlotRepository")
  */
-class GameType
+class TimeSlot
 {
     /**
      * @var int
@@ -44,13 +44,13 @@ class GameType
      *
      * @param string $type
      *
-     * @return GameType
+     * @return TimeSlot
      */
     public function setType($type)
     {
         $this->type = $type;
-
         return $this;
+
     }
 
     /**

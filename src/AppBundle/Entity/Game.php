@@ -28,6 +28,11 @@ class Game
     private $gameType;
 
     /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\TimeSlot", cascade={"persist"})
+     */
+    private $timeSlot;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="played_at", type="datetime", nullable=true)
@@ -167,5 +172,29 @@ class Game
     public function getEtablishment()
     {
         return $this->etablishment;
+    }
+
+    /**
+     * Get timeSlot
+     *
+     * @return \AppBundle\Entity\TimeSlot
+     */
+    public function getTimeSlot()
+    {
+        return $this->timeSlot;
+    }
+
+    /**
+     * Set timeSlot
+     *
+     * @param \AppBundle\Entity\TimeSlot $timeSlot
+     *
+     * @return Game
+     */
+    public function setTimeSlot(\AppBundle\Entity\TimeSlot $timeSlot = null)
+    {
+        $this->timeSlot = $timeSlot;
+
+        return $this;
     }
 }

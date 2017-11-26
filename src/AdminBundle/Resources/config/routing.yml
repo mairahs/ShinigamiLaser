@@ -27,6 +27,10 @@ admin_etablishment_show:
     requirements:
         id: \d+
 
+admin_game_add:
+    path: /game/add
+    defaults: {_controller: AdminBundle:Game:add}
+
 admin_game_show:
     path: /game/{id}
     defaults: {_controller: AdminBundle:Game:show}

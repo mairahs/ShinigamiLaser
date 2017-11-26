@@ -11,6 +11,7 @@ use AppBundle\Entity\GameType;
 use AppBundle\Entity\Player;
 use AppBundle\Entity\Provider;
 use AppBundle\Entity\Score;
+use AppBundle\Entity\TimeSlot;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Faker\Factory as Factory;
@@ -28,6 +29,28 @@ class Fixtures extends Fixture
 
         $encoder = $this->container->get('security.password_encoder');
 
+        $timeslot_arr = [
+            "9h-11h" => [
+                'start' => 9,
+                'end' => 11
+            ],
+            "14h-16h" => [
+                'start' => 14,
+                'end' => 16
+            ],
+            "17h-19h" => [
+                'start' => 17,
+                'end' => 19
+            ]];
+
+
+        $time_slotO = [];
+        foreach ($timeslot_arr as $type => $value) {
+            $time_slot = new TimeSlot();
+            $time_slot->setType($type);
+            $manager->persist($time_slot);
+            $time_slotO[] = $time_slot;
+        }
 
         $gametype_arr = [
         "Team" => [

@@ -210,4 +210,9 @@ class Etablishment
     {
         return $this->games;
     }
+
+    public function __toString()
+    {
+        return $this->getName();
+    }
 }

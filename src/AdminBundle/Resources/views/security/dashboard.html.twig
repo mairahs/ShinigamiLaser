@@ -4,6 +4,12 @@
     <div class="row">
         <!-- --- --- ----------- COL S4 ----------------->
         <div class="col s4">
+            <div class="card">
+                <div class="card-content purple white-text center">
+                    <p class="card-stats-title"><i class="mdi-social-group-add"></i> Bienvenue {{ app.user.username }}</p>
+                </div>
+
+            </div>
                 <div class="card">
                     <div class="card-content  green white-text center">
                         <p class="card-stats-title"><i class="mdi-social-group-add"></i> Derniers joueurs inscrits</p>
@@ -50,9 +56,6 @@
                     <div id="profit-tristate"></div>
                 </div>
             </div>
-
-
-
         </div>
         <!-- --- --- ----------- COL S8 ----------------->
         <div class="col s8">
@@ -88,6 +91,24 @@
                 <p class="collections-title"><a href="#">Gérer les cartes de fidélités<i class="material-icons float">card_travel</i></a></p>
                 <p class="collections-content">Voir leur détail: parties, scores, etc...</p>
             </li>
+
+            </ul>
+
+            <ul class="collection collection-dash card">
+                <li class="collection-item avatar">
+                    <i class="mdi-file-folder circle material-icons">store</i>
+                    <span class="collection-header">Parties</span>
+                    <p>Gérer les parties au sein de chaque établissement</p>
+                </li>
+                <li class="collection-item">
+                    <p class="collections-title"><a href="{{ path('admin_game_add') }}">Créer des parties<i class="material-icons float">library_add</i></a></p>
+                    <p class="collections-content">Créer simplement des parties de jeu auxquelles vos joueurs pourront s'inscrire</p>
+                </li>
+                <li class="collection-item">
+                    <p class="collections-title"><a href="#">Voir toutes les parties créées<i class="material-icons float">remove_red_eye</i></a></p>
+                    <p class="collections-content">Afficher leur détail</p>
+
+                </li>
 
             </ul>
 

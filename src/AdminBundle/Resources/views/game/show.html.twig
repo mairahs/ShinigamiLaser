@@ -16,12 +16,16 @@
                     <p class="medium-small grey-text">Date</p>
                 </div>
                 <div class="col s2">
-                    <h4 class="card-title grey-text text-darken-4">{{ game.score|length }}</h4>
+                    <h4 class="card-title grey-text text-darken-4">{{ game.score|length }} </h4>
                     <p class="medium-small grey-text">Nombre de joueurs</p>
                 </div>
                 <div class="col s2">
                     <h4 class="card-title grey-text text-darken-4">{{ game.gameType.type }}</h4>
                     <p class="medium-small grey-text">Type de partie</p>
+                </div>
+                <div class="col s2">
+                    <h4 class="card-title grey-text text-darken-4">{{ game.timeSlot.type }}</h4>
+                    <p class="medium-small grey-text">Plage horaire</p>
                 </div>
             </div>
         </div>

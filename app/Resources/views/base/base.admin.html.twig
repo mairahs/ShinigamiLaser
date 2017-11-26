@@ -3,6 +3,11 @@
 {% block layout_stylesheets %}<link href="{{ asset('css/styles_admin.css') }}" rel="stylesheet" />{% endblock %}
 
 {% block layout_container %}
+    {% for msg in app.session.flashBag.get('success') %}
+        <div class="messflash">
+            {{ msg }}
+        </div>
+    {% endfor %}
 
     {#<ul id="slide-out" class="side-nav fixed z-depth-2">#}
     {#<li class="center no-padding">#}
