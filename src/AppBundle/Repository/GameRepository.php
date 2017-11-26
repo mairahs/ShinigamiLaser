@@ -21,4 +21,15 @@ class GameRepository extends EntityRepository
         return $queryBuilder->getQuery()
             ->getSingleResult();
     }
+
+    public function findAllGamesWithoutScore()
+    {
+        $queryBuilder = $this->createQueryBuilder('g')
+                                         ->leftJoin('g.score','s')
+                                         ->addSelect('s')
+                                         ->where('s.id IS NULL');
+        return $queryBuilder->getQuery()
+                                        ->getResult();
+
+    }
 }
