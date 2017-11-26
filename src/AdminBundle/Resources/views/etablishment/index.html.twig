@@ -30,7 +30,7 @@
                 <td>ShinigamiLaser - {{ etablishment.name }}</td>
                 <td>{{ etablishment.code }}</td>
                 <td>{{ etablishment.city }}</td>
-                <td><i class="material-icons"><a href="{{ path('admin_etablishment_show', {'id':etablishment.id}) }}" style="color:#e24800;">remove_red_eye</a></i></td>
+                <td><i class="material-icons"><a href=" {{ path('admin_etablishment_show', {'id':etablishment.id}) }}" style="color:#e24800;">remove_red_eye</a></i></td>
 
             </tr>
             {% endfor %}
