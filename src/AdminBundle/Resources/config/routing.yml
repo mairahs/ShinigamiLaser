@@ -38,3 +38,4 @@ admin_game_show:
 admin_user_dashboard:
     path: /user/{id}
     defaults: {_controller: AdminBundle:Game:user_show}
+

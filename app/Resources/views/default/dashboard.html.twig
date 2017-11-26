@@ -41,6 +41,7 @@
     <div class="row">
         <!--------------------------------- COL S4 ----------------------------------------->
         <!---------------------------------------------------------------------------------->
+
         <div class="col s4">
             <div class="card center-align">
                 <div class="card-content card-stats green white-text">
@@ -68,6 +69,25 @@
                     </li>
                 {% endfor %}
             </ul>
+            <ul class="card collection with-header task-card">
+                <li class="collection-header purple">
+                    <h4 class="task-card-title white-text">Nouvelles parties disponibles</h4>
+                </li>
+                {% for game in stats.gamesWithoutScore %}
+
+                    <li class="collection-item dismissable">
+                        <p class="collections-title">Date<span class="right purple task-cat">{{ game.playedAt|date('d/m/y') }}</span></p>
+                        <p class="collections-title">Etablissement <span style ="color:#222; font-weight: bold;" class="right  task-cat">SL de {{ game.etablishment }}</span></p>
+                        <p class="collections-title">Type <span style ="color:#222; font-weight: bold;" class="right  task-cat">{{ game.gameType }}</span></p>
+                        <p class="collections-title">Plage horaire<span class="right purple task-cat">{{ game.timeSlot }}</span></p>
+                        <p class="collections-content center"><a href="#">Rejoindre la partie</a> </p>
+                    </li>
+                {% else %}
+                    <li class="collection-item dismissable">
+                        <p class="collections-title">Aucune partie n'est disponible pour le moment :(</p>
+                    </li>
+                {% endfor %}
+            </ul>
             <ul class="collection with-header task-card">
                 <li class="collection-header cyan">
                     <h4 class="task-card-title white-text">Accomplissements</h4>
@@ -90,7 +110,7 @@
                     <div class="row">
                         <div class="col s7">
                             <p class="collections-title">Tueur de vampire</p>
-                            <p class="collections-content">Eliminer des vapires en mode Dracula</p>
+                            <p class="collections-content">Eliminer des vampires en mode Dracula</p>
                         </div>
                         <div class="col s5">
                             <div class="progress">
