@@ -31,3 +31,11 @@ admin_user_show:
     path: /user/{id}
     defaults: {_controller: AdminBundle:User:show}
 
+admin_user_findall_byetablishment:
+    path: /user/findall/etablishment/{id}
+    defaults: {_controller: AdminBundle:User:index_etablishment}
+    requirements:
+           id: \d+
+
+
+
