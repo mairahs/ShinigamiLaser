@@ -60,7 +60,7 @@
                 </li>
                 {% for score in stats.scores %}
                 <li class="collection-item dismissable">
-                    <p class="collections-title">{{ score.games.playedAt|date('d/m/y H:i') }} <span class="right purple task-cat">{{ score.result }}</span><span class="right">Points :</span></p>
+                    <p class="collections-title">{{ score.games.playedAt|date('d/m/y') }} <span class="right purple task-cat">{{ score.result }}</span><span class="right">Points :</span></p>
                     <p class="collections-content">{{ score.games.gameType.type }}</p>
                 </li>
                 {% else %}
@@ -80,7 +80,7 @@
                         <p class="collections-title">Etablissement <span style ="color:#222; font-weight: bold;" class="right  task-cat">SL de {{ game.etablishment }}</span></p>
                         <p class="collections-title">Type <span style ="color:#222; font-weight: bold;" class="right  task-cat">{{ game.gameType }}</span></p>
                         <p class="collections-title">Plage horaire<span class="right purple task-cat">{{ game.timeSlot }}</span></p>
-                        <p class="collections-content center"><a href="#">Rejoindre la partie</a> </p>
+                        <p class="collections-content center"><a href="{{ path('user_join_game', {'id': game.id}) }}">Rejoindre la partie</a> </p>
                     </li>
                 {% else %}
                     <li class="collection-item dismissable">
