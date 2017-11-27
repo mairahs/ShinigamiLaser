@@ -19,22 +19,20 @@ class UserController extends Controller
     {
         $numberCard = $request->request->get('number_card');
         if ($request->getMethod() === "POST" && !is_null($numberCard) && $numberCard !== "") {
-            $player = $this->getDoctrine()->getRepository('AppBundle:Player')->findPlayerByNumberCard($numberCard);
-
-
-            if (null === $player) {
-                throw new NotFoundHttpException("Aucun joueur ne possède ce numéro de carte");
+            try{
+                $player = $this->getDoctrine()->getRepository('AppBundle:Player')->findPlayerByNumberCard($numberCard);
+                $ret = $this->get(CardManager::class)->returnDashboard($player);
+                return $this->render('default/dashboard.html.twig', $ret);
+            }catch(\Exception $exception){
+                $this->addFlash('notice', "Aucun joueur ne possède ce numéro de carte");
             }
-
-            return  $this->redirectToRoute('admin_displayplayer', ['id'=>$player->getId()]);
         }
-
         return $this->render('@Admin/user/find_player.html.twig');
     }
 
-    public function displayAction($id)
+    public function showAction($id)
     {
-        $player = $this->getDoctrine()->getRepository('AppBundle:Player')->find($id);
+        $player = $this->getDoctrine()->getManager()->getRepository('AppBundle:Player')->find($id);
         $ret = $this->get(CardManager::class)->returnDashboard($player);
         return $this->render('default/dashboard.html.twig', $ret);
     }

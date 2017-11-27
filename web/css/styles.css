@@ -53,6 +53,10 @@ p {
     left: 0;
 }
 
+li.error{
+    color: #F44336;
+}
+
 .parallax-container {
     min-height: 380px;
     max-width: 1400px;

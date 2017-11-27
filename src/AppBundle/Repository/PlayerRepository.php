@@ -20,7 +20,6 @@ class PlayerRepository extends EntityRepository
                                           ->addSelect('c')
                                           ->where('c.number = :numberCard')
                                          ->setParameters(['numberCard'=>$numberCard]);
-        return $queryBuilder->getQuery()
-                                        ->getSingleResult();
+        return $queryBuilder->getQuery()->getSingleResult();
     }
 }

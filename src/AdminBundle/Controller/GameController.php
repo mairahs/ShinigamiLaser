@@ -39,13 +39,4 @@ class GameController extends Controller
        }
        return $this->render('AdminBundle:game:show.html.twig', ['game'=>$game]);
    }
-
-   public function user_showAction($id)
-   {
-       $player = $this->getDoctrine()->getManager()->getRepository('AppBundle:Player')->find($id);
-       $ret = $this->get(CardManager::class)->returnDashboard($player);
-       return $this->render('default/dashboard.html.twig', $ret);
-   }
-
-
 }

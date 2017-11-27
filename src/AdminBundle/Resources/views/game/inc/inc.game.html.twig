@@ -13,8 +13,8 @@
         {% for key, score in game.score %}
             {% if team is not defined or (team is defined and score.team == team) %}
                 <tr>
-                    <td><a href="{{ path('admin_user_dashboard',{'id':score.cards.player.id}) }}">{%  include 'inc/inc.avatar.img.html.twig' with {'player' : score.cards.player, 'class' : 'circle z-depth-2 avatar-game-list'} %}</a></td>
-                    <td><a href="{{ path('admin_user_dashboard',{'id':score.cards.player.id}) }}">{{ score.cards.player.username }}</a></td>
+                    <td><a href="{{ path('admin_user_show',{'id':score.cards.player.id}) }}">{%  include 'inc/inc.avatar.img.html.twig' with {'player' : score.cards.player, 'class' : 'circle z-depth-2 avatar-game-list'} %}</a></td>
+                    <td><a href="{{ path('admin_user_show',{'id':score.cards.player.id}) }}">{{ score.cards.player.username }}</a></td>
                     <td>{{ score.result }}</td>
                     <td>{{ key + 1 }}</td>
                 </tr>

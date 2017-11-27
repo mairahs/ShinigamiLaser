@@ -24,7 +24,7 @@
     $(document).ready(function() {
         $('select').material_select();
         $(".button-collapse").sideNav();
-        var date_max = new Date();
+        Materialize.updateTextFields();
         var date_min = new Date();
         date_min = new Date(date_min.setFullYear(date_min.getFullYear() - 100));
         $('.datepicker').pickadate({
@@ -36,6 +36,12 @@
             close: 'Ok',
             closeOnSelect: false, // Close upon selecting a date,
             format: 'dd/mm/yyyy'
+        });
+        $('.row.has-error').find('input').change(function(){
+            $(this).parents('.input-field').find('ul').remove();
+        });
+        $('.row.has-error').find('textarea').change(function(){
+            $(this).parents('.input-field').find('ul').remove();
         });
     });
 </script>
