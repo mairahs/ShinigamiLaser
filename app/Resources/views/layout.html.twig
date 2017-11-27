@@ -15,6 +15,42 @@
 </head>
 <body>
 
+{% set is_admin = is_granted('ROLE_ADMIN') %}
+{% set is_user = is_granted('ROLE_USER') %}
+
+{% if is_admin %}
+<ul id="slide-out" class="side-nav">
+    <li>
+        <div class="user-view">
+            <a href="#!user"><img class="circle" src="{{ asset('images/logo.PNG') }}"></a>
+            <a href="#!name">{{ app.user.username }}</a>
+        </div>
+    </li>
+    <li><a href="{{ path('admin_dashboard') }}">Dashboard</a></li>
+    <li><div class="divider"></div></li>
+    <li><a class="subheader">Joueur</a></li>
+    <li><a data-activates="slide-out" class="waves-effect" href="#!">Rechercher</a></li>
+    <li><a data-activates="slide-out" class="waves-effect" href="#!">Liste</a></li>
+    <li><div class="divider"></div></li>
+    <li><a class="subheader">Carte de fidélité</a></li>
+    <li><a data-activates="slide-out" class="waves-effect" href="#!">Commander</a></li>
+    <li><a data-activates="slide-out" class="waves-effect" href="#!">Gérer</a></li>
+    <li><div class="divider"></div></li>
+    <li><a class="subheader">Etablissement</a></li>
+    <li><a data-activates="slide-out" class="waves-effect" href="#!">Gerer</a></li>
+    <li><a data-activates="slide-out" class="waves-effect" href="#!">Recrutement</a></li>
+    <li><div class="divider"></div></li>
+    <li><a class="subheader">Promotions</a></li>
+    <li><a data-activates="slide-out" class="waves-effect" href="#!">Gerer</a></li>
+    <li><a data-activates="slide-out" class="waves-effect" href="#!">Offrir</a></li>
+</ul>
+<div class="fixed-action-btn horizontal">
+    <a class="btn-floating btn-large red button-collapse" data-activates="slide-out">
+        <i class="large material-icons">settings</i>
+    </a>
+</div>
+{% endif %}
+
 {% block layout_container %}{% endblock %}
 
 <!--  Scripts-->
@@ -26,12 +62,21 @@
         $(".button-collapse").sideNav();
         Materialize.updateTextFields();
         var date_min = new Date();
-        date_min = new Date(date_min.setFullYear(date_min.getFullYear() - 100));
         $('.datepicker').pickadate({
             selectMonths: true, // Creates a dropdown to control month
             selectYears: 100, // Creates a dropdown to control month
             min: date_min,
             today: false,
+            clear: 'Clear',
+            close: 'Ok',
+            closeOnSelect: false, // Close upon selecting a date,
+            format: 'dd/mm/yyyy'
+        });
+        $('.datepicker_2').pickadate({
+            selectMonths: true, // Creates a dropdown to control month
+            selectYears: 2, // Creates a dropdown to control month
+            min: date_min,
+            today: "Aujourd'hui",
             clear: 'Clear',
             close: 'Ok',
             closeOnSelect: false, // Close upon selecting a date,
