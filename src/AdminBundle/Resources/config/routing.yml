@@ -13,10 +13,6 @@ admin_findplayer:
     path: /findplayer
     defaults: {_controller: AdminBundle:User:find}
 
-admin_displayplayer:
-    path: /displayplayer/{id}
-    defaults: {_controller: AdminBundle:User:display}
-
 admin_etablishment_index:
     path: /etablishments
     defaults: {_controller: AdminBundle:Etablishment:index}
@@ -35,7 +31,7 @@ admin_game_show:
     path: /game/{id}
     defaults: {_controller: AdminBundle:Game:show}
 
-admin_user_dashboard:
+admin_user_show:
     path: /user/{id}
-    defaults: {_controller: AdminBundle:Game:user_show}
+    defaults: {_controller: AdminBundle:User:show}
 

@@ -27,4 +27,6 @@ class GameController extends Controller
             'games' => $games
         ]);
     }
+
+
 }

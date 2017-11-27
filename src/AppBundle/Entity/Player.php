@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Player
@@ -25,20 +26,33 @@ class Player implements UserInterface, \Serializable
 
     /**
      * @var string
+     * @Assert\NotBlank()
+     * @Assert\Length(max = 55)
+     * @Assert\Regex(
+     *     pattern="/^([a-zàáâäçèéêëìíîïñòóôöùúûü]+(( |')[a-zàáâäçèéêëìíîïñòóôöùúûü]+)*)+([-]([a-zàáâäçèéêëìíîïñòóôöùúûü]+(( |')[a-zàáâäçèéêëìíîïñòóôöùúûü]+)*)+)*$/iu",
+     *     match=true
+     * )
      *
-     * @ORM\Column(name="firstname", type="string", length=255)
+     * @ORM\Column(name="firstname", type="string", length=55)
      */
     private $firstname;
 
     /**
      * @var string
+     * @Assert\NotBlank()
+     * @Assert\Length(max = 55)
+     * @Assert\Regex(
+     *     pattern="/^([a-zàáâäçèéêëìíîïñòóôöùúûü]+(( |')[a-zàáâäçèéêëìíîïñòóôöùúûü]+)*)+([-]([a-zàáâäçèéêëìíîïñòóôöùúûü]+(( |')[a-zàáâäçèéêëìíîïñòóôöùúûü]+)*)+)*$/iu",
+     *     match=true
+     * )
      *
-     * @ORM\Column(name="lastname", type="string", length=255)
+     * @ORM\Column(name="lastname", type="string", length=55)
      */
     private $lastname;
 
     /**
      * @var string
+     * @Assert\NotBlank()
      *
      * @ORM\Column(name="address", type="string", length=255)
      */
@@ -46,20 +60,28 @@ class Player implements UserInterface, \Serializable
 
     /**
      * @var string
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      max = 55
+     * )
      *
-     * @ORM\Column(name="username", type="string", length=255, unique=true)
+     * @ORM\Column(name="username", type="string", length=55, unique=true)
      */
     private $username;
 
     /**
      * @var string
+     * @Assert\NotBlank()
+     * @Assert\Length(max = 55)
      *
-     * @ORM\Column(name="phone_number", type="string", length=255)
+     * @ORM\Column(name="phone_number", type="string", length=55)
      */
     private $phoneNumber;
 
     /**
      * @var \DateTime
+     * @Assert\NotBlank()
+     * @Assert\DateTime()
      *
      * @ORM\Column(name="date_of_birth", type="datetime")
      */
@@ -67,13 +89,23 @@ class Player implements UserInterface, \Serializable
 
     /**
      * @var string
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      max = 55
+     * )
+     * @Assert\Email()
      *
-     * @ORM\Column(name="email", type="string", length=255)
+     * @ORM\Column(name="email", type="string", length=55)
+     *
      */
     private $email;
 
     /**
      * @var string
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      max = 255
+     * )
      *
      * @ORM\Column(name="password", type="string", length=255)
      */

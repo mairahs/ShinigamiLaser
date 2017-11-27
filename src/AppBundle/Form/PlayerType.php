@@ -31,11 +31,11 @@ class PlayerType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('firstname', TextType::class)
-            ->add('lastname', TextType::class)
-            ->add('username', TextType::class)
-            ->add('address', TextareaType::class)
-            ->add('phoneNumber', TextType::class)
+            ->add('firstname', TextType::class, ['attr' => ['class' => 'validate']])
+            ->add('lastname', TextType::class, ['attr' => ['class' => 'validate']])
+            ->add('username', TextType::class, ['attr' => ['class' => 'validate']])
+            ->add('address', TextareaType::class, ['attr' => ['class' => 'validate ']])
+            ->add('phoneNumber', TextType::class, ['attr' => ['class' => 'validate']])
             ->add(
                 'dateOfBirth',
                 DateType::class,
@@ -46,10 +46,10 @@ class PlayerType extends AbstractType
                         'class' => 'datepicker',
                         'placeholder' => '31/12/2017',
                     ],
-                    'format' => 'dd/MM/yyyy',
+                    'format' => 'dd/MM/yyyy'
                 )
             )
-            ->add('email', EmailType::class)
+            ->add('email', EmailType::class, ['attr' => ['class' => 'validate']])
         ;
         $user = $this->tokenStorage->getToken()->getUser();
         $builder->addEventListener(
@@ -58,7 +58,17 @@ class PlayerType extends AbstractType
                 $form = $event->getForm();
                 if ("anon." === $user) {
                     $form
-                        ->add('password', RepeatedType::class, ['type'=>PasswordType::class, 'first_options'=>['label'=>'Password'], 'second_options'=>['label'=>'Confirm password']])
+                        ->add('password', RepeatedType::class, [
+                            'type'=>PasswordType::class,
+                            'first_options' => [
+                                'label' => 'Password',
+                                'attr' => ['class' => 'validate']
+                            ],
+                            'second_options' => [
+                                'label' => 'Confirm password',
+                                'attr' => ['class' => 'validate']
+                            ]
+                        ])
                         ->add('avatar', AvatarType::class)
                         ->add('Enregistre-toi', SubmitType::class)
                     ;

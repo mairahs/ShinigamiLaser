@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col s12">
             <h4 class="center">S'inscrire</h4>
-            {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+            {{ form_start(form, {'attr': {'novalidate': 'novalidate', 'autocomplete' : 'off'}}) }}
             {{ form_widget(form) }}
             {{ form_end(form) }}
         </div>

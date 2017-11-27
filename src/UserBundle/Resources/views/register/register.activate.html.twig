@@ -1,7 +1,11 @@
-{% extends 'base/base.html.twig' %}
+{% extends 'base/base.form.html.twig' %}
 
 {% block body %}
-    <h2>Bienvenue chez ShinigamiLaser {{ player.username }}</h2>
-    <p>Ton compte est bien activé</p>
-    <p>Tu peux dès à présent te <a href="{{ path('user_login') }}">connecter</a> et bénéficier de nombreux avantages</p>
+    <div class="row">
+        <div class="col s12">
+            <h4 class="center">Bienvenue chez ShinigamiLaser {{ player.username }}</h4>
+            <p>Ton compte est bien activé</p>
+            <p>Tu peux dès à présent te <a href="{{ path('user_login') }}">connecter</a> et bénéficier de nombreux avantages</p>
+        </div>
+    </div>
 {% endblock %}

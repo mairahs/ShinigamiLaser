@@ -30,7 +30,7 @@ class UpdateController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $this->get(PlayerManager::class)->update($player);
 
-            return $this->redirectToRoute('user_update', ['id' => $player->getId()]);
+            return $this->redirectToRoute('app_dashboard', ['id' => $player->getId()]);
         }
 
         return $this->render('UserBundle:update:update.profil.html.twig', ['form' => $form->createView(), 'player' => $player]);
