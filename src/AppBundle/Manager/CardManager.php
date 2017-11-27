@@ -96,7 +96,11 @@ class CardManager
         $cards = $this->entityManager->getRepository('AppBundle:Score')->getListCardDashboard($player);
         $stats = $this->getStatsDashboard($cards);
         $stats['scores'] = $this->entityManager->getRepository('AppBundle:Score')->getLastGamePlayedPlayer($player);
-        $stats['gamesWithoutScore'] = $this->entityManager->getRepository('AppBundle:Game')->findAllGamesWithoutScore();
+        $tab_id_card = [];
+        foreach ($cards as $card){
+            $tab_card[] = $card['id'];
+        }
+        $stats['bookableGame'] = $this->entityManager->getRepository('AppBundle:Game')->findAllBookableGame($tab_id_card);
         return[
             'player' => $player,
             'cards' => $cards,

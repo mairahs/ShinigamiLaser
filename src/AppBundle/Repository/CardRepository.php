@@ -10,4 +10,15 @@ namespace AppBundle\Repository;
  */
 class CardRepository extends \Doctrine\ORM\EntityRepository
 {
+  /*
+   *   public function findAllCards($player_id)
+    {
+        $queryBuilder = $this->createQueryBuilder('c')
+                             ->leftJoin('c.player','p')
+                             ->addSelect('p')
+                             ->where('p.id = :player_id')
+                             ->setParameters(['id' =>$player_id]);
+        return $queryBuilder->getQuery()
+                            ->getResult();
+    }*/
 }
