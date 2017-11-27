@@ -76,11 +76,10 @@
                 {% for game in stats.gamesWithoutScore %}
 
                     <li class="collection-item dismissable">
-                        <p class="collections-title">Date<span class="right purple task-cat">{{ game.playedAt|date('d/m/y') }}</span></p>
-                        <p class="collections-title">Etablissement <span class="right  task-cat"><b>SL de {{ game.etablishment }}</b></span></p>
-                        <p class="collections-title">Type <span style ="color:#222; font-weight: bold;" class="right  task-cat">{{ game.gameType }}</span></p>
-                        <p class="collections-title">Plage horaire<span class="right purple task-cat">{{ game.timeSlot }}</span></p>
-                        <p class="collections-content center"><a href="{{ path('app_game_join', {'id': game.id}) }}">Rejoindre la partie</a> </p>
+                        <p class="collections-title"><span class="left-align"><b>SL de {{ game.etablishment }}</b></span><span class="right"><b>{{ game.playedAt|date('d/m/y') }}</b><br/>{{ game.timeSlot }}</span></p>
+                        <p class="collections-title">{{ game.gameType }}</p>
+                        {#<p class="collections-content center"><a href="{{ path('app_game_join', {'id_game': game.id, }) }}">Rejoindre la partie</a> </p>#}
+                        <p class="collections-content right-align"><a href="#" class="btn waves-effect waves-light deep-purple">Rejoindre</a> </p>
                     </li>
                 {% else %}
                     <li class="collection-item dismissable">
@@ -181,6 +180,8 @@
                             <a href="{{ path('app_card_show', {'id':card.id}) }}" class="secondary-content" title="voir details"><i class="material-icons">remove_red_eye</i></a>
                         </td>
                         {% endif %}
+                        {% else %}
+                        <td colspan="4">Tu n'as pas encore de carte</td>
                     </tr>
                     {% endfor %}
                     <tr>

@@ -16,12 +16,11 @@ class LostPasswordController extends Controller
         $email = $request->request->get('_email');
         if ($request->getMethod() === "POST" && !is_null($email) && $email !== "") {
             $player = $this->getDoctrine()->getRepository('AppBundle:Player')->findOneBy(['email' => $email]);
-            if (!$player) {
-                //todo afficher l'erreur dans la vue
-                throw new AccessDeniedException('Email non trouvé');
+            if (!is_null($player)) {
+                $this->get(MailManager::class)->sendMailLostPassword($player);
+                return $this->redirectToRoute('user_lostpassword_mailsend');
             }
-            $this->get(MailManager::class)->sendMailLostPassword($player);
-            return $this->redirectToRoute('user_lostpassword_mailsend');
+            $this->addFlash('notice', "L'adresse email n'est pas valide");
         }
 
         return $this->render('UserBundle:lostpassword:lostpassword.index.html.twig');
