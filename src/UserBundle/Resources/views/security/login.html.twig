@@ -4,11 +4,8 @@
     <div class="row">
         <div class="col s12">
             <h4 class="center">Se connecter</h4>
-            {% if error %}
-                <div data-error="wrong">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-            {% endif %}
             <div class="row">
-                <form class="row" action="{{ path('user_login') }}" method="post" autocomplete="off">
+                <form class="row" action="{% if admin is defined %}{{ path('admin_login') }}{% else %}{{ path('user_login') }}{% endif %}" method="post" autocomplete="off">
                     <div class="row">
                         <div class="input-field col s12">
                             <label for="username">
@@ -17,23 +14,28 @@
                             <input type="text" id="username" name="_username" value="{{ lastUsername }}">
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <label for="password">
-                                Mot de passe
-                            </label>
-                            <input type="password" id="password" name="_password">
-                        </div>
+                    <div class="input-field col s12">
+                        <label for="password">
+                            Mot de passe
+                        </label>
+                        <input type="password" id="password" name="_password">
                     </div>
                     <div class="input-field col s12">
                         <button type="submit" class="waves-effect waves-light btn"><i class="material-icons right"></i>Connexion
                         </button>
                     </div>
-                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-                    <input type="hidden" name="_target_path" value="{{ path('app_dashboard') }}"/>
-                    <div class="input-field col s3">
-                        <p><a href="{{ path('user_lostpassword') }}">Tu as perdu ton mot de passe ?</a></p>
+                    {% if error %}
+                    <div class="input-field col s12">
+                            <div data-error="wrong" class="red-text">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
                     </div>
+                    {% endif %}
+                    {% if admin is not defined %}
+                    <div class="input-field col s12 right-align">
+                        <a href="{{ path('user_lostpassword') }}">Tu as perdu ton mot de passe ?</a>
+                    </div>
+                    {% endif %}
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                    <input type="hidden" name="_target_path" value="{% if admin is defined %}{{ path('admin_dashboard') }}{% else %}{{ path('app_dashboard') }}{% endif %}"/>
                 </form>
             </div>
         </div>
