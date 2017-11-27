@@ -15,6 +15,7 @@ class EtablishmentController extends Controller
         return $this->render('@Admin/etablishment/index.html.twig', ['etablishments'=>$etablishments]);
     }
 
+
     public function showAction($id)
     {
         $etablishment = $this->getDoctrine()->getManager()->getRepository('AppBundle:Etablishment')->find($id);

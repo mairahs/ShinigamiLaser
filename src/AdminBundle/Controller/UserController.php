@@ -11,6 +11,14 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class UserController extends Controller
 {
+
+    public function index_etablishmentAction($id)
+    {
+        $etablishment = $this->getDoctrine()->getManager()->getRepository('AppBundle:Etablishment')->find($id);
+        $playersBGyEtablishment = $this->getDoctrine()->getManager()->getRepository('AppBundle:Player')->findAllPlayersByEtablishment($etablishment);
+        dump($playersBGyEtablishment);
+    }
+
     /**
      * @param Request $request
      * @return Response
@@ -36,4 +44,6 @@ class UserController extends Controller
         $ret = $this->get(CardManager::class)->returnDashboard($player);
         return $this->render('default/dashboard.html.twig', $ret);
     }
+
+
 }

@@ -49,3 +49,4 @@ user_lostpassword_confirmation:
     defaults:
         _controller: FrameworkBundle:Template:template
         template:    '@User/lostpassword/lostpassword.confirmation.html.twig'
+
