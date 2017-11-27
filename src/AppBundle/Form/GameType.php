@@ -23,7 +23,7 @@ class GameType extends AbstractType
                     'widget' => 'single_text',
                     'html5' => false,
                     'attr' => [
-                        'class' => 'datepicker',
+                        'class' => 'datepicker_2',
                         'placeholder' => '31/12/2017',
                     ],
                     'format' => 'dd/MM/yyyy ',

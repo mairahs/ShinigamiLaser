@@ -54,15 +54,11 @@ app_card_get_typepartie:
     path: /card/get/typepartie/{id}
     defaults: { _controller: AppBundle:Card:typepartie}
 
-app_game_index:
-    path: /game
-    defaults: { _controller: AppBundle:Game:index }
-
 app_game_show:
     path: /game/{id}
-    defaults: { _controller: AppBundle:Game:show }
+    defaults: {_controller: AppBundle:Game:show}
 
-app_join_game:
+app_game_join:
     path: /game/join/{id_game}/{id_card}
     defaults: {_controller: AppBundle:Game:join}
     requirements:

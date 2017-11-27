@@ -77,10 +77,10 @@
 
                     <li class="collection-item dismissable">
                         <p class="collections-title">Date<span class="right purple task-cat">{{ game.playedAt|date('d/m/y') }}</span></p>
-                        <p class="collections-title">Etablissement <span style ="color:#222; font-weight: bold;" class="right  task-cat">SL de {{ game.etablishment }}</span></p>
+                        <p class="collections-title">Etablissement <span class="right  task-cat"><b>SL de {{ game.etablishment }}</b></span></p>
                         <p class="collections-title">Type <span style ="color:#222; font-weight: bold;" class="right  task-cat">{{ game.gameType }}</span></p>
                         <p class="collections-title">Plage horaire<span class="right purple task-cat">{{ game.timeSlot }}</span></p>
-                        <p class="collections-content center"><a href="{{ path('user_join_game', {'id': game.id}) }}">Rejoindre la partie</a> </p>
+                        <p class="collections-content center"><a href="{{ path('app_game_join', {'id': game.id}) }}">Rejoindre la partie</a> </p>
                     </li>
                 {% else %}
                     <li class="collection-item dismissable">

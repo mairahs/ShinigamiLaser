@@ -104,19 +104,14 @@ a{
     font-weight: 400;
 }
 
-.float{
+.icon-dash-admin{
     float: right;
     font-size: 40px;
     color: #e24800;
 }
+
 .textPar{
     font-size: 20px;
     color: #e24800;
     font-weight: bold;
 }
-
-.messflash{
-    background-color: #ac2925;
-    color:#ffffff;
-}
-
