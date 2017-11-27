@@ -15,14 +15,20 @@ user_register_activate:
 user_update_profil:
     path: /update/profil/{id}
     defaults: { _controller: UserBundle:Update:profil}
+    requirements:
+        id: \d+
 
 user_update_avatar:
     path: /update/avatar/{id}
     defaults: { _controller: UserBundle:Update:avatar }
+    requirements:
+        id: \d+
 
 user_update_password:
     path: /update/password/{id}
     defaults: { _controller: UserBundle:Update:password }
+    requirements:
+        id: \d+
 
 user_lostpassword:
     path: /lostpassword/
