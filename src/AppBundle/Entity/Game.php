@@ -49,6 +49,12 @@ class Game
      */
     private $etablishment;
 
+    /**
+     * @var bool
+     *
+     * @ORM\Column (name="booking", type="boolean", nullable=true)
+     */
+    private $booking;
 
     /**
      * Constructor
@@ -196,5 +202,29 @@ class Game
         $this->timeSlot = $timeSlot;
 
         return $this;
+    }
+
+    /**
+     * Set booking
+     *
+     * @param boolean $booking
+     *
+     * @return Game
+     */
+    public function setBooking($booking)
+    {
+        $this->booking = $booking;
+
+        return $this;
+    }
+
+    /**
+     * Get booking
+     *
+     * @return boolean
+     */
+    public function getBooking()
+    {
+        return $this->booking;
     }
 }

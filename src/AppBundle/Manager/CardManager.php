@@ -100,7 +100,7 @@ class CardManager
         foreach ($cards as $card){
             $tab_id_card[] = $card['id'];
         }
-        $stats['bookableGame'] = $this->entityManager->getRepository('AppBundle:Game')->findAllBookableGame($tab_id_card);
+        $stats['bookableGame'] = $this->entityManager->getRepository('AppBundle:Game')->findAllBookableGame($player);
         return[
             'player' => $player,
             'cards' => $cards,
