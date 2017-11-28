@@ -38,10 +38,9 @@
 
                         <tbody>
 
+
                         {% for card in etablishment.cards %}
-
                             <tr>
-
                                 <td>{% include ':inc:inc.avatar.img.html.twig' with {'class' : 'circle z-depth-2 avatar-game-list', 'player' : card.player} %}</td>
                                 <td><a href="{{ path('app_dashboard_show', {'id':card.player.id}) }}">{{ card.player.firstname }}</a></td>
                                 <td><a href="{{ path('app_dashboard_show', {'id':card.player.id}) }}">{{ card.player.lastname }}</a></td>
@@ -50,10 +49,7 @@
                                 <td><a href="{{ path('app_dashboard_show', {'id':card.player.id}) }}">{{ card.player.phoneNumber }}</a></td>
                                 <td><a href="{{ path('app_dashboard_show', {'id':card.player.id}) }}">{{ card.player.dateOfBirth|date('d/m/Y') }}</a></td>
                                 <td><a href="{{ path('app_dashboard_show', {'id':card.player.id}) }}">{{ card.player.email }}</a></td>
-
                             </tr>
-
-
                         {% endfor %}
                         </tbody>
                     </table>
@@ -69,6 +65,7 @@
         </ul>
 
     </div>
+
 
 
 {% endblock %}
