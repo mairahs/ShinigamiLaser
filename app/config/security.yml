@@ -54,5 +54,5 @@ security:
         - { path: ^/card, roles: ROLE_USER}
         - { path: ^/admin, roles: ROLE_ADMIN}
     role_hierarchy:
-        ROLE_PLAYER: ROLE_USER
-        ROLE_ADMIN: [ROLE_PLAYER, ROLE_ALLOWED_TO_SWITCH]
+        ROLE_ADMIN: ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
