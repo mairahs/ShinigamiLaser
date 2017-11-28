@@ -1,6 +1,5 @@
 <?php
 
-
 namespace UserBundle\EventListener;
 
 use AppBundle\Entity\Player;

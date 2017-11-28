@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: Tonio
  * Date: 21/11/2017
- * Time: 15:21
+ * Time: 15:21.
  */
 
 namespace UserBundle\Controller;
@@ -20,7 +20,7 @@ class RegisterController extends Controller
     public function formAction(Request $request)
     {
         $player = new Player();
-        if ($this->get('kernel')->getEnvironment() === "dev" && $request->get('t') === "1") {
+        if ('dev' === $this->get('kernel')->getEnvironment() && '1' === $request->get('t')) {
             $player = $this->get(PlayerManager::class)->test($player);
         }
         $form = $this->createForm(PlayerType::class, $player);
@@ -31,11 +31,12 @@ class RegisterController extends Controller
             return $this->redirectToRoute('user_register_confirmation');
         }
 
-        return $this->render('UserBundle:register:register.form.html.twig', ['form'=> $form->createView()]);
+        return $this->render('UserBundle:register:register.form.html.twig', ['form' => $form->createView()]);
     }
 
     /**
      * @param $token
+     *
      * @return Response
      */
     public function activateAction($token)
@@ -47,6 +48,6 @@ class RegisterController extends Controller
         $entityManager->persist($player);
         $entityManager->flush();
 
-        return $this->render('UserBundle:register:register.activate.html.twig', ['player'=> $player]);
+        return $this->render('UserBundle:register:register.activate.html.twig', ['player' => $player]);
     }
 }

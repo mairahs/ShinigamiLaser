@@ -19,18 +19,18 @@ class CardType extends AbstractType
                 'number',
                 TextType::class,
                 [
-                    'mapped' => false
+                    'mapped' => false,
                 ]
             );
     }
-    
+
     /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Card'
+            'data_class' => 'AppBundle\Entity\Card',
         ));
     }
 

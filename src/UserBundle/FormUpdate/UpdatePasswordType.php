@@ -32,7 +32,7 @@ class UpdatePasswordType extends AbstractType
             FormEvents::PRE_SET_DATA,
             function (FormEvent $event) use ($user) {
                 $form = $event->getForm();
-                if ("anon." !== $user) {
+                if ('anon.' !== $user) {
                     $form
                         ->add(
                             'oldPassword',
@@ -41,8 +41,8 @@ class UpdatePasswordType extends AbstractType
                                 'mapped' => false,
                                 'label' => 'Ancien mot de passe',
                                 'constraints' => array(
-                                    new NotBlank()
-                                )
+                                    new NotBlank(),
+                                ),
                             ]
                         )
                     ;
@@ -58,15 +58,13 @@ class UpdatePasswordType extends AbstractType
                 'password',
                 RepeatedType::class,
                 [
-                    'type'=>PasswordType::class,
-                    'first_options' =>
-                        [
-                            'label' => 'Password'
+                    'type' => PasswordType::class,
+                    'first_options' => [
+                            'label' => 'Password',
                         ],
-                    'second_options' =>
-                        [
-                            'label' => 'Confirm password'
-                        ]
+                    'second_options' => [
+                            'label' => 'Confirm password',
+                        ],
                 ]
             )
         ;
@@ -78,7 +76,7 @@ class UpdatePasswordType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Player'
+            'data_class' => 'AppBundle\Entity\Player',
         ));
     }
 

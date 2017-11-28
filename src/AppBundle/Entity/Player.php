@@ -8,7 +8,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Player
+ * Player.
  *
  * @ORM\Table(name="player")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\PlayerRepository")
@@ -96,7 +96,6 @@ class Player implements UserInterface, \Serializable
      * @Assert\Email()
      *
      * @ORM\Column(name="email", type="string", length=55)
-     *
      */
     private $email;
 
@@ -137,7 +136,7 @@ class Player implements UserInterface, \Serializable
     private $isActivate;
 
     /**
-     * Get id
+     * Get id.
      *
      * @return int
      */
@@ -147,7 +146,7 @@ class Player implements UserInterface, \Serializable
     }
 
     /**
-     * Set firstname
+     * Set firstname.
      *
      * @param string $firstname
      *
@@ -161,7 +160,7 @@ class Player implements UserInterface, \Serializable
     }
 
     /**
-     * Get firstname
+     * Get firstname.
      *
      * @return string
      */
@@ -171,7 +170,7 @@ class Player implements UserInterface, \Serializable
     }
 
     /**
-     * Set lastname
+     * Set lastname.
      *
      * @param string $lastname
      *
@@ -185,7 +184,7 @@ class Player implements UserInterface, \Serializable
     }
 
     /**
-     * Get lastname
+     * Get lastname.
      *
      * @return string
      */
@@ -195,7 +194,7 @@ class Player implements UserInterface, \Serializable
     }
 
     /**
-     * Set address
+     * Set address.
      *
      * @param string $address
      *
@@ -209,7 +208,7 @@ class Player implements UserInterface, \Serializable
     }
 
     /**
-     * Get address
+     * Get address.
      *
      * @return string
      */
@@ -219,7 +218,7 @@ class Player implements UserInterface, \Serializable
     }
 
     /**
-     * Set username
+     * Set username.
      *
      * @param string $username
      *
@@ -233,7 +232,7 @@ class Player implements UserInterface, \Serializable
     }
 
     /**
-     * Get username
+     * Get username.
      *
      * @return string
      */
@@ -243,7 +242,7 @@ class Player implements UserInterface, \Serializable
     }
 
     /**
-     * Set phoneNumber
+     * Set phoneNumber.
      *
      * @param string $phoneNumber
      *
@@ -257,7 +256,7 @@ class Player implements UserInterface, \Serializable
     }
 
     /**
-     * Get phoneNumber
+     * Get phoneNumber.
      *
      * @return string
      */
@@ -267,7 +266,7 @@ class Player implements UserInterface, \Serializable
     }
 
     /**
-     * Set dateOfBirth
+     * Set dateOfBirth.
      *
      * @param \DateTime $dateOfBirth
      *
@@ -281,7 +280,7 @@ class Player implements UserInterface, \Serializable
     }
 
     /**
-     * Get dateOfBirth
+     * Get dateOfBirth.
      *
      * @return \DateTime
      */
@@ -291,7 +290,7 @@ class Player implements UserInterface, \Serializable
     }
 
     /**
-     * Set email
+     * Set email.
      *
      * @param string $email
      *
@@ -305,7 +304,7 @@ class Player implements UserInterface, \Serializable
     }
 
     /**
-     * Get email
+     * Get email.
      *
      * @return string
      */
@@ -315,7 +314,7 @@ class Player implements UserInterface, \Serializable
     }
 
     /**
-     * Set password
+     * Set password.
      *
      * @param string $password
      *
@@ -329,7 +328,7 @@ class Player implements UserInterface, \Serializable
     }
 
     /**
-     * Get password
+     * Get password.
      *
      * @return string
      */
@@ -353,7 +352,7 @@ class Player implements UserInterface, \Serializable
     }
 
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct()
     {
@@ -361,7 +360,7 @@ class Player implements UserInterface, \Serializable
     }
 
     /**
-     * Add card
+     * Add card.
      *
      * @param Card $card
      *
@@ -370,11 +369,12 @@ class Player implements UserInterface, \Serializable
     public function addCard(Card $card)
     {
         $this->cards[] = $card;
+
         return $this;
     }
 
     /**
-     * Remove card
+     * Remove card.
      *
      * @param Card $card
      */
@@ -384,7 +384,7 @@ class Player implements UserInterface, \Serializable
     }
 
     /**
-     * Get cards
+     * Get cards.
      *
      * @return \Doctrine\Common\Collections\Collection
      */
@@ -394,7 +394,7 @@ class Player implements UserInterface, \Serializable
     }
 
     /**
-     * Set avatar
+     * Set avatar.
      *
      * @param \AppBundle\Entity\Avatar $avatar
      *
@@ -408,7 +408,7 @@ class Player implements UserInterface, \Serializable
     }
 
     /**
-     * Get avatar
+     * Get avatar.
      *
      * @return \AppBundle\Entity\Avatar
      */
@@ -418,9 +418,9 @@ class Player implements UserInterface, \Serializable
     }
 
     /**
-     * Set token
+     * Set token.
      *
-     * @param integer $token
+     * @param int $token
      *
      * @return Player
      */
@@ -432,9 +432,9 @@ class Player implements UserInterface, \Serializable
     }
 
     /**
-     * Get token
+     * Get token.
      *
-     * @return integer
+     * @return int
      */
     public function getToken()
     {
@@ -442,9 +442,9 @@ class Player implements UserInterface, \Serializable
     }
 
     /**
-     * Set isActivate
+     * Set isActivate.
      *
-     * @param boolean $isActivate
+     * @param bool $isActivate
      *
      * @return Player
      */
@@ -456,9 +456,9 @@ class Player implements UserInterface, \Serializable
     }
 
     /**
-     * Get isActivate
+     * Get isActivate.
      *
-     * @return boolean
+     * @return bool
      */
     public function getIsActivate()
     {
@@ -466,25 +466,30 @@ class Player implements UserInterface, \Serializable
     }
 
     /**
-     * String representation of object
-     * @link http://php.net/manual/en/serializable.serialize.php
+     * String representation of object.
+     *
+     * @see http://php.net/manual/en/serializable.serialize.php
+     *
      * @return string the string representation of the object or null
+     *
      * @since 5.1.0
      */
     public function serialize()
     {
         return serialize([
-            $this->id
+            $this->id,
         ]);
     }
 
     /**
-     * Constructs the object
-     * @link http://php.net/manual/en/serializable.unserialize.php
+     * Constructs the object.
+     *
+     * @see http://php.net/manual/en/serializable.unserialize.php
+     *
      * @param string $serialized <p>
-     * The string representation of the object.
-     * </p>
-     * @return void
+     *                           The string representation of the object.
+     *                           </p>
+     *
      * @since 5.1.0
      */
     public function unserialize($serialized)

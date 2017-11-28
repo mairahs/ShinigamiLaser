@@ -1,6 +1,5 @@
 <?php
 
-
 namespace UserBundle\EventSubscriber;
 
 use AppBundle\Entity\Avatar;
@@ -9,7 +8,6 @@ use Doctrine\ORM\Event\LifecycleEventArgs;
 
 class AvatarUploadSubscriber implements EventSubscriber
 {
-
     /**
      * Returns an array of events this subscriber wants to listen to.
      *

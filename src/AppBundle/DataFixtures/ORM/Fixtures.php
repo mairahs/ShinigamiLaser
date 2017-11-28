@@ -1,6 +1,5 @@
 <?php
 
-
 namespace AppBundle\DataFixtures\ORM;
 
 use AppBundle\Entity\Admin;
@@ -17,9 +16,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Faker\Factory as Factory;
 
 /**
- * Class Fixtures
- * @package AppBundle\DataFixtures\ORM
- * php bin/console doctrine:fixtures:load
+ * Class Fixtures.
  */
 class Fixtures extends Fixture
 {
@@ -30,19 +27,18 @@ class Fixtures extends Fixture
         $encoder = $this->container->get('security.password_encoder');
 
         $timeslot_arr = [
-            "9h-11h" => [
+            '9h-11h' => [
                 'start' => 9,
-                'end' => 11
+                'end' => 11,
             ],
-            "14h-16h" => [
+            '14h-16h' => [
                 'start' => 14,
-                'end' => 16
+                'end' => 16,
             ],
-            "17h-19h" => [
+            '17h-19h' => [
                 'start' => 17,
-                'end' => 19
-            ]];
-
+                'end' => 19,
+            ], ];
 
         $time_slotO = [];
         foreach ($timeslot_arr as $type => $value) {
@@ -53,18 +49,18 @@ class Fixtures extends Fixture
         }
 
         $gametype_arr = [
-        "Team" => [
+        'Team' => [
             'min' => 300,
-            'max' => 1100
+            'max' => 1100,
         ],
-        "FFA" => [
+        'FFA' => [
             'min' => 800,
-            'max' => 2000
+            'max' => 2000,
         ],
-        "Dracula" => [
+        'Dracula' => [
             'min' => 20,
-            'max' => 100
-        ]];
+            'max' => 100,
+        ], ];
 
         $game_typeO = [];
         foreach ($gametype_arr as $type => $value) {
@@ -75,7 +71,7 @@ class Fixtures extends Fixture
         }
 
         $etablishment_arr = [];
-        for ($i = 0; $i < 5; $i++) {
+        for ($i = 0; $i < 5; ++$i) {
             $etablishment = new Etablishment();
             $etablishment->setName($faker->lastName);
             $etablishment->setCity($faker->city);
@@ -85,7 +81,7 @@ class Fixtures extends Fixture
         }
 
         $player_arr = [];
-        for ($i = 0; $i < 30; $i++) {
+        for ($i = 0; $i < 30; ++$i) {
             $player = new Player();
             $player->setFirstname($faker->firstName);
             $player->setLastname($faker->lastName);
@@ -100,7 +96,7 @@ class Fixtures extends Fixture
         }
 
         $card_arr = [];
-        for ($i = 0; $i < 30; $i++) {
+        for ($i = 0; $i < 30; ++$i) {
             $card = new Card();
             $rand = rand(1, 10);
             if (10 !== $rand) {
@@ -118,7 +114,7 @@ class Fixtures extends Fixture
             $manager->persist($card);
         }
 
-        for ($i = 0; $i < 15; $i++) {
+        for ($i = 0; $i < 15; ++$i) {
             $game = new Game();
 
             $date = new \DateTime();
@@ -131,7 +127,7 @@ class Fixtures extends Fixture
             $key_ts = array_rand($time_slotO, 1);
             $game->setTimeSlot($time_slotO[$key_ts]);
 
-            $game->setNbMax(rand(20,25));
+            $game->setNbMax(rand(20, 25));
 
             $rand = rand(0, 2);
             $game->setGameType($game_typeO[$rand]);
@@ -144,7 +140,7 @@ class Fixtures extends Fixture
                 if (3 > $rand) {
                     $score = new Score();
                     $score->setResult(rand($rand_min_max['min'], $rand_min_max['max']));
-                    if ($get_type == 'Team') {
+                    if ('Team' == $get_type) {
                         $score->setTeam(rand(1, 2));
                     } else {
                         $score->setTeam(0);
@@ -156,7 +152,7 @@ class Fixtures extends Fixture
             }
         }
 
-        for ($i = 0; $i < 5; $i++) {
+        for ($i = 0; $i < 5; ++$i) {
             $admin = new Admin();
             $admin->setUsername($faker->userName);
             $admin->setEmail($faker->email);
@@ -164,7 +160,7 @@ class Fixtures extends Fixture
             $manager->persist($admin);
         }
 
-        for ($i = 0; $i < 5; $i++) {
+        for ($i = 0; $i < 5; ++$i) {
             $provider = new Provider();
             $provider->setAdress($faker->address);
             $provider->setName($faker->lastName);

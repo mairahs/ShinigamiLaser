@@ -19,14 +19,14 @@ class EtablishmentType extends AbstractType
                     ->add('name', TextType::class)
                     ->add('code', NumberType::class);
     }
-    
+
     /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Etablishment'
+            'data_class' => 'AppBundle\Entity\Etablishment',
         ));
     }
 
@@ -37,6 +37,4 @@ class EtablishmentType extends AbstractType
     {
         return 'appbundle_etablishment';
     }
-
-
 }

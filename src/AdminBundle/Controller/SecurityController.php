@@ -1,6 +1,5 @@
 <?php
 
-
 namespace AdminBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -12,6 +11,7 @@ class SecurityController extends Controller
     {
         return $this->render('AdminBundle:security:dashboard.html.twig');
     }
+
     /**
      *@return Response
      */
@@ -24,7 +24,7 @@ class SecurityController extends Controller
         return $this->render('@User/security/login.html.twig', [
             'error' => $error,
             'lastUsername' => $lastUsername,
-            'admin' => true
+            'admin' => true,
         ]);
     }
 }

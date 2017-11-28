@@ -2,11 +2,10 @@
 
 namespace AppBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Game
+ * Game.
  *
  * @ORM\Table(name="game")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\GameRepository")
@@ -57,14 +56,14 @@ class Game
     private $booking;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column (name="nb_max", type="integer")
      */
     private $nb_max;
 
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct()
     {
@@ -72,9 +71,9 @@ class Game
     }
 
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -82,7 +81,7 @@ class Game
     }
 
     /**
-     * Set playedAt
+     * Set playedAt.
      *
      * @param \DateTime $playedAt
      *
@@ -96,7 +95,7 @@ class Game
     }
 
     /**
-     * Get playedAt
+     * Get playedAt.
      *
      * @return \DateTime
      */
@@ -106,7 +105,7 @@ class Game
     }
 
     /**
-     * Set gameType
+     * Set gameType.
      *
      * @param \AppBundle\Entity\GameType $gameType
      *
@@ -120,7 +119,7 @@ class Game
     }
 
     /**
-     * Get gameType
+     * Get gameType.
      *
      * @return \AppBundle\Entity\GameType
      */
@@ -130,7 +129,7 @@ class Game
     }
 
     /**
-     * Add score
+     * Add score.
      *
      * @param \AppBundle\Entity\Score $score
      *
@@ -144,7 +143,7 @@ class Game
     }
 
     /**
-     * Remove score
+     * Remove score.
      *
      * @param \AppBundle\Entity\Score $score
      */
@@ -154,7 +153,7 @@ class Game
     }
 
     /**
-     * Get score
+     * Get score.
      *
      * @return \Doctrine\Common\Collections\Collection
      */
@@ -164,7 +163,7 @@ class Game
     }
 
     /**
-     * Set etablishment
+     * Set etablishment.
      *
      * @param \AppBundle\Entity\Etablishment $etablishment
      *
@@ -178,7 +177,7 @@ class Game
     }
 
     /**
-     * Get etablishment
+     * Get etablishment.
      *
      * @return \AppBundle\Entity\Etablishment
      */
@@ -188,7 +187,7 @@ class Game
     }
 
     /**
-     * Get timeSlot
+     * Get timeSlot.
      *
      * @return \AppBundle\Entity\TimeSlot
      */
@@ -198,7 +197,7 @@ class Game
     }
 
     /**
-     * Set timeSlot
+     * Set timeSlot.
      *
      * @param \AppBundle\Entity\TimeSlot $timeSlot
      *
@@ -212,9 +211,9 @@ class Game
     }
 
     /**
-     * Set booking
+     * Set booking.
      *
-     * @param boolean $booking
+     * @param bool $booking
      *
      * @return Game
      */
@@ -226,9 +225,9 @@ class Game
     }
 
     /**
-     * Get booking
+     * Get booking.
      *
-     * @return boolean
+     * @return bool
      */
     public function getBooking()
     {
@@ -236,9 +235,9 @@ class Game
     }
 
     /**
-     * Set nbMax
+     * Set nbMax.
      *
-     * @param integer $nbMax
+     * @param int $nbMax
      *
      * @return Game
      */
@@ -250,9 +249,9 @@ class Game
     }
 
     /**
-     * Get nbMax
+     * Get nbMax.
      *
-     * @return integer
+     * @return int
      */
     public function getNbMax()
     {

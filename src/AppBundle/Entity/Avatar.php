@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
- * Avatar
+ * Avatar.
  *
  * @ORM\Table(name="avatar")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\AvatarRepository")
@@ -44,9 +44,8 @@ class Avatar
      */
     private $file;
 
-
     /**
-     * Get id
+     * Get id.
      *
      * @return int
      */
@@ -56,7 +55,7 @@ class Avatar
     }
 
     /**
-     * Set name
+     * Set name.
      *
      * @param string $name
      *
@@ -70,7 +69,7 @@ class Avatar
     }
 
     /**
-     * Get name
+     * Get name.
      *
      * @return string
      */
@@ -80,7 +79,7 @@ class Avatar
     }
 
     /**
-     * Set extension
+     * Set extension.
      *
      * @param string $extension
      *
@@ -94,7 +93,7 @@ class Avatar
     }
 
     /**
-     * Get extension
+     * Get extension.
      *
      * @return string
      */
@@ -129,6 +128,7 @@ class Avatar
 
     /**
      * @param UploadedFile $file
+     *
      * @return $this
      */
     public function setFile(UploadedFile $file)
@@ -142,6 +142,7 @@ class Avatar
                 $this->name = 'troll';
             }
         }
+
         return $this;
     }
 

@@ -1,6 +1,5 @@
 <?php
 
-
 namespace UserBundle\DependancyInjection;
 
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;

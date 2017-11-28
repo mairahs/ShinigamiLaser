@@ -3,10 +3,7 @@
 namespace AppBundle\Manager;
 
 use AppBundle\Entity\Card;
-use AppBundle\Entity\Player;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Workflow\Workflow;
 
 class CardManager
@@ -19,21 +16,17 @@ class CardManager
      * @var Workflow
      */
     private $workflow;
-    /**
-     * @var RouterInterface
-     */
-    private $router;
 
-    public function __construct(EntityManagerInterface $entityManager, Workflow $workflow, RouterInterface $router)
+    public function __construct(EntityManagerInterface $entityManager, Workflow $workflow)
     {
         $this->entityManager = $entityManager;
         $this->workflow = $workflow;
-        $this->router = $router;
     }
 
     /**
      * @param $id_player
      * @param $card_number
+     *
      * @throws \Exception
      */
     public function addCard($id_player, $card_number)
@@ -65,7 +58,7 @@ class CardManager
     /**
      * CODE_CENTRE : 3 chiffres décrivant un établissement
      * CODE_CARTE : 6 chiffres décrivant un client
-     * checksum : somme des chiffres précédents modulo 9
+     * checksum : somme des chiffres précédents modulo 9.
      */
     public static function generateNumber()
     {
@@ -75,37 +68,7 @@ class CardManager
         $somme_chiffre = $code_centre.$code_carte;
         $array = str_split($somme_chiffre);
         $checksum = array_sum($array) % 9;
+
         return $code_centre.$code_carte.$checksum;
-    }
-
-    public function getStatsDashboard($cards){
-        /** @var Card $card */
-        $scoreTotal = 0;
-        $gameTotal = 0;
-        foreach ($cards as $card){
-            $scoreTotal += $card['sumscore'];
-            $gameTotal += $card['nbgames'];
-        }
-        return[
-            'gameTotal' => $gameTotal,
-            'scoreTotal' => $scoreTotal
-        ];
-    }
-
-    public function returnDashboard(Player $player){
-        $cards = $this->entityManager->getRepository('AppBundle:Score')->getListCardDashboard($player);
-        $stats = $this->getStatsDashboard($cards);
-        $stats['scores'] = $this->entityManager->getRepository('AppBundle:Score')->getLastGamePlayedPlayer($player);
-        $tab_id_card = [];
-        foreach ($cards as $card){
-            $tab_id_card[] = $card['id'];
-        }
-        $stats['bookableGame'] = $this->entityManager->getRepository('AppBundle:Game')->findAllBookableGame($player);
-        $stats['gameBooked'] = $this->entityManager->getRepository('AppBundle:Game')->findGameBooked($player);
-        return[
-            'player' => $player,
-            'cards' => $cards,
-            'stats' => $stats
-        ];
     }
 }

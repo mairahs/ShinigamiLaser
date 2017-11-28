@@ -1,17 +1,13 @@
 {% if is_user %}
     <li><a href="#" style="color:#ffffff; font-size:18px;">Bienvenue {{ app.user.username }}</a></li>
     <li><a href="{{ path('homepage') }}">Accueil</a></li>
-    <li><a href="#">Réserver une partie</a></li>
-    <li><a href="#">Tarifs</a></li>
-    <li><a href="#">Horaires</a></li>
-    <li><a href="#">Contact</a></li>
+    <li><a href="{{ path('tarif') }}">Tarifs</a></li>
+    <li><a href="{{ path('contact') }}">Contact</a></li>
     <li><a href="{{ path('user_logout') }}">Deconnexion</a></li>
 {% else %}
     <li><a href="{{ path('homepage') }}">Accueil</a></li>
-    <li><a href="#">Réserve  ta partie</a></li>
-    <li><a href="#">Tarifs</a></li>
-    <li><a href="#">Horaires</a></li>
-    <li><a href="#">Contact</a></li>
+    <li><a href="{{ path('tarif') }}">Tarifs</a></li>
+    <li><a href="{{ path('contact') }}">Contact</a></li>
     <li class="connect"><a style="color:#222222;" href="{{ path('user_login') }}">Se connecter</a></li>
     <li><a href="{{ path('user_register') }}">Rejoins nous</a></li>
 {% endif %}
