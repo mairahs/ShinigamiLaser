@@ -26,3 +26,19 @@ admin_etablishment_show:
 admin_game_add:
     path: /game/add
     defaults: {_controller: AppBundle:Game:add}
+
+admin_user_index:
+    path: /users/etablishments
+    defaults: {_controller: AdminBundle:User:index}
+
+admin_user_show:
+    path: /user/{id}
+    defaults: {_controller: AdminBundle:User:show}
+
+admin_user_findall_byetablishment:
+    path: /user/findall/etablishment/{id}
+    defaults: {_controller: AdminBundle:User:index_etablishment}
+    requirements:
+           id: \d+
+
+

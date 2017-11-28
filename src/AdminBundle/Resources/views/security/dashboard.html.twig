@@ -1,6 +1,7 @@
 {% extends 'base/base.admin.html.twig' %}
 
 {% block body %}
+
     <div class="row">
         <!-- --- --- ----------- COL S4 ----------------->
         <div class="col s4">
@@ -8,7 +9,6 @@
                 <div class="card-content purple white-text center">
                     <p class="card-stats-title"><i class="mdi-social-group-add"></i> Bienvenue {{ app.user.username }}</p>
                 </div>
-
             </div>
                 <div class="card">
                     <div class="card-content  green white-text center">
@@ -71,8 +71,10 @@
                     <p class="collections-content">Renseigner simplement le numéro de sa carte de fidélité</p>
                 </li>
                 <li class="collection-item">
-                    <p class="collections-title"><a href="#">Afficher la liste des joueurs<i class="material-icons icon-dash-admin">people</i></a></p>
-                    <p class="collections-content">Voir tous les joueurs enregistrés dans l'établissement</p>
+                    <p class="collections-title"><a href="{{ path('admin_user_index') }}">Afficher la liste des joueurs par établissements<i class="material-icons icon-dash-admin">people</i></a></p>
+                    <p class="collections-content">Voir tous les joueurs enregistrés par établissement</p>
+                    {#{{ path('admin_user_findall_byetablishment', {'id':etablishment.id}) }}#}
+
                 </li>
 
             </ul>
@@ -142,6 +144,23 @@
                 <li class="collection-item">
                     <p class="collections-title"><a href="#">Cadeaux pour joueurs<i class="material-icons icon-dash-admin">card_giftcard</i></a></p>
                     <p class="collections-content">Fidéliser vos clients en leur offrant des cadeaux qui déchirent pour leur anniversaire par exemple</p>
+                </li>
+
+            </ul>
+
+            <ul class="collection collection-dash card">
+                <li class="collection-item avatar">
+                    <i class="mdi-file-folder circle material-icons">group</i>
+                    <span class="collection-header">Administrateurs</span>
+                    <p>Créer et gérer les administrateurs de vos établissements </p>
+                </li>
+                <li class="collection-item">
+                    <p class="collections-title"><a href="#">Recruter des administrateurs<i class="material-icons icon-dash-admin">group_add</i></a></p>
+                    <p class="collections-content">Remplir le formulaire d'ajout</p>
+                </li>
+                <li class="collection-item">
+                    <p class="collections-title"><a href="#">Gérer vos administrateurs<i class="material-icons icon-dash-admin">group_work</i></a></p>
+                    <p class="collections-content">Modifier leurs droits, évaluer leur travail etc...</p>
                 </li>
 
             </ul>
