@@ -15,4 +15,11 @@ class DefaultController extends Controller
         $ret = $this->get(CardManager::class)->returnDashboard($player);
         return $this->render('default/dashboard.html.twig', $ret);
     }
+
+    public function showAction($id)
+    {
+        $player = $this->getDoctrine()->getManager()->getRepository('AppBundle:Player')->find($id);
+        $ret = $this->get(CardManager::class)->returnDashboard($player);
+        return $this->render('default/dashboard.html.twig', $ret);
+    }
 }

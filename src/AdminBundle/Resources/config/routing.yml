@@ -26,8 +26,3 @@ admin_etablishment_show:
 admin_game_add:
     path: /game/add
     defaults: {_controller: AppBundle:Game:add}
-
-admin_user_show:
-    path: /user/{id}
-    defaults: {_controller: AdminBundle:User:show}
-
