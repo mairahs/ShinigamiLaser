@@ -153,6 +153,18 @@ li.error{
     color: #fff;
 }
 
+.icon-join i{
+    font-size: 40px;
+}
+
+.no-margin{
+    margin: 0;
+}
+
+.c-pointer{
+    cursor: pointer;
+}
+
 /* --- ---- ---- Style demo geeklabs --- --- ---- --- */
 
 .container-form{

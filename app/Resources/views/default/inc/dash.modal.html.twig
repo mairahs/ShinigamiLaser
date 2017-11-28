@@ -1,0 +1,36 @@
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <h5>Avec quelle carte ?</h5>
+        <table class="bordered">
+            <thead>
+            <tr>
+                <th>Carte</th>
+                <th>Score</th>
+                <th>Parties</th>
+                <th>&nbsp;</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for card in cards %}
+                {% if card.status != "disable" %}
+                <tr>
+                    <td>{{ card.number }}</td>
+                    <td>{{ card.sumscore }}</td>
+                    <td>{{ card.nbgames }}</td>
+                    <td>
+                        <a href="#" data-card-id="{{ card.id }}" class="secondary-content ui-linkjoin" title="rejoindre"><i class="material-icons">open_in_browser</i></a>
+                    </td>
+                </tr>
+                {% endif %}
+            {% else %}
+                <tr>
+                <td colspan="4">Tu n'as pas encore de carte</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Fermer</a>
+    </div>
+</div>

@@ -45,3 +45,7 @@ services:
     AppBundle\EventListener\NumberGenerator:
         tags:
             - { name: doctrine.event_listener, event: prePersist }
+
+    AppBundle\EventListener\PrePersistGame:
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }

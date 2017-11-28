@@ -36,5 +36,14 @@ admin_user_show:
     defaults: {_controller: AdminBundle:User:show}
 
 
+admin_user_index:
+    path: /users/etablishments
+    defaults: {_controller: AdminBundle:User:index}
+
+admin_user_findall_byetablishment:
+    path: /user/findall/etablishment/{id}
+    defaults: {_controller: AdminBundle:User:index_etablishment}
+    requirements:
+           id: \d+
 
 

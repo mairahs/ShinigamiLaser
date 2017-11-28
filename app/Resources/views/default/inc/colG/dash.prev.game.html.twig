@@ -1,0 +1,15 @@
+<ul class="card collection with-header task-card">
+    <li class="collection-header purple">
+        <h4 class="task-card-title white-text">Dernières parties</h4>
+    </li>
+    {% for score in stats.scores %}
+        <li class="collection-item dismissable">
+            <p class="collections-title">{{ score.games.playedAt|date('d/m/y') }} <span class="right purple task-cat">{{ score.result }}</span><span class="right">Points :</span></p>
+            <p class="collections-content">{{ score.games.gameType.type }}</p>
+        </li>
+    {% else %}
+        <li class="collection-item dismissable">
+            <p class="collections-title">Tu n'as pas encore de partie :(</p>
+        </li>
+    {% endfor %}
+</ul>
