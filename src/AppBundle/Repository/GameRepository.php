@@ -32,47 +32,27 @@ class GameRepository extends EntityRepository
         return $queryBuilder->getQuery()->getResult();
     }
 
-    public function findAllBookableGame($tab_id_card)
+    public function findAllBookableGame($player)
     {
-//        $qb = $this->createQueryBuilder('game');
-//
-//        $nots = $qb->select('card')
-//            ->from('AppBundle:Card', 'card')
-//            ->where($qb->expr()->eq('card.id',476))
-//            ->getQuery()
-//            ->getSingleResult();
-//
-//
-//        dump($nots);
-
-//        $qb = $this->createQueryBuilder('game');
-//
-//        $qb
-//            ->leftJoin('game.score','score')
-//            ->leftJoin('score.cards','cards')
-//            ->select('cards.id')
-//            ->where($qb->expr()->in('cards.id', $tab_id_card))
-//            ->groupBy('cards.number')
-//        ;
-//        dump($qb->getQuery()->getResult());
-
-//        dump($qb->getQuery()->getResult());
-
-//        die;
-
         $qb = $this->createQueryBuilder('game');
-
         $qb
-            ->leftJoin('game.score','score')
-            ->leftJoin('score.cards','cards')
-//            ->select('cards.id')
-            ->addSelect('game.playedAt')
-            ->where($qb->expr()->notIn('cards.id', $tab_id_card))
-//            ->groupBy('cards.number')
+            ->select('game.id')
+            ->join('game.score', 'score')
+            ->join('score.cards', 'cards')
+            ->andWhere('cards.player = :player')
+            ->setParameters([
+                'player' => $player
+            ]);
         ;
-        dump($qb->getQuery()->getResult());
-        die;
-
+        $array_game_booked = $qb->getQuery()->getResult();
+        $array_id_booked = array_map(function ($a){
+            return $a['id'];
+        }, $array_game_booked);
+        $qb = $this->createQueryBuilder('game');
+        $qb
+            ->where($qb->expr()->notIn('game.id', $array_id_booked))
+            ->andWhere("game.booking = '1'")
+        ;
         return $qb->getQuery()->getResult();
     }
 }
