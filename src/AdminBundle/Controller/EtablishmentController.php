@@ -15,11 +15,11 @@ class EtablishmentController extends Controller
         return $this->render('@Admin/etablishment/index.html.twig', ['etablishments'=>$etablishments]);
     }
 
-    public function index_usersAction()
+    public function usersAction()
     {
         $etablishments = $this->getDoctrine()->getManager()->getRepository('AppBundle:Etablishment')->getPlayersByEtablishment();
 
-        return $this->render('@Admin/etablishment/index_users.html.twig', ['etablishments'=>$etablishments]);
+        return $this->render('@Admin/etablishment/users.html.twig', ['etablishments'=>$etablishments]);
     }
 
 
