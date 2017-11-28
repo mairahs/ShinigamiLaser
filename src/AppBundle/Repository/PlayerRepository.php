@@ -22,4 +22,18 @@ class PlayerRepository extends EntityRepository
                                          ->setParameters(['numberCard'=>$numberCard]);
         return $queryBuilder->getQuery()->getSingleResult();
     }
+
+    public function findAllPlayersByEtablishment($etablishment)
+    {
+        $queryBuilder = $this  ->createQueryBuilder('p')
+                               ->leftJoin('p.cards','c')
+                               ->addSelect('c')
+                               ->leftJoin('c.etablishment', 'e')
+                               ->addSelect('e')
+                               ->where('e.id = :etablishment')
+                               ->setParameters(['etablishment'=>$etablishment]);
+        return $queryBuilder->getQuery()->getResult();
+    }
+
+
 }
