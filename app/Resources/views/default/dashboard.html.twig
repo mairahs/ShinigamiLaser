@@ -78,7 +78,7 @@
                         <p class="collections-title"><span class="left-align"><b>SL de {{ game.etablishment }}</b></span><span class="right"><b>{{ game.playedAt|date('d/m/y') }}</b><br/>{{ game.timeSlot }}</span></p>
                         <p class="collections-title">{{ game.gameType }}</p>
                         {#<p class="collections-content center"><a href="{{ path('app_game_join', {'id_game': game.id, }) }}">Rejoindre la partie</a> </p>#}
-                        <p class="collections-content right-align"><a href="dashboard.html.twig"><i class="large material-icons">people</i></a><a href="#" class="waves-effect waves-light deep-purple"><i class="large material-icons">person_add</i></a> </p>
+                        <p class="collections-content right-align"><a href="dashboard.html.twig" class="pu"><i class="large material-icons">people</i></a><a href="#" class="deep-purple"><i class="large material-icons">person_add</i></a> </p>
                     </li>
                 {% else %}
                     <li class="collection-item dismissable">

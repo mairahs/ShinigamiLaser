@@ -42,13 +42,4 @@ class UserController extends Controller
         }
         return $this->render('@Admin/user/find_player.html.twig');
     }
-
-    public function showAction($id)
-    {
-        $player = $this->getDoctrine()->getManager()->getRepository('AppBundle:Player')->find($id);
-        $ret = $this->get(CardManager::class)->returnDashboard($player);
-        return $this->render('default/dashboard.html.twig', $ret);
-    }
-
-
 }

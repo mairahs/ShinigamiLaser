@@ -42,4 +42,3 @@ admin_user_findall_byetablishment:
            id: \d+
 
 
-

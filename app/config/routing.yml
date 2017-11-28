@@ -26,6 +26,10 @@ app_dashboard:
     path:     /dashboard
     defaults: { _controller: AppBundle:Default:dashboard }
 
+app_dashboard_show:
+    path: /dashboard/{id}
+    defaults: {_controller: AppBundle:Default:show}
+
 app_card_add:
     path: card/add
     defaults: { _controller: AppBundle:Card:add }
