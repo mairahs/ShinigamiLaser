@@ -18,6 +18,7 @@ class EtablishmentController extends Controller
     public function index_usersAction()
     {
         $etablishments = $this->getDoctrine()->getManager()->getRepository('AppBundle:Etablishment')->getPlayersByEtablishment();
+
         return $this->render('@Admin/etablishment/index_users.html.twig', ['etablishments'=>$etablishments]);
     }
 
