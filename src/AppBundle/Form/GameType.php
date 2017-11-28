@@ -5,7 +5,7 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -26,12 +26,13 @@ class GameType extends AbstractType
                         'class' => 'datepicker_2',
                         'placeholder' => '31/12/2017',
                     ],
-                    'format' => 'dd/MM/yyyy ',
+                    'format' => 'dd/MM/yyyy',
                 )
             )
             ->add('gameType', null, ['placeholder'=>'Choisissez un type de partie'])
             ->add('timeSlot', null, ['placeholder'=>'Choisissez une plage horaire'])
             ->add('etablishment', null, ['placeholder'=>'Choisissez un établissement'])
+            ->add('nbMax', IntegerType::class)
             ->add('Ajouter',   SubmitType::class);
     }
     

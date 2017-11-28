@@ -1,0 +1,29 @@
+<div class="card listcard">
+    <h3 class="card-title">Tes informations</h3>
+    <table>
+        <tr>
+            <th>Nom</th>
+            <td>{{ player.lastName }}</td>
+        </tr>
+        <tr>
+            <th>Prenom</th>
+            <td>{{ player.firstName }}</td>
+        </tr>
+        <tr>
+            <th>Adresse</th>
+            <td>{{ player.address }}</td>
+        </tr>
+        <tr>
+            <th>Téléphone</th>
+            <td>{{ player.phoneNumber }}</td>
+        </tr>
+        <tr>
+            <th>Date de naissance</th>
+            <td>{{ player.dateOfBirth|date('d/m/Y') }}</td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>{{ player.email }}</td>
+        </tr>
+    </table>
+</div>

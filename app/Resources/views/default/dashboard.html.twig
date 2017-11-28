@@ -41,156 +41,34 @@
     <div class="row">
         <!--------------------------------- COL S4 ----------------------------------------->
         <!---------------------------------------------------------------------------------->
-
         <div class="col s4">
-            <div class="card center-align">
-                <div class="card-content card-stats green white-text">
-                    <p class="card-stats-title"><i class="mdi-editor-attach-money"></i>Points</p>
-                    <p class="card-stats-number">1134</p>
-                    <p class="card-stats-compare"><span></span><i class="material-icons">keyboard_arrow_up</i> 10% <span class="purple-text text-lighten-5">mois dernier</span>
-                    </p>
-                </div>
-                <div class="card-action green darken-2">
-                    <div id="sales-compositebar"><img src="{{ asset('images/fake-stats/telechargement.png') }}" width="286" height="25" style="display: inline-block; width: 286px; height: 25px; vertical-align: top;"/></div>
-                </div>
-            </div>
-            <ul class="card collection with-header task-card">
-                <li class="collection-header purple">
-                    <h4 class="task-card-title white-text">Dernières parties</h4>
-                </li>
-                {% for score in stats.scores %}
-                <li class="collection-item dismissable">
-                    <p class="collections-title">{{ score.games.playedAt|date('d/m/y') }} <span class="right purple task-cat">{{ score.result }}</span><span class="right">Points :</span></p>
-                    <p class="collections-content">{{ score.games.gameType.type }}</p>
-                </li>
-                {% else %}
-                    <li class="collection-item dismissable">
-                        <p class="collections-title">Tu n'as pas encore de partie :(</p>
-                    </li>
-                {% endfor %}
-            </ul>
-            <ul class="card collection with-header task-card">
-                <li class="collection-header purple">
-                    <h4 class="task-card-title white-text">Nouvelles parties disponibles</h4>
-                </li>
-                {% for game in stats.bookableGame %}
-                    <li class="collection-item dismissable">
-                        <p class="collections-title"><span class="left-align"><b>SL de {{ game.etablishment }}</b></span><span class="right"><b>{{ game.playedAt|date('d/m/y') }}</b><br/>{{ game.timeSlot }}</span></p>
-                        <p class="collections-title">{{ game.gameType }}</p>
-                        {#<p class="collections-content center"><a href="{{ path('app_game_join', {'id_game': game.id, }) }}">Rejoindre la partie</a> </p>#}
-                        <p class="collections-content right-align"><a href="dashboard.html.twig" class="pu"><i class="large material-icons">people</i></a><a href="#" class="deep-purple"><i class="large material-icons">person_add</i></a> </p>
-                    </li>
-                {% else %}
-                    <li class="collection-item dismissable">
-                        <p class="collections-title">Aucune partie n'est disponible pour le moment :(</p>
-                    </li>
-                {% endfor %}
-            </ul>
-            <ul class="collection with-header task-card">
-                <li class="collection-header cyan">
-                    <h4 class="task-card-title white-text">Accomplissements</h4>
-                    <p class="task-card-date">Au 23/11/2017</p>
-                </li>
-                <li class="collection-item dismissable">
-                    <div class="row">
-                        <div class="col s7">
-                            <p class="collections-title">Amiral de l'espace</p>
-                            <p class="collections-content">Eliminer 10000 adversaires toutes parties confondues</p>
-                        </div>
-                        <div class="col s5">
-                            <div class="progress">
-                                <div class="determinate" style="width: 60%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="collection-item dismissable">
-                    <div class="row">
-                        <div class="col s7">
-                            <p class="collections-title">Tueur de vampire</p>
-                            <p class="collections-content">Eliminer des vampires en mode Dracula</p>
-                        </div>
-                        <div class="col s5">
-                            <div class="progress">
-                                <div class="determinate" style="width: 30%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-            </ul>
+            {% include 'default/inc/colG/dash.pts.compo.html.twig' %}
+            {% include 'default/inc/colG/dash.next.game.html.twig' %}
+            {% include 'default/inc/colG/dash.booked.game.html.twig' %}
+            {% include 'default/inc/colG/dash.prev.game.html.twig' %}
+            {% include 'default/inc/colG/dash.achie.html.twig' %}
         </div>
         <!--------------------------------- COL S8 ----------------------------------------->
         <!---------------------------------------------------------------------------------->
         <div class="col s8">
-            <div class="card listcard">
-                <h3 class="card-title">Tes informations</h3>
-                <table>
-                    <tr>
-                        <th>Nom</th>
-                        <td>{{ player.lastName }}</td>
-                    </tr>
-                    <tr>
-                        <th>Prenom</th>
-                        <td>{{ player.firstName }}</td>
-                    </tr>
-                    <tr>
-                        <th>Adresse</th>
-                        <td>{{ player.address }}</td>
-                    </tr>
-                    <tr>
-                        <th>Téléphone</th>
-                        <td>{{ player.phoneNumber }}</td>
-                    </tr>
-                    <tr>
-                        <th>Date de naissance</th>
-                        <td>{{ player.dateOfBirth|date('d/m/Y') }}</td>
-                    </tr>
-                    <tr>
-                        <th>Email</th>
-                        <td>{{ player.email }}</td>
-                    </tr>
-                </table>
-            </div>
-            <div class="card listcard">
-                <h3 class="card-title">Tes cartes</h3>
-                <table class="bordered">
-                    <thead>
-                    <tr>
-                        <th>Carte</th>
-                        <th>Score</th>
-                        <th>Parties</th>
-                        <th>&nbsp;</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for card in cards %}
-                    <tr>
-                        <td>{{ card.number }}</td>
-                        <td>{{ card.sumscore }}</td>
-                        <td>{{ card.nbgames }}</td>
-                        {% if card.status == "disable" %}
-                        <td>
-                            <div class="secondary-content" title="carte desactivée"><i class="material-icons">not_interested</i></div>
-                            <a href="{{ path('app_card_show', {'id':card.id}) }}" class="secondary-content" title="voir details"><i class="material-icons">remove_red_eye</i></a>
-                        </td>
-                        {% else %}
-                        <td>
-                            <a href="{{ path('app_card_disable_page', {'id':card.id}) }}" class="secondary-content" title="carte perdue ou volée"><i class="material-icons">no_sim</i></a>
-                            <a href="{{ path('app_card_show', {'id':card.id}) }}" class="secondary-content" title="voir details"><i class="material-icons">remove_red_eye</i></a>
-                        </td>
-                        {% endif %}
-                        {% else %}
-                        <td colspan="4">Tu n'as pas encore de carte</td>
-                    </tr>
-                    {% endfor %}
-                    <tr>
-                        <td colspan="4">
-                            <a href="{{ path('app_card_add') }}" class="secondary-content"><i class="material-icons">add</i>Ajout d'une nouvelle carte</a>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
+            {% include 'default/inc/colD/dash.info.html.twig' %}
+            {% include 'default/inc/colD/dash.list.card.html.twig' %}
         </div>
     </div>
+    {% include 'default/inc/dash.modal.html.twig' %}
+{% endblock %}
+
+{% block layout_javascripts %}
+    <script>
+        $(document).ready(function(){
+            $('.modal').modal();
+            $('.modal-trigger').click(function(){
+                var data_game_id = $(this).attr('data-game-id');
+                $('.ui-linkjoin').each(function () {
+                    var data_card_id = $(this).attr('data-card-id');
+                    $(this).attr('href', 'game/join/'+data_game_id+'/'+data_card_id)
+                })
+            });
+        });
+    </script>
 {% endblock %}

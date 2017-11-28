@@ -57,6 +57,13 @@ class Game
     private $booking;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column (name="nb_max", type="integer")
+     */
+    private $nb_max;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -226,5 +233,29 @@ class Game
     public function getBooking()
     {
         return $this->booking;
+    }
+
+    /**
+     * Set nbMax
+     *
+     * @param integer $nbMax
+     *
+     * @return Game
+     */
+    public function setNbMax($nbMax)
+    {
+        $this->nb_max = $nbMax;
+
+        return $this;
+    }
+
+    /**
+     * Get nbMax
+     *
+     * @return integer
+     */
+    public function getNbMax()
+    {
+        return $this->nb_max;
     }
 }

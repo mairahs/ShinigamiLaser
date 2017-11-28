@@ -131,6 +131,8 @@ class Fixtures extends Fixture
             $key_ts = array_rand($time_slotO, 1);
             $game->setTimeSlot($time_slotO[$key_ts]);
 
+            $game->setNbMax(rand(20,25));
+
             $rand = rand(0, 2);
             $game->setGameType($game_typeO[$rand]);
             $get_type = $game_typeO[$rand]->getType();

@@ -2,7 +2,6 @@
 
 namespace AppBundle\Repository;
 use Doctrine\ORM\EntityRepository;
-use Doctrine\ORM\Query\Expr\Join;
 
 
 class GameRepository extends EntityRepository
@@ -36,22 +35,41 @@ class GameRepository extends EntityRepository
     {
         $qb = $this->createQueryBuilder('game');
         $qb
-            ->select('game.id')
+            ->select('DISTINCT(game.id)')
             ->join('game.score', 'score')
             ->join('score.cards', 'cards')
-            ->andWhere('cards.player = :player')
+            ->andWhere("game.booking = '1' AND cards.player = :player")
             ->setParameters([
                 'player' => $player
             ]);
         ;
         $array_game_booked = $qb->getQuery()->getResult();
         $array_id_booked = array_map(function ($a){
-            return $a['id'];
+            return $a[1];
         }, $array_game_booked);
+        ((count($array_id_booked) === 0)?$array_id_booked = ['']:'');
         $qb = $this->createQueryBuilder('game');
         $qb
+            ->select('game')
+            ->leftJoin('game.score', 'score')
+            ->addSelect('score')
             ->where($qb->expr()->notIn('game.id', $array_id_booked))
             ->andWhere("game.booking = '1'")
+        ;
+        return $qb->getQuery()->getResult();
+    }
+
+    public function findGameBooked($player){
+        $qb = $this->createQueryBuilder('game');
+        $qb
+            ->select('game AS row')
+            ->addSelect('cards.id AS cardId')
+            ->join('game.score', 'score')
+            ->join('score.cards', 'cards')
+            ->andWhere("game.booking = '1' AND cards.player = :player")
+            ->setParameters([
+                'player' => $player
+            ]);
         ;
         return $qb->getQuery()->getResult();
     }

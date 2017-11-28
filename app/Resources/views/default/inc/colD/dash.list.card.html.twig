@@ -1,0 +1,40 @@
+<div class="card listcard">
+    <h3 class="card-title">Tes cartes</h3>
+    <table class="bordered">
+        <thead>
+        <tr>
+            <th>Carte</th>
+            <th>Score</th>
+            <th>Parties</th>
+            <th>&nbsp;</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for card in cards %}
+            <tr>
+            <td>{{ card.number }}</td>
+            <td>{{ card.sumscore }}</td>
+            <td>{{ card.nbgames }}</td>
+            {% if card.status == "disable" %}
+                <td>
+                    <div class="secondary-content" title="carte desactivée"><i class="material-icons">not_interested</i></div>
+                    <a href="{{ path('app_card_show', {'id':card.id}) }}" class="secondary-content" title="voir details"><i class="material-icons">remove_red_eye</i></a>
+                </td>
+            {% else %}
+                <td>
+                    <a href="{{ path('app_card_disable_page', {'id':card.id}) }}" class="secondary-content" title="carte perdue ou volée"><i class="material-icons">no_sim</i></a>
+                    <a href="{{ path('app_card_show', {'id':card.id}) }}" class="secondary-content" title="voir details"><i class="material-icons">remove_red_eye</i></a>
+                </td>
+            {% endif %}
+        {% else %}
+            <td colspan="4">Tu n'as pas encore de carte</td>
+            </tr>
+        {% endfor %}
+        <tr>
+            <td colspan="4">
+                <a href="{{ path('app_card_add') }}" class="secondary-content"><i class="material-icons">add</i>Ajout d'une nouvelle carte</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

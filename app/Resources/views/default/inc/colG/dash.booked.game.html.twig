@@ -1,0 +1,21 @@
+<ul class="card collection with-header task-card">
+    <li class="collection-header indigo">
+        <h4 class="task-card-title white-text">Reservées</h4>
+    </li>
+    {% for game in stats.gameBooked %}
+        {% set cardId = game.cardId %}
+        {% set game = game.row %}
+        <li class="collection-item dismissable">
+            <p class="collections-content"><span class="left-align"><b>SL de {{ game.etablishment }}</b></span><span class="right right-align"><b>{{ game.playedAt|date('d/m/y') }}</b><br/>{{ game.timeSlot }}</span></p>
+            <p class="collections-content">{{ game.gameType }} {{ game.score|length }}/{{ game.nbMax }}</p>
+            <p class="no-margin">
+                <a title="annuler" href="{{ path('app_game_unjoin', {'id_game': game.id, 'id_card': cardId}) }}" class="deep-indigo-text right icon-join"><i class="large material-icons">person_outline</i></a>
+            </p>
+            <div class="clearfix"></div>
+        </li>
+    {% else %}
+        <li class="collection-item dismissable">
+            <p class="collections-title">Tu n'as reservé aucunes parties</p>
+        </li>
+    {% endfor %}
+</ul>

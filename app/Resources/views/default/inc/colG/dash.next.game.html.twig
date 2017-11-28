@@ -1,0 +1,20 @@
+<ul class="card collection with-header task-card">
+    <li class="collection-header lime darken-1">
+        <h4 class="task-card-title white-text">Prochaines parties</h4>
+    </li>
+    {% for game in stats.bookableGame %}
+        <li class="collection-item dismissable">
+            <p class="collections-content"><span class="left-align"><b>SL de {{ game.etablishment }}</b></span><span class="right right-align"><b>{{ game.playedAt|date('d/m/y') }}</b><br/>{{ game.timeSlot }}</span></p>
+            <p class="collections-content">{{ game.gameType }} {{ game.score|length }}/{{ game.nbMax }}</p>
+            <p class="no-margin">
+                <a title="voir" href="{{ path('app_game_show', {'id': game.id}) }}" class="lime-text left icon-join"><i class="large material-icons">people</i></a>
+                <a title="rejoindre" href="#modal1" class="lime-text right icon-join modal-trigger" data-game-id="{{ game.id }}"><i class="large material-icons">person_add</i></a>
+            </p>
+            <div class="clearfix"></div>
+        </li>
+    {% else %}
+        <li class="collection-item dismissable">
+            <p class="collections-title">Aucune partie n'est disponible pour le moment :(</p>
+        </li>
+    {% endfor %}
+</ul>

@@ -101,6 +101,7 @@ class CardManager
             $tab_id_card[] = $card['id'];
         }
         $stats['bookableGame'] = $this->entityManager->getRepository('AppBundle:Game')->findAllBookableGame($player);
+        $stats['gameBooked'] = $this->entityManager->getRepository('AppBundle:Game')->findGameBooked($player);
         return[
             'player' => $player,
             'cards' => $cards,

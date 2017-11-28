@@ -50,7 +50,6 @@ class GameController extends Controller
         $entityManager = $this->getDoctrine()->getManager();
         $game = $entityManager->getRepository('AppBundle:Game')->find($id_game);
         $card = $entityManager->getRepository('AppBundle:Card')->find($id_card);
-
         $score = new Score();
         $score->setResult(0)
             ->setGames($game)
@@ -58,11 +57,18 @@ class GameController extends Controller
             ->setTeam(0);
         $entityManager->persist($score);
         $entityManager->flush();
+        return $this->redirectToRoute('app_dashboard');
+    }
 
-        $this->addFlash('success', 'Félicitations, tu es bien inscrit pour cette partie');
-        return $this->redirectToRoute('user_register');
-        {
-
-        }
+    public function unjoinAction($id_game, $id_card)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $score = $entityManager->getRepository('AppBundle:Score')->findOneBy([
+            'games' => $id_game,
+            'cards' => $id_card
+        ]);
+        $entityManager->remove($score);
+        $entityManager->flush();
+        return $this->redirectToRoute('app_dashboard');
     }
 }

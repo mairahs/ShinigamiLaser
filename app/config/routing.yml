@@ -68,3 +68,10 @@ app_game_join:
     requirements:
         id_game: \d+
         id_card: \d+
+
+app_game_unjoin:
+    path: /game/unjoin/{id_game}/{id_card}
+    defaults: {_controller: AppBundle:Game:unjoin}
+    requirements:
+        id_game: \d+
+        id_card: \d+
