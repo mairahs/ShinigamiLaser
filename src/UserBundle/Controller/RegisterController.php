@@ -41,12 +41,7 @@ class RegisterController extends Controller
      */
     public function activateAction($token)
     {
-        $entityManager = $this->getDoctrine()->getManager();
-        $player = $entityManager->getRepository('AppBundle:Player')->findOneBy(['token' => $token]);
-        //todo bouger ça dans le usermanager
-        $player->setIsActivate(1);
-        $entityManager->persist($player);
-        $entityManager->flush();
+        $this->get(PlayerManager::class)->activate($token);
 
         return $this->render('UserBundle:register:register.activate.html.twig', ['player' => $player]);
     }

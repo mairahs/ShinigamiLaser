@@ -66,6 +66,15 @@ class PlayerManager
 //        }
     }
 
+    public function activate($token)
+    {
+        $player = $this->entityManager->getRepository('AppBundle:Player')->findOneBy(['token' => $token]);
+        $player->setIsActivate(1);
+        $this->entityManager->persist($player);
+        $this->entityManager->flush();
+        return $player;
+    }
+
     public function test(Player $player)
     {
         $player->setLastname('nomtest');

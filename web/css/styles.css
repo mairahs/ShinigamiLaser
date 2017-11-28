@@ -84,6 +84,11 @@ li.error{
     font-weight: bold;
 }
 
+.orange-back-text{
+    color:#e24800;
+    font-size:15px;
+}
+
 @media only screen and (max-width : 992px) {
     .parallax-container .section {
         position: absolute;
