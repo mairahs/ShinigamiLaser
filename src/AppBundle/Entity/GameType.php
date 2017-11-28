@@ -5,7 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * GameType
+ * GameType.
  *
  * @ORM\Table(name="game_type")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\GameTypeRepository")
@@ -28,9 +28,8 @@ class GameType
      */
     private $type;
 
-
     /**
-     * Get id
+     * Get id.
      *
      * @return int
      */
@@ -40,7 +39,7 @@ class GameType
     }
 
     /**
-     * Set type
+     * Set type.
      *
      * @param string $type
      *
@@ -54,7 +53,7 @@ class GameType
     }
 
     /**
-     * Get type
+     * Get type.
      *
      * @return string
      */

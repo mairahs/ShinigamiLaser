@@ -5,7 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Etablishment
+ * Etablishment.
  *
  * @ORM\Table(name="etablishment")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\EtablishmentRepository")
@@ -52,9 +52,8 @@ class Etablishment
      */
     private $games;
 
-
     /**
-     * Get id
+     * Get id.
      *
      * @return int
      */
@@ -64,7 +63,7 @@ class Etablishment
     }
 
     /**
-     * Set city
+     * Set city.
      *
      * @param string $city
      *
@@ -78,7 +77,7 @@ class Etablishment
     }
 
     /**
-     * Get city
+     * Get city.
      *
      * @return string
      */
@@ -88,7 +87,7 @@ class Etablishment
     }
 
     /**
-     * Set name
+     * Set name.
      *
      * @param string $name
      *
@@ -102,7 +101,7 @@ class Etablishment
     }
 
     /**
-     * Get name
+     * Get name.
      *
      * @return string
      */
@@ -112,9 +111,9 @@ class Etablishment
     }
 
     /**
-     * Set code
+     * Set code.
      *
-     * @param integer $code
+     * @param int $code
      *
      * @return Etablishment
      */
@@ -126,9 +125,9 @@ class Etablishment
     }
 
     /**
-     * Get code
+     * Get code.
      *
-     * @return integer
+     * @return int
      */
     public function getCode()
     {
@@ -136,7 +135,7 @@ class Etablishment
     }
 
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct()
     {
@@ -144,7 +143,7 @@ class Etablishment
     }
 
     /**
-     * Add card
+     * Add card.
      *
      * @param \AppBundle\Entity\Card $card
      *
@@ -158,7 +157,7 @@ class Etablishment
     }
 
     /**
-     * Remove card
+     * Remove card.
      *
      * @param \AppBundle\Entity\Card $card
      */
@@ -168,7 +167,7 @@ class Etablishment
     }
 
     /**
-     * Get cards
+     * Get cards.
      *
      * @return \Doctrine\Common\Collections\Collection
      */
@@ -178,7 +177,7 @@ class Etablishment
     }
 
     /**
-     * Add game
+     * Add game.
      *
      * @param \AppBundle\Entity\Game $game
      *
@@ -192,7 +191,7 @@ class Etablishment
     }
 
     /**
-     * Remove game
+     * Remove game.
      *
      * @param \AppBundle\Entity\Game $game
      */
@@ -202,7 +201,7 @@ class Etablishment
     }
 
     /**
-     * Get games
+     * Get games.
      *
      * @return \Doctrine\Common\Collections\Collection
      */

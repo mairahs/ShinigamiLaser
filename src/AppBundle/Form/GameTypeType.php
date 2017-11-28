@@ -14,16 +14,16 @@ class GameTypeType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('type',TextType::class );
+        $builder->add('type', TextType::class);
     }
-    
+
     /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\GameType'
+            'data_class' => 'AppBundle\Entity\GameType',
         ));
     }
 
@@ -34,6 +34,4 @@ class GameTypeType extends AbstractType
     {
         return 'appbundle_gametype';
     }
-
-
 }

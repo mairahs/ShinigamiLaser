@@ -29,20 +29,20 @@ class GameType extends AbstractType
                     'format' => 'dd/MM/yyyy',
                 )
             )
-            ->add('gameType', null, ['placeholder'=>'Choisissez un type de partie'])
-            ->add('timeSlot', null, ['placeholder'=>'Choisissez une plage horaire'])
-            ->add('etablishment', null, ['placeholder'=>'Choisissez un établissement'])
+            ->add('gameType', null, ['placeholder' => 'Choisissez un type de partie'])
+            ->add('timeSlot', null, ['placeholder' => 'Choisissez une plage horaire'])
+            ->add('etablishment', null, ['placeholder' => 'Choisissez un établissement'])
             ->add('nbMax', IntegerType::class)
-            ->add('Ajouter',   SubmitType::class);
+            ->add('Ajouter', SubmitType::class);
     }
-    
+
     /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Game'
+            'data_class' => 'AppBundle\Entity\Game',
         ));
     }
 
@@ -53,6 +53,4 @@ class GameType extends AbstractType
     {
         return 'appbundle_game';
     }
-
-
 }

@@ -4,7 +4,6 @@ namespace UserBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\File\Exception\AccessDeniedException;
 use UserBundle\FormUpdate\UpdatePasswordType;
 use UserBundle\Manager\MailManager;
 use UserBundle\Manager\PlayerManager;
@@ -14,10 +13,11 @@ class LostPasswordController extends Controller
     public function indexAction(Request $request)
     {
         $email = $request->request->get('_email');
-        if ($request->getMethod() === "POST" && !is_null($email) && $email !== "") {
+        if ('POST' === $request->getMethod() && !is_null($email) && '' !== $email) {
             $player = $this->getDoctrine()->getRepository('AppBundle:Player')->findOneBy(['email' => $email]);
             if (!is_null($player)) {
                 $this->get(MailManager::class)->sendMailLostPassword($player);
+
                 return $this->redirectToRoute('user_lostpassword_mailsend');
             }
             $this->addFlash('notice', "L'adresse email n'est pas valide");
@@ -33,6 +33,7 @@ class LostPasswordController extends Controller
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $this->get(PlayerManager::class)->resetPassword($player);
+
             return $this->redirectToRoute('user_lostpassword_confirmation');
         }
 

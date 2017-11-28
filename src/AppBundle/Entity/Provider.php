@@ -5,7 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Provider
+ * Provider.
  *
  * @ORM\Table(name="provider")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ProviderRepository")
@@ -35,9 +35,8 @@ class Provider
      */
     private $name;
 
-
     /**
-     * Get id
+     * Get id.
      *
      * @return int
      */
@@ -47,7 +46,7 @@ class Provider
     }
 
     /**
-     * Set adress
+     * Set adress.
      *
      * @param string $adress
      *
@@ -61,7 +60,7 @@ class Provider
     }
 
     /**
-     * Get adress
+     * Get adress.
      *
      * @return string
      */
@@ -71,7 +70,7 @@ class Provider
     }
 
     /**
-     * Set name
+     * Set name.
      *
      * @param string $name
      *
@@ -85,7 +84,7 @@ class Provider
     }
 
     /**
-     * Get name
+     * Get name.
      *
      * @return string
      */

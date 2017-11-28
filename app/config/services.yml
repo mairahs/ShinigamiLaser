@@ -42,6 +42,12 @@ services:
     AppBundle\Manager\CardManager:
         public: true
 
+    AppBundle\Manager\DashboardManager:
+        public: true
+
+    AppBundle\Manager\GameManager:
+        public: true
+
     AppBundle\EventListener\NumberGenerator:
         tags:
             - { name: doctrine.event_listener, event: prePersist }

@@ -2,11 +2,10 @@
 
 namespace AppBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Score
+ * Score.
  *
  * @ORM\Table(name="score")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ScoreRepository")
@@ -47,7 +46,7 @@ class Score
     private $games;
 
     /**
-     * Get id
+     * Get id.
      *
      * @return int
      */
@@ -57,9 +56,9 @@ class Score
     }
 
     /**
-     * Set result
+     * Set result.
      *
-     * @param integer $result
+     * @param int $result
      *
      * @return Score
      */
@@ -71,7 +70,7 @@ class Score
     }
 
     /**
-     * Get result
+     * Get result.
      *
      * @return int
      */
@@ -81,9 +80,9 @@ class Score
     }
 
     /**
-     * Set team
+     * Set team.
      *
-     * @param integer $team
+     * @param int $team
      *
      * @return Score
      */
@@ -95,7 +94,7 @@ class Score
     }
 
     /**
-     * Get team
+     * Get team.
      *
      * @return int
      */
@@ -105,7 +104,7 @@ class Score
     }
 
     /**
-     * Set games
+     * Set games.
      *
      * @param \AppBundle\Entity\Game $games
      *
@@ -119,7 +118,7 @@ class Score
     }
 
     /**
-     * Get games
+     * Get games.
      *
      * @return \AppBundle\Entity\Game
      */
@@ -129,7 +128,7 @@ class Score
     }
 
     /**
-     * Set cards
+     * Set cards.
      *
      * @param \AppBundle\Entity\Card $cards
      *
@@ -143,7 +142,7 @@ class Score
     }
 
     /**
-     * Get cards
+     * Get cards.
      *
      * @return \AppBundle\Entity\Card
      */

@@ -5,7 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * TimeSlot
+ * TimeSlot.
  *
  * @ORM\Table(name="time_slot")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\TimeSlotRepository")
@@ -28,9 +28,8 @@ class TimeSlot
      */
     private $type;
 
-
     /**
-     * Get id
+     * Get id.
      *
      * @return int
      */
@@ -40,7 +39,7 @@ class TimeSlot
     }
 
     /**
-     * Set type
+     * Set type.
      *
      * @param string $type
      *
@@ -49,12 +48,12 @@ class TimeSlot
     public function setType($type)
     {
         $this->type = $type;
-        return $this;
 
+        return $this;
     }
 
     /**
-     * Get type
+     * Get type.
      *
      * @return string
      */

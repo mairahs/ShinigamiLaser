@@ -16,6 +16,18 @@ homepage:
         _controller: FrameworkBundle:Template:template
         template: default/index.html.twig
 
+tarif:
+    path: /tarifs
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template: page/tarifs.html.twig
+
+contact:
+    path: /contact
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template: page/contact.html.twig
+
 user_login:
     path: /login
     defaults: { _controller: UserBundle:Security:login}

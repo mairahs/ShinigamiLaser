@@ -16,8 +16,10 @@ class UpdateController extends Controller
 {
     /**
      * @param Request $request
-     * @param Player $player
+     * @param Player  $player
+     *
      * @return Response
+     *
      * @internal param Request $request
      * @internal param Player $player
      * @internal param $id
@@ -38,7 +40,8 @@ class UpdateController extends Controller
 
     /**
      * @param Request $request
-     * @param Player $player
+     * @param Player  $player
+     *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
     public function avatarAction(Request $request, Player $player)
@@ -57,7 +60,8 @@ class UpdateController extends Controller
 
     /**
      * @param Request $request
-     * @param Player $player
+     * @param Player  $player
+     *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
     public function passwordAction(Request $request, Player $player)

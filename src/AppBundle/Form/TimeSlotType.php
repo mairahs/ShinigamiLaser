@@ -14,16 +14,16 @@ class TimeSlotType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('type',TextType::class );
+        $builder->add('type', TextType::class);
     }
-    
+
     /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\TimeSlot'
+            'data_class' => 'AppBundle\Entity\TimeSlot',
         ));
     }
 
@@ -34,6 +34,4 @@ class TimeSlotType extends AbstractType
     {
         return 'appbundle_timeslot';
     }
-
-
 }

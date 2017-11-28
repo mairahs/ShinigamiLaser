@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: Tonio
  * Date: 17/11/2017
- * Time: 09:54
+ * Time: 09:54.
  */
 
 namespace UserBundle\Manager;

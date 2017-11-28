@@ -1,15 +1,11 @@
 <?php
 
-
 namespace UserBundle\Manager;
 
 use AppBundle\Entity\Player;
 use Doctrine\Common\Persistence\ObjectManager;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
-use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
 
 class PlayerManager
@@ -22,7 +18,6 @@ class PlayerManager
      * @var MailManager
      */
     private $mailManager;
-
 
     public function __construct(ObjectManager $entityManager, EncoderFactoryInterface $encoder, TokenStorageInterface $tokenStorage, RouterInterface $router, MailManager $mailManager)
     {
@@ -79,6 +74,7 @@ class PlayerManager
         $player->setAddress('20 rue saint lazare');
         $player->setPhoneNumber('060000000');
         $player->setDateOfBirth(new \DateTime());
+
         return $player;
     }
 
@@ -86,9 +82,10 @@ class PlayerManager
     {
         $username = $player->getUsername();
         $timestamp = 1234567890;
-        $date_time = \Date('dmY', $timestamp);
+        $date_time = \date('dmY', $timestamp);
         $key = $username.$date_time;
         $hash = hash('sha256', $key);
+
         return $hash;
     }
 }

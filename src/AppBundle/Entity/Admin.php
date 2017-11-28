@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * Admin
+ * Admin.
  *
  * @ORM\Table(name="admin")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\AdminRepository")
@@ -43,9 +43,8 @@ class Admin implements UserInterface
      */
     private $password;
 
-
     /**
-     * Get id
+     * Get id.
      *
      * @return int
      */
@@ -55,7 +54,7 @@ class Admin implements UserInterface
     }
 
     /**
-     * Set username
+     * Set username.
      *
      * @param string $username
      *
@@ -69,7 +68,7 @@ class Admin implements UserInterface
     }
 
     /**
-     * Get username
+     * Get username.
      *
      * @return string
      */
@@ -79,7 +78,7 @@ class Admin implements UserInterface
     }
 
     /**
-     * Set email
+     * Set email.
      *
      * @param string $email
      *
@@ -93,7 +92,7 @@ class Admin implements UserInterface
     }
 
     /**
-     * Get email
+     * Get email.
      *
      * @return string
      */
@@ -103,7 +102,7 @@ class Admin implements UserInterface
     }
 
     /**
-     * Set password
+     * Set password.
      *
      * @param string $password
      *
@@ -117,7 +116,7 @@ class Admin implements UserInterface
     }
 
     /**
-     * Get password
+     * Get password.
      *
      * @return string
      */
@@ -125,7 +124,6 @@ class Admin implements UserInterface
     {
         return $this->password;
     }
-
 
     public function getRoles()
     {

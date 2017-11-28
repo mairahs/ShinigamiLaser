@@ -5,7 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Card
+ * Card.
  *
  * @ORM\Table(name="card")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\CardRepository")
@@ -52,7 +52,7 @@ class Card
     private $etablishment;
 
     /**
-     * Get id
+     * Get id.
      *
      * @return int
      */
@@ -62,7 +62,7 @@ class Card
     }
 
     /**
-     * Set status
+     * Set status.
      *
      * @param string $status
      *
@@ -76,7 +76,7 @@ class Card
     }
 
     /**
-     * Get status
+     * Get status.
      *
      * @return string
      */
@@ -86,7 +86,7 @@ class Card
     }
 
     /**
-     * Set player
+     * Set player.
      *
      * @param \AppBundle\Entity\Player $player
      *
@@ -100,7 +100,7 @@ class Card
     }
 
     /**
-     * Get player
+     * Get player.
      *
      * @return \AppBundle\Entity\Player
      */
@@ -110,7 +110,7 @@ class Card
     }
 
     /**
-     * Set number
+     * Set number.
      *
      * @param string $number
      *
@@ -124,7 +124,7 @@ class Card
     }
 
     /**
-     * Get number
+     * Get number.
      *
      * @return string
      */
@@ -132,8 +132,9 @@ class Card
     {
         return $this->number;
     }
+
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct()
     {
@@ -141,7 +142,7 @@ class Card
     }
 
     /**
-     * Add score
+     * Add score.
      *
      * @param \AppBundle\Entity\Score $score
      *
@@ -155,7 +156,7 @@ class Card
     }
 
     /**
-     * Remove score
+     * Remove score.
      *
      * @param \AppBundle\Entity\Score $score
      */
@@ -165,7 +166,7 @@ class Card
     }
 
     /**
-     * Get score
+     * Get score.
      *
      * @return \Doctrine\Common\Collections\Collection
      */
@@ -175,7 +176,7 @@ class Card
     }
 
     /**
-     * Set etablishment
+     * Set etablishment.
      *
      * @param \AppBundle\Entity\Etablishment $etablishment
      *
@@ -189,7 +190,7 @@ class Card
     }
 
     /**
-     * Get etablishment
+     * Get etablishment.
      *
      * @return \AppBundle\Entity\Etablishment
      */

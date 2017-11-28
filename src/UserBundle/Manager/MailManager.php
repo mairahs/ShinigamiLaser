@@ -1,6 +1,5 @@
 <?php
 
-
 namespace UserBundle\Manager;
 
 use AppBundle\Entity\Player;

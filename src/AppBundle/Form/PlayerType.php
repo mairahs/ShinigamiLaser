@@ -46,7 +46,7 @@ class PlayerType extends AbstractType
                         'class' => 'datepicker',
                         'placeholder' => '31/12/2017',
                     ],
-                    'format' => 'dd/MM/yyyy'
+                    'format' => 'dd/MM/yyyy',
                 )
             )
             ->add('email', EmailType::class, ['attr' => ['class' => 'validate']])
@@ -56,18 +56,18 @@ class PlayerType extends AbstractType
             FormEvents::PRE_SET_DATA,
             function (FormEvent $event) use ($user) {
                 $form = $event->getForm();
-                if ("anon." === $user) {
+                if ('anon.' === $user) {
                     $form
                         ->add('password', RepeatedType::class, [
-                            'type'=>PasswordType::class,
+                            'type' => PasswordType::class,
                             'first_options' => [
                                 'label' => 'Password',
-                                'attr' => ['class' => 'validate']
+                                'attr' => ['class' => 'validate'],
                             ],
                             'second_options' => [
                                 'label' => 'Confirm password',
-                                'attr' => ['class' => 'validate']
-                            ]
+                                'attr' => ['class' => 'validate'],
+                            ],
                         ])
                         ->add('avatar', AvatarType::class)
                         ->add('Enregistre-toi', SubmitType::class)
@@ -80,14 +80,14 @@ class PlayerType extends AbstractType
             }
         );
     }
-    
+
     /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Player'
+            'data_class' => 'AppBundle\Entity\Player',
         ));
     }
 
