@@ -26,7 +26,7 @@ class GameController extends Controller
             return $this->redirectToRoute('app_game_show', array('id' => $game->getId()));
         }
 
-        return $this->render('@Admin/game/add.html.twig', [
+        return $this->render('game/add.html.twig', [
             'form' => $form->createView(),
         ]);
     }
@@ -38,7 +38,7 @@ class GameController extends Controller
             new notFoundHttpException('La partie demandée n\'existe pas');
         }
 
-        return $this->render('AdminBundle:game:show.html.twig', ['game' => $game]);
+        return $this->render('game/show.html.twig', ['game' => $game]);
     }
 
     public function joinAction($id_game, $id_card)
