@@ -16,5 +16,13 @@ class EtablishmentRepository extends EntityRepository
                             ->getResult();
     }
 
-
+    public function getPlayersByEtablishment(){
+        $queryBuilder = $this  ->createQueryBuilder('etablishment')
+            ->leftJoin('etablishment.cards','cards')
+            ->leftJoin('cards.player','player')
+            ->addSelect('etablishment')
+            ->addSelect('cards')
+            ->addSelect('player');
+        return $queryBuilder->getQuery()->getResult();
+    }
 }
