@@ -1,6 +1,7 @@
 {% extends 'base/base.admin.html.twig' %}
 
 {% block body %}
+
     <div class="row">
         <!-- --- --- ----------- COL S4 ----------------->
         <div class="col s4">
@@ -8,7 +9,6 @@
                 <div class="card-content purple white-text center">
                     <p class="card-stats-title"><i class="mdi-social-group-add"></i> Bienvenue {{ app.user.username }}</p>
                 </div>
-
             </div>
                 <div class="card">
                     <div class="card-content  green white-text center">
@@ -71,8 +71,9 @@
                     <p class="collections-content">Renseigner simplement le numéro de sa carte de fidélité</p>
                 </li>
                 <li class="collection-item">
-                    <p class="collections-title"><a href="{{ path('admin_user_findall_byetablishment', {'id':etablishment.id}) }}">Afficher la liste des joueurs<i class="material-icons icon-dash-admin">people</i></a></p>
-                    <p class="collections-content">Voir tous les joueurs enregistrés dans l'établissement</p>
+                    <p class="collections-title"><a href="{{ path('admin_user_index') }}">Afficher la liste des joueurs par établissements<i class="material-icons icon-dash-admin">people</i></a></p>
+                    <p class="collections-content">Voir tous les joueurs enregistrés par établissement</p>
+                    {#{{ path('admin_user_findall_byetablishment', {'id':etablishment.id}) }}#}
 
                 </li>
 
