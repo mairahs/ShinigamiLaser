@@ -1,8 +1,6 @@
 <?php
 
-
 namespace AdminBundle\Controller;
-
 
 use AppBundle\Entity\Command;
 use AppBundle\Form\CommandType;

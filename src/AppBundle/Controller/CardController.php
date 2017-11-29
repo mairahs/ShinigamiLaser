@@ -56,14 +56,14 @@ class CardController extends Controller
         $stats = $this->getDoctrine()->getRepository('AppBundle:Score')->getAllStat($card);
         $stats['scores'] = $this->getDoctrine()->getRepository('AppBundle:Score')->getLastGamePlayedCard($card);
         $other = true;
-        if($this->get(AuthenticateService::class)->isPlayer($card->getPlayer())) {
+        if ($this->get(AuthenticateService::class)->isPlayer($card->getPlayer())) {
             $other = false;
         }
 
         return $this->render('card/show.card.html.twig', [
             'card' => $card,
             'stats' => $stats,
-            'other' => $other
+            'other' => $other,
         ]);
     }
 

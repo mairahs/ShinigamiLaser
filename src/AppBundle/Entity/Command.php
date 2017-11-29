@@ -1,10 +1,8 @@
 <?php
 
-
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
 
 /**
  * Command.
@@ -113,9 +111,8 @@ class Command
         $this->dateOfOrder = $dateOfOrder;
     }
 
-
     /**
-     * Set etablishment
+     * Set etablishment.
      *
      * @param \AppBundle\Entity\Etablishment $etablishment
      *
@@ -129,7 +126,7 @@ class Command
     }
 
     /**
-     * Get etablishment
+     * Get etablishment.
      *
      * @return \AppBundle\Entity\Etablishment
      */

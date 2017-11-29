@@ -206,7 +206,7 @@ class Card
     }
 
     /**
-     * Set command
+     * Set command.
      *
      * @param \AppBundle\Entity\Command $command
      *
@@ -220,7 +220,7 @@ class Card
     }
 
     /**
-     * Get command
+     * Get command.
      *
      * @return \AppBundle\Entity\Command
      */
