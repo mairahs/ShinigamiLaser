@@ -21,18 +21,13 @@
                     <p class="medium-small grey-text">Code Etablissement</p>
                 </div>
                 <div class="col s2">
-                    <h4 class="card-title grey-text text-darken-4">{ 15 }</h4>
+                    <h4 class="card-title grey-text text-darken-4">{{ stats.count_abonne }}</h4>
                     <p class="medium-small grey-text">Abonnés</p>
                 </div>
                 <div class="col s2">
                     <h4 class="card-title grey-text text-darken-4">{{ etablishment.games|length }}</h4>
                     <p class="medium-small grey-text">Parties jouées</p>
                 </div>
-                {#<div class="col s1 right-align">#}
-                    {#<a class="btn-floating activator waves-effect waves-light darken-2 right">#}
-                        {#<i class="mdi-action-perm-identity"></i>#}
-                    {#</a>#}
-                {#</div>#}
             </div>
         </div>
     </div>
@@ -74,11 +69,10 @@
             <table class="card centered bordered">
                 <thead>
                 <tr>
-                    {# TODO pourquoi data-field ? #}
-                    <th data-field="id">Nom de la partie</th>
-                    <th data-field="name">Date</th>
-                    <th data-field="name">Participants</th>
-                    <th data-field="price">Détails</th>
+                    <th>Nom de la partie</th>
+                    <th>Date</th>
+                    <th>Participants</th>
+                    <th>Détails</th>
                 </tr>
                 </thead>
                 <tbody>

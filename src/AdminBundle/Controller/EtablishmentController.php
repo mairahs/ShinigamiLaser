@@ -32,7 +32,11 @@ class EtablishmentController extends Controller
             throw new NotFoundHttpException('L\'établissement demandé n\'existe pas');
         }
 
-        return $this->render('@Admin/etablishment/show.html.twig', ['etablishment'=>$etablishment]);
+        $stats['count_abonne'] = count($this->getDoctrine()->getRepository('AppBundle:Card')->findBy(['etablishment' => $id]));
+        return $this->render('@Admin/etablishment/show.html.twig', [
+            'etablishment' => $etablishment,
+            'stats' => $stats
+        ]);
     }
 
 
