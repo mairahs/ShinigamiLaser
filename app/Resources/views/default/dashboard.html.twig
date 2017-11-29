@@ -1,6 +1,7 @@
 {% extends 'base/base.html.twig' %}
 
 {% block body %}
+    {% set display = other is not defined %}
     <div class="card cardHeader">
         <div class="card-image waves-effect waves-block waves-light">
             <img class="activator" src="{{ asset('images/office.jpg') }}">
@@ -22,6 +23,7 @@
                     <h4 class="card-title grey-text text-darken-4">{{ stats.gameTotal }}</h4>
                     <p class="medium-small grey-text">Nombre de partie</p>
                 </div>
+                {% if display %}
                 <div class="col s1 right-align">
                     <div class="fixed-action-btn horizontal">
                         <a class="btn-floating btn-large red">
@@ -34,6 +36,7 @@
                         </ul>
                     </div>
                 </div>
+                {% endif %}
             </div>
         </div>
     </div>
@@ -43,9 +46,11 @@
         <!---------------------------------------------------------------------------------->
         <div class="col s4">
             {% include 'default/inc/colG/dash.pts.compo.html.twig' %}
-            {% include 'default/inc/colG/dash.next.game.html.twig' %}
-            {% include 'default/inc/colG/dash.booked.game.html.twig' %}
-            {% include 'default/inc/colG/dash.prev.game.html.twig' %}
+            {% if display %}
+                {% include 'default/inc/colG/dash.next.game.html.twig' %}
+                {% include 'default/inc/colG/dash.booked.game.html.twig' %}
+            {% endif %}
+            {% include 'default/inc/colG/dash.prev.game.html.twig' with {'lastgame' : stats.lastGame} %}
             {% include 'default/inc/colG/dash.achie.html.twig' %}
         </div>
         <!--------------------------------- COL S8 ----------------------------------------->

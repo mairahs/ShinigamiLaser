@@ -11,10 +11,12 @@
         </div>
         <div class="card-content">
             <div class="row">
+                {% if not other %}
                 <div class="col s3 offset-s2">
                     <h4 class="card-title grey-text text-darken-4">{{ card.number }}</h4>
                     <p class="medium-small grey-text">Numéro carte</p>
                 </div>
+                {% endif %}
                 <div class="col s2 center-align">
                     <h4 class="card-title grey-text text-darken-4">{{ stats.sumscore }}</h4>
                     <p class="medium-small grey-text">Score total</p>
@@ -30,7 +32,7 @@
 
     <div class="row">
         <div class="col s12">
-            <i class="material-icons orange-back-text">arrow_back</i><a class="orange-back-text" href="{{ path('app_dashboard') }}">Retour au dashboard</a>
+            <i class="material-icons orange-back-text">arrow_back</i><a class="orange-back-text" href="{% if not other %}{{ path('app_dashboard') }}{% else %}{{ path('app_dashboard_show', {'id' : card.player.id}) }}{% endif %}">Retour au dashboard</a>
         </div>
     </div>
     <div class="row">
@@ -38,21 +40,7 @@
         <!---------------------------------------------------------------------------------->
         <div class="col s6">
             <div id="scorebygame" class="card"></div>
-            <ul class="card collection with-header task-card">
-                <li class="collection-header purple">
-                    <h4 class="task-card-title white-text">Dernières parties</h4>
-                </li>
-                {% for score in stats.scores %}
-                    <li class="collection-item dismissable">
-                        <p class="collections-title">{{ score.games.playedAt|date('d/m/y H:i') }} <span class="right purple task-cat">{{ score.result }}</span><span class="right">Points :</span></p>
-                        <p class="collections-content">{{ score.games.gameType.type }}</p>
-                    </li>
-                {% else %}
-                    <li class="collection-item dismissable">
-                        <p class="collections-title">Tu n'as pas encore de partie :(</p>
-                    </li>
-                {% endfor %}
-            </ul>
+            {% include 'default/inc/colG/dash.prev.game.html.twig' with {'lastgame' : stats.scores} %}
         </div>
         <!--------------------------------- COL S4 ----------------------------------------->
         <!---------------------------------------------------------------------------------->

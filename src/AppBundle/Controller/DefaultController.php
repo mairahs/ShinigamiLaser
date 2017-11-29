@@ -21,6 +21,7 @@ class DefaultController extends Controller
     {
         $player = $this->getDoctrine()->getManager()->getRepository('AppBundle:Player')->find($id);
         $ret = $this->get(DashboardManager::class)->returnDashboard($player);
+        $ret['other'] = true;
 
         return $this->render('default/dashboard.html.twig', $ret);
     }
