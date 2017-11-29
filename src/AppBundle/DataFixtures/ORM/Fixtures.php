@@ -14,6 +14,7 @@ use AppBundle\Entity\TimeSlot;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Faker\Factory as Factory;
+use AppBundle\Entity\Command;
 
 /**
  * Class Fixtures.
@@ -80,6 +81,19 @@ class Fixtures extends Fixture
             $etablishment_arr[] = $etablishment;
         }
 
+        $command_arr =[];
+        for($i=0;$i<5; ++$i){
+            $command = new Command();
+            $rand = rand(1, 10);
+            $key_ = array_rand($etablishment_arr, 1);
+            $command->setEtablishment($etablishment_arr[$key_]);
+            $command->setQuantity(rand(1,50));
+            $command->setPrice(rand(200,1000));
+            $command->setDateOfOrder(new \DateTime() );
+            $manager->persist($command);
+            $command_arr[] = $command;
+        }
+
         $player_arr = [];
         for ($i = 0; $i < 30; ++$i) {
             $player = new Player();
@@ -102,6 +116,8 @@ class Fixtures extends Fixture
 
             $key_ = array_rand($etablishment_arr, 1);
             $card->setEtablishment($etablishment_arr[$key_]);
+            $key_ = array_rand($command_arr, 1);
+            $card->setCommand($command_arr[$key_]);
 
             if (10 !== $rand) {
                 $key = array_rand($player_arr, 1);
