@@ -52,6 +52,12 @@ class Card
     private $etablishment;
 
     /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Command")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $command;
+
+    /**
      * Get id.
      *
      * @return int
@@ -197,5 +203,29 @@ class Card
     public function getEtablishment()
     {
         return $this->etablishment;
+    }
+
+    /**
+     * Set command
+     *
+     * @param \AppBundle\Entity\Command $command
+     *
+     * @return Card
+     */
+    public function setCommand(\AppBundle\Entity\Command $command)
+    {
+        $this->command = $command;
+
+        return $this;
+    }
+
+    /**
+     * Get command
+     *
+     * @return \AppBundle\Entity\Command
+     */
+    public function getCommand()
+    {
+        return $this->command;
     }
 }
