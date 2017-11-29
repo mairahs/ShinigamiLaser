@@ -3,9 +3,7 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
-use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -20,17 +18,17 @@ class CommandType extends AbstractType
     {
         $builder->add('quantity', NumberType::class)
                 ->add('price', IntegerType::class)
-                ->add('etablishment', null,['placeholder' => 'Choisissez un établissement bénéficiaire des cartes '])
+                ->add('etablishment', null, ['placeholder' => 'Choisissez un établissement bénéficiaire des cartes '])
                 ->add('Ajouter', SubmitType::class);
     }
-    
+
     /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Command'
+            'data_class' => 'AppBundle\Entity\Command',
         ));
     }
 
@@ -41,6 +39,4 @@ class CommandType extends AbstractType
     {
         return 'appbundle_command';
     }
-
-
 }

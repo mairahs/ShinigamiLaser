@@ -59,7 +59,9 @@ class CardManager
      * CODE_CENTRE : 3 chiffres décrivant un établissement
      * CODE_CARTE : 6 chiffres décrivant un client
      * checksum : somme des chiffres précédents modulo 9.
+     *
      * @param $center_number
+     *
      * @return string
      */
     public static function generateNumber($center_number)

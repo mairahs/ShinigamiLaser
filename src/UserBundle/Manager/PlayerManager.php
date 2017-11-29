@@ -72,6 +72,7 @@ class PlayerManager
         $player->setIsActivate(1);
         $this->entityManager->persist($player);
         $this->entityManager->flush();
+
         return $player;
     }
 
