@@ -99,12 +99,13 @@ class Fixtures extends Fixture
         for ($i = 0; $i < 30; ++$i) {
             $card = new Card();
             $rand = rand(1, 10);
+
+            $key_ = array_rand($etablishment_arr, 1);
+            $card->setEtablishment($etablishment_arr[$key_]);
+
             if (10 !== $rand) {
                 $key = array_rand($player_arr, 1);
                 $card->setPlayer($player_arr[$key]);
-
-                $key_ = array_rand($etablishment_arr, 1);
-                $card->setEtablishment($etablishment_arr[$key_]);
 
                 $card->setStatus('active');
                 $card_arr[] = $card;
