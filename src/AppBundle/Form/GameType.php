@@ -20,14 +20,14 @@ class GameType extends AbstractType
                 'playedAt',
                 DateTimeType::class,
                 array(
-                    'widget' => 'single_text',
-                    'html5' => false,
-                    'attr' => [
-                        'class' => 'datepicker_2',
-                        'placeholder' => '31/12/2017',
-                    ],
-                    'format' => 'dd/MM/yyyy',
-                )
+        'widget' => 'single_text',
+        'html5' => false,
+        'attr' => [
+            'class' => 'datepicker_2',
+            'placeholder' => '31/12/2017',
+        ],
+        'format' => 'dd/MM/yyyy',
+    )
             )
             ->add('gameType', null, ['placeholder' => 'Choisissez un type de partie'])
             ->add('timeSlot', null, ['placeholder' => 'Choisissez une plage horaire'])
