@@ -4,7 +4,7 @@ namespace AppBundle\DataFixtures\ORM;
 
 use AppBundle\Entity\Admin;
 use AppBundle\Entity\Card;
-use AppBundle\Entity\Etablishment;
+use AppBundle\Entity\Command;
 use AppBundle\Entity\Game;
 use AppBundle\Entity\GameType;
 use AppBundle\Entity\Player;
@@ -70,15 +70,6 @@ class Fixtures extends Fixture
             $game_typeO[] = $game_type;
         }
 
-        $etablishment_arr = [];
-        for ($i = 0; $i < 5; ++$i) {
-            $etablishment = new Etablishment();
-            $etablishment->setName($faker->lastName);
-            $etablishment->setCity($faker->city);
-            $etablishment->setCode(rand(111, 999));
-            $manager->persist($etablishment);
-            $etablishment_arr[] = $etablishment;
-        }
 
         $player_arr = [];
         for ($i = 0; $i < 30; ++$i) {
@@ -95,6 +86,18 @@ class Fixtures extends Fixture
             $player_arr[] = $player;
         }
 
+        $arr_command = [];
+        for ($i = 0; $i < 5; ++$i) {
+            $command = new Command();
+            $command->setPrice(rand(30,70));
+            $key_ = array_rand($etablishment_arr, 1);
+            $command->setEtablishment($etablishment_arr[$key_]);
+            $command->setQuantity(4);
+            $command->setDateOfOrder(new \DateTime());
+            $manager->persist($command);
+            $arr_command[] = $command;
+        }
+
         $card_arr = [];
         for ($i = 0; $i < 30; ++$i) {
             $card = new Card();
@@ -102,6 +105,9 @@ class Fixtures extends Fixture
 
             $key_ = array_rand($etablishment_arr, 1);
             $card->setEtablishment($etablishment_arr[$key_]);
+
+            $key_ = array_rand($arr_command, 1);
+            $card->setCommand($arr_command[$key_]);
 
             if (10 !== $rand) {
                 $key = array_rand($player_arr, 1);
