@@ -20,9 +20,8 @@ class UserController extends Controller
         if ('POST' === $request->getMethod() && !is_null($numberCard) && '' !== $numberCard) {
             try {
                 $player = $this->getDoctrine()->getRepository('AppBundle:Player')->findPlayerByNumberCard($numberCard);
-                $ret = $this->get(DashboardManager::class)->returnDashboard($player);
 
-                return $this->render('default/dashboard.html.twig', $ret);
+                return $this->redirectToRoute('app_dashboard_show', ['id' => $player->getId()]);
             } catch (\Exception $exception) {
                 $this->addFlash('notice', 'Aucun joueur ne possède ce numéro de carte');
             }

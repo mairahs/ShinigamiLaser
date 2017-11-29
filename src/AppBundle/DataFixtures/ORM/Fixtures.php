@@ -130,6 +130,8 @@ class Fixtures extends Fixture
 
             $game->setNbMax(rand(20, 25));
 
+            $game->setBooking(0);
+
             $rand = rand(0, 2);
             $game->setGameType($game_typeO[$rand]);
             $get_type = $game_typeO[$rand]->getType();
@@ -167,7 +169,6 @@ class Fixtures extends Fixture
             $provider->setName($faker->lastName);
             $manager->persist($provider);
         }
-
         $manager->flush();
     }
 }

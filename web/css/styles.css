@@ -169,6 +169,15 @@ li.error{
     cursor: pointer;
 }
 
+.text-score{
+    font-size: 30px;
+    display: block;
+}
+
+.sstext-score{
+    font-size: 15px;
+}
+
 /* --- ---- ---- Style demo geeklabs --- --- ---- --- */
 
 .container-form{
@@ -218,7 +227,6 @@ li.error{
 .task-card .task-cat {
     padding: 2px 4px;
     color: #fff;
-    margin-left: 37px;
     font-weight: 300;
     font-size: 0.8rem;
     -webkit-border-radius: 2px;

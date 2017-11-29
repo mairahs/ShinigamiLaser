@@ -3,7 +3,9 @@
     <table class="bordered">
         <thead>
         <tr>
+            {% if display or is_granted('ROLE_ADMIN') %}
             <th>Carte</th>
+            {% endif %}
             <th>Score</th>
             <th>Parties</th>
             <th>&nbsp;</th>
@@ -12,7 +14,9 @@
         <tbody>
         {% for card in cards %}
             <tr>
+            {% if display or is_granted('ROLE_ADMIN') %}
             <td>{{ card.number }}</td>
+            {% endif %}
             <td>{{ card.sumscore }}</td>
             <td>{{ card.nbgames }}</td>
             {% if card.status == "disable" %}
@@ -22,7 +26,9 @@
                 </td>
             {% else %}
                 <td>
+                    {% if display %}
                     <a href="{{ path('app_card_disable_page', {'id':card.id}) }}" class="secondary-content" title="carte perdue ou volée"><i class="material-icons">no_sim</i></a>
+                    {% endif %}
                     <a href="{{ path('app_card_show', {'id':card.id}) }}" class="secondary-content" title="voir details"><i class="material-icons">remove_red_eye</i></a>
                 </td>
             {% endif %}
@@ -30,11 +36,13 @@
             <td colspan="4">Tu n'as pas encore de carte</td>
             </tr>
         {% endfor %}
+        {% if display %}
         <tr>
             <td colspan="4">
                 <a href="{{ path('app_card_add') }}" class="secondary-content"><i class="material-icons">add</i>Ajout d'une nouvelle carte</a>
             </td>
         </tr>
+        {% endif %}
         </tbody>
     </table>
 </div>

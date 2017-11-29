@@ -2,10 +2,19 @@
     <li class="collection-header purple">
         <h4 class="task-card-title white-text">Dernières parties</h4>
     </li>
-    {% for score in stats.scores %}
+    {% for score in lastgame %}
         <li class="collection-item dismissable">
-            <p class="collections-title">{{ score.games.playedAt|date('d/m/y') }} <span class="right purple task-cat">{{ score.result }}</span><span class="right">Points :</span></p>
-            <p class="collections-content">{{ score.games.gameType.type }}</p>
+            <div class="collections-content row">
+                <div class="col s4">
+                    <p class="no-margin"><b>{{ score.games.etablishment.name }}</b></p>
+                    <p class="no-margin">{{ score.games.playedAt|date('d/m/y') }}</p>
+                </div>
+                <div class="col s4"><span class="purple task-cat">{{ score.games.gameType.type }}</span></div>
+                <div class="col s4 right-align">
+                    <span class="text-score purple-text">{{ score.result }}</span>
+                    <span class="sstext-score grey-text">pts</span>
+                </div>
+            </div>
         </li>
     {% else %}
         <li class="collection-item dismissable">

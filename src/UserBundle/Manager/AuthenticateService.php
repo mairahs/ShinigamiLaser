@@ -30,4 +30,9 @@ class AuthenticateService
             throw new AccessDeniedException('Accès non authorisé');
         }
     }
+
+    public function isPlayer(Player $player)
+    {
+        return $this->tokenStorage->getToken()->getUser()->getId() === $player->getId();
+    }
 }

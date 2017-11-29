@@ -23,6 +23,7 @@ class ScoreRepository extends \Doctrine\ORM\EntityRepository
     {
         $queryBuilder = $this->createQueryBuilder('score')
             ->leftJoin('score.cards', 'cards')
+            ->leftJoin('score.games', 'games')
             ->select('SUM(score.result) AS sumscore')
             ->addSelect('cards.number')
             ->addSelect('cards.id')
@@ -30,6 +31,7 @@ class ScoreRepository extends \Doctrine\ORM\EntityRepository
             ->addSelect('COUNT(score.result) AS nbgames')
             ->groupBy('cards.number')
             ->andWhere('cards.player = :player')
+            ->andWhere("games.booking = '0'")
             ->setParameters([
                 'player' => $player,
             ]);
@@ -53,6 +55,7 @@ class ScoreRepository extends \Doctrine\ORM\EntityRepository
             ->addSelect('games.playedAt')
             ->where('games.gameType = :gameType')
             ->andWhere('score.cards = :card')
+            ->andWhere("games.booking = '0'")
             ->setParameters([
                 'card' => $card,
                 'gameType' => $gameType,
@@ -73,6 +76,7 @@ class ScoreRepository extends \Doctrine\ORM\EntityRepository
             ->select('SUM(score.result) AS sumscore')
             ->addSelect('COUNT(score.result) AS nbgames')
             ->andWhere('score.cards = :card')
+            ->andWhere("games.booking = '0'")
             ->setParameters([
                 'card' => $card,
             ]);
@@ -87,6 +91,7 @@ class ScoreRepository extends \Doctrine\ORM\EntityRepository
             ->select('COUNT(score)')
             ->where('games.gameType = :gameType')
             ->andWhere('score.cards = :card')
+            ->andWhere("games.booking = '0'")
             ->setParameters([
                 'card' => $card,
                 'gameType' => $gameType,
@@ -101,6 +106,7 @@ class ScoreRepository extends \Doctrine\ORM\EntityRepository
             ->leftJoin('score.games', 'games')
             ->andWhere('score.cards = :card')
             ->andWhere("games.type = 'equipe'")
+            ->andWhere("games.booking = '0'")
             ->setParameters([
                 'card' => $card,
             ]);
@@ -116,6 +122,7 @@ class ScoreRepository extends \Doctrine\ORM\EntityRepository
             ->select('score')
             ->addSelect('games')
             ->where('cards.player = :player')
+            ->andWhere("games.booking = '0'")
             ->orderBy('games.playedAt', 'DESC')
             ->setMaxResults(5)
             ->setParameters([
@@ -133,6 +140,7 @@ class ScoreRepository extends \Doctrine\ORM\EntityRepository
             ->select('score')
             ->addSelect('games')
             ->where('cards = :card')
+            ->andWhere("games.booking = '0'")
             ->orderBy('games.playedAt', 'DESC')
             ->setMaxResults(5)
             ->setParameters([

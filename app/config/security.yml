@@ -34,6 +34,9 @@ security:
             logout:
                 path: /admin/logout
                 target: /admin/login
+            switch_user:
+                role: ROLE_ADMIN
+            context: my_context
         main:
             anonymous: ~
             form_login:
@@ -44,15 +47,19 @@ security:
             logout:
                 path: /logout
                 target: /login
-            switch_user: true
+            switch_user:
+                role: ROLE_ADMIN
+            context: my_context
     access_control:
         - { path: ^/admin/login, roles: IS_AUTHENTICATED_ANONYMOUSLY}
-        - { path: ^/dashboard, roles: ROLE_USER}
         - { path: ^/user/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/user/lostpassword/, roles: IS_AUTHENTICATED_ANONYMOUSLY}
+        - { path: ^/dashboard, roles: ROLE_USER}
         - { path: ^/user, roles: ROLE_USER}
         - { path: ^/card, roles: ROLE_USER}
+        - { path: ^/game, roles: ROLE_USER}
         - { path: ^/admin, roles: ROLE_ADMIN}
     role_hierarchy:
         ROLE_ADMIN: ROLE_USER
-        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN]
+#        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
