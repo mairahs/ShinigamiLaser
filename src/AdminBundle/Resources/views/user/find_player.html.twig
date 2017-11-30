@@ -8,7 +8,6 @@
             <p>Renseigne le numéro de sa carte de fidélité pour le retrouver</p>
             <form action="{{ path('admin_findplayer') }}" method="post" autocomplete="off" novalidate="novalidate">
                 <div class="row {% if messages_error|length > 0 %}has-error{% endif %}">
-                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
                     <div class="input-field col s12">
                         <label for="number_card">
                             Numéro de la carte
@@ -28,6 +27,7 @@
                         <button type="submit" class="waves-effect waves-light btn"><i class="material-icons right"></i>Go</button>
                     </div>
                 </div>
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
             </form>
         </div>
     </div>

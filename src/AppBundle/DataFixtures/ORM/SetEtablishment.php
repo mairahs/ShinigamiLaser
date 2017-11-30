@@ -17,6 +17,7 @@ class SetEtablishment extends Fixture
             $etablishment = new Etablishment();
             $etablishment->setName($faker->lastName);
             $etablishment->setCity($faker->city);
+            //todo faire un random de 001 à 999
             $etablishment->setCode(rand(111, 999));
             $manager->persist($etablishment);
         }

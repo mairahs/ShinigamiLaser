@@ -2,6 +2,8 @@
 
 namespace AppBundle\Repository;
 
+use AppBundle\Entity\Player;
+
 /**
  * CardRepository.
  *
@@ -10,15 +12,30 @@ namespace AppBundle\Repository;
  */
 class CardRepository extends \Doctrine\ORM\EntityRepository
 {
-    /*
-     *   public function findAllCards($player_id)
-      {
-          $queryBuilder = $this->createQueryBuilder('c')
-                               ->leftJoin('c.player','p')
-                               ->addSelect('p')
-                               ->where('p.id = :player_id')
-                               ->setParameters(['id' =>$player_id]);
-          return $queryBuilder->getQuery()
-                              ->getResult();
-      }*/
+    /**
+     * @param Player $player
+     *
+     * @return array
+     */
+    public function getListCardDashboard(Player $player)
+    {
+        $queryBuilder = $this->createQueryBuilder('card')
+            ->leftJoin('card.score', 'score')
+            ->leftJoin('score.games', 'games')
+            ->select('SUM(score.result) AS sumscore')
+            ->addSelect('card.number')
+            ->addSelect('card.id')
+            ->addSelect('card.status')
+            ->addSelect('COUNT(score.result) AS nbgames')
+            ->groupBy('card.number')
+            ->where('card.player = :player')
+            ->andWhere("(games.id is NULL OR games.booking = '0')")
+//            ->orWhere("(games.id is not NULL AND games.booking = '1')")
+            ->setParameters([
+                'player' => $player,
+            ]);
+//        dump($queryBuilder->getQuery()->getResult());
+//        die;
+        return $queryBuilder->getQuery()->getResult();
+    }
 }

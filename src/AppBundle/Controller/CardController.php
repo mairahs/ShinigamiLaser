@@ -33,7 +33,6 @@ class CardController extends Controller
             $user = $this->get('security.token_storage')->getToken()->getUser();
             try {
                 $this->get(CardManager::class)->addCard($user->getId(), $request->get('appbundle_card')['number']);
-
                 return $this->redirectToRoute('app_dashboard');
             } catch (\Exception $exception) {
                 $this->addFlash('notice', $exception->getMessage());

@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Card.
@@ -24,6 +25,8 @@ class Card
 
     /**
      * @var string
+     * @Assert\NotBlank()
+     * @Assert\Length(max = 10, min = 10)
      *
      * @ORM\Column(name="number", type="string", unique=true)
      */

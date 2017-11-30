@@ -33,11 +33,14 @@ class CardManager
     {
         $player = $this->entityManager->getRepository('AppBundle:Player')->find($id_player);
         $card = $this->entityManager->getRepository('AppBundle:Card')->findOneBy(['number' => $card_number]);
-        if (is_null($card) || !$this->workflow->can($card, 'activation')) {
-            throw new \Exception('Erreur carte');
+        if (empty($card)) {
+            throw new \Exception('Carte introuvable');
         }
         if (!empty($card->getPlayer())) {
             throw new \Exception('La carte a déjà été utilisée');
+        }
+        if (!$this->workflow->can($card, 'activation')) {
+            throw new \Exception('Erreur carte');
         }
         $this->workflow->apply($card, 'activation');
         $card->setPlayer($player);
