@@ -80,11 +80,11 @@ $(document).ready(function(){
             }
         },
         series: [{
-            color: '#4caf50',
+            color: '#9ccc65',
             name: 'Victoires',
             data: [5, 3, 4]
         }, {
-            color: '#f44336',
+            color: '#ef5350',
             name: 'Défaites',
             data: [2, 2, 3]
         }]
