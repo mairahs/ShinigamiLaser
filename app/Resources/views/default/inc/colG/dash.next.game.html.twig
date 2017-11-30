@@ -4,14 +4,25 @@
     </li>
     {% for game in stats.bookableGame %}
         <li class="collection-item dismissable">
-            <p class="collections-content"><span class="left-align"><b>SL de {{ game.etablishment }}</b></span><span class="right right-align"><b>{{ game.playedAt|date('d/m/y') }}</b><br/>{{ game.timeSlot }}</span></p>
-            <p class="collections-content">{{ game.gameType }} {{ game.score|length }}/{{ game.nbMax }}</p>
-            <p class="no-margin">
-                <a title="voir" href="{{ path('app_game_show', {'id': game.id}) }}" class="lime-text left icon-join"><i class="large material-icons">people</i></a>
-                <a title="rejoindre" href="#modal1" class="lime-text right icon-join modal-trigger" data-game-id="{{ game.id }}"><i class="large material-icons">person_add</i></a>
-            </p>
-            <div class="clearfix"></div>
+            <div class="collections-content row">
+                <div class="col s2">
+                    <a title="voir" href="{{ path('app_game_show', {'id': game.id}) }}" class="lime-text left icon-join"><i class="large material-icons">people</i></a>
+                </div>
+                <div class="col s5">
+                    <p class="no-margin"><b>{{ game.etablishment }}</b></p>
+                    <p class="no-margin">{{ game.playedAt|date('d/m/y') }} {{ game.timeSlot }}</p>
+                </div>
+                <div class="col s2 center-align">
+                    <p class="collections-content"><span class="lime task-cat">{{ game.gameType }}</span></p>
+                    <p class="collections-content">{{ game.score|length }}/{{ game.nbMax }}</p>
+
+                </div>
+                <div class="col s3 right-align">
+                    <a title="rejoindre" href="#modal1" class="lime-text right icon-join modal-trigger" data-game-id="{{ game.id }}"><i class="large material-icons">person_add</i></a>
+                </div>
+            </div>
         </li>
+
     {% else %}
         <li class="collection-item dismissable">
             <p class="collections-title">Aucune partie n'est disponible pour le moment :(</p>

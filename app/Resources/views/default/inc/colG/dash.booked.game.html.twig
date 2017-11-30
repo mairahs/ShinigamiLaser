@@ -6,13 +6,23 @@
         {% set cardId = game.cardId %}
         {% set game = game.row %}
         <li class="collection-item dismissable">
-            <p class="collections-content"><span class="left-align"><b>SL de {{ game.etablishment }}</b></span><span class="right right-align"><b>{{ game.playedAt|date('d/m/y') }}</b><br/>{{ game.timeSlot }}</span></p>
-            <p class="collections-content">{{ game.gameType }} {{ game.score|length }}/{{ game.nbMax }}</p>
-            <p class="no-margin">
-                <a title="voir" href="{{ path('app_game_show', {'id': game.id}) }}" class="deep-indigo-text left icon-join"><i class="large material-icons">people</i></a>
-                <a title="annuler" href="{{ path('app_game_unjoin', {'id_game': game.id, 'id_card': cardId}) }}" class="deep-indigo-text right icon-join"><i class="large material-icons">person_outline</i></a>
-            </p>
-            <div class="clearfix"></div>
+            <div class="collections-content row">
+                <div class="col s2">
+                    <a title="voir" href="{{ path('app_game_show', {'id': game.id}) }}" class="indigo-text left icon-join"><i class="large material-icons">people</i></a>
+                </div>
+                <div class="col s5">
+                    <p class="no-margin"><b>{{ game.etablishment }}</b></p>
+                    <p class="no-margin">{{ game.playedAt|date('d/m/y') }} {{ game.timeSlot }}</p>
+                </div>
+                <div class="col s2 center-align">
+                    <p class="collections-content"><span class="indigo task-cat">{{ game.gameType }}</span></p>
+                    <p class="collections-content">{{ game.score|length }}/{{ game.nbMax }}</p>
+
+                </div>
+                <div class="col s3 right-align">
+                    <a title="annuler" href="{{ path('app_game_unjoin', {'id_game': game.id, 'id_card': cardId}) }}" class="indigo-text right icon-join"><i class="large material-icons">person_outline</i></a>
+                </div>
+            </div>
         </li>
     {% else %}
         <li class="collection-item dismissable">

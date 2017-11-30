@@ -178,6 +178,14 @@ li.error{
     font-size: 15px;
 }
 
+.icon-dash-card-list{
+    margin-left: 10px;
+}
+
+.icon-dash-card-list .material-icons{
+    font-size: 30px;
+}
+
 /* --- ---- ---- Style demo geeklabs --- --- ---- --- */
 
 .container-form{
