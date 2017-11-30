@@ -10,6 +10,14 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class CommandController extends Controller
 {
+    public function indexAction()
+    {
+        $commands = $this->getDoctrine()->getManager()->getRepository('AppBundle:Command')->findAllCommandsWithEtablishment();
+
+        return $this->render('AdminBundle:command:index.html.twig', ['commands' => $commands]);
+
+    }
+
     public function addAction(Request $request)
     {
         $command = new Command();
@@ -22,7 +30,7 @@ class CommandController extends Controller
 
             $this->addFlash('success', 'Félicitations, votre commande a bien été créée');
 
-            return $this->redirectToRoute('admin_command_show', array('id' => $command->getId()));
+            return $this->redirectToRoute('admin_command_index');
         }
 
         return $this->render('@Admin/command/add.html.twig', [

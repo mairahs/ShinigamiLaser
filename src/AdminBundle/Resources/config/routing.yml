@@ -31,6 +31,10 @@ admin_game_add:
     path: /game/add
     defaults: {_controller: AppBundle:Game:add}
 
+admin_command_index:
+    path: /commands
+    defaults: {_controller: AdminBundle:Command:index}
+
 admin_command_add:
     path: /command/add
     defaults: {_controller: AdminBundle:Command:add}

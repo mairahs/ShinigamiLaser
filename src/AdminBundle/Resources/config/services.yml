@@ -2,3 +2,16 @@ services:
 #    admin.example:
 #        class: AdminBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]
+    admin_bundle_listener_command:
+        class: AdminBundle\EventListener\PrePersistCommand
+        tags:
+         - { name: doctrine.event_listener, event: prePersist}
+
+
+
+
+
+
+
+
+
