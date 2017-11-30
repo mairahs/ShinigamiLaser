@@ -8,8 +8,11 @@
 
 namespace AppBundle\Manager;
 
+use AppBundle\Entity\Game;
+use AppBundle\Entity\Player;
 use AppBundle\Entity\Score;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 
 class GameManager
 {
@@ -17,10 +20,15 @@ class GameManager
      * @var EntityManagerInterface
      */
     private $entityManager;
+    /**
+     * @var TokenStorage
+     */
+    private $tokenStorage;
 
-    public function __construct(EntityManagerInterface $entityManager)
+    public function __construct(EntityManagerInterface $entityManager, TokenStorage $tokenStorage)
     {
         $this->entityManager = $entityManager;
+        $this->tokenStorage = $tokenStorage;
     }
 
     public function joinGame($id_game, $id_card)
@@ -44,5 +52,24 @@ class GameManager
         ]);
         $this->entityManager->remove($score);
         $this->entityManager->flush();
+    }
+
+    public function getCard()
+    {
+        $player = $this->tokenStorage->getToken()->getUser();
+        $cards = null;
+        if($player instanceof Player){
+            $cards = $this->entityManager->getRepository('AppBundle:Card')->getListCard($player);
+        }
+        return $cards;
+    }
+
+    public function hasCard(Game $game){
+        $player = $this->tokenStorage->getToken()->getUser();
+        $cards = null;
+        if($player instanceof Player){
+            $cards = $this->entityManager->getRepository('AppBundle:Card')->hasCard($player, $game);
+        }
+        return count($cards) > 0;
     }
 }
