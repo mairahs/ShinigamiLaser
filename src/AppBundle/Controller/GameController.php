@@ -39,7 +39,7 @@ class GameController extends Controller
         }
         $hasCard = $this->get(GameManager::class)->hasCard($game);
         $cards = $this->get(GameManager::class)->getCard();
-
+        dump('toto');
         return $this->render('game/show.html.twig', [
             'game' => $game,
             'cards' => $cards,
