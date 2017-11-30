@@ -50,4 +50,22 @@ class CommandController extends Controller
 
         return $this->render('@Admin/command/show.html.twig', ['command' => $command]);
     }
+
+    public function activateAction($id)
+    {
+        $command = $this->getDoctrine()->getManager()->getRepository('AppBundle:Command')->findOneCommandWithCards($id);
+        $cardsArray = $command->getCards();
+
+
+        $stateMachine = $this->container->get('state_machine.blog_publishing');
+
+
+
+        foreach($cardsArray as $card)
+        {
+            dump($card);
+            dump($stateMachine->can($card, 'delivery'));
+        }
+        die;
+    }
 }
