@@ -2,10 +2,15 @@
     <table class="bordered centered card">
         <thead>
         {% if team is defined and color is defined and name is defined %}
-            <tr><th colspan="4" class="{{ color }} task-card-title white-text">Equipe {{ name }}</th></tr>
+            <tr><th colspan="{% if not is_booking %}4{% else %}2{% endif %}" class="{{ color }} task-card-title white-text">Equipe {{ name }}</th></tr>
         {% endif %}
         <tr>
-            <th>&nbsp;</th><th data-field="id">Joueurs</th><th data-field="name">Score</th><th data-field="name">Classement</th>
+            <th>&nbsp;</th>
+            <th>Joueurs</th>
+            {% if not is_booking %}
+            <th>Score</th>
+            <th>Classement</th>
+            {% endif %}
         </tr>
         </thead>
         <tbody>
@@ -15,16 +20,20 @@
                 <tr>
                     <td><a href="{{ path('app_dashboard_show',{'id':score.cards.player.id}) }}">{%  include 'inc/inc.avatar.img.html.twig' with {'player' : score.cards.player, 'class' : 'circle z-depth-2 avatar-game-list'} %}</a></td>
                     <td><a href="{{ path('app_dashboard_show',{'id':score.cards.player.id}) }}">{{ score.cards.player.username }}</a></td>
+                    {% if not is_booking %}
                     <td>{{ score.result }}</td>
                     <td>{{ key + 1 }}</td>
+                    {% endif %}
                 </tr>
                 {% set total = total + score.result %}
             {% endif %}
         {% endfor %}
+        {% if not is_booking %}
         <tr>
             <td colspan="2" class="task-card-title">Score total :</td>
             <td colspan="1" class="task-card-title"><b>{{ total }}</b></td>
         </tr>
+        {% endif %}
         </tbody>
     </table>
 </div>

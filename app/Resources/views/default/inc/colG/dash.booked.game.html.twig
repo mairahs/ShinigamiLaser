@@ -20,7 +20,7 @@
 
                 </div>
                 <div class="col s3 right-align">
-                    <a title="annuler" href="{{ path('app_game_unjoin', {'id_game': game.id, 'id_card': cardId}) }}" class="indigo-text right icon-join"><i class="large material-icons">person_outline</i></a>
+                    <a title="annuler" href="{{ path('app_game_unjoin', {'from' : 'dash', id_game: game.id, 'id_card': cardId}) }}" class="indigo-text right icon-join"><i class="large material-icons">person_outline</i></a>
                 </div>
             </div>
         </li>

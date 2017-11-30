@@ -1,22 +1,23 @@
 {% extends 'base/base.html.twig' %}
 
 {% block body %}
+    {% set is_booking = game.booking %}
     <div class="card cardHeader">
         <div class="card-image waves-effect waves-block waves-light">
             <img class="activator" src="{{ asset('images/office.jpg') }}">
         </div>
         <div class="card-content">
             <div class="row">
-                <div class="col s2 offset-s1">
+                <div class="col s2">
                     <h4 class="card-title grey-text text-darken-4">{{ game.etablishment.name }}</h4>
                     <p class="medium-small grey-text">{{ game.etablishment.city }}</p>
                 </div>
-                <div class="col s3">
-                    <h4 class="card-title grey-text text-darken-4">{{ game.playedAt|date('d/m/Y H:i') }}</h4>
+                <div class="col s2">
+                    <h4 class="card-title grey-text text-darken-4">{{ game.playedAt|date('d/m/Y') }}</h4>
                     <p class="medium-small grey-text">Date</p>
                 </div>
                 <div class="col s2">
-                    <h4 class="card-title grey-text text-darken-4">{{ game.score|length }} </h4>
+                    <h4 class="card-title grey-text text-darken-4">{{ game.score|length }}{% if is_booking %} / {{ game.nbMax }}{% endif %} </h4>
                     <p class="medium-small grey-text">Nombre de joueurs</p>
                 </div>
                 <div class="col s2">
@@ -27,16 +28,35 @@
                     <h4 class="card-title grey-text text-darken-4">{{ game.timeSlot.type }}</h4>
                     <p class="medium-small grey-text">Plage horaire</p>
                 </div>
+                {% if is_booking %}
+                    <div class="col s1 right-align">
+                        <div class="fixed-action-btn horizontal">
+                            <a class="btn-floating btn-large red">
+                                <i class="large material-icons">assignment</i>
+                            </a>
+                            <ul>
+                                {% if hasCard %}
+                                {#<li><a title="annuler" href="{{ path('app_game_unjoin', {'from' : 'game', id_game: game.id, 'id_card': cardId}) }}" class="indigo-text right icon-join"><i class="large material-icons">person_outline</i></a></li>#}
+                                    <li><a href="#" class="btn-floating indigo modal-trigger" title="annuler"><i class="material-icons">person_outline</i></a></li>
+                                {% else %}
+                                    <li><a href="#modal1" class="btn-floating indigo modal-trigger" title="rejoindre" data-game-id="{{ game.id }}"><i class="material-icons">person_add</i></a></li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                {% endif %}
             </div>
         </div>
     </div>
-    {% if is_granted('ROLE_ADMIN') %}
     <div class="row">
         <div class="col s12">
-          <i class="material-icons orange-back-text">arrow_back</i><a class="orange-back-text" href="{{ path('admin_etablishment_show', {'id' : game.etablishment.id}) }}">Retour vers le détail de l'établissement ShinigamiLaser - {{ game.etablishment.name }}</a>
+            {% if is_granted('ROLE_ADMIN') %}
+            <i class="material-icons orange-back-text">arrow_back</i><a class="orange-back-text" href="{{ path('admin_etablishment_show', {'id' : game.etablishment.id}) }}">Retour</a>
+            {%  else %}
+            <i class="material-icons orange-back-text">arrow_back</i><a class="orange-back-text" href="{{ path('app_dashboard') }}">Dashboard</a>
+            {% endif %}
         </div>
     </div>
-     {% endif %}
     <div class="row">
         {% if game.gameType.type == 'Team' %}
         {%  include 'game/inc/inc.game.html.twig' with {'team' : '1', 'name' : 'Alpha', 'color' : 'red darken-3'} %}
@@ -45,5 +65,23 @@
         {{ include('game/inc/inc.game.html.twig') }}
         {% endif %}
     </div>
+    {% if cards is not null %}
+    {% include 'inc/dash.modal.card.html.twig' %}
+    {% endif %}
+{% endblock %}
+
+{% block layout_javascripts %}
+    <script>
+        $(document).ready(function(){
+            $('.modal').modal();
+            $('.modal-trigger').click(function(){
+                var data_game_id = $(this).attr('data-game-id');
+                $('.ui-linkjoin').each(function () {
+                    var data_card_id = $(this).attr('data-card-id');
+                    $(this).attr('href', 'join/game/'+data_game_id+'/'+data_card_id)
+                })
+            });
+        });
+    </script>
 {% endblock %}
 
