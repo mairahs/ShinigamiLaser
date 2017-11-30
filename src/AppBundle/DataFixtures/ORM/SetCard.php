@@ -17,18 +17,10 @@ class SetCard extends Fixture
 {
     public function load(ObjectManager $manager)
     {
-        $etablishments = $manager->getRepository('AppBundle:Etablishment')->findAll();
-        $commands = $manager->getRepository('AppBundle:Command')->findAll();
+        $cards = $manager->getRepository('AppBundle:Card')->findAll();
         $players = $manager->getRepository('AppBundle:Player')->findAll();
-        for ($i = 0; $i < 30; ++$i) {
-            $card = new Card();
+        foreach($cards as $card) {
             $rand = rand(1, 10);
-
-            $key_e = array_rand($etablishments, 1);
-            $card->setEtablishment($etablishments[$key_e]);
-            $key_c = array_rand($commands, 1);
-            $card->setCommand($commands[$key_c]);
-
             if (10 !== $rand) {
                 $key = array_rand($players, 1);
                 $card->setPlayer($players[$key]);
@@ -43,9 +35,7 @@ class SetCard extends Fixture
     public function getDependencies()
     {
         return array(
-            SetEtablishment::class,
-            SetCommand::class,
-            SetPlayer::class
+            SetCommand::class
         );
     }
 }
