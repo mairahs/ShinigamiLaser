@@ -15,7 +15,7 @@
                 {% if card.status != "disable" %}
                 <tr>
                     <td>{{ card.number }}</td>
-                    <td>{{ card.sumscore }}</td>
+                    <td>{% if card.sumscore is null %}0{% else %}{{ card.sumscore }}{% endif %}</td>
                     <td>{{ card.nbgames }}</td>
                     <td>
                         <a href="#" data-card-id="{{ card.id }}" class="secondary-content ui-linkjoin" title="rejoindre"><i class="material-icons">open_in_browser</i></a>

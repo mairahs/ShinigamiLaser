@@ -20,7 +20,7 @@ class DashboardManager
 
     public function returnDashboard(Player $player)
     {
-        $cards = $this->entityManager->getRepository('AppBundle:Score')->getListCardDashboard($player);
+        $cards = $this->entityManager->getRepository('AppBundle:Card')->getListCardDashboard($player);
         $stats = $this->getStatsDashboard($cards);
         $stats['lastGame'] = $this->entityManager->getRepository('AppBundle:Score')->getLastGamePlayedPlayer($player);
         $stats['bookableGame'] = $this->entityManager->getRepository('AppBundle:Game')->findAllBookableGame($player);

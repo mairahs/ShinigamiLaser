@@ -19,7 +19,9 @@ class CardType extends AbstractType
                 'number',
                 TextType::class,
                 [
-                    'mapped' => false,
+                    'attr' => [
+                        'maxlength' => '10'
+                    ]
                 ]
             );
     }

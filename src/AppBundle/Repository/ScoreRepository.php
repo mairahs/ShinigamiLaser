@@ -15,31 +15,6 @@ use AppBundle\Entity\Player;
 class ScoreRepository extends \Doctrine\ORM\EntityRepository
 {
     /**
-     * @param Player $player
-     *
-     * @return array
-     */
-    public function getListCardDashboard(Player $player)
-    {
-        $queryBuilder = $this->createQueryBuilder('score')
-            ->leftJoin('score.cards', 'cards')
-            ->leftJoin('score.games', 'games')
-            ->select('SUM(score.result) AS sumscore')
-            ->addSelect('cards.number')
-            ->addSelect('cards.id')
-            ->addSelect('cards.status')
-            ->addSelect('COUNT(score.result) AS nbgames')
-            ->groupBy('cards.number')
-            ->andWhere('cards.player = :player')
-            ->andWhere("games.booking = '0'")
-            ->setParameters([
-                'player' => $player,
-            ]);
-
-        return $queryBuilder->getQuery()->getResult();
-    }
-
-    /**
      * @param Card     $card
      * @param GameType $gameType
      *

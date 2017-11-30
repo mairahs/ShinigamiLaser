@@ -17,7 +17,7 @@
             {% if display or is_granted('ROLE_ADMIN') %}
             <td>{{ card.number }}</td>
             {% endif %}
-            <td>{{ card.sumscore }}</td>
+            <td>{% if card.sumscore is null %}0{% else %}{{ card.sumscore }}{% endif %}</td>
             <td>{{ card.nbgames }}</td>
             {% if card.status == "disable" %}
                 <td>
