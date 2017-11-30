@@ -8,8 +8,21 @@ class CommandRepository extends \Doctrine\ORM\EntityRepository
     {
         $queryBuilder = $this->createQueryBuilder('c')
                              ->leftJoin('c.etablishment','e')
-                             ->addSelect('e');
+                             ->addSelect('e')
+                             ->orderBy('c.dateOfOrder','DESC');
         return $queryBuilder->getQuery()
                      ->getResult();
+    }
+
+    public function findOneCommandWithEtablishment($id)
+    {
+        $queryBuilder = $this->createQueryBuilder('c')
+                             ->leftJoin('c.etablishment','e')
+                             ->leftJoin('c.cards','cards')
+                             ->addSelect('e')
+                             ->addSelect('cards')
+                             ->where('c.id = :id')
+                             ->setParameters(['id'=>$id]);
+        return $queryBuilder->getQuery()->getSingleResult();
     }
 }

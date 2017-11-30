@@ -9,18 +9,20 @@
         <table class="responsive-table bordered centered">
             <thead>
             <tr>
-                <th>Nom</th>
-                <th>Code</th>
-                <th>Ville</th>
+                <th>Quantité</th>
+                <th>Prix</th>
+                <th>Date de la commande</th>
+                <th>Etablissements ShinigamiLaser</th>
             </tr>
             </thead>
             <tbody>
-            {% for etablishment in etablishments %}
+            {% for command in commands %}
                 <tr>
-                    <td>ShinigamiLaser - {{ etablishment.name }}</td>
-                    <td>{{ etablishment.code }}</td>
-                    <td>{{ etablishment.city }}</td>
-                    <td><i class="material-icons"><a href=" {{ path('admin_etablishment_show', {'id':etablishment.id}) }}" style="color:#e24800;">remove_red_eye</a></i></td>
+                    <td>{{ command.quantity }}</td>
+                    <td>{{ command.price }} €</td>
+                    <td>{{ command.dateOfOrder|date('d/m/Y') }}</td>
+                    <td>{{ command.etablishment }}</td>
+                    <td><i class="material-icons"><a href=" {{ path('admin_command_show', {'id':command.id}) }}" style="color:#e24800;">remove_red_eye</a></i></td>
                 </tr>
             {% endfor %}
             </tbody>

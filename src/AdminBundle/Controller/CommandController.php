@@ -40,7 +40,10 @@ class CommandController extends Controller
 
     public function showAction($id)
     {
-        $command = $this->getDoctrine()->getManager()->getRepository('AppBundle:Command')->find($id);
+        $command = $this->getDoctrine()->getManager()->getRepository('AppBundle:Command')->findOneCommandWithEtablishment($id);
+
+        dump($command);
+
         if (null == $command) {
             new notFoundHttpException('La commande demandée n\'existe pas');
         }
