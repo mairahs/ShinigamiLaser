@@ -25,12 +25,10 @@ class EtablishmentController extends Controller
     {
         $etablishment = $this->getDoctrine()->getManager()->getRepository('AppBundle:Etablishment')->find($id);
 
-        if (null == $etablishment) {
+        if (is_null($etablishment)) {
             throw new NotFoundHttpException('L\'établissement demandé n\'existe pas');
         }
-
-        $stats['count_abonne'] = count($this->getDoctrine()->getRepository('AppBundle:Card')->findBy(['etablishment' => $id]));
-
+        $stats['count_abonne'] = $this->getDoctrine()->getRepository('AppBundle:Card')->getCountAbonne($etablishment);
         return $this->render('@Admin/etablishment/show.html.twig', [
             'etablishment' => $etablishment,
             'stats' => $stats,

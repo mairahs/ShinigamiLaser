@@ -2,6 +2,8 @@
 
 namespace AppBundle\Repository;
 
+use AppBundle\Entity\Etablishment;
+use AppBundle\Entity\Game;
 use AppBundle\Entity\Player;
 
 /**
@@ -17,7 +19,7 @@ class CardRepository extends \Doctrine\ORM\EntityRepository
      *
      * @return array
      */
-    public function getListCardDashboard(Player $player)
+    public function getListCard(Player $player)
     {
         $queryBuilder = $this->createQueryBuilder('card')
             ->leftJoin('card.score', 'score')
@@ -37,5 +39,33 @@ class CardRepository extends \Doctrine\ORM\EntityRepository
 //        dump($queryBuilder->getQuery()->getResult());
 //        die;
         return $queryBuilder->getQuery()->getResult();
+    }
+
+    public function getCountAbonne(Etablishment $etablishment)
+    {
+        $queryBuilder = $this->createQueryBuilder('card')
+            ->join('card.command', 'command')
+            ->join('command.etablishment', 'etablishment')
+            ->select('COUNT(card.id)')
+            ->where('command.etablishment = :etablishment')
+            ->andWhere('card.player IS NOT NULL')
+            ->setParameter('etablishment', $etablishment)
+        ;
+        return $queryBuilder->getQuery()->getSingleScalarResult();
+    }
+
+    public function hasCard(Player $player, Game $game){
+        $queryBuilder = $this->createQueryBuilder('card')
+            ->join('card.score', 'score')
+            ->join('score.games', 'games')
+            ->select('COUNT(card)')
+            ->where('card.player = :player')
+            ->andWhere('score.games = :game')
+            ->setParameters([
+                'player' => $player,
+                'game' => $game
+            ])
+        ;
+        return $queryBuilder->getQuery()->getSingleScalarResult();
     }
 }
