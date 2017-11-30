@@ -25,7 +25,6 @@ class SetPlayer extends Fixture
             $player->setUsername($faker->userName.$i);
             $player->setPhoneNumber($faker->phoneNumber);
             $manager->persist($player);
-            $player_arr[] = $player;
         }
         $manager->flush();
     }
