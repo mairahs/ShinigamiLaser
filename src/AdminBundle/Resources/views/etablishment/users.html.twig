@@ -41,7 +41,7 @@
                                 <td>{{ card.player.phoneNumber }}</td>
                                 <td>{{ card.player.dateOfBirth|date('d/m/Y') }}</td>
                                 <td>{{ card.player.email }}</td>
-                                <td><a href="{{ path('app_dashboard_show', {'id':card.player.id}) }}">Voir</a></td>
+                                <td><a href="{{ path('app_dashboard_show', {'id':card.player.id}) }}"><i class="material-icons icon-dash-admin">remove_red_eye</i></a></td>
                             </tr>
                             {% endif %}
                         {% endfor %}
