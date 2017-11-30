@@ -25,4 +25,14 @@ class CommandRepository extends \Doctrine\ORM\EntityRepository
                              ->setParameters(['id'=>$id]);
         return $queryBuilder->getQuery()->getSingleResult();
     }
+
+    public function findOneCommandWithCards($id)
+    {
+        $queryBuilder = $this->createQueryBuilder('co')
+                             ->leftJoin('co.cards','ca')
+                             ->addSelect('ca')
+                             ->where('co.id =:id' )
+                             ->setParameters(['id'=>$id]);
+        return $queryBuilder->getQuery()->getSingleResult();
+    }
 }

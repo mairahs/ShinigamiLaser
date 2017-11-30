@@ -45,5 +45,11 @@ admin_command_show:
     requirements:
         id: \d+
 
+admin_command_activate:
+    path: /command/activate/{id}
+    defaults: {_controller: AdminBundle:Command:activate}
+    requirements:
+        id: \d+
+
 
 
