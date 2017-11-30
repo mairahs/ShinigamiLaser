@@ -2,6 +2,70 @@
 
 {% block body %}
 
-<h1>Coucou</h1>
+    <div class="card cardHeader">
+        <div class="card-image waves-effect waves-block waves-light">
+            <img class="activator" src="{{ asset('images/lasers.jpeg') }}">
+        </div>
+        <div class="card-content">
+            <div class="row">
+                <div class="col s2 offset-s1">
+                    <h4 class="card-title grey-text text-darken-4"> {{ command.dateOfOrder|date('d/m/Y') }}</h4>
+                    <p class="medium-small grey-text">Date de la commande</p>
+                </div>
+                <div class="col s2">
+                    <h4 class="card-title grey-text text-darken-4">{{ command.quantity }}</h4>
+                    <p class="medium-small grey-text">Quantité</p>
+                </div>
+                <div class="col s2">
+                    <h4 class="card-title grey-text text-darken-4">{{ command.price }} €</h4>
+                    <p class="medium-small grey-text">Prix</p>
+                </div>
+                <div class="col s2">
+                    <h4 class="card-title grey-text text-darken-4">{{ command.etablishment }}</h4>
+                    <p class="medium-small grey-text">Etablissement bénéficiaire</p>
+                </div>
 
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <i class="material-icons orange-back-text">arrow_back</i><a class="orange-back-text" href="{{ path('admin_command_index') }}"> Retour vers la liste des commandes</a>
+        </div>
+    </div>
+    <div class="row">
+
+
+        <!------------ --------------- -------S12 ------ ---------------- ----------------->
+        <!-------------------------------------------------------------------------------->
+        <div class="col s12">
+            <div class="card-content ">
+
+                <p class="center task-card-title "></p>
+            </div>
+            <table class="card centered bordered">
+                <thead>
+                <tr>
+                    <th class="green darken-3 white-text task-card-title" colspan="3">{{ command.cards|length }} cartes disponibles</th>
+                </tr>
+                <tr>
+                    <th>Numéro de la carte</th>
+                    <th>Statut</th>
+                    <th>Joueur associé</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                {% for card  in command.cards %}
+                    <tr>
+                        <td>{{ card.number }}</td>
+                        <td>{{ card.status }}</td>
+                        <td>{% if card.player is not null %}{{ card.player.username }}{% else %}-{% endif %}</td>
+                    </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
 {% endblock %}
