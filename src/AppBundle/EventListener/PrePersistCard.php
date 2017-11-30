@@ -6,16 +6,18 @@ use AppBundle\Entity\Card;
 use AppBundle\Manager\CardManager;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 
-class NumberGenerator
+class PrePersistCard
 {
     public function prePersist(LifecycleEventArgs $args)
     {
+        dump("Prepersist Card");
         $object = $args->getObject();
         if (!$object instanceof Card) {
             return;
         }
-        $center_number = $object->getEtablishment()->getCode();
+        $center_number = $object->getCommand()->getEtablishment()->getCode();
         $number = CardManager::generateNumber($center_number);
         $object->setNumber($number);
+        $object->setStatus('order');
     }
 }

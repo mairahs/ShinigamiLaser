@@ -48,7 +48,7 @@ services:
     AppBundle\Manager\GameManager:
         public: true
 
-    AppBundle\EventListener\NumberGenerator:
+    AppBundle\EventListener\PrePersistCard:
         tags:
             - { name: doctrine.event_listener, event: prePersist }
 

@@ -43,11 +43,6 @@ class Etablishment
     private $code;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Card", mappedBy="etablishment")
-     */
-    private $cards;
-
-    /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Game", mappedBy="etablishment")
      */
     private $games;
@@ -132,48 +127,6 @@ class Etablishment
     public function getCode()
     {
         return $this->code;
-    }
-
-    /**
-     * Constructor.
-     */
-    public function __construct()
-    {
-        $this->cards = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add card.
-     *
-     * @param \AppBundle\Entity\Card $card
-     *
-     * @return Etablishment
-     */
-    public function addCard(\AppBundle\Entity\Card $card)
-    {
-        $this->cards[] = $card;
-
-        return $this;
-    }
-
-    /**
-     * Remove card.
-     *
-     * @param \AppBundle\Entity\Card $card
-     */
-    public function removeCard(\AppBundle\Entity\Card $card)
-    {
-        $this->cards->removeElement($card);
-    }
-
-    /**
-     * Get cards.
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getCards()
-    {
-        return $this->cards;
     }
 
     /**
