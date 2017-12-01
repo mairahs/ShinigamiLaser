@@ -29,6 +29,13 @@ class GameType
     private $type;
 
     /**
+     * @var bool
+     *
+     * @ORM\Column (name="team", type="boolean")
+     */
+    private $team;
+
+    /**
      * Get id.
      *
      * @return int
@@ -65,5 +72,29 @@ class GameType
     public function __toString()
     {
         return $this->getType();
+    }
+
+    /**
+     * Set team
+     *
+     * @param boolean $team
+     *
+     * @return GameType
+     */
+    public function setTeam($team)
+    {
+        $this->team = $team;
+
+        return $this;
+    }
+
+    /**
+     * Get team
+     *
+     * @return boolean
+     */
+    public function getTeam()
+    {
+        return $this->team;
     }
 }

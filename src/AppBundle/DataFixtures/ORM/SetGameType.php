@@ -21,19 +21,23 @@ class SetGameType extends Fixture
             'Team' => [
                 'min' => 300,
                 'max' => 1100,
+                'team' => 1
             ],
             'FFA' => [
                 'min' => 800,
                 'max' => 2000,
+                'team' => 0
             ],
             'Dracula' => [
                 'min' => 20,
                 'max' => 100,
+                'team' => 0
             ],
         ];
         foreach ($gametype_arr as $type => $value) {
             $game_type = new GameType();
             $game_type->setType($type);
+            $game_type->setTeam($value['team']);
             $manager->persist($game_type);
         }
         $manager->flush();

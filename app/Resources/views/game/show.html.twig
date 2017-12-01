@@ -62,7 +62,7 @@
         </div>
     </div>
     <div class="row">
-        {% if game.gameType.type == 'Team' %}
+        {% if game.gameType.team %}
         {%  include 'game/inc/inc.game.html.twig' with {'team' : '1', 'name' : 'Alpha', 'color' : 'red darken-3'} %}
         {%  include 'game/inc/inc.game.html.twig' with {'team' : '2', 'name' : 'Beta', 'color' : 'green darken-3'} %}
         {% else %}
