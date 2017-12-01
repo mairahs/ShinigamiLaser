@@ -74,6 +74,10 @@ app_game_show:
     path: /game/{id}
     defaults: {_controller: AppBundle:Game:show}
 
+app_game_add_player_card:
+    path: /game/add/player/card/{id_game}/{card_number}
+    defaults: {_controller: AppBundle:Game:addPlayer}
+
 #{from} depend de page d'ou est appelé la fonction (dash / game)
 app_game_join:
     path: /game/join/{from}/{id_game}/{id_card}

@@ -1,16 +1,55 @@
-<div id="modal1" class="modal">
+<div id="modal_admin" class="modal">
     <div class="modal-content">
         <div class="row">
             <div class="col s12">
-                <ul class="tabs tabs-fixed-width">
-                    <li class="tab col s3"><a class="active" href="#test1">Numéro de carte</a></li>
-                    <li class="tab col s3"><a href="#test2">Anonyme</a></li>
-                    <li class="tab col s3"><a href="#test3">QR Code</a></li>
+                <ul class="tabs">
+                    <li class="tab col s4"><a class="active" href="#onglet1">Numéro de carte</a></li>
+                    <li class="tab col s4"><a href="#onglet2">Anonyme</a></li>
+                    <li class="tab col s4"><a href="#onglet3">QR Code</a></li>
                 </ul>
             </div>
-            <div id="test1" class="col s12">Test 1</div>
-            <div id="test2" class="col s12">Test 2</div>
-            <div id="test3" class="col s12">Test 3</div>
+            <!-- -- -- -- -- -- -- -- -- -- -- PAR CARTE -- -- -- -- -- -- -- -- -- -- -- -->
+            <!-- -- -- -- -- -- -- -- -- -- -- -- -- -- --- -- -- -- -- -- -- -- -- -- -- -->
+            <div id="onglet1" class="onglet-modal center-block">
+                <h5 class="center">Ajouter un abonné</h5>
+                <form action="/card/add" method="post" autocomplete="off" novalidate="novalidate">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <label class="required" for="appbundle_card_number">Number</label>
+                            <input type="text" id="appbundle_card_number" name="appbundle_card[number]" required="required" maxlength="10" class="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <button id="add_player_card" type="submit" class="waves-effect waves-light btn" data-game-id="{{ game.id }}"><i class="material-icons right"></i>Ajouter</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- -- -- -- -- -- -- -- -- -- -- ANONYME -- -- -- -- -- -- -- -- -- -- -- -->
+            <!-- -- -- -- -- -- -- -- -- -- -- -- -- - -- -- -- -- -- -- -- -- -- -- -- -->
+            <div id="onglet2" class="onglet-modal center-block">
+                <h5 class="center">Ajouter un anonyme</h5>
+                <form action="/card/add" method="post" autocomplete="off" novalidate="novalidate">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <label class="required" for="onglet2i">Username</label>
+                            <input type="text" id="onglet2i" name="onglet2i" required="required" maxlength="10" class="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <button id="onglet2i" type="submit" class="waves-effect waves-light btn"><i class="material-icons right"></i>Ajouter</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- -- -- -- -- -- -- -- -- -- -- QR CODE -- -- -- -- -- -- -- -- -- -- -- -->
+            <!-- -- -- -- -- -- -- -- -- -- -- -- -- - -- -- -- -- -- -- -- -- -- -- -- -->
+            <div id="onglet3" class="onglet-modal center-block">
+                <h5 class="center">Scanner un QRcode</h5>
+                <img src="{{ asset('images/qrcode.png') }}" class="center-block" style="margin-top: 15px">
+            </div>
         </div>
     </div>
     <div class="modal-footer">
