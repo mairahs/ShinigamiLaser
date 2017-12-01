@@ -38,8 +38,12 @@ class GameController extends Controller
             new notFoundHttpException('La partie demandée n\'existe pas');
         }
         $hasCard = $this->get(GameManager::class)->hasCard($game);
-        $cards = $this->get(GameManager::class)->getCard();
-        dump('toto');
+        if($hasCard){
+            $cards = $this->get(GameManager::class)->getCard($game);
+        }else{
+            $cards = $this->get(GameManager::class)->getCard();
+        }
+
         return $this->render('game/show.html.twig', [
             'game' => $game,
             'cards' => $cards,

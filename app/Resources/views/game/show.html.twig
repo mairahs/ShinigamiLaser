@@ -36,10 +36,13 @@
                             </a>
                             <ul>
                                 {% if hasCard %}
-                                {#<li><a title="annuler" href="{{ path('app_game_unjoin', {'from' : 'game', id_game: game.id, 'id_card': cardId}) }}" class="indigo-text right icon-join"><i class="large material-icons">person_outline</i></a></li>#}
-                                    <li><a href="#" class="btn-floating indigo modal-trigger" title="annuler"><i class="material-icons">person_outline</i></a></li>
+                                <li><a href="{{ path('app_game_unjoin', {'from' : 'game', id_game: game.id, 'id_card': cards[0].id }) }}" class="btn-floating indigo modal-trigger" title="annuler"><i class="material-icons">person_outline</i></a></li>
                                 {% else %}
+                                    {% if is_granted('ROLE_ADMIN') %}
+                                    <li><a href="#modal1" class="btn-floating indigo modal-trigger" title="ajouter" data-game-id="{{ game.id }}"><i class="material-icons">person_add</i></a></li>
+                                    {% else %}
                                     <li><a href="#modal1" class="btn-floating indigo modal-trigger" title="rejoindre" data-game-id="{{ game.id }}"><i class="material-icons">person_add</i></a></li>
+                                    {% endif %}
                                 {% endif %}
                             </ul>
                         </div>
@@ -66,7 +69,11 @@
         {% endif %}
     </div>
     {% if cards is not null %}
-    {% include 'inc/dash.modal.card.html.twig' %}
+    {% include 'inc/modal.card.html.twig' %}
+    {% else %}
+        {% if is_granted('ROLE_ADMIN') %}
+            {% include 'inc/modal.admin.card.html.twig' %}
+        {% endif %}
     {% endif %}
 {% endblock %}
 
@@ -74,6 +81,7 @@
     <script>
         $(document).ready(function(){
             $('.modal').modal();
+            $('ul.tabs').tabs();
             $('.modal-trigger').click(function(){
                 var data_game_id = $(this).attr('data-game-id');
                 $('.ui-linkjoin').each(function () {
