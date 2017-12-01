@@ -55,17 +55,17 @@ class SetGameAndScore extends Fixture
             $game->setBooking(0);
 
             $key_gt = array_rand($game_types, 1);
-            $game->setGameType($game_types[$key_gt]);
-            $get_type = $game_types[$key_gt]->getType();
+            $get_type = $game_types[$key_gt];
+            $game->setGameType($get_type);
 
-            $rand_min_max = $gametype_arr[$get_type];
+            $rand_min_max = $gametype_arr[$get_type->getType()];
 
             foreach ($cards as $card) {
                 $rand = rand(1, 3);
                 if (3 > $rand) {
                     $score = new Score();
                     $score->setResult(rand($rand_min_max['min'], $rand_min_max['max']));
-                    if ('Team' == $get_type) {
+                    if ($get_type->getTeam()) {
                         $score->setTeam(rand(1, 2));
                     } else {
                         $score->setTeam(0);

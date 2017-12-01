@@ -21,8 +21,8 @@
             <td>{{ card.nbgames }}</td>
             {% if card.status == "disable" %}
                 <td>
-                    <div class="secondary-content" title="carte desactivée"><i class="material-icons">not_interested</i></div>
-                    <a href="{{ path('app_card_show', {'id':card.id}) }}" class="secondary-content" title="voir details"><i class="material-icons">remove_red_eye</i></a>
+                    <div class="secondary-content icon-dash-card-list" title="carte desactivée"><i class="material-icons">not_interested</i></div>
+                    <a href="{{ path('app_card_show', {'id':card.id}) }}" class="secondary-content icon-dash-card-list" title="voir details"><i class="material-icons">remove_red_eye</i></a>
                 </td>
             {% else %}
                 <td>

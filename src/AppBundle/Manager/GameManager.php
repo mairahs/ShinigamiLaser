@@ -13,6 +13,7 @@ use AppBundle\Entity\Player;
 use AppBundle\Entity\Score;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
+use Symfony\Component\Workflow\Workflow;
 
 class GameManager
 {
@@ -24,11 +25,16 @@ class GameManager
      * @var TokenStorage
      */
     private $tokenStorage;
+    /**
+     * @var Workflow
+     */
+    private $workflow;
 
-    public function __construct(EntityManagerInterface $entityManager, TokenStorage $tokenStorage)
+    public function __construct(EntityManagerInterface $entityManager, TokenStorage $tokenStorage, Workflow $workflow)
     {
         $this->entityManager = $entityManager;
         $this->tokenStorage = $tokenStorage;
+        $this->workflow = $workflow;
     }
 
     public function joinGame($id_game, $id_card)
@@ -36,10 +42,11 @@ class GameManager
         $score = new Score();
         $game = $this->entityManager->getRepository('AppBundle:Game')->find($id_game);
         $card = $this->entityManager->getRepository('AppBundle:Card')->find($id_card);
+        $team = $this->manageTeam($game);
         $score->setResult(0)
             ->setGames($game)
             ->setCards($card)
-            ->setTeam(0);
+            ->setTeam($team);
         $this->entityManager->persist($score);
         $this->entityManager->flush();
     }
@@ -86,11 +93,33 @@ class GameManager
         if (empty($card)) {
             throw new \Exception('Carte introuvable');
         }
+        if(!$this->workflow->can($card[0], 'deactivation')) {
+            throw new \Exception("La carte n'est pas valide");
+        }
         $game = $this->entityManager->getRepository('AppBundle:Game')->find($id_game);
         $hasCard = $this->entityManager->getRepository('AppBundle:Card')->hasCard($card[0]->getPlayer(), $game);
         if ($hasCard) {
             throw new \Exception('Le joueur est déjà dans la partie');
         }
         return $card[0]->getId();
+    }
+
+    /**
+     * @param Game $game
+     * @return int
+     */
+    public function manageTeam(Game $game)
+    {
+        if(!$game->getGameType()->getTeam()){
+            return 0;
+        }
+        $team1 = $this->entityManager->getRepository('AppBundle:Score')->findBy(['team' => 1, 'games' => $game]);
+        $team2 = $this->entityManager->getRepository('AppBundle:Score')->findBy(['team' => 2, 'games' => $game]);
+        if($team1 <= $team2){
+            $team = 1;
+        }else{
+            $team = 2;
+        }
+        return $team;
     }
 }
