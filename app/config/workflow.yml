@@ -1,6 +1,6 @@
 framework:
     workflows:
-        blog_publishing:
+        card_state:
             type: 'state_machine'
             marking_store:
                 type: 'single_state'

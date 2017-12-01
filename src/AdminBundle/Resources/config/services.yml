@@ -7,7 +7,9 @@ services:
         tags:
          - { name: doctrine.event_listener, event: prePersist}
 
-
+    admin_command_manager:
+        class: AdminBundle\Manager\CommandManager
+        arguments: ['@doctrine.orm.entity_manager','@workflow.registry']
 
 
 
