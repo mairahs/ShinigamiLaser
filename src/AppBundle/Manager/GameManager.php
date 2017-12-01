@@ -54,22 +54,26 @@ class GameManager
         $this->entityManager->flush();
     }
 
-    public function getCard()
+    public function getCard(Game $game = null)
     {
         $player = $this->tokenStorage->getToken()->getUser();
         $cards = null;
         if($player instanceof Player){
-            $cards = $this->entityManager->getRepository('AppBundle:Card')->getListCard($player);
+            if(!is_null($game)){
+                $cards = $this->entityManager->getRepository('AppBundle:Card')->getListCardByGame($player, $game);
+            }else{
+                $cards = $this->entityManager->getRepository('AppBundle:Card')->getListCard($player);
+            }
         }
         return $cards;
     }
 
     public function hasCard(Game $game){
         $player = $this->tokenStorage->getToken()->getUser();
-        $cards = null;
+        $cards = "0";
         if($player instanceof Player){
             $cards = $this->entityManager->getRepository('AppBundle:Card')->hasCard($player, $game);
         }
-        return count($cards) > 0;
+        return "0" !== $cards;
     }
 }

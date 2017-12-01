@@ -41,6 +41,29 @@ class CardRepository extends \Doctrine\ORM\EntityRepository
         return $queryBuilder->getQuery()->getResult();
     }
 
+    public function getListCardByGame(Player $player, Game $game)
+    {
+        $queryBuilder = $this->createQueryBuilder('card')
+            ->leftJoin('card.score', 'score')
+            ->leftJoin('score.games', 'games')
+            ->select('SUM(score.result) AS sumscore')
+            ->addSelect('card.number')
+            ->addSelect('card.id')
+            ->addSelect('card.status')
+            ->addSelect('COUNT(score.result) AS nbgames')
+            ->groupBy('card.number')
+            ->where('card.player = :player')
+            ->andWhere('score.games = :game')
+//            ->orWhere("(games.id is not NULL AND games.booking = '1')")
+            ->setParameters([
+                'player' => $player,
+                'game' => $game
+            ]);
+//        dump($queryBuilder->getQuery()->getResult());
+//        die;
+        return $queryBuilder->getQuery()->getResult();
+    }
+
     public function getCountAbonne(Etablishment $etablishment)
     {
         $queryBuilder = $this->createQueryBuilder('card')
