@@ -186,6 +186,26 @@ li.error{
     font-size: 30px;
 }
 
+#modal_admin{
+    overflow-y: visible;
+}
+
+#modal_admin .modal-content{
+    padding: 0;
+}
+
+#modal_admin .onglet-modal{
+    width: 66.6666666667%;
+}
+
+#modal_admin .tabs{
+    margin-bottom: 20px;
+}
+
+#modal_admin h5{
+    margin-top: 0;
+}
+
 /* --- ---- ---- Style demo geeklabs --- --- ---- --- */
 
 .container-form{

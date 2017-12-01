@@ -39,7 +39,8 @@
                                 <li><a href="{{ path('app_game_unjoin', {'from' : 'game', id_game: game.id, 'id_card': cards[0].id }) }}" class="btn-floating indigo modal-trigger" title="annuler"><i class="material-icons">person_outline</i></a></li>
                                 {% else %}
                                     {% if is_granted('ROLE_ADMIN') %}
-                                    <li><a href="#modal1" class="btn-floating indigo modal-trigger" title="ajouter" data-game-id="{{ game.id }}"><i class="material-icons">person_add</i></a></li>
+                                    <li><a href="#modal_admin" class="btn-floating indigo modal-trigger" title="ajouter" data-game-id="{{ game.id }}"><i class="material-icons">person_add</i></a></li>
+                                    <li><a href="#" class="btn-floating purple modal-trigger" title="modifier"><i class="material-icons">mode_edit</i></a></li>
                                     {% else %}
                                     <li><a href="#modal1" class="btn-floating indigo modal-trigger" title="rejoindre" data-game-id="{{ game.id }}"><i class="material-icons">person_add</i></a></li>
                                     {% endif %}
@@ -89,7 +90,31 @@
                     $(this).attr('href', 'join/game/'+data_game_id+'/'+data_card_id)
                 })
             });
+
+            $('#add_player_card').click(function(){
+                var data_game_id = $(this).attr('data-game-id');
+                addPlayerCard(data_game_id);
+                return false;
+            });
         });
+        function addPlayerCard(data_game_id) {
+            var input_card_number = $('#appbundle_card_number')
+            $.ajax({
+                url: '/game/add/player/card/'+data_game_id+'/'+input_card_number.val(),
+                method: 'POST',
+                dataType: 'json',
+                success : function(obj){
+                    if(obj.status == "OK"){
+                        window.location.href = obj.retour;
+                    }else{
+                        var msg_error = "<ul><li class='error'>"+obj.retour+"</li></ul>";
+                        input_card_number.parents('.input-field').find('ul').remove();
+                        input_card_number.parents('.input-field').append(msg_error);
+                        input_card_number.parents('.row').addClass('has-error')
+                    }
+                }
+            });
+        }
     </script>
 {% endblock %}
 

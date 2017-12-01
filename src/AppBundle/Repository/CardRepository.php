@@ -91,4 +91,17 @@ class CardRepository extends \Doctrine\ORM\EntityRepository
         ;
         return $queryBuilder->getQuery()->getSingleScalarResult();
     }
+
+    public function findCardAndPlayerByNumber($card_number)
+    {
+        $queryBuilder = $this->createQueryBuilder('card')
+            ->join('card.player', 'player')
+            ->addSelect('player')
+            ->where('card.number = :card_number')
+            ->setParameters([
+                'card_number' => $card_number
+            ])
+        ;
+        return $queryBuilder->getQuery()->getResult();
+    }
 }

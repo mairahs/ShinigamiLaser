@@ -76,4 +76,21 @@ class GameManager
         }
         return "0" !== $cards;
     }
+
+    /**
+     * @param $card_number
+     * @throws \Exception
+     */
+    public function findPlayerCard($id_game, $card_number){
+        $card = $this->entityManager->getRepository('AppBundle:Card')->findCardAndPlayerByNumber($card_number);
+        if (empty($card)) {
+            throw new \Exception('Carte introuvable');
+        }
+        $game = $this->entityManager->getRepository('AppBundle:Game')->find($id_game);
+        $hasCard = $this->entityManager->getRepository('AppBundle:Card')->hasCard($card[0]->getPlayer(), $game);
+        if ($hasCard) {
+            throw new \Exception('Le joueur est déjà dans la partie');
+        }
+        return $card[0]->getId();
+    }
 }
