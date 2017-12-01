@@ -2,6 +2,7 @@
 
 namespace AdminBundle\Controller;
 
+use AppBundle\Entity\Card;
 use AppBundle\Entity\Command;
 use AppBundle\Form\CommandType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -51,21 +52,14 @@ class CommandController extends Controller
         return $this->render('@Admin/command/show.html.twig', ['command' => $command]);
     }
 
-    public function activateAction($id)
+    public function deliveryAction($id)
     {
-        $command = $this->getDoctrine()->getManager()->getRepository('AppBundle:Command')->findOneCommandWithCards($id);
-        $cardsArray = $command->getCards();
+        $command = $this->getDoctrine()->getManager()->getRepository('AppBundle:Command')->find($id);
+        $commandManager = $this->get('admin_command_manager');
+
+        $commandManager->toOrderFromInStoreStatusCard($command->getId());
 
 
-        $stateMachine = $this->container->get('state_machine.blog_publishing');
-
-
-
-        foreach($cardsArray as $card)
-        {
-            dump($card);
-            dump($stateMachine->can($card, 'delivery'));
-        }
-        die;
+        return $this->redirectToRoute('admin_command_show', ['id'=>$command->getId()]);
     }
 }
