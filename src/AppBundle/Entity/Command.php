@@ -43,7 +43,7 @@ class Command
     private $dateOfOrder;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Etablishment")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Etablishment", inversedBy="commands")
      */
     private $etablishment;
 

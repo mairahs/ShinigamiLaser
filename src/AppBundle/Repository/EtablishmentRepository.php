@@ -19,11 +19,14 @@ class EtablishmentRepository extends EntityRepository
     public function getPlayersByEtablishment()
     {
         $queryBuilder = $this->createQueryBuilder('etablishment')
-            ->leftJoin('etablishment.cards', 'cards')
-            ->leftJoin('cards.player', 'player')
-            ->addSelect('etablishment')
+            ->leftJoin('etablishment.commands', 'commands')
+            ->leftJoin('commands.cards', 'cards')
+            ->leftJoin('cards.player','player')
+            ->addSelect('commands')
             ->addSelect('cards')
-            ->addSelect('player');
+            ->addSelect('player')
+            ->where("cards.status = 'active'")
+        ;
 
         return $queryBuilder->getQuery()->getResult();
     }

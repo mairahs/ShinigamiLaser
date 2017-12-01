@@ -48,6 +48,11 @@ class Etablishment
     private $games;
 
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Command", mappedBy="etablishment")
+     */
+    private $commands;
+
+    /**
      * Get id.
      *
      * @return int
@@ -166,5 +171,47 @@ class Etablishment
     public function __toString()
     {
         return $this->getName();
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->games = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->commands = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add command
+     *
+     * @param \AppBundle\Entity\Command $command
+     *
+     * @return Etablishment
+     */
+    public function addCommand(\AppBundle\Entity\Command $command)
+    {
+        $this->commands[] = $command;
+
+        return $this;
+    }
+
+    /**
+     * Remove command
+     *
+     * @param \AppBundle\Entity\Command $command
+     */
+    public function removeCommand(\AppBundle\Entity\Command $command)
+    {
+        $this->commands->removeElement($command);
+    }
+
+    /**
+     * Get commands
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCommands()
+    {
+        return $this->commands;
     }
 }

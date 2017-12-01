@@ -14,7 +14,7 @@
             {% for etablishment in etablishments %}
             <li>
                 <div class="collapsible-header"><i class="material-icons">domain</i>{{etablishment.name }}</div>
-                <div class="collapsible-body">
+                <div class="collapsible-body no-padding">
                     <table class="striped">
                         <thead>
                         <tr>
@@ -30,8 +30,8 @@
                         </tr>
                         </thead>
                         <tbody>
-                        {% for card in etablishment.cards %}
-                            {% if card.player is not null %}
+                        {% for command in etablishment.commands %}
+                            {% for card in command.cards %}
                             <tr>
                                 <td>{% include ':inc:inc.avatar.img.html.twig' with {'class' : 'circle z-depth-2 avatar-game-list', 'player' : card.player} %}</td>
                                 <td>{{ card.player.firstname }}</td>
@@ -43,7 +43,7 @@
                                 <td>{{ card.player.email }}</td>
                                 <td><a href="{{ path('app_dashboard_show', {'id':card.player.id}) }}"><i class="material-icons icon-dash-admin">remove_red_eye</i></a></td>
                             </tr>
-                            {% endif %}
+                            {% endfor %}
                         {% endfor %}
                         </tbody>
                     </table>
