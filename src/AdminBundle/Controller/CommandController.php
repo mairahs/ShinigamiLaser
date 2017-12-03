@@ -43,8 +43,6 @@ class CommandController extends Controller
     {
         $command = $this->getDoctrine()->getManager()->getRepository('AppBundle:Command')->findOneCommandWithEtablishment($id);
 
-        dump($command);
-
         if (null == $command) {
             new notFoundHttpException('La commande demandée n\'existe pas');
         }

@@ -17,7 +17,6 @@ class EtablishmentController extends Controller
     public function usersAction()
     {
         $etablishments = $this->getDoctrine()->getManager()->getRepository('AppBundle:Etablishment')->getPlayersByEtablishment();
-        dump($etablishments);
 
         return $this->render('@Admin/etablishment/users.html.twig', ['etablishments' => $etablishments]);
     }

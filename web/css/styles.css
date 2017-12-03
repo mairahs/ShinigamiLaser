@@ -382,6 +382,38 @@ table.bordered > thead > tr, table.bordered > tbody > tr{
     background-color: #c0ca3399 !important;
 }
 
+.blue {
+    background-color: #2196F399 !important;
+}
+
+.blue.darken-2 {
+    background-color: #1976D299 !important;
+}
+
+.orange {
+    background-color: #ff980099 !important;
+}
+
+.orange.darken-2 {
+    background-color: #f57c0099 !important;
+}
+
+.lime {
+    background-color: #cddc39b3 !important;
+}
+
+.lime.darken-2 {
+    background-color: #afb42bb3 !important;
+}
+
+.pink {
+    background-color: #e91e63b3 !important;
+}
+
+.pink.darken-2 {
+    background-color: #c2185b99 !important;
+}
+
 /*********** SURCHARGE DU STYLE HIGHCHART ***************/
 .card .highcharts-background{
     fill: transparent;
