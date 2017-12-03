@@ -2,22 +2,22 @@
     <ul id="slide-out" class="side-nav">
         <li>
             <div class="user-view">
-                <a href="#!user"><img class="circle" src="{{ asset('images/logo.PNG') }}"></a>
-                <a href="#!name">{{ app.user.username }}</a>
+                <a href="#"><img class="circle" src="{{ asset('images/logo.PNG') }}"></a>
+                <a href="#">{{ app.user.username }}</a>
             </div>
         </li>
         <li><a href="{{ path('admin_dashboard') }}">Dashboard</a></li>
         <li><div class="divider"></div></li>
         <li><a class="subheader">Joueur</a></li>
-        <li><a data-activates="slide-out" class="waves-effect" href="#!">Rechercher</a></li>
-        <li><a data-activates="slide-out" class="waves-effect" href="#!">Liste</a></li>
+        <li><a data-activates="slide-out" class="waves-effect" href="{{ path('admin_findplayer') }}">Rechercher</a></li>
+        <li><a data-activates="slide-out" class="waves-effect" href="{{ path('admin_etablishment_users') }}">Liste</a></li>
         <li><div class="divider"></div></li>
         <li><a class="subheader">Carte de fidélité</a></li>
-        <li><a data-activates="slide-out" class="waves-effect" href="#!">Commander</a></li>
+        <li><a data-activates="slide-out" class="waves-effect" href="{{ path('admin_command_add') }}">Commander</a></li>
         <li><a data-activates="slide-out" class="waves-effect" href="#!">Gérer</a></li>
         <li><div class="divider"></div></li>
         <li><a class="subheader">Etablissement</a></li>
-        <li><a data-activates="slide-out" class="waves-effect" href="#!">Gerer</a></li>
+        <li><a data-activates="slide-out" class="waves-effect" href="{{ path('admin_etablishment_index') }}">Gerer</a></li>
         <li><a data-activates="slide-out" class="waves-effect" href="#!">Recrutement</a></li>
         <li><div class="divider"></div></li>
         <li><a class="subheader">Promotions</a></li>
