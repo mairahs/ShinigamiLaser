@@ -3,12 +3,11 @@
 {% block body %}
 
 
-    <div class="row">
+    <div class="row card">
         <div class="col s12 m12">
             <p class="justify"><i class="material-icons" style="font-size:15px; color:#e24800!important;">arrow_back</i><a style="color:#e24800;" href="{{ path('admin_dashboard') }}"> Retour à l'interface d'administration</a></p>
-            <div class="icon-block">
-                <h4 class="center" style="color:#e24800; font-weight: bold;">Liste des joueurs par établissement</h4>
-            </div>
+
+            <h4 class="center">Liste des joueurs par établissement</h4>
         </div>
         <ul class="collapsible" data-collapsible="accordion">
             {% for etablishment in etablishments %}
