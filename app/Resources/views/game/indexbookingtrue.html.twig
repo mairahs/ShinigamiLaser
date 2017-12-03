@@ -1,0 +1,60 @@
+{% extends 'base/base.admin.html.twig' %}
+
+{% block body %}
+
+
+    <div class="row">
+        <div class="col s12 m12">
+            <p class="justify"><i class="material-icons" style="font-size:15px; color:#e24800!important;">arrow_back</i><a style="color:#e24800;" href="{{ path('admin_dashboard') }}"> Retour à l'interface d'administration</a></p>
+            <div class="icon-block">
+                <h4 class="center" style="color:#e24800; font-weight: bold;">Liste des parties réservées par établissement</h4>
+            </div>
+        </div>
+        <ul class="collapsible" data-collapsible="accordion">
+            {% for game in gamesBookingTrue %}
+                <li>
+                    <div class="collapsible-header"><i class="material-icons">domain</i>{{game.etablishment.name }}</div>
+                    <div class="collapsible-body no-padding">
+                        <table class="striped">
+                            <thead>
+                            <tr>
+                                <th>Date de la partie</th>
+                                <th>Type</th>
+                                <th>Plage horaire</th>
+                                <th>Nombre de joueurs </th>
+                                <th colspan="2">Partie réservée par</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                                    <tr>
+                                        <td>{{ game.playedAt|date('d/m/Y') }}</td>
+                                        <td>{{ game.gameType }}</td>
+                                        <td>{{ game.timeSlot }}</td>
+                                        <td>{{ game.nbMax }} joueurs maximum</td>
+                                        {% for scores in game.score %}
+                                        <td>{% include ':inc:inc.avatar.img.html.twig' with {'class' : 'circle z-depth-2 avatar-game-list', 'player' : scores.cards.player} %}</td>
+                                            <td>{{ scores.cards.player.username }}</td>
+                                            <td><a href="{{ path('app_dashboard_show', {'id':scores.cards.player.id}) }}"><i class="material-icons icon-dash-admin">remove_red_eye</i></a></td>
+
+                                        {% endfor %}
+
+                                    </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
+
+{% block layout_javascripts %}
+    <script>
+        $(document).ready(function(){
+            $('.collapsible').collapsible();
+        });
+
+    </script>
+{% endblock %}

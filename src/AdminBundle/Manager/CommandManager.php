@@ -1,26 +1,18 @@
 <?php
-
-
 namespace AdminBundle\Manager;
-
-
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Workflow\Registry;
-
-
 
 class CommandManager
 {
     private $entityManager;
     private $stateMachine;
 
-
     public function __construct(EntityManager $entityManager, Registry $stateMachine)
     {
         $this->entityManager = $entityManager;
         $this->stateMachine = $stateMachine;
-
     }
 
     public function toOrderFromInStoreStatusCard($id)
