@@ -3,6 +3,7 @@ body{
     padding:0;
     -webkit-background-size: cover; /* pour anciens Chrome et Safari */
     background-size: cover; /* version standardisée */
+    background: url('../images/background.jpg') no-repeat center fixed;
 }
 
 .file-wrapper .btn {
@@ -32,12 +33,8 @@ h2,h3{
     font-weight: bold;
 }
 .nav-wrapper{
-    background-color: #222222;
+    background-color: #222c;
 
-}
-.white{
-    background-color: #fca906!important;
-    height: 100px;
 }
 
 p {
@@ -242,6 +239,10 @@ li.error{
     bottom: 89px;
 }
 
+.cardHeader .card-content h4{
+    font-weight: bold;
+}
+
 .task-card .collection-header {
     padding: 20px;
 }
@@ -320,3 +321,75 @@ li.error{
 }
 
 /* --- ---- ---- Style demo geeklabs END --- --- ---- --- */
+
+/*********** SURCHARGE DU STYLE MATERIALIZE ***************/
+
+html{
+    color: rgb(255, 255, 255);
+}
+
+.card{
+    background-color: #1d1d1db3;
+    box-shadow: 0 16px 24px 2px rgba(0,0,0,0.14),0 6px 30px 5px rgba(0,0,0,0.12),0 8px 10px -5px rgba(0,0,0,0.3);
+}
+
+.collection .collection-item{
+    background-color: transparent;
+}
+
+.collection{
+    border: none;
+}
+
+nav{
+    background-color: transparent;
+}
+
+.collapsible{
+    border: none;
+}
+
+.collapsible-header{
+    background-color: transparent;
+}
+
+.collection .collection-item, thead {
+    border-bottom: 1px solid #e0e0e0b3;
+}
+
+table.bordered > thead > tr, table.bordered > tbody > tr{
+    border-bottom: 1px solid #e0e0e0b3;
+}
+
+.cyan{
+    background-color: #00bcd499 !important;
+}
+
+.purple{
+    background-color: #9c27b099 !important;
+}
+
+.green{
+    background-color: #4CAF5080 !important;
+}
+
+.red.darken-3{
+    background-color: #C62828B3 !important;
+}
+
+.green.darken-3{
+    background-color: #2E7D32B3 !important;
+}
+
+.indigo {
+    background-color: #3f51b599 !important;
+}
+
+.lime.darken-1 {
+    background-color: #c0ca3399 !important;
+}
+
+/*********** SURCHARGE DU STYLE HIGHCHART ***************/
+.card .highcharts-background{
+    fill: transparent;
+}

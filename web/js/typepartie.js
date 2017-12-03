@@ -1,7 +1,6 @@
 function graphTypePartie(data) {
     Highcharts.chart('typepartie', {
         chart: {
-            backgroundColor: '#FCFFC5',
             // plotBackgroundColor: null,
             plotBorderWidth: null,
             plotShadow: false,

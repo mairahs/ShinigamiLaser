@@ -9,23 +9,23 @@
         <div class="card-content">
             <div class="row">
                 <div class="col s2">
-                    <h4 class="card-title grey-text text-darken-4">{{ game.etablishment.name }}</h4>
+                    <h4 class="card-title">{{ game.etablishment.name }}</h4>
                     <p class="medium-small grey-text">{{ game.etablishment.city }}</p>
                 </div>
                 <div class="col s2">
-                    <h4 class="card-title grey-text text-darken-4">{{ game.playedAt|date('d/m/Y') }}</h4>
+                    <h4 class="card-title">{{ game.playedAt|date('d/m/Y') }}</h4>
                     <p class="medium-small grey-text">Date</p>
                 </div>
                 <div class="col s2">
-                    <h4 class="card-title grey-text text-darken-4">{{ game.score|length }}{% if is_booking %} / {{ game.nbMax }}{% endif %} </h4>
+                    <h4 class="card-title">{{ game.score|length }}{% if is_booking %} / {{ game.nbMax }}{% endif %} </h4>
                     <p class="medium-small grey-text">Nombre de joueurs</p>
                 </div>
                 <div class="col s2">
-                    <h4 class="card-title grey-text text-darken-4">{{ game.gameType.type }}</h4>
+                    <h4 class="card-title">{{ game.gameType.type }}</h4>
                     <p class="medium-small grey-text">Type de partie</p>
                 </div>
                 <div class="col s2">
-                    <h4 class="card-title grey-text text-darken-4">{{ game.timeSlot.type }}</h4>
+                    <h4 class="card-title">{{ game.timeSlot.type }}</h4>
                     <p class="medium-small grey-text">Plage horaire</p>
                 </div>
                 {% if is_booking %}
