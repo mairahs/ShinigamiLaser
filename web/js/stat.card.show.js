@@ -3,7 +3,7 @@ $(document).ready(function(){
         chart: {
             style: {
                 fontFamily: 'Roboto',
-                backgroundColor: '#FCFFC5'
+                backgroundColor: 'transparent'
             }
         }
     });

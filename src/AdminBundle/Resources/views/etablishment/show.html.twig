@@ -4,28 +4,28 @@
 
     <div class="card cardHeader">
         <div class="card-image waves-effect waves-block waves-light">
-            <img class="activator" src="{{ asset('images/lasers.jpeg') }}">
+            <img class="activator" src="{{ asset('images/office.jpg') }}">
         </div>
         <div class="card-content">
             <div class="row">
                 <div class="col s2 offset-s1">
-                    <h4 class="card-title grey-text text-darken-4">SL - {{ etablishment.name }}</h4>
+                    <h4 class="card-title">SL - {{ etablishment.name }}</h4>
                     <p class="medium-small grey-text">Nom</p>
                 </div>
                 <div class="col s2">
-                    <h4 class="card-title grey-text text-darken-4">{{ etablishment.city }}</h4>
+                    <h4 class="card-title">{{ etablishment.city }}</h4>
                     <p class="medium-small grey-text">Ville</p>
                 </div>
                 <div class="col s2">
-                    <h4 class="card-title grey-text text-darken-4">{{ etablishment.code }}</h4>
+                    <h4 class="card-title">{{ etablishment.code }}</h4>
                     <p class="medium-small grey-text">Code Etablissement</p>
                 </div>
                 <div class="col s2">
-                    <h4 class="card-title grey-text text-darken-4">{{ stats.count_abonne }}</h4>
+                    <h4 class="card-title">{{ stats.count_abonne }}</h4>
                     <p class="medium-small grey-text">Abonnés</p>
                 </div>
                 <div class="col s2">
-                    <h4 class="card-title grey-text text-darken-4">{{ etablishment.games|length }}</h4>
+                    <h4 class="card-title">{{ etablishment.games|length }}</h4>
                     <p class="medium-small grey-text">Parties jouées</p>
                 </div>
             </div>
