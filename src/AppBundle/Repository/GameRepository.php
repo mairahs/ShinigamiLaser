@@ -91,4 +91,12 @@ class GameRepository extends EntityRepository
         return $queryBuilder->getQuery()->getResult();
     }
 
+    public function findAllGamesWithBookingFalse()
+    {
+        $queryBuilder = $this->createQueryBuilder('game')
+            ->where('game.booking = 0')
+            ->orderBy('game.playedAt', 'DESC');
+        return $queryBuilder->getQuery()->getResult();
+    }
+
 }
