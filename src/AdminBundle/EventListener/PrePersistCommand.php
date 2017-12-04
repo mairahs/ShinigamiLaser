@@ -10,6 +10,10 @@ use Doctrine\ORM\Event\LifecycleEventArgs;
 
 class PrePersistCommand
 {
+    /**
+     * event new command=>new card(number of card = quantity of command)
+     * @param LifecycleEventArgs $args
+     */
     public function prePersist(LifecycleEventArgs $args)
     {
 
