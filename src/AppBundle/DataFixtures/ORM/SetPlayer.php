@@ -14,7 +14,7 @@ class SetPlayer extends Fixture
     {
         $encoder = $this->container->get('security.password_encoder');
         $faker = Factory::create('fr_FR');
-        for ($i = 0; $i < 30; ++$i) {
+        for ($i = 0; $i < 60; ++$i) {
             $player = new Player();
             $player->setFirstname($faker->firstName);
             $player->setLastname($faker->lastName);

@@ -13,7 +13,7 @@ class SetEtablishment extends Fixture
     public function load(ObjectManager $manager)
     {
         $faker = Factory::create('fr_FR');
-        for ($i = 0; $i < 5; ++$i) {
+        for ($i = 0; $i < 10; ++$i) {
             $etablishment = new Etablishment();
             $etablishment->setName($faker->lastName);
             $etablishment->setCity($faker->city);

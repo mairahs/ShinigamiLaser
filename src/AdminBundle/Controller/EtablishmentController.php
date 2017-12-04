@@ -19,7 +19,6 @@ class EtablishmentController extends Controller
     {
         $gamesBookingTrue = $this->getDoctrine()->getManager()->getRepository('AppBundle:Etablishment')->findAllEtablishmentsWithBookingTrue();
 
-        dump($gamesBookingTrue);
         return $this->render('@Admin/etablishment/indexbookingtrue.html.twig', ['gamesBookingTrue'=>$gamesBookingTrue]);
     }
 
