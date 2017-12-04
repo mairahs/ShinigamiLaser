@@ -85,7 +85,9 @@ class GameManager
     }
 
     /**
+     * @param $id_game
      * @param $card_number
+     * @return
      * @throws \Exception
      */
     public function findPlayerCard($id_game, $card_number){
