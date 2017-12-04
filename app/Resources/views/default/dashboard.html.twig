@@ -3,9 +3,6 @@
 {% block body %}
     {% set display = other is not defined %}
     <div class="card cardHeader">
-        <div class="card-image waves-effect waves-block waves-light">
-            <img class="activator" src="{{ asset('images/office.jpg') }}">
-        </div>
         <figure class="card-profile-image">
             {%  include 'inc/inc.avatar.img.html.twig' with {'class' : 'circle z-depth-2 responsive-img activator img-avatar'} %}
         </figure>

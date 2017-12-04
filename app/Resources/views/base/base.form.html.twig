@@ -1,6 +1,8 @@
 {% extends '::layout.html.twig' %}
 {% block layout_container %}
+{% if not is_admin %}
 {% include(':inc:inc.navigation.html.twig') %}
+{% endif %}
 <div class="container-form card">
     {% block body %}{% endblock %}
 </div>
