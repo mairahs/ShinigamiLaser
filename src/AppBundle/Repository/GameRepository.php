@@ -77,26 +77,6 @@ class GameRepository extends EntityRepository
         return $qb->getQuery()->getResult();
     }
 
-    public function findAllGamesWithBookingTrue()
-    {
-        $queryBuilder = $this->createQueryBuilder('game')
-                                        ->leftJoin('game.score', 'score')
-                                        ->leftJoin('score.cards','card')
-                                        ->leftJoin('card.player','player')
-                                        ->addSelect('score')
-                                        ->addSelect('card')
-                                        ->addSelect('player')
-                                        ->where('game.booking = 1')
-                                        ->orderBy('game.playedAt', 'DESC');
-        return $queryBuilder->getQuery()->getResult();
-    }
 
-    public function findAllGamesWithBookingFalse()
-    {
-        $queryBuilder = $this->createQueryBuilder('game')
-            ->where('game.booking = 0')
-            ->orderBy('game.playedAt', 'DESC');
-        return $queryBuilder->getQuery()->getResult();
-    }
 
 }

@@ -14,6 +14,22 @@ class EtablishmentController extends Controller
         return $this->render('@Admin/etablishment/index.html.twig', ['etablishments' => $etablishments]);
     }
 
+
+    public function  indexBookingTrueAction()
+    {
+        $gamesBookingTrue = $this->getDoctrine()->getManager()->getRepository('AppBundle:Etablishment')->findAllEtablishmentsWithBookingTrue();
+
+        dump($gamesBookingTrue);
+        return $this->render('@Admin/etablishment/indexbookingtrue.html.twig', ['gamesBookingTrue'=>$gamesBookingTrue]);
+    }
+
+    public function  indexBookingFalseAction()
+    {
+        $gamesBookingFalse = $this->getDoctrine()->getManager()->getRepository('AppBundle:Etablishment')->findAllEtablishmentsWithBookingFalse();
+
+        return $this->render('@Admin/etablishment/indexbookingfalse.html.twig', ['gamesBookingFalse'=>$gamesBookingFalse]);
+    }
+
     public function usersAction()
     {
         $etablishments = $this->getDoctrine()->getManager()->getRepository('AppBundle:Etablishment')->getPlayersByEtablishment();
