@@ -198,7 +198,7 @@ li.error{
 .cardHeader .card-profile-image {
     width: 110px;
     position: absolute;
-    top: 190px;
+    top: 20px;
     z-index: 1;
     left: 40px;
     cursor: pointer;
@@ -215,7 +215,7 @@ li.error{
 
 .cardHeader .fixed-action-btn{
     position: absolute;
-    bottom: 89px;
+    bottom: 53px;
 }
 
 .cardHeader .card-content h4{
@@ -307,7 +307,7 @@ html{
     color: rgb(255, 255, 255);
 }
 
-.card{
+.card, .task-card{
     background-color: #1d1d1db3;
     box-shadow: 0 16px 24px 2px rgba(0,0,0,0.14),0 6px 30px 5px rgba(0,0,0,0.12),0 8px 10px -5px rgba(0,0,0,0.3);
 }
@@ -322,6 +322,8 @@ html{
 
 nav{
     background-color: transparent;
+    box-shadow: none;
+    -webkit-box-shadow: none;
 }
 
 .collapsible{
@@ -350,6 +352,10 @@ table.bordered > thead > tr, table.bordered > tbody > tr{
 
 .green{
     background-color: #4CAF5080 !important;
+}
+
+.green.darken-2 {
+    background-color: #388E3C80 !important;
 }
 
 .red.darken-3{
@@ -419,6 +425,20 @@ a{
 
 .text-link{
     color: #87d5fb;
+}
+
+#modal_admin, #modal1{
+    background-color: #fafafae6;
+    color: black;
+}
+
+.modal .modal-footer{
+    color: black;
+    background: transparent;
+}
+
+#modal1 .input-field label, #modal_admin .input-field label{
+    color: #595959;
 }
 
 /*********** SURCHARGE DU STYLE HIGHCHART ***************/
