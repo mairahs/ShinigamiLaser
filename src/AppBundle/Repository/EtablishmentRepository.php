@@ -25,9 +25,36 @@ class EtablishmentRepository extends EntityRepository
             ->addSelect('commands')
             ->addSelect('cards')
             ->addSelect('player')
-            ->where("cards.status = 'active'")
-        ;
+            ->where("cards.status = 'active'");
 
         return $queryBuilder->getQuery()->getResult();
     }
+
+    public function  findAllEtablishmentsWithBookingFalse()
+    {
+        $queryBuilder = $this->createQueryBuilder('etablishment')
+                             ->leftJoin('etablishment.games','game')
+                             ->addSelect('game')
+                             ->where('game.booking = 0')
+                             ->orderBy('game.playedAt', 'DESC');
+
+        return $queryBuilder->getQuery()->getResult();
+
+    }
+
+    public function findAllEtablishmentsWithBookingTrue()
+    {
+        $queryBuilder = $this->createQueryBuilder('etablishment')
+            ->leftJoin('etablishment.games','game')
+            ->leftJoin('game.score','score')
+            ->leftJoin('score.cards','card')
+            ->addSelect('game')
+            ->addSelect('score')
+            ->addSelect('card')
+            ->where('game.booking = 1')
+            ->orderBy('game.playedAt', 'DESC');
+
+        return $queryBuilder->getQuery()->getResult();
+    }
+
 }

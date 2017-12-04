@@ -3,43 +3,39 @@
 {% block body %}
 
 
-    <div class="row">
+    <div class="row card">
         <div class="col s12 m12">
             <p class="justify"><i class="material-icons" style="font-size:15px; color:#e24800!important;">arrow_back</i><a style="color:#e24800;" href="{{ path('admin_dashboard') }}"> Retour à l'interface d'administration</a></p>
-            <div class="icon-block">
+            <div>
                 <h4 class="center" style="color:#e24800; font-weight: bold;">Liste des parties réservées par établissement</h4>
             </div>
         </div>
         <ul class="collapsible" data-collapsible="accordion">
-            {% for game in gamesBookingTrue %}
+            {% for etablishments in gamesBookingTrue %}
                 <li>
-                    <div class="collapsible-header"><i class="material-icons">domain</i>{{game.etablishment.name }}</div>
+                    <div class="collapsible-header"><i class="material-icons">domain</i>{{etablishments.name }}</div>
                     <div class="collapsible-body no-padding">
-                        <table class="striped">
+                        <table class="centered">
                             <thead>
                             <tr>
                                 <th>Date de la partie</th>
                                 <th>Type</th>
                                 <th>Plage horaire</th>
-                                <th>Nombre de joueurs </th>
-                                <th colspan="2">Partie réservée par</th>
+                                <th>Nombre de joueur inscrit</th>
+
                             </tr>
                             </thead>
                             <tbody>
-
+                                    {% for game in etablishments.games%}
                                     <tr>
                                         <td>{{ game.playedAt|date('d/m/Y') }}</td>
                                         <td>{{ game.gameType }}</td>
                                         <td>{{ game.timeSlot }}</td>
-                                        <td>{{ game.nbMax }} joueurs maximum</td>
-                                        {% for scores in game.score %}
-                                        <td>{% include ':inc:inc.avatar.img.html.twig' with {'class' : 'circle z-depth-2 avatar-game-list', 'player' : scores.cards.player} %}</td>
-                                            <td>{{ scores.cards.player.username }}</td>
-                                            <td><a href="{{ path('app_dashboard_show', {'id':scores.cards.player.id}) }}"><i class="material-icons icon-dash-admin">remove_red_eye</i></a></td>
-
-                                        {% endfor %}
+                                        <td>{{ game.score|length }} / {{ game.nbMax }}</td>
+                                        <td><a href="{{ path('app_game_show', {'id':game.id}) }}"><i class="material-icons icon-dash-admin">remove_red_eye</i></a></td>
 
                                     </tr>
+                                    {% endfor %}
 
                             </tbody>
                         </table>

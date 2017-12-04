@@ -33,11 +33,11 @@ admin_game_add:
 
 admin_game_index_booking_true:
     path: /game/bookingtrue
-    defaults: {_controller: AppBundle:Game:indexBookingTrue}
+    defaults: {_controller: AdminBundle:Etablishment:indexBookingTrue}
 
 admin_game_index_booking_false:
     path: /game/bookingfalse
-    defaults: {_controller: AppBundle:Game:indexBookingFalse}
+    defaults: {_controller: AdminBundle:Etablishment:indexBookingFalse}
 
 admin_command_index:
     path: /commands

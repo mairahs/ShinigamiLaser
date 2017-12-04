@@ -32,20 +32,6 @@ class GameController extends Controller
         ]);
     }
 
-    public function  indexBookingTrueAction()
-    {
-        $gamesBookingTrue = $this->getDoctrine()->getManager()->getRepository('AppBundle:Game')->findAllGamesWithBookingTrue();
-
-        return $this->render('game/indexbookingtrue.html.twig', ['gamesBookingTrue'=>$gamesBookingTrue]);
-    }
-
-    public function  indexBookingFalseAction()
-    {
-        $gamesBookingFalse = $this->getDoctrine()->getManager()->getRepository('AppBundle:Game')->findAllGamesWithBookingFalse();
-
-        return $this->render('game/indexbookingfalse.html.twig', ['gamesBookingFalse'=>$gamesBookingFalse]);
-    }
-
     public function showAction($id)
     {
         $game = $this->getDoctrine()->getManager()->getRepository('AppBundle:Game')->getOneGameWithScoreAndPlayer($id);

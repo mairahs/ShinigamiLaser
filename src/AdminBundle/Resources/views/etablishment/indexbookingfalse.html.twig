@@ -3,37 +3,41 @@
 {% block body %}
 
 
-    <div class="row">
+    <div class="row card">
         <div class="col s12 m12">
             <p class="justify"><i class="material-icons" style="font-size:15px; color:#e24800!important;">arrow_back</i><a style="color:#e24800;" href="{{ path('admin_dashboard') }}"> Retour à l'interface d'administration</a></p>
-            <div class="icon-block">
-                <h4 class="center" style="color:#e24800; font-weight: bold;">Liste des parties créées par établissement</h4>
+            <div>
+                <h4 class="center" style="color:#e24800; font-weight: bold;">Liste des parties déjà jouées par établissement</h4>
             </div>
         </div>
         <ul class="collapsible" data-collapsible="accordion">
-            {% for game in gamesBookingFalse %}
+            {% for etablishments in gamesBookingFalse %}
                 <li>
-                    <div class="collapsible-header"><i class="material-icons">domain</i>{{game.etablishment.name }}</div>
+                    <div class="collapsible-header"><i class="material-icons">domain</i>{{etablishments.name|upper }}</div>
                     <div class="collapsible-body no-padding">
-                        <table class="striped">
+                        <table class="centered">
                             <thead>
                             <tr>
                                 <th>Date de la partie</th>
                                 <th>Type</th>
                                 <th>Plage horaire</th>
-                                <th>Nombre de joueurs </th>
-                                <th colspan="2">Partie réservée par</th>
+
+
+
                             </tr>
                             </thead>
                             <tbody>
 
+                            {% for game in etablishments.games%}
                             <tr>
+
                                 <td>{{ game.playedAt|date('d/m/Y') }}</td>
                                 <td>{{ game.gameType }}</td>
                                 <td>{{ game.timeSlot }}</td>
-                                <td>{{ game.nbMax }} joueurs maximum</td>
-                                <td>Aucun joueur inscrit pour le moment</td>
+                                <td><i class="material-icons"><a href=" {{ path('app_game_show', {'id':game.id}) }}" style="color:#e24800;">remove_red_eye</a></i></td>
+
                             </tr>
+                            {% endfor %}
 
                             </tbody>
                         </table>
