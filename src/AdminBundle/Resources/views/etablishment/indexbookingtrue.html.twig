@@ -5,15 +5,16 @@
 
     <div class="row card">
         <div class="col s12 m12">
-            <p class="justify"><i class="material-icons" style="font-size:15px; color:#e24800!important;">arrow_back</i><a style="color:#e24800;" href="{{ path('admin_dashboard') }}"> Retour à l'interface d'administration</a></p>
+            <i class="material-icons blue-back-text">arrow_back</i>
+            <a href="{{ path('admin_dashboard') }}"> Retour à l'interface d'administration</a>
             <div>
-                <h4 class="center" style="color:#e24800; font-weight: bold;">Liste des parties réservées par établissement</h4>
+                <h4 class="center white-text">Liste des parties réservées par établissement</h4>
             </div>
         </div>
         <ul class="collapsible" data-collapsible="accordion">
             {% for etablishments in gamesBookingTrue %}
                 <li>
-                    <div class="collapsible-header"><i class="material-icons">domain</i>{{etablishments.name }}</div>
+                    <div class="collapsible-header"><i class="material-icons">domain</i>{{etablishments.name|upper }}</div>
                     <div class="collapsible-body no-padding">
                         <table class="centered">
                             <thead>
