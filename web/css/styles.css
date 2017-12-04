@@ -6,6 +6,16 @@ body{
     background: url('../images/background.jpg') no-repeat center fixed;
 }
 
+.main-title{
+    font-family: 'star_jediregular';
+    margin-top: 190px;
+    font-size: 6em;
+}
+
+.container{
+    min-height: 900px;
+}
+
 .file-wrapper .btn {
     padding: 0 2rem;
 }
@@ -24,10 +34,6 @@ body{
 h2,h3{
     text-align: center;
     font-weight: bold;
-}
-.nav-wrapper{
-    background-color: #222c;
-
 }
 
 p {
@@ -55,27 +61,8 @@ li.error{
     width: 100%;
 }
 
-.teal-text.text-lighten-2{
-    color: #fca906!important;
-    font-size: 50px;
-    margin-top: 50px;
-    font-weight: bold;
-}
-
-.teal.lighten-1 {
-    background-color: #fca906 !important;
-    color:#222222;
-    font-weight: bold;
-    font-size: 17px;
-}
-.header.col.s12.light{
-    color: #fca906!important;
-    font-size: 30px;
-    font-weight: bold;
-}
-
-.orange-back-text{
-    color:#e24800;
+.blue-back-text{
+    color: #87d5fb;
     font-size:15px;
 }
 
@@ -107,11 +94,6 @@ li.error{
     background-color: #222222!important;
 }
 
-.footer-copyright .container p{
-    text-align: center;
-    color: #fca906!important;
-}
-
 .menu-cust{
     height: 80px;
     line-height: 80px;
@@ -130,6 +112,10 @@ li.error{
 .connect{
     border: 2px solid #fca906;
     background-color: #fca906;
+}
+
+.connect a{
+    color:#222222;
 }
 
 .listcard{
@@ -412,6 +398,27 @@ table.bordered > thead > tr, table.bordered > tbody > tr{
 
 .pink.darken-2 {
     background-color: #c2185b99 !important;
+}
+
+.input-field label{
+    color: #bababa;
+}
+
+a{
+    color: #87d5fb;
+}
+
+.btn, .btn-large{
+    color: #050404;
+    background-color: #fca906;
+}
+
+.btn:hover, .btn-large:hover, .btn:active, .btn:visited, .btn:focus, .btn-large:active, .btn-large:focus, .btn-large:visited{
+    background-color: #e38b12;
+}
+
+.text-link{
+    color: #87d5fb;
 }
 
 /*********** SURCHARGE DU STYLE HIGHCHART ***************/

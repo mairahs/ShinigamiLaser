@@ -3,7 +3,38 @@ $(document).ready(function(){
         chart: {
             style: {
                 fontFamily: 'Roboto',
-                backgroundColor: 'transparent'
+                backgroundColor: 'transparent',
+                color: '#ffffff'
+            }
+        },
+        title: {
+            style: {
+                color: "#ffffff"
+            }
+        },
+        yAxis: {
+            labels: {
+                style: {
+                    color: "#ffffff"
+                }
+            }
+        },
+        legend: {
+            itemStyle: {
+                color: '#ffffff'
+            },
+            itemHoverStyle: {
+                color: '#c5c5c5'
+            },
+            itemHiddenStyle: {
+                color: '#c5c5c5'
+            }
+        },
+        xAxis: {
+            labels: {
+                style: {
+                    color: '#ffffff'
+                }
             }
         }
     });

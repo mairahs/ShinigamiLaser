@@ -70,7 +70,7 @@ class PlayerType extends AbstractType
                             ],
                         ])
                         ->add('avatar', AvatarType::class)
-                        ->add('Enregistre-toi', SubmitType::class)
+                        ->add('Enregistre-toi', SubmitType::class, ['attr' => ['class' => 'right']])
                     ;
                 } else {
                     $form
