@@ -4,6 +4,8 @@
     {% set messages_error = app.flashes('notice') %}
     <div class="row">
         <div class="col s12">
+            <i class="material-icons blue-back-text">arrow_back</i>
+            <a href="{{ path('admin_dashboard') }}"> Retour à l'interface d'administration</a>
             <h4 class="center">Tu recherches un joueur ?</h4>
             <p>Renseigne le numéro de sa carte de fidélité pour le retrouver</p>
             <form action="{{ path('admin_findplayer') }}" method="post" autocomplete="off" novalidate="novalidate">

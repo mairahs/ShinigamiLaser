@@ -3,8 +3,9 @@
 {% block body %}
     <div class="row card">
         <div class="col s12 m12">
-            <p class="justify"><i class="material-icons" style="font-size:15px; color:#e24800!important;">arrow_back</i><a style="color:#e24800;" href="{{ path('admin_dashboard') }}"> Retour à l'interface d'administration</a></p>
-            <h4 class="center" style="color:#e24800; font-weight: bold;">Liste des établissements ShinigamiLaser</h4>
+            <i class="material-icons blue-back-text">arrow_back</i>
+            <a href="{{ path('admin_dashboard') }}"> Retour à l'interface d'administration</a>
+            <h4 class="center white-text">Liste des établissements ShinigamiLaser</h4>
         </div>
         <table class="responsive-table bordered centered">
             <thead>
@@ -17,7 +18,7 @@
             <tbody>
             {% for etablishment in etablishments %}
             <tr>
-                <td>ShinigamiLaser - {{ etablishment.name }}</td>
+                <td>ShinigamiLaser - {{ etablishment.name|upper }}</td>
                 <td>{{ etablishment.code }}</td>
                 <td>{{ etablishment.city }}</td>
                 <td><i class="material-icons"><a href=" {{ path('admin_etablishment_show', {'id':etablishment.id}) }}" style="color:#e24800;">remove_red_eye</a></i></td>
