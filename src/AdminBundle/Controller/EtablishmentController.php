@@ -7,6 +7,10 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class EtablishmentController extends Controller
 {
+    /**
+     * list of etablishment
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function indexAction()
     {
         $etablishments = $this->getDoctrine()->getManager()->getRepository('AppBundle:Etablishment')->getAllEtablishmentsWithGames();
@@ -14,15 +18,21 @@ class EtablishmentController extends Controller
         return $this->render('@Admin/etablishment/index.html.twig', ['etablishments' => $etablishments]);
     }
 
-
+    /**
+     * List of etablishment with bookable games
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function  indexBookingTrueAction()
     {
         $gamesBookingTrue = $this->getDoctrine()->getManager()->getRepository('AppBundle:Etablishment')->findAllEtablishmentsWithBookingTrue();
 
-        dump($gamesBookingTrue);
         return $this->render('@Admin/etablishment/indexbookingtrue.html.twig', ['gamesBookingTrue'=>$gamesBookingTrue]);
     }
 
+    /**
+     * List of etablishement with already played games
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function  indexBookingFalseAction()
     {
         $gamesBookingFalse = $this->getDoctrine()->getManager()->getRepository('AppBundle:Etablishment')->findAllEtablishmentsWithBookingFalse();
@@ -30,6 +40,10 @@ class EtablishmentController extends Controller
         return $this->render('@Admin/etablishment/indexbookingfalse.html.twig', ['gamesBookingFalse'=>$gamesBookingFalse]);
     }
 
+    /**
+     * List of players with active cards by etablishment
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function usersAction()
     {
         $etablishments = $this->getDoctrine()->getManager()->getRepository('AppBundle:Etablishment')->getPlayersByEtablishment();
@@ -37,6 +51,11 @@ class EtablishmentController extends Controller
         return $this->render('@Admin/etablishment/users.html.twig', ['etablishments' => $etablishments]);
     }
 
+    /**
+     * Number of subscribers of one etablishment
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function showAction($id)
     {
         $etablishment = $this->getDoctrine()->getManager()->getRepository('AppBundle:Etablishment')->find($id);
