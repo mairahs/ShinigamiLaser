@@ -16,7 +16,10 @@ function graphScoreByGame(data) {
                 year: '%b'
             },
             title: {
-                text: 'Date'
+                text: 'Date',
+                style: {
+                    color: "#ffffff"
+                }
             }
         },
         yAxis: {
@@ -27,7 +30,6 @@ function graphScoreByGame(data) {
         tooltip: {
             pointFormat: '{point.y:.2f} pts'
         },
-
         plotOptions: {
             spline: {
                 marker: {

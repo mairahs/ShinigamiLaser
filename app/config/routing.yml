@@ -31,6 +31,7 @@ contact:
 user_login:
     path: /login
     defaults: { _controller: UserBundle:Security:login}
+
 user_logout:
     path: /logout
 

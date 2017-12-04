@@ -32,7 +32,8 @@
 
     <div class="row">
         <div class="col s12">
-            <i class="material-icons orange-back-text">arrow_back</i><a class="orange-back-text" href="{% if not other %}{{ path('app_dashboard') }}{% else %}{{ path('app_dashboard_show', {'id' : card.player.id}) }}{% endif %}">Retour au dashboard</a>
+            <i class="material-icons blue-back-text">arrow_back</i>
+            <a class="blue-back-text" href="{% if not other %}{{ path('app_dashboard') }}{% else %}{{ path('app_dashboard_show', {'id' : card.player.id}) }}{% endif %}">Retour au dashboard</a>
         </div>
     </div>
     <div class="row">
