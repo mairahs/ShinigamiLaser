@@ -37,7 +37,7 @@ class SetGameAndScore extends Fixture
         $game_types = $manager->getRepository('AppBundle:GameType')->findAll();
         $cards = $manager->getRepository('AppBundle:Card')->findBy(['status' => 'active']);
 
-        for ($i = 0; $i < 60; ++$i) {
+        for ($i = 0; $i < 120; ++$i) {
             $game = new Game();
 
             $date = new \DateTime('now - 60 days');

@@ -39,15 +39,36 @@ class CardManagerTest extends TestCase
 
         $cardManager = new CardManager($objectManager, $workflow);
 
+
+        //Vérification qu'il y a un flush
         $this->assertEquals(2100, $cardManager->addCard(1, 1234567897));
     }
+
+    /**
+     * @dataProvider constructorBadArgumentsProvider
+     */
     public function testAddCardFalse()
     {
         $this->expectException(\Exception::class);
+
+
+
+
+
         // Mock repository
         // Mock entitymanager
 
         // Mock player
         // Mock card
     }
+
+
+    public function constructorBadArgumentsProvider()
+    {
+        return [
+            ['Carbone'],
+            [null]
+        ];
+    }
+
 }
