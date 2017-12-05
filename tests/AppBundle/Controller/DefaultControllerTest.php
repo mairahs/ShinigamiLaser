@@ -1,9 +1,10 @@
 <?php
 
-namespace Tests\AppBundle\Controller;
+namespace AppBundle\Tests\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use PHPUnit\Framework\TestCase;
 
-class DefaultControllerTest extends WebTestCase
+class DefaultControllerTest extends TestCase
 {
+
 }
