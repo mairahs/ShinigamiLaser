@@ -37,6 +37,11 @@ class GameManager
         $this->workflow = $workflow;
     }
 
+    /**
+     * a player join a game
+     * @param $id_game
+     * @param $id_card
+     */
     public function joinGame($id_game, $id_card)
     {
         $score = new Score();
@@ -51,6 +56,11 @@ class GameManager
         $this->entityManager->flush();
     }
 
+    /**
+     * a player unsubscribe a game
+     * @param $id_game
+     * @param $id_card
+     */
     public function unjoinGame($id_game, $id_card)
     {
         $score = $this->entityManager->getRepository('AppBundle:Score')->findOneBy([
@@ -61,6 +71,11 @@ class GameManager
         $this->entityManager->flush();
     }
 
+    /**
+     * get all cards for a player with and without his games associated
+     * @param Game|null $game
+     * @return array|null
+     */
     public function getCard(Game $game = null)
     {
         $player = $this->tokenStorage->getToken()->getUser();
@@ -75,6 +90,11 @@ class GameManager
         return $cards;
     }
 
+    /**
+     * check if a player has a card or not
+     * @param Game $game
+     * @return bool
+     */
     public function hasCard(Game $game){
         $player = $this->tokenStorage->getToken()->getUser();
         $cards = "0";
@@ -85,7 +105,7 @@ class GameManager
     }
 
     /**
-     * @param $id_game
+     * find a player with his number card
      * @param $card_number
      * @return
      * @throws \Exception
@@ -107,6 +127,7 @@ class GameManager
     }
 
     /**
+     * manage the equitable distribution of players beetween the two teams when gametype = team
      * @param Game $game
      * @return int
      */

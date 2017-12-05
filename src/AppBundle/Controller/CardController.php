@@ -20,9 +20,9 @@ use UserBundle\Manager\AuthenticateService;
 class CardController extends Controller
 {
     /**
+     * add card to a connected player
      * @param Request $request
-     *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     *@return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function addAction(Request $request)
     {
@@ -43,10 +43,9 @@ class CardController extends Controller
     }
 
     /**
+     * show card content
      * @param Card $card
-     *
      * @return Response
-     *
      * @internal param Request $request
      * @internal param $id
      */
@@ -66,6 +65,11 @@ class CardController extends Controller
         ]);
     }
 
+    /**
+     * disable a card
+     * @param $id
+     * @return Response
+     */
     public function disablePageAction($id)
     {
         $card = $this->getDoctrine()->getRepository('AppBundle:Card')->findOneBy(['id' => $id]);
@@ -133,10 +137,9 @@ class CardController extends Controller
     }
 
     /**
+     * Provide stats on game
      * @param Card $card
-     *
      * @internal param $id
-     *
      * @return JsonResponse
      */
     public function winloseAction(Card $card)

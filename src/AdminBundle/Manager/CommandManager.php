@@ -15,6 +15,10 @@ class CommandManager
         $this->stateMachine = $stateMachine;
     }
 
+    /**
+     * Apply a transition delivery on ordered cards for one command
+     * @param $id
+     */
     public function toOrderFromInStoreStatusCard($id)
     {
         $command = $this->entityManager->getRepository('AppBundle:Command')->findOneCommandWithCards($id);

@@ -12,6 +12,10 @@ use Doctrine\ORM\EntityRepository;
  */
 class PlayerRepository extends EntityRepository
 {
+    /**
+     * @param $numberCard
+     * @return mixed
+     */
     public function findPlayerByNumberCard($numberCard)
     {
         $queryBuilder = $this->createQueryBuilder('p')

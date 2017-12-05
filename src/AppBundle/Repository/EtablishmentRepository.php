@@ -6,6 +6,9 @@ use Doctrine\ORM\EntityRepository;
 
 class EtablishmentRepository extends EntityRepository
 {
+    /**
+     * @return array
+     */
     public function getAllEtablishmentsWithGames()
     {
         $queryBuilder = $this->createQueryBuilder('e')
@@ -16,6 +19,9 @@ class EtablishmentRepository extends EntityRepository
                             ->getResult();
     }
 
+    /**
+     * @return array
+     */
     public function getPlayersByEtablishment()
     {
         $queryBuilder = $this->createQueryBuilder('etablishment')
@@ -30,6 +36,9 @@ class EtablishmentRepository extends EntityRepository
         return $queryBuilder->getQuery()->getResult();
     }
 
+    /**
+     * @return array
+     */
     public function  findAllEtablishmentsWithBookingFalse()
     {
         $queryBuilder = $this->createQueryBuilder('etablishment')
@@ -42,6 +51,9 @@ class EtablishmentRepository extends EntityRepository
 
     }
 
+    /**
+     * @return array
+     */
     public function findAllEtablishmentsWithBookingTrue()
     {
         $queryBuilder = $this->createQueryBuilder('etablishment')
