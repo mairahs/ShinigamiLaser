@@ -32,15 +32,18 @@ class CardRepository extends \Doctrine\ORM\EntityRepository
             ->groupBy('card.number')
             ->where('card.player = :player')
             ->andWhere("(games.id is NULL OR games.booking = '0')")
-//            ->orWhere("(games.id is not NULL AND games.booking = '1')")
             ->setParameters([
                 'player' => $player,
             ]);
-//        dump($queryBuilder->getQuery()->getResult());
-//        die;
+
         return $queryBuilder->getQuery()->getResult();
     }
 
+    /**
+     * @param Player $player
+     * @param Game $game
+     * @return array
+     */
     public function getListCardByGame(Player $player, Game $game)
     {
         $queryBuilder = $this->createQueryBuilder('card')
@@ -54,16 +57,18 @@ class CardRepository extends \Doctrine\ORM\EntityRepository
             ->groupBy('card.number')
             ->where('card.player = :player')
             ->andWhere('score.games = :game')
-//            ->orWhere("(games.id is not NULL AND games.booking = '1')")
             ->setParameters([
                 'player' => $player,
                 'game' => $game
             ]);
-//        dump($queryBuilder->getQuery()->getResult());
-//        die;
+
         return $queryBuilder->getQuery()->getResult();
     }
 
+    /**
+     * @param Etablishment $etablishment
+     * @return mixed
+     */
     public function getCountAbonne(Etablishment $etablishment)
     {
         $queryBuilder = $this->createQueryBuilder('card')
@@ -77,6 +82,11 @@ class CardRepository extends \Doctrine\ORM\EntityRepository
         return $queryBuilder->getQuery()->getSingleScalarResult();
     }
 
+    /**
+     * @param Player $player
+     * @param Game $game
+     * @return mixed
+     */
     public function hasCard(Player $player, Game $game){
         $queryBuilder = $this->createQueryBuilder('card')
             ->join('card.score', 'score')
@@ -92,6 +102,10 @@ class CardRepository extends \Doctrine\ORM\EntityRepository
         return $queryBuilder->getQuery()->getSingleScalarResult();
     }
 
+    /**
+     * @param $card_number
+     * @return array
+     */
     public function findCardAndPlayerByNumber($card_number)
     {
         $queryBuilder = $this->createQueryBuilder('card')

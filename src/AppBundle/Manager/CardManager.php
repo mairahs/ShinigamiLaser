@@ -24,6 +24,7 @@ class CardManager
     }
 
     /**
+     * Add a card to a player
      * @param $id_player
      * @param $card_number
      *
@@ -48,6 +49,11 @@ class CardManager
         $this->entityManager->flush();
     }
 
+    /**
+     * disbla a card
+     * @param Card $card
+     * @throws \Exception
+     */
     public function disableCard(Card $card)
     {
         if (!$this->workflow->can($card, 'deactivation')) {
