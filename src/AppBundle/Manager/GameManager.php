@@ -107,6 +107,7 @@ class GameManager
     /**
      * find a player with his number card
      * @param $card_number
+     * @return
      * @throws \Exception
      */
     public function findPlayerCard($id_game, $card_number){

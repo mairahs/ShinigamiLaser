@@ -20,7 +20,7 @@ class SetAdmin extends Fixture
     {
         $encoder = $this->container->get('security.password_encoder');
         $faker = Factory::create('fr_FR');
-        for ($i = 0; $i < 5; ++$i) {
+        for ($i = 0; $i < 10; ++$i) {
             $admin = new Admin();
             $admin->setUsername($faker->userName);
             $admin->setEmail($faker->email);

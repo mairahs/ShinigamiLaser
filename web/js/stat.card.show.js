@@ -1,6 +1,7 @@
 $(document).ready(function(){
     Highcharts.setOptions({
         chart: {
+            colors: ['#ffffff', '#0d233a', '#8bbc21', '#910000', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a'],
             style: {
                 fontFamily: 'Roboto',
                 backgroundColor: 'transparent',

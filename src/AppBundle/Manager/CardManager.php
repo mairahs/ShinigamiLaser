@@ -32,7 +32,6 @@ class CardManager
      */
     public function addCard($id_player, $card_number)
     {
-        $player = $this->entityManager->getRepository('AppBundle:Player')->find($id_player);
         $card = $this->entityManager->getRepository('AppBundle:Card')->findOneBy(['number' => $card_number]);
         if (empty($card)) {
             throw new \Exception('Carte introuvable');
@@ -43,6 +42,7 @@ class CardManager
         if (!$this->workflow->can($card, 'activation')) {
             throw new \Exception('Erreur carte');
         }
+        $player = $this->entityManager->getRepository('AppBundle:Player')->find($id_player);
         $this->workflow->apply($card, 'activation');
         $card->setPlayer($player);
         $this->entityManager->persist($card);
