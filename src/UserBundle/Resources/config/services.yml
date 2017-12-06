@@ -25,3 +25,7 @@ services:
 
     UserBundle\Manager\AuthenticateService:
         public: true
+
+    UserBundle\EventListener\RequestListener:
+        tags:
+            - { name: kernel.event_listener, event: kernel.request }

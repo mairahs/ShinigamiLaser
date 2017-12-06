@@ -110,12 +110,22 @@ li.error{
 }
 
 .connect{
-    border: 2px solid #fca906;
-    background-color: #fca906;
+    background-color: #fca90680;
 }
 
-.connect a{
-    color:#222222;
+nav ul li {
+    width: 120px;
+    text-align: center;
+}
+
+nav ul a:hover {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.sstitre {
+    font-family: 'star_jediregular';
+    margin-left: 105px;
+    font-size: 2em;
 }
 
 .listcard{
