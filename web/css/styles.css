@@ -128,6 +128,14 @@ nav ul a:hover {
     font-size: 2em;
 }
 
+.welcome-nav{
+    width: auto;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 0 30px;
+}
+
 .listcard{
     padding: 30px;
 }

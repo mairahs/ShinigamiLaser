@@ -1,5 +1,5 @@
 {% if is_user %}
-    <li style="width: 230px;"><a href="{{ path('homepage') }}" style="color:#ffffff; font-size:18px; font-weight: bold;">Bienvenue {{ app.user.username }}</a></li>
+    <li class="welcome-nav">Bienvenue {{ app.user.username }}</li>
     <li><a href="{{ path('homepage') }}">Accueil</a></li>
     <li class="connect"><a href="{{ path('app_dashboard') }}">Dashboard</a></li>
     <li><a href="{{ path('tarif') }}">Tarifs</a></li>
