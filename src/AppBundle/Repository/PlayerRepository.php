@@ -14,6 +14,7 @@ class PlayerRepository extends EntityRepository
 {
     /**
      * @param $numberCard
+     *
      * @return mixed
      */
     public function findPlayerByNumberCard($numberCard)

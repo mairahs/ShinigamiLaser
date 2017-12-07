@@ -15,7 +15,8 @@ use UserBundle\Manager\PlayerManager;
 class UpdateController extends Controller
 {
     /**
-     * edit profile of a player
+     * edit profile of a player.
+     *
      * @param Request $request
      * @param Player  $player
      *
@@ -40,7 +41,8 @@ class UpdateController extends Controller
     }
 
     /**
-     * update avatar
+     * update avatar.
+     *
      * @param Request $request
      * @param Player  $player
      *
@@ -61,7 +63,8 @@ class UpdateController extends Controller
     }
 
     /**
-     * update password
+     * update password.
+     *
      * @param Request $request
      * @param Player  $player
      *

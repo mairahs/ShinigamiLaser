@@ -30,7 +30,8 @@ class AvatarUploadSubscriber implements EventSubscriber
     }
 
     /**
-     * Event automatically move avatar after persist
+     * Event automatically move avatar after persist.
+     *
      * @param LifecycleEventArgs $event
      */
     public function postPersist(LifecycleEventArgs $event)
@@ -65,7 +66,8 @@ class AvatarUploadSubscriber implements EventSubscriber
     }
 
     /**
-     * Event automatically delete the old avatar when update
+     * Event automatically delete the old avatar when update.
+     *
      * @param LifecycleEventArgs $event
      */
     public function preUpdate(LifecycleEventArgs $event)

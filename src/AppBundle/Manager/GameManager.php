@@ -38,7 +38,8 @@ class GameManager
     }
 
     /**
-     * a player join a game
+     * a player join a game.
+     *
      * @param $id_game
      * @param $id_card
      */
@@ -57,7 +58,8 @@ class GameManager
     }
 
     /**
-     * a player unsubscribe a game
+     * a player unsubscribe a game.
+     *
      * @param $id_game
      * @param $id_card
      */
@@ -72,8 +74,10 @@ class GameManager
     }
 
     /**
-     * get all cards for a player with and without his games associated
+     * get all cards for a player with and without his games associated.
+     *
      * @param Game|null $game
+     *
      * @return array|null
      */
     public function getCard(Game $game = null)
@@ -103,7 +107,8 @@ class GameManager
     }
 
     /**
-     * find a player with his number card
+     * find a player with his number card.
+     *
      * @param $card_number
      *
      * @return
@@ -129,7 +134,8 @@ class GameManager
     }
 
     /**
-     * manage the equitable distribution of players beetween the two teams when gametype = team
+     * manage the equitable distribution of players beetween the two teams when gametype = team.
+     *
      * @param Game $game
      *
      * @return int

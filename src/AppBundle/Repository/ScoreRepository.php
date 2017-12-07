@@ -15,7 +15,7 @@ use AppBundle\Entity\Player;
 class ScoreRepository extends \Doctrine\ORM\EntityRepository
 {
     /**
-     * @param Card  $card
+     * @param Card     $card
      * @param GameType $gameType
      *
      * @return array
@@ -62,6 +62,7 @@ class ScoreRepository extends \Doctrine\ORM\EntityRepository
     /**
      * @param Card $card
      * @param $gameType
+     *
      * @return mixed
      */
     public function getTypePartie(Card $card, $gameType)
@@ -82,6 +83,7 @@ class ScoreRepository extends \Doctrine\ORM\EntityRepository
 
     /**
      * @param Card $card
+     *
      * @return array
      */
     public function getWinlose(Card $card)
@@ -100,6 +102,7 @@ class ScoreRepository extends \Doctrine\ORM\EntityRepository
 
     /**
      * @param Player $player
+     *
      * @return array
      */
     public function getLastGamePlayedPlayer(Player $player)
@@ -122,6 +125,7 @@ class ScoreRepository extends \Doctrine\ORM\EntityRepository
 
     /**
      * @param Card $card
+     *
      * @return array
      */
     public function getLastGamePlayedCard(Card $card)

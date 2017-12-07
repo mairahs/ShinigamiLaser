@@ -18,7 +18,8 @@ class CommandManager
     }
 
     /**
-     * Apply a transition delivery on ordered cards for one command
+     * Apply a transition delivery on ordered cards for one command.
+     *
      * @param $id
      */
     public function toOrderFromInStoreStatusCard($id)

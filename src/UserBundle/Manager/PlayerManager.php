@@ -37,7 +37,8 @@ class PlayerManager
     }
 
     /**
-     * recover hashed password, flush in databse and send mail to a playrt
+     * recover hashed password, flush in databse and send mail to a playrt.
+     *
      * @param Player $player
      */
     public function save(Player $player)
@@ -50,7 +51,8 @@ class PlayerManager
     }
 
     /**
-     * reset password
+     * reset password.
+     *
      * @param Player $player
      */
     public function resetPassword(Player $player)
@@ -82,6 +84,7 @@ class PlayerManager
 
     /**
      * @param $token
+     *
      * @return Player|null|object
      */
     public function activate($token)
@@ -108,6 +111,7 @@ class PlayerManager
 
     /**
      * @param Player $player
+     *
      * @return string
      */
     public static function generateToken(Player $player)

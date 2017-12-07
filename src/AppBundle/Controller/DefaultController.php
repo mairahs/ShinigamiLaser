@@ -9,7 +9,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class DefaultController extends Controller
 {
     /**
-     * provide dashboard to one connected player
+     * provide dashboard to one connected player.
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function dashboardAction()
@@ -22,8 +23,10 @@ class DefaultController extends Controller
     }
 
     /**
-     * provide dashboard to another player
+     * provide dashboard to another player.
+     *
      * @param $id
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function showAction($id)

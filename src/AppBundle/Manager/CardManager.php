@@ -24,7 +24,8 @@ class CardManager
     }
 
     /**
-     * Add a card to a player
+     * Add a card to a player.
+     *
      * @param $id_player
      * @param $card_number
      *
@@ -50,8 +51,10 @@ class CardManager
     }
 
     /**
-     * disbla a card
+     * disbla a card.
+     *
      * @param Card $card
+     *
      * @throws \Exception
      */
     public function disableCard(Card $card)

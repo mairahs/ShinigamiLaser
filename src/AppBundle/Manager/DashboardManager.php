@@ -19,8 +19,10 @@ class DashboardManager
     }
 
     /**
-     * provide the dashboard of a connected player
+     * provide the dashboard of a connected player.
+     *
      * @param Player $player
+     *
      * @return array
      */
     public function returnDashboard(Player $player)
@@ -39,8 +41,10 @@ class DashboardManager
     }
 
     /**
-     * provide stats of game to the dashboard of a connected player
+     * provide stats of game to the dashboard of a connected player.
+     *
      * @param $cards
+     *
      * @return array
      */
     public function getStatsDashboard($cards)

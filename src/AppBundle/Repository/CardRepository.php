@@ -41,7 +41,8 @@ class CardRepository extends \Doctrine\ORM\EntityRepository
 
     /**
      * @param Player $player
-     * @param Game $game
+     * @param Game   $game
+     *
      * @return array
      */
     public function getListCardByGame(Player $player, Game $game)
@@ -67,6 +68,7 @@ class CardRepository extends \Doctrine\ORM\EntityRepository
 
     /**
      * @param Etablishment $etablishment
+     *
      * @return mixed
      */
     public function getCountAbonne(Etablishment $etablishment)
@@ -102,6 +104,7 @@ class CardRepository extends \Doctrine\ORM\EntityRepository
 
     /**
      * @param $card_number
+     *
      * @return array
      */
     public function findCardAndPlayerByNumber($card_number)

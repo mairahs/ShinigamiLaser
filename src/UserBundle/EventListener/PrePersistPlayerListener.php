@@ -9,7 +9,8 @@ use UserBundle\Manager\PlayerManager;
 class PrePersistPlayerListener
 {
     /**
-     * Event generate automatically token and activate before persist
+     * Event generate automatically token and activate before persist.
+     *
      * @param LifecycleEventArgs $args
      */
     public function prePersist(LifecycleEventArgs $args)
