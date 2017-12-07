@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for C:\wamp\www\ShinigamiLaser\src/UserBundle</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../.css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="../.css/nv.d3.min.css" rel="stylesheet" type="text/css">
+  <link href="../.css/style.css" rel="stylesheet" type="text/css">
+  <!--[if lt IE 9]>
+  <script src="../.js/html5shiv.min.js"></script>
+  <script src="../.js/respond.min.js"></script>
+  <![endif]-->
+ </head>
+ <body>
+  <header>
+   <div class="container">
+    <div class="row">
+     <div class="col-md-12">
+      <ol class="breadcrumb">
+        <li><a href="../index.html">C:\wamp\www\ShinigamiLaser\src</a></li>
+        <li><a href="index.html">UserBundle</a></li>
+        <li class="active">(Dashboard)</li>
+
+      </ol>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Controller/LostPasswordController.php.html#11">LostPasswordController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controller/RegisterController.php.html#18">RegisterController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controller/SecurityController.php.html#8">SecurityController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controller/UpdateController.php.html#15">UpdateController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="DependancyInjection/BundleExtension.php.html#10">BundleExtension</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="EventListener/PrePersistPlayerListener.php.html#9">PrePersistPlayerListener</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="EventListener/RequestListener.php.html#12">RequestListener</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="EventSubscriber/AvatarUploadSubscriber.php.html#9">AvatarUploadSubscriber</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FormUpdate/UpdateAvatarType.php.html#11">UpdateAvatarType</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FormUpdate/UpdatePasswordType.php.html#16">UpdatePasswordType</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Manager/AuthenticateService.php.html#16">AuthenticateService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Manager/MailManager.php.html#8">MailManager</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Manager/PlayerManager.php.html#11">PlayerManager</a></td><td class="text-right">0%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Manager/AuthenticateService.php.html#16">AuthenticateService</a></td><td class="text-right">182</td></tr>
+       <tr><td><a href="EventSubscriber/AvatarUploadSubscriber.php.html#9">AvatarUploadSubscriber</a></td><td class="text-right">132</td></tr>
+       <tr><td><a href="Controller/UpdateController.php.html#15">UpdateController</a></td><td class="text-right">90</td></tr>
+       <tr><td><a href="Controller/LostPasswordController.php.html#11">LostPasswordController</a></td><td class="text-right">72</td></tr>
+       <tr><td><a href="FormUpdate/UpdatePasswordType.php.html#16">UpdatePasswordType</a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="Controller/RegisterController.php.html#18">RegisterController</a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="EventListener/RequestListener.php.html#12">RequestListener</a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="EventListener/PrePersistPlayerListener.php.html#9">PrePersistPlayerListener</a></td><td class="text-right">6</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Controller/LostPasswordController.php.html#18"><abbr title="LostPasswordController::indexAction">indexAction</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Manager/MailManager.php.html#25"><abbr title="MailManager::sendMailToPlayer">sendMailToPlayer</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FormUpdate/UpdatePasswordType.php.html#76"><abbr title="UpdatePasswordType::configureOptions">configureOptions</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FormUpdate/UpdatePasswordType.php.html#86"><abbr title="UpdatePasswordType::getBlockPrefix">getBlockPrefix</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Manager/AuthenticateService.php.html#23"><abbr title="AuthenticateService::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Manager/AuthenticateService.php.html#32"><abbr title="AuthenticateService::checkPlayer">checkPlayer</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Manager/AuthenticateService.php.html#44"><abbr title="AuthenticateService::isPlayer">isPlayer</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Manager/AuthenticateService.php.html#49"><abbr title="AuthenticateService::redirectFunct">redirectFunct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Manager/MailManager.php.html#14"><abbr title="MailManager::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Manager/MailManager.php.html#46"><abbr title="MailManager::sendMailLostPassword">sendMailLostPassword</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FormUpdate/UpdatePasswordType.php.html#28"><abbr title="UpdatePasswordType::buildForm">buildForm</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Manager/PlayerManager.php.html#22"><abbr title="PlayerManager::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Manager/PlayerManager.php.html#34"><abbr title="PlayerManager::getRepository">getRepository</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Manager/PlayerManager.php.html#43"><abbr title="PlayerManager::save">save</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Manager/PlayerManager.php.html#56"><abbr title="PlayerManager::resetPassword">resetPassword</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Manager/PlayerManager.php.html#67"><abbr title="PlayerManager::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Manager/PlayerManager.php.html#73"><abbr title="PlayerManager::findPassword">findPassword</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Manager/PlayerManager.php.html#87"><abbr title="PlayerManager::activate">activate</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Manager/PlayerManager.php.html#97"><abbr title="PlayerManager::test">test</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FormUpdate/UpdatePasswordType.php.html#33"><abbr title="UpdatePasswordType::anonymousFunction:33#233">anonymousFunction:33#233</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FormUpdate/UpdatePasswordType.php.html#20"><abbr title="UpdatePasswordType::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controller/LostPasswordController.php.html#40"><abbr title="LostPasswordController::updateAction">updateAction</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="EventListener/PrePersistPlayerListener.php.html#15"><abbr title="PrePersistPlayerListener::prePersist">prePersist</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controller/RegisterController.php.html#24"><abbr title="RegisterController::formAction">formAction</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controller/RegisterController.php.html#47"><abbr title="RegisterController::activateAction">activateAction</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controller/SecurityController.php.html#13"><abbr title="SecurityController::loginAction">loginAction</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controller/UpdateController.php.html#28"><abbr title="UpdateController::profilAction">profilAction</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controller/UpdateController.php.html#49"><abbr title="UpdateController::avatarAction">avatarAction</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controller/UpdateController.php.html#70"><abbr title="UpdateController::passwordAction">passwordAction</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="DependancyInjection/BundleExtension.php.html#12"><abbr title="BundleExtension::load">load</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="EventListener/RequestListener.php.html#24"><abbr title="RequestListener::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FormUpdate/UpdateAvatarType.php.html#37"><abbr title="UpdateAvatarType::getBlockPrefix">getBlockPrefix</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="EventListener/RequestListener.php.html#30"><abbr title="RequestListener::onKernelRequest">onKernelRequest</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="EventSubscriber/AvatarUploadSubscriber.php.html#16"><abbr title="AvatarUploadSubscriber::getSubscribedEvents">getSubscribedEvents</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="EventSubscriber/AvatarUploadSubscriber.php.html#27"><abbr title="AvatarUploadSubscriber::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="EventSubscriber/AvatarUploadSubscriber.php.html#36"><abbr title="AvatarUploadSubscriber::postPersist">postPersist</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="EventSubscriber/AvatarUploadSubscriber.php.html#54"><abbr title="AvatarUploadSubscriber::postUpdate">postUpdate</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="EventSubscriber/AvatarUploadSubscriber.php.html#71"><abbr title="AvatarUploadSubscriber::preUpdate">preUpdate</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FormUpdate/UpdateAvatarType.php.html#16"><abbr title="UpdateAvatarType::buildForm">buildForm</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FormUpdate/UpdateAvatarType.php.html#27"><abbr title="UpdateAvatarType::configureOptions">configureOptions</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Manager/PlayerManager.php.html#113"><abbr title="PlayerManager::generateToken">generateToken</abbr></a></td><td class="text-right">0%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Manager/AuthenticateService.php.html#49"><abbr title="AuthenticateService::redirectFunct">redirectFunct</abbr></a></td><td class="text-right">90</td></tr>
+       <tr><td><a href="Controller/LostPasswordController.php.html#18"><abbr title="LostPasswordController::indexAction">indexAction</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Controller/RegisterController.php.html#24"><abbr title="RegisterController::formAction">formAction</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="EventSubscriber/AvatarUploadSubscriber.php.html#71"><abbr title="AvatarUploadSubscriber::preUpdate">preUpdate</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Controller/LostPasswordController.php.html#40"><abbr title="LostPasswordController::updateAction">updateAction</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Controller/UpdateController.php.html#28"><abbr title="UpdateController::profilAction">profilAction</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Controller/UpdateController.php.html#49"><abbr title="UpdateController::avatarAction">avatarAction</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Controller/UpdateController.php.html#70"><abbr title="UpdateController::passwordAction">passwordAction</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="EventListener/RequestListener.php.html#30"><abbr title="RequestListener::onKernelRequest">onKernelRequest</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="EventSubscriber/AvatarUploadSubscriber.php.html#36"><abbr title="AvatarUploadSubscriber::postPersist">postPersist</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="EventListener/PrePersistPlayerListener.php.html#15"><abbr title="PrePersistPlayerListener::prePersist">prePersist</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="EventSubscriber/AvatarUploadSubscriber.php.html#54"><abbr title="AvatarUploadSubscriber::postUpdate">postUpdate</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="FormUpdate/UpdatePasswordType.php.html#28"><abbr title="UpdatePasswordType::buildForm">buildForm</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="FormUpdate/UpdatePasswordType.php.html#33"><abbr title="UpdatePasswordType::anonymousFunction:33#233">anonymousFunction:33#233</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Manager/AuthenticateService.php.html#32"><abbr title="AuthenticateService::checkPlayer">checkPlayer</abbr></a></td><td class="text-right">6</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 5.2.3</a> using <a href="https://secure.php.net/" target="_top">PHP 7.0.10</a> with <a href="https://xdebug.org/">Xdebug 2.4.0</a> and <a href="https://phpunit.de/">PHPUnit 6.4.4</a> at Wed Dec 6 14:32:42 UTC 2017.</small>
+    </p>
+   </footer>
+  </div>
+  <script src="../.js/jquery.min.js" type="text/javascript"></script>
+  <script src="../.js/bootstrap.min.js" type="text/javascript"></script>
+  <script src="../.js/holder.min.js" type="text/javascript"></script>
+  <script src="../.js/d3.min.js" type="text/javascript"></script>
+  <script src="../.js/nv.d3.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+$(document).ready(function() {
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#classCoverageDistribution svg')
+      .datum(getCoverageDistributionData([13,0,0,0,0,0,0,0,0,0,0,1], "Class Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#methodCoverageDistribution svg')
+      .datum(getCoverageDistributionData([41,0,0,0,0,0,0,0,0,0,0,0], "Method Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getCoverageDistributionData(data, label) {
+    var labels = [
+      '0%',
+      '0-10%',
+      '10-20%',
+      '20-30%',
+      '30-40%',
+      '40-50%',
+      '50-60%',
+      '60-70%',
+      '70-80%',
+      '80-90%',
+      '90-100%',
+      '100%'
+    ];
+    var values = [];
+    $.each(labels, function(key) {
+      values.push({x: labels[key], y: data[key]});
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Cyclomatic Complexity');
+
+    d3.select('#classComplexity svg')
+      .datum(getComplexityData([[0,8,"<a href=\"Controller\/LostPasswordController.php.html#11\">LostPasswordController<\/a>"],[0,6,"<a href=\"Controller\/RegisterController.php.html#18\">RegisterController<\/a>"],[0,1,"<a href=\"Controller\/SecurityController.php.html#8\">SecurityController<\/a>"],[0,9,"<a href=\"Controller\/UpdateController.php.html#15\">UpdateController<\/a>"],[0,1,"<a href=\"DependancyInjection\/BundleExtension.php.html#10\">BundleExtension<\/a>"],[0,2,"<a href=\"EventListener\/PrePersistPlayerListener.php.html#9\">PrePersistPlayerListener<\/a>"],[0,4,"<a href=\"EventListener\/RequestListener.php.html#12\">RequestListener<\/a>"],[0,11,"<a href=\"EventSubscriber\/AvatarUploadSubscriber.php.html#9\">AvatarUploadSubscriber<\/a>"],[0,3,"<a href=\"FormUpdate\/UpdateAvatarType.php.html#11\">UpdateAvatarType<\/a>"],[0,7,"<a href=\"FormUpdate\/UpdatePasswordType.php.html#16\">UpdatePasswordType<\/a>"],[0,13,"<a href=\"Manager\/AuthenticateService.php.html#16\">AuthenticateService<\/a>"],[0,3,"<a href=\"Manager\/MailManager.php.html#8\">MailManager<\/a>"],[0,9,"<a href=\"Manager\/PlayerManager.php.html#11\">PlayerManager<\/a>"],[100,0,"<a href=\"UserBundle.php.html#7\">UserBundle<\/a>"]], 'Class Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Method Complexity');
+
+    d3.select('#methodComplexity svg')
+      .datum(getComplexityData([[0,5,"<a href=\"Controller\/LostPasswordController.php.html#18\">LostPasswordController::indexAction<\/a>"],[0,3,"<a href=\"Controller\/LostPasswordController.php.html#40\">LostPasswordController::updateAction<\/a>"],[0,5,"<a href=\"Controller\/RegisterController.php.html#24\">RegisterController::formAction<\/a>"],[0,1,"<a href=\"Controller\/RegisterController.php.html#47\">RegisterController::activateAction<\/a>"],[0,1,"<a href=\"Controller\/SecurityController.php.html#13\">SecurityController::loginAction<\/a>"],[0,3,"<a href=\"Controller\/UpdateController.php.html#28\">UpdateController::profilAction<\/a>"],[0,3,"<a href=\"Controller\/UpdateController.php.html#49\">UpdateController::avatarAction<\/a>"],[0,3,"<a href=\"Controller\/UpdateController.php.html#70\">UpdateController::passwordAction<\/a>"],[0,1,"<a href=\"DependancyInjection\/BundleExtension.php.html#12\">BundleExtension::load<\/a>"],[0,2,"<a href=\"EventListener\/PrePersistPlayerListener.php.html#15\">PrePersistPlayerListener::prePersist<\/a>"],[0,1,"<a href=\"EventListener\/RequestListener.php.html#24\">RequestListener::__construct<\/a>"],[0,3,"<a href=\"EventListener\/RequestListener.php.html#30\">RequestListener::onKernelRequest<\/a>"],[0,1,"<a href=\"EventSubscriber\/AvatarUploadSubscriber.php.html#16\">AvatarUploadSubscriber::getSubscribedEvents<\/a>"],[0,1,"<a href=\"EventSubscriber\/AvatarUploadSubscriber.php.html#27\">AvatarUploadSubscriber::__construct<\/a>"],[0,3,"<a href=\"EventSubscriber\/AvatarUploadSubscriber.php.html#36\">AvatarUploadSubscriber::postPersist<\/a>"],[0,2,"<a href=\"EventSubscriber\/AvatarUploadSubscriber.php.html#54\">AvatarUploadSubscriber::postUpdate<\/a>"],[0,4,"<a href=\"EventSubscriber\/AvatarUploadSubscriber.php.html#71\">AvatarUploadSubscriber::preUpdate<\/a>"],[0,1,"<a href=\"FormUpdate\/UpdateAvatarType.php.html#16\">UpdateAvatarType::buildForm<\/a>"],[0,1,"<a href=\"FormUpdate\/UpdateAvatarType.php.html#27\">UpdateAvatarType::configureOptions<\/a>"],[0,1,"<a href=\"FormUpdate\/UpdateAvatarType.php.html#37\">UpdateAvatarType::getBlockPrefix<\/a>"],[0,1,"<a href=\"FormUpdate\/UpdatePasswordType.php.html#20\">UpdatePasswordType::__construct<\/a>"],[0,2,"<a href=\"FormUpdate\/UpdatePasswordType.php.html#28\">UpdatePasswordType::buildForm<\/a>"],[0,2,"<a href=\"FormUpdate\/UpdatePasswordType.php.html#33\">UpdatePasswordType::anonymousFunction:33#233<\/a>"],[0,1,"<a href=\"FormUpdate\/UpdatePasswordType.php.html#76\">UpdatePasswordType::configureOptions<\/a>"],[0,1,"<a href=\"FormUpdate\/UpdatePasswordType.php.html#86\">UpdatePasswordType::getBlockPrefix<\/a>"],[0,1,"<a href=\"Manager\/AuthenticateService.php.html#23\">AuthenticateService::__construct<\/a>"],[0,2,"<a href=\"Manager\/AuthenticateService.php.html#32\">AuthenticateService::checkPlayer<\/a>"],[0,1,"<a href=\"Manager\/AuthenticateService.php.html#44\">AuthenticateService::isPlayer<\/a>"],[0,9,"<a href=\"Manager\/AuthenticateService.php.html#49\">AuthenticateService::redirectFunct<\/a>"],[0,1,"<a href=\"Manager\/MailManager.php.html#14\">MailManager::__construct<\/a>"],[0,1,"<a href=\"Manager\/MailManager.php.html#25\">MailManager::sendMailToPlayer<\/a>"],[0,1,"<a href=\"Manager\/MailManager.php.html#46\">MailManager::sendMailLostPassword<\/a>"],[0,1,"<a href=\"Manager\/PlayerManager.php.html#22\">PlayerManager::__construct<\/a>"],[0,1,"<a href=\"Manager\/PlayerManager.php.html#34\">PlayerManager::getRepository<\/a>"],[0,1,"<a href=\"Manager\/PlayerManager.php.html#43\">PlayerManager::save<\/a>"],[0,1,"<a href=\"Manager\/PlayerManager.php.html#56\">PlayerManager::resetPassword<\/a>"],[0,1,"<a href=\"Manager\/PlayerManager.php.html#67\">PlayerManager::update<\/a>"],[0,1,"<a href=\"Manager\/PlayerManager.php.html#73\">PlayerManager::findPassword<\/a>"],[0,1,"<a href=\"Manager\/PlayerManager.php.html#87\">PlayerManager::activate<\/a>"],[0,1,"<a href=\"Manager\/PlayerManager.php.html#97\">PlayerManager::test<\/a>"],[0,1,"<a href=\"Manager\/PlayerManager.php.html#113\">PlayerManager::generateToken<\/a>"]], 'Method Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getComplexityData(data, label) {
+    var values = [];
+    $.each(data, function(key) {
+      var value = Math.round(data[key][0]*100) / 100;
+      values.push({
+        x: value,
+        y: data[key][1],
+        class: data[key][2],
+        size: 0.05,
+        shape: 'diamond'
+      });
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+});
+  </script>
+ </body>
+</html>

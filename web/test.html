@@ -1,0 +1,130 @@
+PHPUnit 6.4.4 by Sebastian Bergmann and contributors.
+
+.                                                                   1 / 1 (100%)HTTP/1.1 200 OK
+Cache-Control: no-cache, private
+Content-Type:  text/html; charset=UTF-8
+Date:          Thu, 07 Dec 2017 10:13:22 GMT
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>ShinigamiLaser-Home</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="/css/lib/materialize.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/lib/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/fonts/star_jedi/stylesheet.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/styles.css" rel="stylesheet" type="text/css"/>
+    
+</head>
+<body>
+
+
+
+<nav class="menu-cust">
+    <div class="nav-wrapper">
+        <a id="logo-container" href="/" class="brand-logo" style="height: 100%;"><img src="/images/logo.PNG" style="height: 100%;"></a>
+                <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+                <li><a href="/">Accueil</a></li>
+    <li><a href="/tarifs">Tarifs</a></li>
+    <li><a href="/contact">Contact</a></li>
+    <li class="connect"><a href="/login">Se connecter</a></li>
+    <li><a href="/user/register">Rejoins nous</a></li>
+        </ul>
+        <ul class="side-nav" id="mobile-demo">
+                <li><a href="/">Accueil</a></li>
+    <li><a href="/tarifs">Tarifs</a></li>
+    <li><a href="/contact">Contact</a></li>
+    <li class="connect"><a href="/login">Se connecter</a></li>
+    <li><a href="/user/register">Rejoins nous</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+        <h1 class="main-title center">ShinigamiLaser</h1>
+    <div class="row center">
+        <h5 class="header col s12 light">Bienvenue dans un monde parallèle de lutte pour sa propre survie</h5>
+    </div>
+    <div class="row center">
+        <a href="/user/register" id="download-button" class="btn-large waves-effect waves-light">Enregistre ta carte de fidélité</a>
+    </div>
+</div>
+<footer class="page-footer card no-margin">
+    <div class="row">
+        <div class="col s4">
+            <h5 class="white-text">A propos de nous</h5>
+            <p class="grey-text text-lighten-4">Le plus grand laser game de Paris intra-muros vous propose une
+                expérience de jeu fabuleuse. Venez vous affronter dans un labyrinthe aux décors fantastiques. Immersion
+                totale garantie !.</p>
+        </div>
+        <div class="col s4">
+            <h5 class="white-text">Réseaux Sociaux</h5>
+            <ul>
+                <li><a class="white-text" href="#"><i class="fa fa-facebook center" aria-hidden="true"></i></a></li>
+                <li><a class="white-text" href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                <li><a class="white-text" href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+            </ul>
+        </div>
+        <div class="col s4">
+            <h5 class="white-text">Infos pratiques</h5>
+            <ul>
+                <li><a class="white-text" href="#">Horaires</a></li>
+                <li><a class="white-text" href="#">ShinigamiLaser en France</a></li>
+                <li><a class="white-text" href="#">Nous recrutons des développeurs Symfony</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <p>Made by Antoine et Maïrah- Tous Droits Réservés- Novembre 2017</p>
+    </div>
+</footer>
+<!--  Scripts-->
+<script type="text/javascript" src="/js/lib/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="/js/lib/materialize.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('select').material_select();
+        $(".button-collapse").sideNav();
+        Materialize.updateTextFields();
+        var date_min = new Date();
+        $('.datepicker').pickadate({
+            selectMonths: true, // Creates a dropdown to control month
+            selectYears: 100, // Creates a dropdown to control month
+            min: date_min,
+            today: false,
+            clear: 'Clear',
+            close: 'Ok',
+            closeOnSelect: false, // Close upon selecting a date,
+            format: 'dd/mm/yyyy'
+        });
+        $('.datepicker_2').pickadate({
+            selectMonths: true, // Creates a dropdown to control month
+            selectYears: 2, // Creates a dropdown to control month
+            min: date_min,
+            today: "Aujourd'hui",
+            clear: 'Clear',
+            close: 'Ok',
+            closeOnSelect: false, // Close upon selecting a date,
+            format: 'dd/mm/yyyy'
+        });
+        $("body").delegate(".row.has-error input", "change", function() {
+            $(this).parents('.input-field').find('ul').remove();
+        });
+        $("body").delegate(".row.has-error textarea", "change", function() {
+            $(this).parents('.input-field').find('ul').remove();
+        });
+    });
+</script>
+
+</body>
+</html>
+
+
+Time: 526 ms, Memory: 20.00MB
+
+OK (1 test, 1 assertion)
