@@ -25,9 +25,8 @@ class DefaultControllerTest extends WebTestCase
     {
         $crawler = $this->client->request('GET', '/admin/dashboard');
 
-
         $this->assertSame(Response::HTTP_OK, $this->client->getResponse()->getStatusCode());
-//        $this->assertSame('Admin Dashboard', $crawler->filter('h1')->text());
+        $this->assertSame('Bienvenue test', $crawler->filter('p')->text());
     }
 
     protected function tearDown()

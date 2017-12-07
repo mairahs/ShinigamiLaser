@@ -4,6 +4,8 @@
 namespace Tests\TestBundle;
 
 
+use AppBundle\Entity\Admin;
+
 trait LoginTrait
 {
     public function logIn()
@@ -11,6 +13,19 @@ trait LoginTrait
         $client = static::createClient();
 
         $crawler = $client->request('GET', '/admin/login');
+
+
+        $em = $client->getContainer()->get('doctrine.orm.entity_manager');
+
+        $encoder = $client->getContainer()->get('security.password_encoder');
+
+        $admin = new Admin();
+        $admin->setPassword($encoder->encodePassword($admin, 'test'));
+        $admin->setUsername('test');
+        $admin->setEmail('test@test.com');
+
+        $em->persist($admin);
+        $em->flush();
 
         $nodeButton = $crawler->selectButton('Connexion');
 
