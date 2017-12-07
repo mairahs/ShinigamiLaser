@@ -4,6 +4,9 @@ namespace AppBundle\Repository;
 
 class CommandRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * @return array
+     */
     public function findAllCommandsWithEtablishment()
     {
         $queryBuilder = $this->createQueryBuilder('c')
@@ -15,6 +18,10 @@ class CommandRepository extends \Doctrine\ORM\EntityRepository
                      ->getResult();
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     */
     public function findOneCommandWithEtablishment($id)
     {
         $queryBuilder = $this->createQueryBuilder('c')
@@ -28,6 +35,10 @@ class CommandRepository extends \Doctrine\ORM\EntityRepository
         return $queryBuilder->getQuery()->getSingleResult();
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     */
     public function findOneCommandWithCards($id)
     {
         $queryBuilder = $this->createQueryBuilder('co')

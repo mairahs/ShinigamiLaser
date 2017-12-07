@@ -18,6 +18,10 @@ class MailManager
         $this->template = $template;
     }
 
+    /**
+     * send mail to a player to activate his account
+     * @param Player $player
+     */
     public function sendMailToPlayer(Player $player)
     {
         $mail = (new \Swift_Message('Activation de votre compte ShinigamiLaser'))
@@ -35,6 +39,10 @@ class MailManager
         $this->mailer->send($mail);
     }
 
+    /**
+     * send mail to a player when he has lost his password
+     * @param Player $player
+     */
     public function sendMailLostPassword(Player $player)
     {
         $mail = (new \Swift_Message('Réinitialisation de votre mot de passe ShinigamiLaser'))

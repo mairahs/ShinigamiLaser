@@ -25,13 +25,22 @@ class AuthenticateService
         $this->tokenStorage = $tokenStorage;
     }
 
+    /**
+     * check if the player connected is not a real player =>access denied
+     * @param Player $player
+     */
     public function checkPlayer(Player $player)
     {
         if ($this->tokenStorage->getToken()->getUser()->getId() !== $player->getId()) {
-            throw new AccessDeniedException('Accès non authorisé');
+            throw new AccessDeniedException('Accès non autorisé');
         }
     }
 
+    /**
+     * check if the player connected is a real player
+     * @param Player $player
+     * @return bool
+     */
     public function isPlayer(Player $player)
     {
         return $this->tokenStorage->getToken()->getUser()->getId() === $player->getId();

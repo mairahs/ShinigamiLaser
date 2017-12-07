@@ -10,6 +10,10 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class CommandController extends Controller
 {
+    /**
+     * List of command
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function indexAction()
     {
         $commands = $this->getDoctrine()->getManager()->getRepository('AppBundle:Command')->findAllCommandsWithEtablishment();
@@ -17,6 +21,11 @@ class CommandController extends Controller
         return $this->render('AdminBundle:command:index.html.twig', ['commands' => $commands]);
     }
 
+    /**
+     * Form for add a new command
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function addAction(Request $request)
     {
         $command = new Command();
@@ -37,6 +46,11 @@ class CommandController extends Controller
         ]);
     }
 
+    /**
+     * View one command
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function showAction($id)
     {
         $command = $this->getDoctrine()->getManager()->getRepository('AppBundle:Command')->findOneCommandWithEtablishment($id);
@@ -48,6 +62,11 @@ class CommandController extends Controller
         return $this->render('@Admin/command/show.html.twig', ['command' => $command]);
     }
 
+    /**
+     * Changing command status workflow from in_store to order
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
     public function deliveryAction($id)
     {
         $command = $this->getDoctrine()->getManager()->getRepository('AppBundle:Command')->find($id);

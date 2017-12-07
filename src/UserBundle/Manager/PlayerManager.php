@@ -28,11 +28,18 @@ class PlayerManager
         $this->mailManager = $mailManager;
     }
 
+    /**
+     * @return \AppBundle\Repository\PlayerRepository|\Doctrine\Common\Persistence\ObjectRepository
+     */
     protected function getRepository()
     {
         return $this->entityManager->getRepository(Player::class);
     }
 
+    /**
+     * recover hashed password, flush in databse and send mail to a playrt
+     * @param Player $player
+     */
     public function save(Player $player)
     {
         $hashedPassword = $this->encoder->getEncoder(Player::class)->encodePassword($player->getPassword(), $player);
@@ -42,6 +49,10 @@ class PlayerManager
         $this->mailManager->sendMailToPlayer($player);
     }
 
+    /**
+     * reset password
+     * @param Player $player
+     */
     public function resetPassword(Player $player)
     {
         $hashedPassword = $this->encoder->getEncoder(Player::class)->encodePassword($player->getPassword(), $player);
@@ -50,6 +61,9 @@ class PlayerManager
         $this->entityManager->flush();
     }
 
+    /**
+     * @param Player $player
+     */
     public function update(Player $player)
     {
         $this->entityManager->persist($player);
@@ -66,6 +80,10 @@ class PlayerManager
 //        }
     }
 
+    /**
+     * @param $token
+     * @return Player|null|object
+     */
     public function activate($token)
     {
         $player = $this->entityManager->getRepository('AppBundle:Player')->findOneBy(['token' => $token]);
@@ -88,6 +106,10 @@ class PlayerManager
         return $player;
     }
 
+    /**
+     * @param Player $player
+     * @return string
+     */
     public static function generateToken(Player $player)
     {
         $username = $player->getUsername();

@@ -10,6 +10,11 @@ use UserBundle\Manager\PlayerManager;
 
 class LostPasswordController extends Controller
 {
+    /**
+     * send mail when a player lost his password
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function indexAction(Request $request)
     {
         $email = $request->request->get('_email');
@@ -26,6 +31,12 @@ class LostPasswordController extends Controller
         return $this->render('UserBundle:lostpassword:lostpassword.index.html.twig');
     }
 
+    /**
+     * when a player want update his password
+     * @param Request $request
+     * @param $token
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function updateAction(Request $request, $token)
     {
         $player = $this->getDoctrine()->getRepository('AppBundle:Player')->findOneBy(['token' => $token]);
