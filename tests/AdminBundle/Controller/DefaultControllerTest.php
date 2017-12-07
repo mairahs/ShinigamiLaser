@@ -1,6 +1,6 @@
 <?php
 
-namespace AdminBundle\Tests\Controller;
+namespace Tests\AdminBundle\Controller;
 
 use PHPUnit\Framework\TestCase;
 
