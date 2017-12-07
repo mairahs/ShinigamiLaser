@@ -3,11 +3,10 @@
  * Created by PhpStorm.
  * User: Tonio
  * Date: 29/11/2017
- * Time: 21:51
+ * Time: 21:51.
  */
 
 namespace AppBundle\DataFixtures\ORM;
-
 
 use AppBundle\Entity\Card;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -19,7 +18,7 @@ class SetCard extends Fixture
     {
         $cards = $manager->getRepository('AppBundle:Card')->findAll();
         $players = $manager->getRepository('AppBundle:Player')->findAll();
-        foreach($cards as $card) {
+        foreach ($cards as $card) {
             $rand = rand(1, 10);
             if (10 !== $rand) {
                 $key = array_rand($players, 1);
@@ -32,10 +31,11 @@ class SetCard extends Fixture
         }
         $manager->flush();
     }
+
     public function getDependencies()
     {
         return array(
-            SetCommand::class
+            SetCommand::class,
         );
     }
 }

@@ -49,24 +49,25 @@ class AuthenticateService
     public function redirectFunct($route)
     {
         $redirect = null;
-        if(is_null($this->tokenStorage->getToken())) {
+        if (is_null($this->tokenStorage->getToken())) {
             return $redirect;
         }
         $user = $this->tokenStorage->getToken()->getUser();
-        switch ($route){
+        switch ($route) {
             case 'user_login':
             case 'admin_login':
             case 'user_register':
             case 'user_register_confirmation':
             case 'user_register_activate':
-                if($user instanceof Player){
-                    $redirect = "app_dashboard";
+                if ($user instanceof Player) {
+                    $redirect = 'app_dashboard';
                 }
-                if($user instanceof Admin){
-                    $redirect = "admin_dashboard";
+                if ($user instanceof Admin) {
+                    $redirect = 'admin_dashboard';
                 }
             break;
         }
+
         return $redirect;
     }
 }

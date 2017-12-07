@@ -139,8 +139,9 @@ class Command
     {
         return $this->etablishment;
     }
+
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct()
     {
@@ -148,7 +149,7 @@ class Command
     }
 
     /**
-     * Add card
+     * Add card.
      *
      * @param \AppBundle\Entity\Card $card
      *
@@ -162,7 +163,7 @@ class Command
     }
 
     /**
-     * Remove card
+     * Remove card.
      *
      * @param \AppBundle\Entity\Card $card
      */
@@ -172,7 +173,7 @@ class Command
     }
 
     /**
-     * Get cards
+     * Get cards.
      *
      * @return \Doctrine\Common\Collections\Collection
      */

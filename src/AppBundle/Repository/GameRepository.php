@@ -91,7 +91,4 @@ class GameRepository extends EntityRepository
 
         return $qb->getQuery()->getResult();
     }
-
-
-
 }

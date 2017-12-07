@@ -2,7 +2,6 @@
 
 namespace AdminBundle\Controller;
 
-use AppBundle\Entity\Card;
 use AppBundle\Entity\Command;
 use AppBundle\Form\CommandType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -20,7 +19,6 @@ class CommandController extends Controller
         $commands = $this->getDoctrine()->getManager()->getRepository('AppBundle:Command')->findAllCommandsWithEtablishment();
 
         return $this->render('AdminBundle:command:index.html.twig', ['commands' => $commands]);
-
     }
 
     /**
@@ -76,6 +74,6 @@ class CommandController extends Controller
 
         $commandManager->toOrderFromInStoreStatusCard($command->getId());
 
-        return $this->redirectToRoute('admin_command_show', ['id'=>$command->getId()]);
+        return $this->redirectToRoute('admin_command_show', ['id' => $command->getId()]);
     }
 }

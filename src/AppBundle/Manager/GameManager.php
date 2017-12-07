@@ -80,42 +80,43 @@ class GameManager
     {
         $player = $this->tokenStorage->getToken()->getUser();
         $cards = null;
-        if($player instanceof Player){
-            if(!is_null($game)){
+        if ($player instanceof Player) {
+            if (!is_null($game)) {
                 $cards = $this->entityManager->getRepository('AppBundle:Card')->getListCardByGame($player, $game);
-            }else{
+            } else {
                 $cards = $this->entityManager->getRepository('AppBundle:Card')->getListCard($player);
             }
         }
+
         return $cards;
     }
 
-    /**
-     * check if a player has a card or not
-     * @param Game $game
-     * @return bool
-     */
-    public function hasCard(Game $game){
+    public function hasCard(Game $game)
+    {
         $player = $this->tokenStorage->getToken()->getUser();
-        $cards = "0";
-        if($player instanceof Player){
+        $cards = '0';
+        if ($player instanceof Player) {
             $cards = $this->entityManager->getRepository('AppBundle:Card')->hasCard($player, $game);
         }
-        return "0" !== $cards;
+
+        return '0' !== $cards;
     }
 
     /**
      * find a player with his number card
      * @param $card_number
+     *
      * @return
+     *
      * @throws \Exception
      */
-    public function findPlayerCard($id_game, $card_number){
+    public function findPlayerCard($id_game, $card_number)
+    {
         $card = $this->entityManager->getRepository('AppBundle:Card')->findCardAndPlayerByNumber($card_number);
         if (empty($card)) {
             throw new \Exception('Carte introuvable');
         }
-        if(!$this->workflow->can($card[0], 'deactivation')) {
+        if (!$this->workflow->can($card[0], 'deactivation')) {
             throw new \Exception("La carte n'est pas valide");
         }
         $game = $this->entityManager->getRepository('AppBundle:Game')->find($id_game);
@@ -123,26 +124,29 @@ class GameManager
         if ($hasCard) {
             throw new \Exception('Le joueur est déjà dans la partie');
         }
+
         return $card[0]->getId();
     }
 
     /**
      * manage the equitable distribution of players beetween the two teams when gametype = team
      * @param Game $game
+     *
      * @return int
      */
     public function manageTeam(Game $game)
     {
-        if(!$game->getGameType()->getTeam()){
+        if (!$game->getGameType()->getTeam()) {
             return 0;
         }
         $team1 = $this->entityManager->getRepository('AppBundle:Score')->findBy(['team' => 1, 'games' => $game]);
         $team2 = $this->entityManager->getRepository('AppBundle:Score')->findBy(['team' => 2, 'games' => $game]);
-        if($team1 <= $team2){
+        if ($team1 <= $team2) {
             $team = 1;
-        }else{
+        } else {
             $team = 2;
         }
+
         return $team;
     }
 }

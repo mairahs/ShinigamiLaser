@@ -20,8 +20,8 @@ class CardType extends AbstractType
                 TextType::class,
                 [
                     'attr' => [
-                        'maxlength' => '10'
-                    ]
+                        'maxlength' => '10',
+                    ],
                 ]
             );
     }

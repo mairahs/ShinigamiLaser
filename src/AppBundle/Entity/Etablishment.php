@@ -172,8 +172,9 @@ class Etablishment
     {
         return $this->getName();
     }
+
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct()
     {
@@ -182,7 +183,7 @@ class Etablishment
     }
 
     /**
-     * Add command
+     * Add command.
      *
      * @param \AppBundle\Entity\Command $command
      *
@@ -196,7 +197,7 @@ class Etablishment
     }
 
     /**
-     * Remove command
+     * Remove command.
      *
      * @param \AppBundle\Entity\Command $command
      */
@@ -206,7 +207,7 @@ class Etablishment
     }
 
     /**
-     * Get commands
+     * Get commands.
      *
      * @return \Doctrine\Common\Collections\Collection
      */

@@ -3,11 +3,10 @@
  * Created by PhpStorm.
  * User: Tonio
  * Date: 30/11/2017
- * Time: 09:03
+ * Time: 09:03.
  */
 
 namespace AppBundle\DataFixtures\ORM;
-
 
 use AppBundle\Entity\Provider;
 use Doctrine\Bundle\FixturesBundle\Fixture;

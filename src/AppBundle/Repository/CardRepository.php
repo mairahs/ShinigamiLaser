@@ -59,7 +59,7 @@ class CardRepository extends \Doctrine\ORM\EntityRepository
             ->andWhere('score.games = :game')
             ->setParameters([
                 'player' => $player,
-                'game' => $game
+                'game' => $game,
             ]);
 
         return $queryBuilder->getQuery()->getResult();
@@ -79,15 +79,12 @@ class CardRepository extends \Doctrine\ORM\EntityRepository
             ->andWhere('card.player IS NOT NULL')
             ->setParameter('etablishment', $etablishment)
         ;
+
         return $queryBuilder->getQuery()->getSingleScalarResult();
     }
 
-    /**
-     * @param Player $player
-     * @param Game $game
-     * @return mixed
-     */
-    public function hasCard(Player $player, Game $game){
+    public function hasCard(Player $player, Game $game)
+    {
         $queryBuilder = $this->createQueryBuilder('card')
             ->join('card.score', 'score')
             ->join('score.games', 'games')
@@ -96,9 +93,10 @@ class CardRepository extends \Doctrine\ORM\EntityRepository
             ->andWhere('score.games = :game')
             ->setParameters([
                 'player' => $player,
-                'game' => $game
+                'game' => $game,
             ])
         ;
+
         return $queryBuilder->getQuery()->getSingleScalarResult();
     }
 
@@ -113,9 +111,10 @@ class CardRepository extends \Doctrine\ORM\EntityRepository
             ->addSelect('player')
             ->where('card.number = :card_number')
             ->setParameters([
-                'card_number' => $card_number
+                'card_number' => $card_number,
             ])
         ;
+
         return $queryBuilder->getQuery()->getResult();
     }
 }

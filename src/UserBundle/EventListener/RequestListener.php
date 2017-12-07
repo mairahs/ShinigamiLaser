@@ -1,8 +1,6 @@
 <?php
 
-
 namespace UserBundle\EventListener;
-
 
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
@@ -33,7 +31,7 @@ class RequestListener
             return;
         }
         $route = $this->authenticateService->redirectFunct($event->getRequest()->get('_route'));
-        if(!is_null($route)){
+        if (!is_null($route)) {
             $response = new RedirectResponse($this->router->generate($route));
             $event->setResponse($response);
         }
