@@ -1,6 +1,9 @@
 imports:
     - { resource: config_dev.yml }
 
+parameters:
+  database_name: ShinigamiLaser_test
+
 framework:
     test: ~
     session:
@@ -14,3 +17,16 @@ web_profiler:
 
 swiftmailer:
     disable_delivery: true
+
+security:
+#    providers:
+#        in_memory:
+#            memory:
+#                users:
+#                    ryan:
+#                        password: ryanpass
+#                        roles: 'ROLE_USER'
+    firewalls:
+        # replace 'main' by the name of your own firewall
+        main:
+            http_basic: ~

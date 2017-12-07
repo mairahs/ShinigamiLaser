@@ -3,11 +3,10 @@
  * Created by PhpStorm.
  * User: Tonio
  * Date: 29/11/2017
- * Time: 21:50
+ * Time: 21:50.
  */
 
 namespace AppBundle\DataFixtures\ORM;
-
 
 use AppBundle\Entity\Game;
 use AppBundle\Entity\Score;
@@ -86,13 +85,14 @@ class SetGameAndScore extends Fixture
         }
         $manager->flush();
     }
+
     public function getDependencies()
     {
         return array(
             SetEtablishment::class,
             SetTimeSlot::class,
             SetGameType::class,
-            SetCard::class
+            SetCard::class,
         );
     }
 }

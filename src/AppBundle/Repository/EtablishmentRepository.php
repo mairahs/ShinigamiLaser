@@ -21,7 +21,7 @@ class EtablishmentRepository extends EntityRepository
         $queryBuilder = $this->createQueryBuilder('etablishment')
             ->leftJoin('etablishment.commands', 'commands')
             ->leftJoin('commands.cards', 'cards')
-            ->leftJoin('cards.player','player')
+            ->leftJoin('cards.player', 'player')
             ->addSelect('commands')
             ->addSelect('cards')
             ->addSelect('player')
@@ -30,24 +30,23 @@ class EtablishmentRepository extends EntityRepository
         return $queryBuilder->getQuery()->getResult();
     }
 
-    public function  findAllEtablishmentsWithBookingFalse()
+    public function findAllEtablishmentsWithBookingFalse()
     {
         $queryBuilder = $this->createQueryBuilder('etablishment')
-                             ->leftJoin('etablishment.games','game')
+                             ->leftJoin('etablishment.games', 'game')
                              ->addSelect('game')
                              ->where('game.booking = 0')
                              ->orderBy('game.playedAt', 'DESC');
 
         return $queryBuilder->getQuery()->getResult();
-
     }
 
     public function findAllEtablishmentsWithBookingTrue()
     {
         $queryBuilder = $this->createQueryBuilder('etablishment')
-            ->leftJoin('etablishment.games','game')
-            ->leftJoin('game.score','score')
-            ->leftJoin('score.cards','card')
+            ->leftJoin('etablishment.games', 'game')
+            ->leftJoin('game.score', 'score')
+            ->leftJoin('score.cards', 'card')
             ->addSelect('game')
             ->addSelect('score')
             ->addSelect('card')
@@ -56,5 +55,4 @@ class EtablishmentRepository extends EntityRepository
 
         return $queryBuilder->getQuery()->getResult();
     }
-
 }

@@ -75,9 +75,9 @@ class GameType
     }
 
     /**
-     * Set team
+     * Set team.
      *
-     * @param boolean $team
+     * @param bool $team
      *
      * @return GameType
      */
@@ -89,9 +89,9 @@ class GameType
     }
 
     /**
-     * Get team
+     * Get team.
      *
-     * @return boolean
+     * @return bool
      */
     public function getTeam()
     {

@@ -3,11 +3,10 @@
  * Created by PhpStorm.
  * User: Tonio
  * Date: 29/11/2017
- * Time: 21:50
+ * Time: 21:50.
  */
 
 namespace AppBundle\DataFixtures\ORM;
-
 
 use AppBundle\Entity\GameType;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -21,17 +20,17 @@ class SetGameType extends Fixture
             'Team' => [
                 'min' => 300,
                 'max' => 1100,
-                'team' => 1
+                'team' => 1,
             ],
             'FFA' => [
                 'min' => 800,
                 'max' => 2000,
-                'team' => 0
+                'team' => 0,
             ],
             'Dracula' => [
                 'min' => 20,
                 'max' => 100,
-                'team' => 0
+                'team' => 0,
             ],
         ];
         foreach ($gametype_arr as $type => $value) {

@@ -10,7 +10,6 @@ class PrePersistCard
 {
     public function prePersist(LifecycleEventArgs $args)
     {
-
         $object = $args->getObject();
         if (!$object instanceof Card) {
             return;

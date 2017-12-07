@@ -14,19 +14,18 @@ class EtablishmentController extends Controller
         return $this->render('@Admin/etablishment/index.html.twig', ['etablishments' => $etablishments]);
     }
 
-
-    public function  indexBookingTrueAction()
+    public function indexBookingTrueAction()
     {
         $gamesBookingTrue = $this->getDoctrine()->getManager()->getRepository('AppBundle:Etablishment')->findAllEtablishmentsWithBookingTrue();
 
-        return $this->render('@Admin/etablishment/indexbookingtrue.html.twig', ['gamesBookingTrue'=>$gamesBookingTrue]);
+        return $this->render('@Admin/etablishment/indexbookingtrue.html.twig', ['gamesBookingTrue' => $gamesBookingTrue]);
     }
 
-    public function  indexBookingFalseAction()
+    public function indexBookingFalseAction()
     {
         $gamesBookingFalse = $this->getDoctrine()->getManager()->getRepository('AppBundle:Etablishment')->findAllEtablishmentsWithBookingFalse();
 
-        return $this->render('@Admin/etablishment/indexbookingfalse.html.twig', ['gamesBookingFalse'=>$gamesBookingFalse]);
+        return $this->render('@Admin/etablishment/indexbookingfalse.html.twig', ['gamesBookingFalse' => $gamesBookingFalse]);
     }
 
     public function usersAction()
@@ -44,6 +43,7 @@ class EtablishmentController extends Controller
             throw new NotFoundHttpException('L\'établissement demandé n\'existe pas');
         }
         $stats['count_abonne'] = $this->getDoctrine()->getRepository('AppBundle:Card')->getCountAbonne($etablishment);
+
         return $this->render('@Admin/etablishment/show.html.twig', [
             'etablishment' => $etablishment,
             'stats' => $stats,

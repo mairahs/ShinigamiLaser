@@ -39,16 +39,16 @@ class GameController extends Controller
             new notFoundHttpException('La partie demandée n\'existe pas');
         }
         $hasCard = $this->get(GameManager::class)->hasCard($game);
-        if($hasCard){
+        if ($hasCard) {
             $cards = $this->get(GameManager::class)->getCard($game);
-        }else{
+        } else {
             $cards = $this->get(GameManager::class)->getCard();
         }
 
         return $this->render('game/show.html.twig', [
             'game' => $game,
             'cards' => $cards,
-            'hasCard' => $hasCard
+            'hasCard' => $hasCard,
         ]);
     }
 
@@ -56,9 +56,9 @@ class GameController extends Controller
     {
         $this->get(GameManager::class)->joinGame($id_game, $id_card);
 
-        if($from == "dash"){
+        if ('dash' == $from) {
             return $this->redirectToRoute('app_dashboard');
-        }else{
+        } else {
             return $this->redirectToRoute('app_game_show', ['id' => $id_game]);
         }
     }
@@ -67,9 +67,9 @@ class GameController extends Controller
     {
         $this->get(GameManager::class)->unjoinGame($id_game, $id_card);
 
-        if($from == "dash"){
+        if ('dash' == $from) {
             return $this->redirectToRoute('app_dashboard');
-        }else{
+        } else {
             return $this->redirectToRoute('app_game_show', ['id' => $id_game]);
         }
     }
@@ -77,18 +77,21 @@ class GameController extends Controller
     /**
      * @param $id_game
      * @param $card_number
+     *
      * @return JsonResponse
      */
-    public function addPlayerAction($id_game, $card_number){
+    public function addPlayerAction($id_game, $card_number)
+    {
         try {
             $id_card = $this->get(GameManager::class)->findPlayerCard($id_game, $card_number);
             $ret['status'] = 'OK';
-            $response = $this->redirectToRoute('app_game_join', ['from' => 'game', 'id_card' => $id_card,'id_game' => $id_game]);
+            $response = $this->redirectToRoute('app_game_join', ['from' => 'game', 'id_card' => $id_card, 'id_game' => $id_game]);
             $ret['retour'] = $response->getTargetUrl();
         } catch (\Exception $exception) {
             $ret['status'] = 'KO';
             $ret['retour'] = $exception->getMessage();
         }
+
         return new JsonResponse($ret);
     }
 }
