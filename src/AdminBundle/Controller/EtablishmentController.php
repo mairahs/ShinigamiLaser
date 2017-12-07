@@ -8,7 +8,8 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class EtablishmentController extends Controller
 {
     /**
-     * list of etablishment
+     * list of etablishment.
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function indexAction()
@@ -33,7 +34,8 @@ class EtablishmentController extends Controller
     }
 
     /**
-     * List of players with active cards by etablishment
+     * List of players with active cards by etablishment.
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function usersAction()
@@ -44,8 +46,10 @@ class EtablishmentController extends Controller
     }
 
     /**
-     * Number of subscribers of one etablishment
+     * Number of subscribers of one etablishment.
+     *
      * @param $id
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function showAction($id)

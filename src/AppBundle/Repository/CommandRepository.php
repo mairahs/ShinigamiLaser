@@ -20,6 +20,7 @@ class CommandRepository extends \Doctrine\ORM\EntityRepository
 
     /**
      * @param $id
+     *
      * @return mixed
      */
     public function findOneCommandWithEtablishment($id)
@@ -37,6 +38,7 @@ class CommandRepository extends \Doctrine\ORM\EntityRepository
 
     /**
      * @param $id
+     *
      * @return mixed
      */
     public function findOneCommandWithCards($id)

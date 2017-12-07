@@ -9,7 +9,8 @@ use Symfony\Component\HttpFoundation\Response;
 class UserController extends Controller
 {
     /**
-     * Search a player by his number card
+     * Search a player by his number card.
+     *
      * @param Request $request
      *
      * @return Response

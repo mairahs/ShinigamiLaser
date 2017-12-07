@@ -13,8 +13,10 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class GameController extends Controller
 {
     /**
-     * add a new game
+     * add a new game.
+     *
      * @param Request $request
+     *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function addAction(Request $request)
@@ -38,8 +40,10 @@ class GameController extends Controller
     }
 
     /**
-     * show one game with associated card
+     * show one game with associated card.
+     *
      * @param $id
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function showAction($id)
@@ -63,10 +67,12 @@ class GameController extends Controller
     }
 
     /**
-     * a player signs up for a game
+     * a player signs up for a game.
+     *
      * @param $from
      * @param $id_game
      * @param $id_card
+     *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function joinAction($from, $id_game, $id_card)
@@ -81,10 +87,12 @@ class GameController extends Controller
     }
 
     /**
-     * a player unsubscribe from a game
+     * a player unsubscribe from a game.
+     *
      * @param $from
      * @param $id_game
      * @param $id_card
+     *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function unjoinAction($from, $id_game, $id_card)
@@ -99,7 +107,8 @@ class GameController extends Controller
     }
 
     /**
-     * add a player to a game from administration
+     * add a player to a game from administration.
+     *
      * @param $id_game
      * @param $card_number
      *

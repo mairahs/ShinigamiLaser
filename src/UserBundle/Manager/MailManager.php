@@ -19,7 +19,8 @@ class MailManager
     }
 
     /**
-     * send mail to a player to activate his account
+     * send mail to a player to activate his account.
+     *
      * @param Player $player
      */
     public function sendMailToPlayer(Player $player)
@@ -40,7 +41,8 @@ class MailManager
     }
 
     /**
-     * send mail to a player when he has lost his password
+     * send mail to a player when he has lost his password.
+     *
      * @param Player $player
      */
     public function sendMailLostPassword(Player $player)

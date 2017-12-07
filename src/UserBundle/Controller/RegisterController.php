@@ -19,6 +19,7 @@ class RegisterController extends Controller
 {
     /**
      * @param Request $request
+     *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
     public function formAction(Request $request)
@@ -39,7 +40,8 @@ class RegisterController extends Controller
     }
 
     /**
-     * activate account of a player
+     * activate account of a player.
+     *
      * @param $token
      *
      * @return Response

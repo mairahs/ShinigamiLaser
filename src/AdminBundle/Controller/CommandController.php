@@ -11,7 +11,8 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class CommandController extends Controller
 {
     /**
-     * List of command
+     * List of command.
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function indexAction()
@@ -22,8 +23,10 @@ class CommandController extends Controller
     }
 
     /**
-     * Form for add a new command
+     * Form for add a new command.
+     *
      * @param Request $request
+     *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function addAction(Request $request)
@@ -47,8 +50,10 @@ class CommandController extends Controller
     }
 
     /**
-     * View one command
+     * View one command.
+     *
      * @param $id
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function showAction($id)
@@ -63,8 +68,10 @@ class CommandController extends Controller
     }
 
     /**
-     * Changing command status workflow from in_store to order
+     * Changing command status workflow from in_store to order.
+     *
      * @param $id
+     *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function deliveryAction($id)

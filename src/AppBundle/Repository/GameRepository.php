@@ -8,6 +8,7 @@ class GameRepository extends EntityRepository
 {
     /**
      * @param $id
+     *
      * @return mixed
      */
     public function getOneGameWithScoreAndPlayer($id)
@@ -41,6 +42,7 @@ class GameRepository extends EntityRepository
 
     /**
      * @param $player
+     *
      * @return array
      */
     public function findAllBookableGame($player)
@@ -74,6 +76,7 @@ class GameRepository extends EntityRepository
 
     /**
      * @param $player
+     *
      * @return array
      */
     public function findGameBooked($player)
