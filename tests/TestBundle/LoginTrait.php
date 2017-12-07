@@ -22,5 +22,7 @@ trait LoginTrait
         $client->followRedirect();
 
         return $client;
+
+
     }
 }
