@@ -29,6 +29,10 @@ class AvatarUploadSubscriber implements EventSubscriber
         $this->projectDir = $projectDir;
     }
 
+    /**
+     * Event automatically move avatar after persist
+     * @param LifecycleEventArgs $event
+     */
     public function postPersist(LifecycleEventArgs $event)
     {
         $entity = $event->getEntity();
@@ -44,6 +48,9 @@ class AvatarUploadSubscriber implements EventSubscriber
         }
     }
 
+    /**
+     * @param LifecycleEventArgs $event
+     */
     public function postUpdate(LifecycleEventArgs $event)
     {
         $entity = $event->getEntity();
@@ -57,6 +64,10 @@ class AvatarUploadSubscriber implements EventSubscriber
         }
     }
 
+    /**
+     * Event automatically delete the old avatar when update
+     * @param LifecycleEventArgs $event
+     */
     public function preUpdate(LifecycleEventArgs $event)
     {
         $entity = $event->getEntity();

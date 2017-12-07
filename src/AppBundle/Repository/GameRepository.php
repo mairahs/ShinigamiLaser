@@ -6,6 +6,10 @@ use Doctrine\ORM\EntityRepository;
 
 class GameRepository extends EntityRepository
 {
+    /**
+     * @param $id
+     * @return mixed
+     */
     public function getOneGameWithScoreAndPlayer($id)
     {
         $queryBuilder = $this->createQueryBuilder('g')
@@ -22,6 +26,9 @@ class GameRepository extends EntityRepository
         return $queryBuilder->getQuery()->getSingleResult();
     }
 
+    /**
+     * @return array
+     */
     public function findAllGamesWithoutScore()
     {
         $queryBuilder = $this->createQueryBuilder('g')
@@ -32,6 +39,10 @@ class GameRepository extends EntityRepository
         return $queryBuilder->getQuery()->getResult();
     }
 
+    /**
+     * @param $player
+     * @return array
+     */
     public function findAllBookableGame($player)
     {
         $qb = $this->createQueryBuilder('game');
@@ -61,6 +72,10 @@ class GameRepository extends EntityRepository
         return $qb->getQuery()->getResult();
     }
 
+    /**
+     * @param $player
+     * @return array
+     */
     public function findGameBooked($player)
     {
         $qb = $this->createQueryBuilder('game');

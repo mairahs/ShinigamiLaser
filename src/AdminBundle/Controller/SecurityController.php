@@ -13,6 +13,7 @@ class SecurityController extends Controller
     }
 
     /**
+     * login admin
      *@return Response
      */
     public function login_adminAction()

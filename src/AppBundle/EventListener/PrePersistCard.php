@@ -8,6 +8,10 @@ use Doctrine\ORM\Event\LifecycleEventArgs;
 
 class PrePersistCard
 {
+    /**
+     * Event for automatically change the number and the status of card before persist
+     * @param LifecycleEventArgs $args
+     */
     public function prePersist(LifecycleEventArgs $args)
     {
         $object = $args->getObject();

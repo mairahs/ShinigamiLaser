@@ -17,6 +17,10 @@ use UserBundle\Manager\PlayerManager;
 
 class RegisterController extends Controller
 {
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     */
     public function formAction(Request $request)
     {
         $player = new Player();
@@ -35,13 +39,14 @@ class RegisterController extends Controller
     }
 
     /**
+     * activate account of a player
      * @param $token
      *
      * @return Response
      */
     public function activateAction($token)
     {
-        $this->get(PlayerManager::class)->activate($token);
+        $player = $this->get(PlayerManager::class)->activate($token);
 
         return $this->render('UserBundle:register:register.activate.html.twig', ['player' => $player]);
     }
