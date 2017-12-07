@@ -8,8 +8,8 @@ use PHPUnit\Framework\TestCase;
 
 class PlayerManagerTest extends TestCase
 {
-    public static function testGenerateToken(Player $player)
-    {
-
-    }
+//    public static function testGenerateToken(Player $player)
+//    {
+//
+//    }
 }
