@@ -13,8 +13,6 @@ class HomepageControllerTest extends WebTestCase
         $response = $client->getResponse();
 
         $this->assertSame(200, $response->getStatusCode());
-
-        echo $response;
     }
 
     public function testFindH1OnHomepage()
@@ -23,6 +21,5 @@ class HomepageControllerTest extends WebTestCase
         $crawler = $client->request('GET','/');
 
         $this->assertSame(1, $crawler->filter('h1')->count());
-
     }
 }
