@@ -4,6 +4,7 @@
 namespace Tests\TestBundle;
 
 
+use AppBundle\Entity\Command;
 use AppBundle\Entity\Etablishment;
 use AppBundle\Entity\Game;
 use AppBundle\Entity\GameType;
@@ -19,6 +20,13 @@ trait DatabaseTrait
         $etablishment1->setCity('ville');
         $etablishment1->setCode('123');
         $em->persist($etablishment1);
+
+        $command1 = new Command();
+        $command1->setEtablishment($etablishment1);
+        $command1->setQuantity(2);
+        $command1->setPrice(30);
+        $command1->setDateOfOrder(new \Datetime('2017-12-20'));
+        $em->persist($command1);
 
         $time_slot1 = new TimeSlot();
         $time_slot1->setType('8h-10h');

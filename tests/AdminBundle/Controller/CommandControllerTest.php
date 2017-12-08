@@ -3,16 +3,20 @@
 namespace Tests\AdminBundle\Controller;
 
 
+use AppBundle\Entity\Command;
 use Symfony\Bundle\FrameworkBundle\Client;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Tests\TestBundle\DatabaseTrait;
 use Tests\TestBundle\LoginTrait;
 
 class CommandControllerTest extends WebTestCase
 {
     use LoginTrait;
+    use DatabaseTrait;
 
     /** @var  Client */
     private $client;
+    private $entityManager;
 
     public function setUp()
     {
@@ -46,6 +50,26 @@ class CommandControllerTest extends WebTestCase
 
         $this->assertSame(1, $crawler->filter('li.green-text')->count());
 
+    }
+
+    public function testShowCommand()
+    {
+        $entityManager = $this->client->getContainer()->get('doctrine.orm.entity_manager');
+
+        $this->generateDatabase($entityManager);
+
+        $crawler = $this->client->request('GET', '/game/1');
+
+    }
+
+    protected function tearDown()
+    {
+        parent::tearDown();
+
+        $this->entityManager->rollBack();
+        $this->entityManager->close();
+        $this->entityManager = null;
+        $this->client = null;
     }
 
 }
