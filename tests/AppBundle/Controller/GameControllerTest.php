@@ -54,15 +54,9 @@ class GameControllerTest extends WebTestCase
     /** @test */
     public function show()
     {
-        $em = $this->client->getContainer()->get('doctrine.orm.entity_manager');
+        $crawler = $this->client->request('GET', '/admin/command/show/1');
 
-        $crawler = $this->client->request('GET', '/game/1');
-
-
-//        dump($crawler->html());
-
-
-
+        dump($crawler->html());
 
     }
 
