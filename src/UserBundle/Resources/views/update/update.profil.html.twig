@@ -9,8 +9,8 @@
     </div>
     <div class="row">
         <div class="col s8 offset-s2">
-            <h3>Editer son profil</h3>
-            {% include 'inc/inc.avatar.img.html.twig' with {'class' : 'img_rounded'} %}
+            <h4 class="center">Editer son profil</h4>
+            {% include 'inc/inc.avatar.img.html.twig' with {'class' : 'img_rounded center-block'} %}
             {{ form_start(form, { 'attr': {'novalidate': 'novalidate', 'autocomplete' : 'off'}}) }}
             {{ form_widget(form) }}
             {{ form_end(form) }}

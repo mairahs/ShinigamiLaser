@@ -6,7 +6,7 @@
     <a href="{{ path('admin_dashboard') }}"> Retour à l'interface d'administration</a>
     </div>
     <h4 class="center">Enregistrer une nouvelle commande de cartes de fidélité</h4>
-    {{ form_start(form) }}
+    {{ form_start(form, { 'attr': {'novalidate': 'novalidate', 'autocomplete' : 'off'}}) }}
     {{ form_widget(form) }}
     {{ form_end(form) }}
 {% endblock %}
