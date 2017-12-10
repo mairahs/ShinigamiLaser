@@ -3,7 +3,6 @@
 
 namespace Tests\TestBundle;
 
-
 use AppBundle\Entity\Admin;
 
 trait LoginTrait

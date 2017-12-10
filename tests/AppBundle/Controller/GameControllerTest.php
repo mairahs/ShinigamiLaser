@@ -51,16 +51,6 @@ class GameControllerTest extends WebTestCase
         $this->assertSame("Il n'y a pas encore de joueur", $crawler_game->filter('td[colspan="4"]')->text());
     }
 
-    /** @test */
-    public function show()
-    {
-        $crawler = $this->client->request('GET', '/admin/command/show/1');
-
-        dump($crawler->html());
-
-    }
-
-
     protected function tearDown()
     {
         parent::tearDown();
