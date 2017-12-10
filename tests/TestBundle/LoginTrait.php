@@ -4,27 +4,33 @@
 namespace Tests\TestBundle;
 
 
-use AppBundle\Entity\Admin;
-
 trait LoginTrait
 {
-    public function logIn()
+    public function logIn($user = "admin")
     {
         $client = static::createClient();
 
-        $crawler = $client->request('GET', '/admin/login');
+        if("admin" === $user){
+            $crawler = $client->request('GET', '/admin/login');
+        }else{
+            $crawler = $client->request('GET', '/login');
+        }
 
         $nodeButton = $crawler->selectButton('Connexion');
 
         $form = $nodeButton->form();
-        $form['_username'] = 'test';
-        $form['_password'] = 'test';
+
+        if("admin" === $user){
+            $form['_username'] = 'test';
+            $form['_password'] = 'test+';
+        }else{
+            $form['_username'] = 'test';
+            $form['_password'] = 'test';
+        }
 
         $client->submit($form);
         $client->followRedirect();
 
         return $client;
-
-
     }
 }

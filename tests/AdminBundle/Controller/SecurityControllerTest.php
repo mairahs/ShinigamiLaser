@@ -19,7 +19,7 @@ class SecurityControllerTest extends WebTestCase
 
         $form = $nodeButton->form();
         $form['_username'] = 'test';
-        $form['_password'] = 'test';
+        $form['_password'] = 'test+';
 
         $client->submit($form);
         $client->followRedirect();
