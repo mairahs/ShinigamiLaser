@@ -1,8 +1,6 @@
 <?php
 
 namespace Tests\AdminBundle\Controller;
-
-
 use Symfony\Bundle\FrameworkBundle\Client;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Tests\TestBundle\LoginTrait;
@@ -39,12 +37,24 @@ class CommandControllerTest extends WebTestCase
         $this->assertSame(1, $crawler->filter('li.green-text')->count());
     }
 
+    public function testIndexCommand()
+    {
+        $crawler = $this->client->request('GET', 'commands');
+
+        $this->assertSame(1, $crawler->filter('html:contains("Liste des commandes de carte de fidélité par établissement ShinigamiLaser")')->count());
+        $this->assertSame('10', $crawler->filter('td')->eq(0)->text());
+        $this->assertSame('30 €', $crawler->filter('td')->eq(1)->text());
+        $this->assertSame('10/12/2017', $crawler->filter('td')->eq(2)->text());
+    }
     public function testShowCommand()
     {
-
         $crawler = $this->client->request('GET', 'command/show/1');
 
-//        dump($crawler->html());
+        $this->assertSame(' 08/12/2017', $crawler->filter('h4.card-title')->eq(0)->text());
+        $this->assertSame('2', $crawler->filter('h4.card-title')->eq(1)->text());
+        $this->assertSame('20 €', $crawler->filter('h4.card-title')->eq(2)->text());
+        $this->assertSame('etablishment1', $crawler->filter('h4.card-title')->eq(3)->text());
+        $this->assertSame(1, $crawler->filter('html:contains("Retour vers la liste des commandes")')->count());
 
     }
 
