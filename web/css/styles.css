@@ -4,7 +4,6 @@ body{
     -webkit-background-size: cover; /* pour anciens Chrome et Safari */
     background-size: cover; /* version standardisée */
     background: url('../images/background.jpg') no-repeat center fixed;
-    background-color: #1A1D22;
 }
 
 .main-title{
@@ -98,7 +97,7 @@ li.error{
 .menu-cust{
     height: 80px;
     line-height: 80px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
 .fa{
@@ -226,10 +225,6 @@ nav ul a:hover {
 
 .cardHeader .card-image {
     height: 250px;
-}
-
-.cardHeader .card-content {
-    margin-top: -40px;
 }
 
 .cardHeader .fixed-action-btn{
